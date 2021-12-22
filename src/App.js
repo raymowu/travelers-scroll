@@ -28,7 +28,7 @@ const handleOnChange = (e) => {
   setSearchTerm(e.target.value);
   if (searchTerm) {
     console.log('render')
-    getCharacters(CHARACTER_API + searchTerm)
+    // getCharacters(CHARACTER_API + searchTerm)
   }
 }
 
@@ -50,14 +50,22 @@ console.log(characters)
       </form>
 
       {characters.length > 0 && 
-      characters.map((character) => 
+      characters.filter((characterName) => {
+        if (searchTerm == "") {
+          return characterName
+        } else if (characterName.toLowerCase().includes(searchTerm.toLowerCase())) {
+          return characterName
+        }
+      }).map((characterName) => {
+        return (
       <div className="character">
-            <img src={(CHARACTER_API + character + '/icon')} alt={character}
+            <img src={(CHARACTER_API + characterName + '/icon')} alt={characterName}
             />
-        <h3>{character}</h3>
+        <h3>{characterName}</h3>
         
         </div>
-      )}
+        );
+})}
     </div>
     </>
   );
