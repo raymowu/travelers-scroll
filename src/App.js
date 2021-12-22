@@ -32,6 +32,10 @@ const handleOnChange = (e) => {
   }
 }
 
+const handleOnSubmit = (e) => {
+  e.preventDefault();
+}
+
 //EXPERIMENT: array of json values for a search functionality
 console.log(characters)
 
@@ -41,7 +45,7 @@ console.log(characters)
 
     </header>
     <div className="character-container">
-    <form>
+    <form onSubmit={handleOnSubmit}>
       <input className="search-bar"
       type="search"
       placeholder="Search for a character..."
