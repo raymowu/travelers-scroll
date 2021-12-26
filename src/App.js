@@ -36,9 +36,6 @@ const handleOnSubmit = (e) => {
   e.preventDefault();
 }
 
-//EXPERIMENT: array of json values for a search functionality
-console.log(characters)
-
   return (
     <>
     <header>
@@ -52,7 +49,7 @@ console.log(characters)
       value={searchTerm}
       onChange={handleOnChange}/>
       </form>
-
+      
       {characters.length > 0 && 
       characters.filter((characterName) => {
         if (searchTerm == "") {
