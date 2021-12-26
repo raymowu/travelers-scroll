@@ -46,14 +46,15 @@ const handleOnSubmit = (e) => {
       value={searchTerm}
       onChange={handleOnChange}/>
       </form>
-      <div class="break"></div>
+      <div className="break"></div>
       {characters.length > 0 && 
       characters.filter((characterName) => {
-        if (searchTerm == "") {
+        if (searchTerm === "") {
           return characterName
         } else if (characterName.toLowerCase().includes(searchTerm.toLowerCase())) {
           return characterName
         }
+        return false;
       }).map((characterName) => {
         return (
       <div className="character">
