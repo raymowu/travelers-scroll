@@ -1,9 +1,9 @@
 header {
-    height: 50px;
+    height: 65px;
     background-color: #13092c;
-    margin-top: -9px;
-    margin-left: -10px;
-    width: 105%;
+    /* margin-top: -9px; */
+    /* margin-left: -10px; */
+    width: 100%;
     color: white;
     display: flex;
     align-items: center;
