@@ -38,8 +38,6 @@ const handleOnSubmit = (e) => {
 
   return (
     <>
-    <header>
-    </header>
     <div className="character-container">
     <form onSubmit={handleOnSubmit}>
       <input className="search-bar"
