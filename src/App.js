@@ -39,7 +39,6 @@ const handleOnSubmit = (e) => {
   return (
     <>
     <header>
-
     </header>
     <div className="character-container">
     <form onSubmit={handleOnSubmit}>
@@ -49,7 +48,7 @@ const handleOnSubmit = (e) => {
       value={searchTerm}
       onChange={handleOnChange}/>
       </form>
-      
+      <div class="break"></div>
       {characters.length > 0 && 
       characters.filter((characterName) => {
         if (searchTerm == "") {
