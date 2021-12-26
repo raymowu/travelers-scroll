@@ -23,6 +23,18 @@ header {
     justify-content: space-around;
     align-items: center;
     align-content: center;
-    margin-right: 100px;
+    margin-right: 50px;
     width: 300px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.signup {
+    background-color: purple;
+    padding: 10px 15px;
+    border-radius: 500px;
+    text-align: center;   
 }

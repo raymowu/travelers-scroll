@@ -6,13 +6,13 @@ function Header(){
     return(
         <header>
             <div className={classes.logo}>
-                <h2>Genshin App</h2>
+                <h2><a href="#">Genshin App</a></h2>
             </div>
             <div>
                 <ul className={classes.items}>
-                    <li>Builds</li>
-                    <li>Log In</li>
-                    <li>sign Up</li>
+                    <li><a href="#">Builds</a></li>
+                    <li><a href="#">Log In</a></li>
+                    <li><a href="#" className={classes.signup}>sign Up</a></li>
                 </ul>
             </div>
         </header>
