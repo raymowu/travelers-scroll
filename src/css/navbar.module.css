@@ -33,8 +33,22 @@ a{
 }
 
 .signup {
-    background-color: purple;
-    padding: 10px 15px;
+    background-color: #534981;
+    padding: 10px 20px;
     border-radius: 500px;
     text-align: center;   
+}
+
+.signup:hover{
+    background-color: white;
+    transition: 0.5s ease-in-out;
+    color: black;
+}
+
+.link:hover{
+    border-bottom: white solid 2px;
+}
+
+.active{
+    border-bottom: white solid 2px;
 }
