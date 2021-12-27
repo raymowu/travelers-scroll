@@ -36,6 +36,19 @@ const handleOnSubmit = (e) => {
   e.preventDefault();
 }
 
+//replaces "-" with a space and capitalizes each word
+function initializeName(string) {
+  let newName;
+  newName = string.replace('-', ' ');
+  const words = newName.split(' ');
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+  }
+  newName = words.join(' ');
+  
+  return newName;
+}
+
   return (
     <>
     <div className="character-container">
@@ -60,7 +73,8 @@ const handleOnSubmit = (e) => {
       <div className="character">
             <img src={(CHARACTER_API + characterName + '/icon')} alt={characterName}
             />
-        <h3>{characterName}</h3>
+            
+        <h3>{initializeName(characterName)}</h3>
         
         </div>
         );
