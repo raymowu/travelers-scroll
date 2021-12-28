@@ -23,6 +23,32 @@ header {
     justify-content: space-around;
     align-items: center;
     align-content: center;
-    margin-right: 100px;
+    margin-right: 50px;
     width: 300px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.signup {
+    background-color: #534981;
+    padding: 10px 20px;
+    border-radius: 500px;
+    text-align: center;   
+}
+
+.signup:hover{
+    background-color: white;
+    transition: 0.5s ease-in-out;
+    color: black;
+}
+
+.link:hover{
+    border-bottom: white solid 2px;
+}
+
+.active{
+    border-bottom: white solid 2px;
 }
