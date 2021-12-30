@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../App.css';
+import '../css/home.css'
 import CharacterCard from '../components/CharacterCard'
 import Axios from "axios"
 

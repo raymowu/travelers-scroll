@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import '../css/home.css';
 const CHARACTER_API = 'https://api.genshin.dev/characters/';
 
 //replaces "-" with a space and capitalizes each word

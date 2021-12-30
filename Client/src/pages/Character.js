@@ -1,7 +1,7 @@
 import React from 'react'
+import '../css/home.css'
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
 const CHARACTER_API = 'https://api.genshin.dev/characters/';
 
 const Character = () => {
@@ -28,10 +28,14 @@ const Character = () => {
 
 
     return (
-        <div>
-            <h1>{character.name}</h1>
-            <h2>{character.vision}</h2>
+        <div className="character-container">
+        <div className="character">
+            <img src={(CHARACTER_API + characterName + '/icon')} alt={characterName} />
+            <h3>{character.name}</h3>
         </div>
+                    
+                    <h3>{character.description}</h3>
+                    </div>
     )
 }
 
