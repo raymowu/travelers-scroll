@@ -44,7 +44,7 @@ function LogIn() {
       url: "http://localhost:5000/login",
     }).then((res) => {
       if (res.data.status === "ok"){
-        window.location.href = "/"
+        window.location.assign("http://localhost:3000/")
         alert(res.data.message)
     }
     else{

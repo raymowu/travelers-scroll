@@ -6,8 +6,8 @@ import classes from "../../css/navbar.module.css"
 function Header(user){
     const links = [
         {id: 0, name: "Builds", link: "#", className:`${classes.link}`},
-        {id: 1, name: "Log In", link: "#", className:`${classes.link}`},
-        {id: 2, name: "Sign Up", link: "#", className:`${classes.signup}`}
+        {id: 1, name: "Log In", link: "/login", className:`${classes.link}`},
+        {id: 2, name: "Sign Up", link: "/register", className:`${classes.signup}`}
     ]
     
     if(!user){
@@ -51,10 +51,23 @@ function Header(user){
     return(
         <header>
             <div className={classes.logo}>
-                <h2><a href="#">Genshin App</a></h2>
+                <h2><a href="/">Genshin App</a></h2>
             </div>
             <div>
-                {checkUser}
+            <ul className={`${classes.items}`}>
+                    {links.map(a => {
+                        return(
+                            <li key={a.id}><a href={a.link} className={`${a.className}`}>{a.name}</a></li>
+                            
+                            
+                        )
+                        
+                        //     
+                        
+                        // console.log(`<li key=${a.id}><a href=${a.link} className=${a.className}>${a.name}</a></li>`)
+                        
+                    })}
+                </ul>
             </div>
         </header>
     )

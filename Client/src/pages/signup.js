@@ -40,7 +40,7 @@ function SignUp() {
       url: "http://localhost:5000/register",
     }).then((res) => {
       if (res.data.status === "ok"){
-          window.location.href = `/profile/${res.data.user.id}`
+          window.location.assign(`http://localhost:3000/profile/${res.data.user.id}`)
       }
       else{
         alert(res.data.message)
