@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Axios from "axios"
 
 function SignUp() {
 
@@ -11,22 +12,42 @@ function SignUp() {
 
   const history = useNavigate()
 
-  async function submit(event){
-    event.preventDefault()
-    const response = await fetch("http://localhost:5000/register", {
+  // async function submit(event){
+  //   event.preventDefault()
+  //   const response = await fetch("http://localhost:5000/register", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(form)
+  //   });
+
+  //   const data = await response.json();
+
+  //   if (data.status === "ok"){
+  //     window.location.href = "/"
+  // }
+  // }
+  const register = () => {
+    Axios({
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
+      data: {
+        username: form.username,
+        email: form.email,
+        password: form.password,
       },
-      body: JSON.stringify(form)
+      withCredentials: true,
+      url: "http://localhost:5000/register",
+    }).then((res) => {
+      if (res.data.status === "ok"){
+          window.location.href = `/profile/${res.data.user.id}`
+      }
+      else{
+        alert(res.data.message)
+      }
     });
-
-    const data = await response.json();
-
-    if (data.status === "ok"){
-      window.location.href = "/"
-  }
-  }
+    // console.log(form)
+  };
 
   const handleChange = (e) => {
     setForm({
@@ -37,12 +58,12 @@ function SignUp() {
 
   return (
     <div className="App">
-      <form onSubmit={submit}>
+      <form onSubmit={register}>
         <h1>Create Account</h1>
         <input type="text" placeholder="Username" name="username" onChange={handleChange} />
         <input type="email" placeholder="Email" name="email" onChange={handleChange} />
         <input type="password" placeholder="Password" name="password" onChange={handleChange} />
-        <button type="submit">Submit</button>
+        <button>Submit</button>
       </form>
     </div>
   );
