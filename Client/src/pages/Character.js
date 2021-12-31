@@ -1,5 +1,5 @@
 import React from 'react'
-import '../css/home.css'
+import '../css/character.css'
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 const CHARACTER_API = 'https://api.genshin.dev/characters/';
@@ -29,12 +29,16 @@ const Character = () => {
 
     return (
         <div className="character-container">
-        <div className="character">
+        <div className="character-header">
+        <div className="character-page">
             <img src={(CHARACTER_API + characterName + '/icon')} alt={characterName} />
-            <h3>{character.name}</h3>
-        </div>
+            <h1>{character.name}</h1>
+            </div>
+            <div className="break"></div>
+            <h3>{character.description}</h3>
+        
                     
-                    <h3>{character.description}</h3>
+                    </div>
                     </div>
     )
 }
