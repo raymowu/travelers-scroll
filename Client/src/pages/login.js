@@ -10,35 +10,48 @@ function LogIn() {
 
   const [form, setForm] = useState({ username: '', password: '' });
 
-  async function submit(event){
-    event.preventDefault()
-    const response = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(form)
-    })
+  // async function submit(event){
+  //   event.preventDefault()
+  //   const response = await fetch("http://localhost:5000/login", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(form)
+  //   })
 
     
 
-    const data = await response.json();
+  //   const data = await response.json();
 
-    if (data.status === "ok" && data.user){
-      alert(`Login was successful. Welcome ${data.user.username}`);
-      window.location.href = "/"
-    }else{
-      alert("please check your username and password");
+  //   if (data.status === "ok" && data.user){
+  //     alert(`Login was successful. Welcome ${data.user.username}`);
+  //     window.location.href = "/"
+  //   }else{
+  //     alert("please check your username and password");
+  //   }
+  // }
+
+  
+  const login = () => {
+    Axios({
+      method: "POST",
+      data: {
+        username: form.username,
+        password: form.password,
+      },
+      withCredentials: true,
+      url: "http://localhost:5000/login",
+    }).then((res) => {
+      if (res.data.status === "ok"){
+        window.location.href = "/"
+        alert(res.data.message)
     }
-  }
-// const login = () => {
-//     Axios({
-//       method: "POST",
-//       data: form,
-//       withCredentials: true,
-//       url: "http://localhost:5000/login",
-//     }).then((res) => console.log(res));
-//   };
+    else{
+      alert(res.data.message)
+    }
+    });
+  };
 
   const handleChange = (e) => {
     setForm({
@@ -49,7 +62,7 @@ function LogIn() {
 
   return (
     <div className="App">
-      <form onSubmit={submit}>
+      <form onSubmit={login}>
         <h1>Login</h1>
         <input type="text" placeholder="username" name="username" onChange={handleChange} />
         <input type="password" placeholder="Password" name="password" onChange={handleChange} />
