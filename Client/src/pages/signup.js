@@ -41,6 +41,7 @@ function SignUp() {
     }).then((res) => {
       if (res.data.status === "ok"){
           window.location.assign(`http://localhost:3000/profile/${res.data.user.id}`)
+          alert("Accout successfully created")
       }
       else{
         alert(res.data.message)
