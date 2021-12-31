@@ -6,6 +6,8 @@ import LogIn from ".//pages/login"
 import Layout from "./components/Layout"
 import Test from "./pages/test"
 import Profile from "./pages/profile"
+import Character from "./pages/Character"
+
 
 const App = () => {
 	return (
@@ -20,6 +22,7 @@ const App = () => {
                         <Route path="/login" exact element={ <LogIn /> } />
                         <Route path="/test" exact element={<Test />} />
                         <Route path="profile/:id" exact element={<Profile />} />
+                        <Route path="/characters/:characterName" exact element ={ <Character />} />
                     </Routes>
                 </Layout>
                 
