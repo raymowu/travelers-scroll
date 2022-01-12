@@ -28,18 +28,23 @@ const Character = () => {
 
 
     return (
-        <div className="character-container">
-        <div className="character-header">
-        <div className="character-page">
+        
+        <div className="container">
+            <div className="character-header">
             <img src={(CHARACTER_API + characterName + '/icon')} alt={characterName} />
-            <h1>{character.name}</h1>
+            <ul>
+                <li><h2>Genshin Impact</h2></li>
+                <li><h1>{character.name}</h1></li>
+                <li><h2 className={`${character.vision}`}>{character.vision} </h2> <h2>| {character.weapon}</h2></li>
+            </ul>
+            
             </div>
-            <div className="break"></div>
+            
             <h3>{character.description}</h3>
         
                     
                     </div>
-                    </div>
+                  
     )
 }
 
