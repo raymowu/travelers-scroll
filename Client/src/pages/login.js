@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Axios from "axios";
-// import logo from './logo.svg';
+import "../css/form.css"
 
 function LogIn() {
 
@@ -38,13 +38,16 @@ function LogIn() {
 }
 
   return (
-    <div className="App">
-      <form onSubmit={login}>
+    <div className="app">
+      <form onSubmit={login} className="form-container">
         <h1>Login</h1>
-        <input type="text" placeholder="username" name="username" onChange={handleChange} />
-        <input type="password" placeholder="Password" name="password" onChange={handleChange} />
-        <button type="submit">Submit</button>
+        <input type="text" placeholder="username" name="username" className="input" onChange={handleChange} />
+        <input type="password" placeholder="Password" name="password" className="input" onChange={handleChange} />
+        <button type="submit" className="button">Submit</button>
+        <p>Dont have an account? <a href="/register">Sign Up</a></p>
+        <a href="/">Back</a>
       </form>
+
     </div>
   );
 }

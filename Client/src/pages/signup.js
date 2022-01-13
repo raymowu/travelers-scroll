@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import "../css/form.css"
 import Axios from "axios"
 
 function SignUp() {
 
   const [form, setForm] = useState({ username: '', email: '', password: '' });
-  
+
   async function register(event){
     event.preventDefault()
     Axios({
@@ -35,14 +36,17 @@ function SignUp() {
 }
 
   return (
-    <div className="App">
-      <form onSubmit={register}>
-        <h1>Create Account</h1>
-        <input type="text" placeholder="Username" name="username" onChange={handleChange} />
-        <input type="email" placeholder="Email" name="email" onChange={handleChange} />
-        <input type="password" placeholder="Password" name="password" onChange={handleChange} />
-        <button>Submit</button>
-      </form>
+    <div className="app">
+        <form onSubmit={register} className="form-container">
+          <h1>Create Account</h1>
+          <input type="text" placeholder="Username" name="username" className="input" onChange={handleChange} />
+          <input type="email" placeholder="Email" name="email" className="input" onChange={handleChange} />
+          <input type="password" placeholder="Password" name="password" className="input" onChange={handleChange} />
+          <button type="submit" className="button">Submit</button>
+          <p>Already have an account? <a href="/login">Login</a></p>
+          <a href="/">Back</a>
+        </form>
+      
     </div>
   );
 }
