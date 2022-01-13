@@ -25,6 +25,7 @@
   flex-wrap: wrap;
   align-content: center;
   gap: 0px;
+  text-shadow: 1px 1px #000000;
 }
 
 .character-header h1 {
@@ -37,10 +38,36 @@
   font-size: 18px;
   white-space: nowrap;
   margin-left: 10%;
+  margin-bottom: 12px;
+  font-weight: 500;
 }
 
-.character-header h2.Geo {
+.character-header span.Geo {
   color: #ffce00;
+}
+
+.character-header span.Pyro {
+  color: #d12027;
+}
+
+.character-header span.Hydro {
+  color: #426972;
+}
+
+.character-header span.Anemo {
+  color: #3daf91;
+}
+
+.character-header span.Cryo {
+  color: #30d5e4;
+}
+
+.character-header span.Dendro {
+  color: #74dd1e;
+}
+
+.character-header span.Electro {
+  color: #bf00ff;
 }
 
 .container img {

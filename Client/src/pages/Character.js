@@ -35,7 +35,7 @@ const Character = () => {
             <ul>
                 <li><h2>Genshin Impact</h2></li>
                 <li><h1>{character.name}</h1></li>
-                <li><h2 className={`${character.vision}`}>{character.vision} </h2> <h2>| {character.weapon}</h2></li>
+                <li><h2> <span className={`${character.vision}`}>{character.vision}</span> &#x2022; {character.weapon}</h2></li>
             </ul>
             
             </div>
