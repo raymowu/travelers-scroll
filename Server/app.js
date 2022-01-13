@@ -23,25 +23,6 @@ app.use(
 app.use(express.json())
 
 
-// PASSPORT CONFIGURATION
-// app.use(require("express-session")({
-// 	secret: "this is the secret",
-// 	resave: false,
-// 	saveUninitialized: false
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// app.use(function(req, res, next){
-// 	res.locals.currentUser = req.user;
-// 	next();
-// });
-
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-
-
 app.use(
 	session({
 	  secret: "secretcode",
@@ -55,36 +36,36 @@ app.use(
   require("./passportConfig")(passport);
 
 
-  // Routes
-  app.post("/login", (req, res, next) => {
-    passport.authenticate("local", (err, user, info) => {
-      if (err) throw err;
-      if (!user) res.send({status: "ok", message: "Username or Password are incorrect"});
-      else {
-        req.logIn(user, (err) => {
-          if (err) throw err;
-          res.send({status: "ok", user: {id: req.user._id, username: req.user.username}, message: "Successfully Authenticated"});
-        });
-      }
-    })(req, res, next);
+// Routes
+app.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) throw err;
+    if (!user) res.send({status: "ok", message: "Username or Password are incorrect"});
+    else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        res.send({status: "ok", user: {id: req.user._id, username: req.user.username}, message: "Successfully Authenticated"});
+      });
+    }
+  })(req, res, next);
+});
+app.post("/register", (req, res) => {
+  User.findOne({ username: req.body.username }, async (err, doc) => {
+    if (err) throw err;
+    if (doc) res.send({status: "err", message: "Username or Email already exist"});
+    if (!doc) {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+      const newUser = new User({
+        username: req.body.username,
+    email: req.body.email,
+        password: hashedPassword,
+      });
+      await newUser.save();
+      res.send({status: "ok", message: "User Successfully created"});
+    }
   });
-  app.post("/register", (req, res) => {
-    User.findOne({ username: req.body.username }, async (err, doc) => {
-      if (err) throw err;
-      if (doc) res.send({status: "err", message: "Username or Email already exist"});
-      if (!doc) {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  
-        const newUser = new User({
-          username: req.body.username,
-		  email: req.body.email,
-          password: hashedPassword,
-        });
-        await newUser.save();
-        res.send({status: "ok", message: "User Successfully created"});
-      }
-    });
-  });
+});
 
 app.get("/", (req, res) => {
     // res.send({status: "ok"});
