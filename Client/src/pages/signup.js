@@ -4,31 +4,10 @@ import Axios from "axios"
 
 function SignUp() {
 
-  // const [name, setName] = useState("")
-  // const [email, setEmail] = useState("")
-  // const [pass, setPass] = useState("")
-
   const [form, setForm] = useState({ username: '', email: '', password: '' });
-
-  const history = useNavigate()
-
-  // async function submit(event){
-  //   event.preventDefault()
-  //   const response = await fetch("http://localhost:5000/register", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(form)
-  //   });
-
-  //   const data = await response.json();
-
-  //   if (data.status === "ok"){
-  //     window.location.href = "/"
-  // }
-  // }
-  const register = () => {
+  
+  async function register(event){
+    event.preventDefault()
     Axios({
       method: "POST",
       data: {
@@ -39,16 +18,14 @@ function SignUp() {
       withCredentials: true,
       url: "http://localhost:5000/register",
     }).then((res) => {
+      // const data = await response.json();
+
       if (res.data.status === "ok"){
-          window.location.assign(`http://localhost:3000/profile/${res.data.user.id}`)
-          alert("Accout successfully created")
+        alert("Account has been successfully created!")
+        window.location.href = "/"
       }
-      else{
-        alert(res.data.message)
-      }
-    });
-    // console.log(form)
-  };
+    })
+  }
 
   const handleChange = (e) => {
     setForm({

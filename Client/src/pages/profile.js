@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Axios from "axios";
 import { useParams } from "react-router-dom";
-// import logo from './logo.svg';
+import Layout from "../components/Layout"
 
 function Profile() {
 
@@ -21,9 +21,12 @@ function Profile() {
         });
       }, []);
     return(
-        <div>
-            <h1>profile page for {user.username}</h1>
-        </div>
+        <Layout>
+            <div>
+                <h1>profile page for {user.username}</h1>
+            </div>
+        </Layout>
+        
     )
 }
 

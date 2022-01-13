@@ -4,54 +4,31 @@ import Axios from "axios";
 
 function LogIn() {
 
-  // const [name, setName] = useState("")
-  // const [email, setEmail] = useState("")
-  // const [pass, setPass] = useState("")
-
   const [form, setForm] = useState({ username: '', password: '' });
-
-  // async function submit(event){
-  //   event.preventDefault()
-  //   const response = await fetch("http://localhost:5000/login", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(form)
-  //   })
-
-    
-
-  //   const data = await response.json();
-
-  //   if (data.status === "ok" && data.user){
-  //     alert(`Login was successful. Welcome ${data.user.username}`);
-  //     window.location.href = "/"
-  //   }else{
-  //     alert("please check your username and password");
-  //   }
-  // }
-
   
-  const login = () => {
+  async function login(event){
+    event.preventDefault()
     Axios({
-      method: "POST",
-      data: {
-        username: form.username,
-        password: form.password,
-      },
-      withCredentials: true,
-      url: "http://localhost:5000/login",
-    }).then((res) => {
-      if (res.data.status === "ok"){
-        window.location.assign("http://localhost:3000/")
-        alert(res.data.message)
-    }
-    else{
-      alert(res.data.message)
-    }
-    });
-  };
+          method: "POST",
+          data: {
+            username: form.username,
+            password: form.password,
+          },
+          withCredentials: true,
+          url: "http://localhost:5000/login",
+        }).then((res) => {
+
+          // const data = await response.json();
+
+          if (res.data.status === "ok"){
+            alert("Login was successful");
+            window.location.href = "/"
+          }else{
+            alert("please check your username and password");
+          }
+
+        })
+  }
 
   const handleChange = (e) => {
     setForm({
