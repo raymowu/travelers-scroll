@@ -24,13 +24,7 @@ function Header(user){
                     {links.map(a => {
                         return(
                             <li key={a.id}><a href={a.link} className={`${a.className}`}>{a.name}</a></li>
-                            
-                            
                         )
-                        
-                        //     
-                        
-                        // console.log(`<li key=${a.id}><a href=${a.link} className=${a.className}>${a.name}</a></li>`)
                         
                     })}
                 </ul>

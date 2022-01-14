@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../css/home.css'
 import CharacterCard from '../components/CharacterCard'
 import Axios from "axios"
+import Layout from "../components/Layout"
 
 const CHARACTER_API = 'https://api.genshin.dev/characters/';
 
@@ -52,33 +53,33 @@ function Home() {
         }
 
     return (
-        <>
-        <div className="character-container">
-        <form onSubmit={handleOnSubmit}>
-        <input className="search-bar"
-        type="search"
-        placeholder="Search for a character..."
-        value={searchTerm}
-        onChange={handleOnChange}/>
-        </form>
-        <div className="break"></div>
-        {characters.length > 0 && 
-        characters.filter((characterName) => {
-            if (searchTerm === "") {
-            return characterName
-            } else if (initializeName(characterName).toLowerCase().includes(searchTerm.toLowerCase())) {
-            return characterName
-            }
-            return false;
-        }).map((characterName) => {
-            return (
+        <Layout>
+            <div className="character-container">
+                <form onSubmit={handleOnSubmit}>
+                    <input className="search-bar"
+                    type="search"
+                    placeholder="Search for a character..."
+                    value={searchTerm}
+                    onChange={handleOnChange}/>
+                </form>
+                <div className="break"></div>
+                {characters.length > 0 && 
+                characters.filter((characterName) => {
+                    if (searchTerm === "") {
+                        return characterName
+                    } else if (initializeName(characterName).toLowerCase().includes(searchTerm.toLowerCase())) {
+                        return characterName
+                    }
+                    return false;
+                }).map((characterName) => {
+                    return (
 
-            <CharacterCard characterName={characterName}/>
-           
-            )
-    })}
-        </div>
-        </>
+                        <CharacterCard characterName={characterName}/>
+                
+                    )
+                })}
+            </div>
+        </Layout>
     );
 }
 

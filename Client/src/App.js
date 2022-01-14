@@ -3,8 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from "./pages/home"
 import SignUp from "./pages/signup"
 import LogIn from ".//pages/login"
-import Layout from "./components/Layout"
-import Test from "./pages/test"
 import Profile from "./pages/profile"
 import Character from "./pages/Character"
 
@@ -15,16 +13,13 @@ const App = () => {
             
 			
             <BrowserRouter>
-                <Layout>
                     <Routes>
                         <Route path="/" exact element={ <Home />  } />
                         <Route path="/register" exact element={ <SignUp /> } />
                         <Route path="/login" exact element={ <LogIn /> } />
-                        <Route path="/test" exact element={<Test />} />
                         <Route path="profile/:id" exact element={<Profile />} />
                         <Route path="/characters/:characterName" exact element ={ <Character />} />
                     </Routes>
-                </Layout>
                 
             </BrowserRouter>
 		</div>
