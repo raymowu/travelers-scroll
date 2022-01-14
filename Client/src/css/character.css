@@ -22,7 +22,7 @@
   padding: 40px 20px;
   background-size: cover;
   background-size: 80%;
-  background-position-y: 20%;
+  background-repeat: no-repeat;
   color: white;
   display: flex;
   justify-content: flex-start;
@@ -101,4 +101,74 @@
 
 .break {
   flex-basis: 100%;
+}
+
+.albedo {
+  background-position-y: 20%;
+  background-position-x: 115%;
+}
+
+.aloy {
+  background-size: 70%;
+  background-position-y: 20%;
+  background-position-x: 70%;
+}
+
+.amber {
+  background-size: 80%;
+  background-position-y: 30%;
+  background-position-x: 70%;
+}
+
+.arataki-itto {
+  background-size: 80%;
+  background-position-y: 20%;
+  background-position-x: 80%;
+}
+
+.ayaka {
+  background-size: 90%;
+  background-position-y: 20%;
+  background-position-x: 180%;
+}
+
+.barbara {
+  background-size: 65%;
+  background-position-y: 15%;
+  background-position-x: 70%;
+}
+
+.beidou {
+  background-size: 80%;
+  background-position-y: 17%;
+  background-position-x: 70%;
+}
+
+.bennett {
+  background-size: 75%;
+  background-position-y: 30%;
+  background-position-x: 90%;
+}
+
+.chongyun {
+  background-size: 65%;
+  background-position-y: 20%;
+  background-position-x: 70%;
+}
+
+.diluc {
+  background-size: 80%;
+  background-position-y: 15%;
+  background-position-x: 90%;
+}
+
+.diona {
+  background-size: 50%;
+  background-position-y: 20%;
+  background-position-x: 60%;
+}
+.eula {
+  background-size: 65%;
+  background-position-y: 15%;
+  background-position-x: 75%;
 }

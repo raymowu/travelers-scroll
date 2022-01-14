@@ -32,7 +32,8 @@ const Character = () => {
     return (
         <Layout>
             <div className="container">
-                <div className="character-header">
+                <div className={`character-header ${characterName}`}
+                style={{backgroundImage: `url(https://api.genshin.dev/characters/${characterName}/gacha-splash)`}}>
                     <img src={(CHARACTER_API + characterName + '/icon')} alt={characterName} />
                     <ul>
                         <li><h2>Genshin Impact</h2></li>
