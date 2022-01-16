@@ -172,3 +172,40 @@
   background-position-y: 15%;
   background-position-x: 75%;
 }
+
+.fischl {
+  background-size: 60%;
+  background-position-y: 25%;
+  background-position-x: 60%;
+}
+
+.ganyu {
+  background-size: 80%;
+  background-position-y: 13%;
+  background-position-x: 75%;
+}
+
+.hu-tao {
+  background-size: 90%;
+  background-position-y: 20%;
+  background-position-x: 75%;
+}
+
+.jean {
+  background-size: 90%;
+  background-position-y: 17%;
+  background-position-x: 75%;
+}
+
+.kaeya {
+  background-size: 90%;
+  background-position-y: 3%;
+  background-position-x: 75%;
+}
+
+@media only screen and (max-width: 480px) {
+  .character-header {
+    background-image: none !important;
+    justify-content: center;
+  }
+}
