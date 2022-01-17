@@ -21,7 +21,7 @@ function Profile() {
         });
       }, []);
     return(
-        <Layout>
+        <Layout Auth={false}>
             <div>
                 <h1>profile page for {user.username}</h1>
             </div>

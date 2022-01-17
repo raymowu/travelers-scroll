@@ -53,7 +53,7 @@ function Home() {
         }
 
     return (
-        <Layout>
+        <Layout Auth={false}>
             <div className="character-container">
                 <form onSubmit={handleOnSubmit}>
                     <input className="search-bar"

@@ -1,66 +1,61 @@
-// import { useState } from "react"
+import { useState } from "react"
+import React from "react"
 
 import classes from "../../css/navbar.module.css"
 
+// class Avatar extends React.Component {
 
-function Header(user){
+// }
+
+
+
+function Header({user}){
+
+    const [drop, setDrop] = useState(false); 
+    
+
     const links = [
-        {id: 0, name: "Builds", link: "#", className:`${classes.link}`},
+        {id: 0, name: "New Post", link: "/blog/new", className:`${classes.link}`},
         {id: 1, name: "Log In", link: "/login", className:`${classes.link}`},
         {id: 2, name: "Sign Up", link: "/register", className:`${classes.signup}`}
     ]
-    
-    if(!user){
-        console.log("no user logged in")
-    }
-    else{
-        console.log("there is a user logged in")
+    const userlink = [
+        {id: 0, name: user.username, link: `/profile/${user.id}`, className:``}
+    ]
+    const dropLink = [
+        {id: 0, name: "Home"},
+        {id: 1, name: "About"},
+        {id: 2, name: "Content"}
+    ];
+
+    const dropMenu = () =>{
+        setDrop(!drop)
+        console.log(drop)
     }
 
-    function checkUser() {
-        if(!user){
-            return(
-                <ul>
-                    {links.map(a => {
-                        return(
-                            <li key={a.id}><a href={a.link} className={`${a.className}`}>{a.name}</a></li>
-                        )
-                        
-                    })}
-                </ul>
-                
-            )
-        }
-        else{
-            return(
-                <div>
-                    <li><a href="#" className={`${classes.link}`}>Blog</a></li>
-                    <li><a href={`/profile/${user.id}`}>{user.username}</a></li>
-                </div>
-                
-            )
-        }
-    }
+
 
     return(
         <header>
             <div className={classes.logo}>
-                <h2><a href="/">Genshin App</a></h2>
+                <h2><a href="/">Blog App</a></h2>
             </div>
             <div>
             <ul className={`${classes.items}`}>
-                    {links.map(a => {
-                        return(
-                            <li key={a.id}><a href={a.link} className={`${a.className}`}>{a.name}</a></li>
-                            
-                            
-                        )
-                        
-                        //     
-                        
-                        // console.log(`<li key=${a.id}><a href=${a.link} className=${a.className}>${a.name}</a></li>`)
-                        
-                    })}
+                <li><a href="/blog/new" className={classes.link}>Builds</a></li>
+                    {user.id ? 
+                        <>
+                            <li>
+                                <a href={`/profile/${user.username}`} className={classes.link}>{user.username}</a>
+                            </li>
+                        </>
+                         : 
+                         <>
+                            <li><a href="/login" className={classes.link}>Login</a></li>
+                            <li><a href="/register" className={classes.signup}>Sign Up</a></li>
+                         </>
+                    
+                    }
                 </ul>
             </div>
         </header>

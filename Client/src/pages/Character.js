@@ -30,7 +30,7 @@ const Character = () => {
     
 
     return (
-        <Layout>
+        <Layout Auth={false}>
             <div className="container">
                 <div className={`character-header ${characterName}`}
                 style={{backgroundImage: `url(https://api.genshin.dev/characters/${characterName}/gacha-splash)`}}>
