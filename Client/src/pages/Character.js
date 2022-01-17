@@ -43,9 +43,19 @@ const Character = () => {
                 
                 </div>
                 
+                <div className="character-navbar">
+                    <ul>
+  <li><a href="#">Description</a></li>
+  <li><a href="#">Weapon</a></li>
+  <li><a href="#">Artifacts</a></li>
+  <li><a href="#">Teams</a></li>
+  <li><a href="#">Showcase</a></li>
+</ul>
+                    </div>
+
                 <h3>{character.description}</h3>
-        
                     
+                
             </div>
         </Layout>
         
