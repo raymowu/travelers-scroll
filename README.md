@@ -6,17 +6,15 @@
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
-- [Approach](#approach)
 - [Status](#status)
 - [Credits](#credits)
-- [License](#license)
 
 ## About The App
 This Genshin Impact Character Build App is an app that allows users to access and share character builds while also displaying best-in-slot itemization.
 
 ## Screenshots
 
-`![Writing](https://unsplash.com/photos/VBPzRgd7gfc)`
+`![Writing](https://i.imgur.com/4HHFeFI.png)`
 
 Picture by [Kelly Sikkema](https://unsplash.com/@kellysikkema)
 
