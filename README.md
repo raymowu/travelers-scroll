@@ -1,5 +1,4 @@
 # Genshin Impact Character Build App
-The name of the Project
 
 ## Table of Content:
 
