@@ -39,6 +39,8 @@ body {
 }
 
 .character img {
+  width: 106px;
+  height: 106px;
   border: 0px solid;
   border-radius: 10px;
   background-color: #534981;
