@@ -3,6 +3,7 @@ import "../css/character.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
+import Weapon from "../components/Weapon";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
 const Character = () => {
@@ -79,6 +80,13 @@ const Character = () => {
       </div>
       <div className="container2">
         <h3>{character.description}</h3>
+        <h1>
+          Best {character.weapon}s for {character.name}:
+        </h1>
+        <div className="weapon">
+          {/* implement map users weapons*/}
+          <Weapon />
+        </div>
       </div>
     </Layout>
   );

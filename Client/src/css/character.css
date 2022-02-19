@@ -12,7 +12,7 @@
   border: 0px solid;
   border-radius: 10px;
   background-image: url(https://i.pinimg.com/736x/49/83/30/498330d4a509e09b2ebc828a6df6b86c.jpg);
-  background-position-y: 60%;
+  background-position-y: 51%;
   background-repeat: no-repeat;
   background-size: cover;
   /* justify-content: space-around; */
@@ -49,6 +49,14 @@
   padding: 0px 20px;
   font-weight: normal;
   font-style: italic;
+}
+
+.container2 h1 {
+  font-size: 30px;
+  color: white;
+  padding: 0px 20px;
+  margin-top: -10px;
+  font-weight: bold;
 }
 
 .character-header {
