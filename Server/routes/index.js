@@ -60,11 +60,16 @@ router.get("/profile/:id", (req, res) => {
 		if(err){
 			res.send({status: "err"})
 		}
+		if(req.session.user){
+			if(user._id == req.session.user.id){
+				return res.send({status: "ok", user: {username: user.username}, modifier: true});
+			}
+		}
 		if(!user){
-			res.send({status: "err", message: "Unable to find user"})
+			return res.send({status: "err", message: "Unable to find user"})
 		}
 		else{
-			res.send({status: "ok", user: {username: user.username}})
+			return res.send({status: "ok", user: {username: user.username}, modifier: false});
 		}
 	})
 })

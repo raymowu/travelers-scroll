@@ -3,7 +3,7 @@
 import classes from "../../css/navbar.module.css"
 
 
-function Header(user){
+function Header({user}){
     const links = [
         {id: 0, name: "Builds", link: "#", className:`${classes.link}`},
         {id: 1, name: "Log In", link: "/login", className:`${classes.link}`},
@@ -17,31 +17,6 @@ function Header(user){
         console.log("there is a user logged in")
     }
 
-    function checkUser() {
-        if(!user){
-            return(
-                <ul>
-                    {links.map(a => {
-                        return(
-                            <li key={a.id}><a href={a.link} className={`${a.className}`}>{a.name}</a></li>
-                        )
-                        
-                    })}
-                </ul>
-                
-            )
-        }
-        else{
-            return(
-                <div>
-                    <li><a href="#" className={`${classes.link}`}>Blog</a></li>
-                    <li><a href={`/profile/${user.id}`}>{user.username}</a></li>
-                </div>
-                
-            )
-        }
-    }
-
     return(
         <header>
             <div className={classes.logo}>
@@ -49,18 +24,18 @@ function Header(user){
             </div>
             <div>
             <ul className={`${classes.items}`}>
-                    {links.map(a => {
-                        return(
-                            <li key={a.id}><a href={a.link} className={`${a.className}`}>{a.name}</a></li>
-                            
-                            
-                        )
+                    {user.id ?
+                    <>
+                    <li><a href={`/profile/${user.username}`}>{user.username}</a></li>
+                    </>
+                    :
+                    <>
+                    <li><a href="/login" className={classes.link}>log in</a></li>
+                    <li><a href="/signup" className={classes.signup}>sign up</a></li>
+                    </>
                         
-                        //     
-                        
-                        // console.log(`<li key=${a.id}><a href=${a.link} className=${a.className}>${a.name}</a></li>`)
-                        
-                    })}
+                    }
+                    
                 </ul>
             </div>
         </header>

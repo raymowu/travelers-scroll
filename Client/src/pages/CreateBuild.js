@@ -7,6 +7,7 @@ import deinitializeName from "../components/DeinitializeName";
 import "../css/weaponcard.css";
 import ArtifactCard from "../components/ArtifactCard";
 import TeammateCard from "../components/TeammateCard";
+import Axios from "axios";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 const WEAPON_API = "https://api.genshin.dev/weapons/";
 const ARTIFACT_API = "https://api.genshin.dev/artifacts/";
@@ -88,6 +89,22 @@ const CreateBuild = () => {
       alert("Please enter all fields!");
     } else {
       //create note functionality w backend implement here:
+      Axios({
+        method: "POST",
+        data: {
+          title: title,
+          character: characterName,
+          weapons: buildWeapon,
+          artifacts: buildArtifact,
+          teams: buildTeam
+        },
+        withCredentials: true,
+        url: "http://localhost:5000/builds",
+      }).then((res) => {
+        if(res.data.status === "err"){
+          alert("YOUR BAD");
+        }
+      })
 
       resetHandler();
       navigate(`/characters/${characterName}`);

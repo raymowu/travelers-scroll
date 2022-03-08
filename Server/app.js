@@ -44,8 +44,11 @@ const Authenticate = (req, res, next) => {
 
 // Routes
 const indexRoutes = require("./routes/index.js");
+const buildRoutes = require("./routes/builds");
 
 app.use(indexRoutes)
+app.use("/builds", buildRoutes);
+
 
 
 
