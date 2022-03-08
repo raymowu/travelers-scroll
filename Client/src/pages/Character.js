@@ -1,16 +1,14 @@
 import React from "react";
 import "../css/character.css";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
-import Weapon from "../components/Weapon";
+import BuildCard from "../components/BuildCard";
+import { Button } from "react-bootstrap";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
-
 const Character = () => {
+  //characterName is un capitalized, character.name is capitalized
   const [character, setCharacter] = useState([]);
-  useEffect(() => {
-    getCharacter(characterName);
-  }, []);
 
   //fetches character w unique character api
   const getCharacter = (characterName) => {
@@ -19,13 +17,15 @@ const Character = () => {
       .then((data) => {
         setCharacter(data);
       });
-    // const res = await fetch(API);
-    // const data = await res.json()
-    // setCharacter(data.results)
   };
 
   let { characterName } = useParams();
 
+  useEffect(() => {
+    getCharacter(characterName);
+  }, []);
+
+  console.log(character);
   return (
     <Layout>
       <div className="container">
@@ -80,12 +80,15 @@ const Character = () => {
       </div>
       <div className="container2">
         <h3>{character.description}</h3>
-        <h1>
-          Best {character.weapon}s for {character.name}:
-        </h1>
-        <div className="weapon">
-          {/* implement map users weapons*/}
-          <Weapon />
+        <Link character={character} to={`/createbuild/${characterName}`}>
+          <Button style={{ marginLeft: 10, marginBottom: 0 }} size="lg">
+            Create {`${character.name}`} Build
+          </Button>
+        </Link>
+        <h1>Recent Builds For {character.name}:</h1>
+        <div className="build">
+          {/* implement map users builds*/}
+          <BuildCard />
         </div>
       </div>
     </Layout>

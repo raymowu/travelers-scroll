@@ -3,6 +3,7 @@ import "../css/home.css";
 import CharacterCard from "../components/CharacterCard";
 import Axios from "axios";
 import Layout from "../components/Layout";
+import initializeName from "../components/InitializeName";
 
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
@@ -21,36 +22,17 @@ function Home() {
       .then((data) => {
         setCharacters(data);
       });
-    // const res = await fetch(API);
-    // const data = await res.json(res)
-    // setCharacters(data.results)
   };
 
   const handleOnChange = (e) => {
     setSearchTerm(e.target.value);
-    // if (searchTerm) {
-    //     console.log('render')
-    //     getCharacters(CHARACTER_API + searchTerm)
-    // }
   };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
   };
 
-  //replaces "-" with a space and capitalizes each word
-  function initializeName(string) {
-    let newName;
-    newName = string.replace("-", " ");
-    const words = newName.split(" ");
-    for (let i = 0; i < words.length; i++) {
-      words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-    }
-    newName = words.join(" ");
-
-    return newName;
-  }
-
+  console.log(characters);
   return (
     <Layout>
       <div className="character-container">
