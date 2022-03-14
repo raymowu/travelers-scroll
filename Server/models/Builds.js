@@ -11,7 +11,14 @@ const Builds = new mongoose.Schema({
     },
     weapons: [],
     artifacts: [],
-    teams: []
+    teams: [],
+    Comment: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment"
+      }
+    ],
+    likes: {type: Number, default: 0}
 });
 
 module.exports = mongoose.model("Builds", Builds);

@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const Builds = require("../models/Builds");
+const Comments = require("../models/Comment");
+const User = require("../models/user");
 
 const Authenticate = (req, res, next) => {
 	if(!req.session.user){
@@ -12,9 +14,8 @@ const Authenticate = (req, res, next) => {
 	}
 }
 
-router.post("/", Authenticate, (req, res) => {
+router.post("/", Authenticate, async (req, res) => {
     const {title, character, weapons, artifacts, teams} = req.body;
-    const data = {title: title, Author: {_id: req.session.user.id, username: req.session.user.username}}
     
     Builds.create({
         title,
@@ -28,7 +29,7 @@ router.post("/", Authenticate, (req, res) => {
             return res.send({status: "err", err: err});
         }
         else{
-            if(build){
+            if(build){                
                 return res.send({status: "ok"});
             }
         }
@@ -48,5 +49,58 @@ router.get("/:character", (req, res) =>{
         }
     })
 });
+
+router.post("/:id/liked", Authenticate, (req, res) => {
+    Builds.findById(req.params.id, (err, build) => {
+        if(err){
+            return res.send({status: "err", err: err});
+        }
+        else{
+            if(build){
+                const user = await User.findOne({ username });
+                user.likedBuilds.push(build._id);
+                build.likes += 1;
+                return res.send({status: "ok"});
+            }
+        }
+    });
+});
+
+router.post("/:id/disliked", Authenticate, (req, res) => {
+    Builds.findById(req.params.id, (err, build) => {
+        if(err){
+            return res.send({status: "err", err: err});
+        }
+        else{
+            if(build){
+                const user = await User.findOne({ username });
+                user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
+                build.likes -= 1;
+                return res.send({status: "ok"});
+            }
+        }
+    });
+});
+
+// comment stuff
+router.post("/:id/newComment", Authenticate, async (req, res) => {
+    const { text } = req.body;
+    Comment.create({
+        text,
+        Author: req.session.user
+    }, (err, comment) => {
+        if(err){
+            return res.send({status: "err", err: err});
+        }
+        else{
+            if(comment){
+                const build = await Builds.findById(req.params.id);
+                if(build){
+                    build.comment.push(comment._id);
+                }
+            }
+        }
+    })
+})
 
 module.exports = router;
