@@ -9,7 +9,7 @@ const CHARACTER_API = "https://api.genshin.dev/characters/";
 const Character = () => {
   //characterName is un capitalized, character.name is capitalized
   const [character, setCharacter] = useState([]);
-
+  const [builds, setBuilds] = useState([]);
   //fetches character w unique character api
   const getCharacter = (characterName) => {
     fetch(CHARACTER_API + characterName)
@@ -18,14 +18,22 @@ const Character = () => {
         setCharacter(data);
       });
   };
+  const getBuilds = () => {
+    fetch(`http://localhost:5000/builds/${characterName}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBuilds(data.builds);
+      });
+  };
 
   let { characterName } = useParams();
 
   useEffect(() => {
     getCharacter(characterName);
+    getBuilds();
   }, []);
 
-  console.log(character);
+  console.log(builds);
   return (
     <Layout>
       <div className="container">
@@ -35,10 +43,7 @@ const Character = () => {
             backgroundImage: `url(https://api.genshin.dev/characters/${characterName}/gacha-splash)`,
           }}
         >
-          <img
-            src={CHARACTER_API + characterName + "/icon"}
-            alt={characterName}
-          />
+          <img src={CHARACTER_API + characterName + "/icon"} alt={characterName} />
           <ul>
             <li>
               <h2>Genshin Impact</h2>
@@ -51,8 +56,7 @@ const Character = () => {
                 {" "}
                 <span className={`${character.vision}`}>
                   {character.vision}
-                </span>{" "}
-                &#x2022; {character.weapon}
+                </span> &#x2022; {character.weapon}
               </h2>
             </li>
           </ul>
@@ -86,9 +90,12 @@ const Character = () => {
           </Button>
         </Link>
         <h1>Recent Builds For {character.name}:</h1>
-        <div className="build">
-          {/* implement map users builds*/}
-          <BuildCard />
+        <div className="break"></div>
+        <div className="build-container">
+          {builds.length > 0 &&
+            builds.map((build) => {
+              return <BuildCard key={build._id} build={build} />;
+            })}
         </div>
       </div>
     </Layout>

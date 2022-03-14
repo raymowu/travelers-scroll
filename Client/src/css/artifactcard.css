@@ -7,25 +7,6 @@ body {
   margin: 0;
 }
 
-.build-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 10px;
-  color: rgb(173, 178, 211);
-  border: 0px solid;
-  border-radius: 10px;
-  background-color: #231942;
-  margin: 100px;
-  padding: 20px;
-  gap: 25px;
-}
-
 .title {
   margin-bottom: 50px;
   flex: 0 0 100%;
@@ -35,12 +16,12 @@ body {
   border-radius: 10px;
   background-color: #2b1766;
   width: 710px;
-  height: 185px;
+  height: 412px;
   overflow: auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 0px;
+  margin-top: -47px;
   margin-bottom: 80px;
   gap: 25px;
 }
@@ -50,13 +31,13 @@ body {
   border-radius: 10px;
   background-color: #2b1766;
   width: 710px;
-  height: 300px;
+  height: 412px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: -50px;
+  margin-bottom: 45px;
   overflow: auto;
-
   gap: 25px;
 }
 
@@ -80,12 +61,13 @@ body {
   background-color: #534981;
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px,
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  margin-top: -27px;
+}
+.artifact {
+  transform: translate(0px, -20px);
 }
 
 .search-bar {
-  position: -webkit-sticky; /* Safari & IE */
-  position: sticky;
-  top: 0;
   margin-left: auto;
   margin-top: 20px;
   margin-bottom: -30px;
@@ -98,10 +80,6 @@ body {
   font-size: 18px;
 }
 
-.create-title {
-  flex: 0 0 100%;
-  text-align: center;
-}
 .menu-tag {
   position: absolute;
   transform: translate(0px, -50px);
@@ -113,8 +91,4 @@ body {
 .artifact h3 {
   text-align: center;
   inline-size: 100px;
-}
-
-.break {
-  flex-basis: 100%;
 }

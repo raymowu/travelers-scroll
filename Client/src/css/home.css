@@ -8,9 +8,8 @@ body {
 }
 
 .character-container {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 13px;
@@ -48,6 +47,9 @@ body {
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
 
+.character {
+  transform: translate(0px, -30px);
+}
 .character-container .search-bar {
   margin-left: auto;
   margin-top: 20px;

@@ -3,8 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import initializeName from "../components/InitializeName";
 import WeaponCard from "../components/WeaponCard";
-import deinitializeName from "../components/DeinitializeName";
-import "../css/weaponcard.css";
+import "../css/createbuild.css";
 import ArtifactCard from "../components/ArtifactCard";
 import TeammateCard from "../components/TeammateCard";
 import Axios from "axios";
@@ -88,7 +87,6 @@ const CreateBuild = () => {
       e.preventDefault();
       alert("Please enter all fields!");
     } else {
-      //create note functionality w backend implement here:
       Axios({
         method: "POST",
         data: {
@@ -96,15 +94,15 @@ const CreateBuild = () => {
           character: characterName,
           weapons: buildWeapon,
           artifacts: buildArtifact,
-          teams: buildTeam
+          teams: buildTeam,
         },
         withCredentials: true,
         url: "http://localhost:5000/builds",
       }).then((res) => {
-        if(res.data.status === "err"){
+        if (res.data.status === "err") {
           alert("YOUR BAD");
         }
-      })
+      });
 
       resetHandler();
       navigate(`/characters/${characterName}`);
@@ -158,11 +156,54 @@ const CreateBuild = () => {
   return (
     <>
       <Layout />
+      <div className="container">
+        <div
+          className={`character-header ${characterName}`}
+          style={{
+            backgroundImage: `url(https://api.genshin.dev/characters/${characterName}/gacha-splash)`,
+          }}
+        >
+          <img src={CHARACTER_API + characterName + "/icon"} alt={characterName} />
+          <ul>
+            <li>
+              <h2>Genshin Impact</h2>
+            </li>
+            <li>
+              <h1>{character.name}</h1>
+            </li>
+            <li>
+              <h2>
+                {" "}
+                <span className={`${character.vision}`}>
+                  {character.vision}
+                </span> &#x2022; {character.weapon}
+              </h2>
+            </li>
+          </ul>
+        </div>
+        <div className="character-navbar">
+          <ul>
+            <li>
+              <a href="#">Description</a>
+            </li>
+            <li>
+              <a href="#">Weapon</a>
+            </li>
+            <li>
+              <a href="#">Artifacts</a>
+            </li>
+            <li>
+              <a href="#">Teams</a>
+            </li>
+            <li>
+              <a href="#">Showcase</a>
+            </li>
+          </ul>
+        </div>
+      </div>
       {/* <form onSubmit={submitHandler}> */}
       <div className="build-container">
-        <h1 className="create-title">
-          Creating a new build for {character.name}
-        </h1>
+        <h1 className="create-title">Creating a new build for {character.name}</h1>
 
         <div className="title">
           <label>
@@ -176,17 +217,16 @@ const CreateBuild = () => {
           </label>
         </div>
 
+        <div className="divider"></div>
+        <div className="break"></div>
         <div className="break"></div>
 
         <div className="weapon-user">
-          <h1 className="menu-tag">{character.name} Weapons: </h1>
+          <h1 className="menu-tag">{character.name}'s Weapons: </h1>
           <div className="break"></div>
           {buildWeapon.map((weapon) => {
             return (
-              <WeaponCard
-                weapon={weapon}
-                weaponHandleOnClick={weaponHandleOnClick}
-              />
+              <WeaponCard weapon={weapon} weaponHandleOnClick={weaponHandleOnClick} />
             );
           })}
         </div>
@@ -206,15 +246,10 @@ const CreateBuild = () => {
           {weaponMenu.length > 0 &&
             weaponMenu
               .filter((weapon) => {
-                if (
-                  weaponSearchTerm === "" &&
-                  weapon.type === character.weapon
-                ) {
+                if (weaponSearchTerm === "" && weapon.type === character.weapon) {
                   return weapon.name;
                 } else if (
-                  weapon.name
-                    .toLowerCase()
-                    .includes(weaponSearchTerm.toLowerCase()) &&
+                  weapon.name.toLowerCase().includes(weaponSearchTerm.toLowerCase()) &&
                   weapon.type === character.weapon
                 ) {
                   return weapon.name;
@@ -223,10 +258,7 @@ const CreateBuild = () => {
               })
               .map((weapon) => {
                 return (
-                  <WeaponCard
-                    weapon={weapon}
-                    weaponHandleOnClick={weaponHandleOnClick}
-                  />
+                  <WeaponCard weapon={weapon} weaponHandleOnClick={weaponHandleOnClick} />
                 );
               })}
           {/* <label>
@@ -239,7 +271,7 @@ const CreateBuild = () => {
             </label> */}
         </div>
 
-        <div className="break"></div>
+        <div className="divider"></div>
         <div className="break"></div>
         <div className="break"></div>
 
@@ -274,9 +306,7 @@ const CreateBuild = () => {
                 if (artifactSearchTerm === "") {
                   return artifact.name;
                 } else if (
-                  artifact.name
-                    .toLowerCase()
-                    .includes(artifactSearchTerm.toLowerCase())
+                  artifact.name.toLowerCase().includes(artifactSearchTerm.toLowerCase())
                 ) {
                   return artifact.name;
                 }
@@ -300,6 +330,7 @@ const CreateBuild = () => {
             </label> */}
         </div>
 
+        <div className="divider"></div>
         <div className="break"></div>
         <div className="break"></div>
         <div className="break"></div>
@@ -309,10 +340,7 @@ const CreateBuild = () => {
           <div className="break"></div>
           {buildTeam.map((teammate) => {
             return (
-              <TeammateCard
-                teammate={teammate}
-                teamHandleOnClick={teamHandleOnClick}
-              />
+              <TeammateCard teammate={teammate} teamHandleOnClick={teamHandleOnClick} />
             );
           })}
         </div>
@@ -337,7 +365,7 @@ const CreateBuild = () => {
                 if (teammateSearchTerm === "") {
                   return teammate;
                 } else if (
-                  teammate
+                  initializeName(teammate)
                     .toLowerCase()
                     .includes(teammateSearchTerm.toLowerCase())
                 ) {
