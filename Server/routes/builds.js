@@ -50,8 +50,8 @@ router.get("/:character", (req, res) =>{
     })
 });
 
-router.post("/:id/liked", Authenticate, (req, res) => {
-    Builds.findById(req.params.id, (err, build) => {
+router.post("/:id/liked", Authenticate,  (req, res) => {
+    Builds.findById(req.params.id, async (err, build) => {
         if(err){
             return res.send({status: "err", err: err});
         }
@@ -66,8 +66,8 @@ router.post("/:id/liked", Authenticate, (req, res) => {
     });
 });
 
-router.post("/:id/disliked", Authenticate, (req, res) => {
-    Builds.findById(req.params.id, (err, build) => {
+router.post("/:id/disliked", Authenticate,  (req, res) => {
+    Builds.findById(req.params.id,  async (err, build) => {
         if(err){
             return res.send({status: "err", err: err});
         }
@@ -83,12 +83,12 @@ router.post("/:id/disliked", Authenticate, (req, res) => {
 });
 
 // comment stuff
-router.post("/:id/newComment", Authenticate, async (req, res) => {
+router.post("/:id/newComment", Authenticate,  (req, res) => {
     const { text } = req.body;
     Comment.create({
         text,
         Author: req.session.user
-    }, (err, comment) => {
+    }, async (err, comment) => {
         if(err){
             return res.send({status: "err", err: err});
         }
