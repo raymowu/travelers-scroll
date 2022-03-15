@@ -8,13 +8,12 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  width: 750px;
+  width: 650px;
   height: 150px;
   color: rgb(173, 178, 211);
   border: 0px solid;
   border-radius: 10px;
   background-color: #2a1d52;
-  margin-left: 30px;
 }
 
 .build img {

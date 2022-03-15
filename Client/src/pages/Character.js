@@ -7,6 +7,7 @@ import BuildCard from "../components/BuildCard";
 import { Button } from "react-bootstrap";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 const Character = () => {
+  const navigate = useNavigate();
   //characterName is un capitalized, character.name is capitalized
   const [character, setCharacter] = useState([]);
   const [builds, setBuilds] = useState([]);
@@ -32,6 +33,10 @@ const Character = () => {
     getCharacter(characterName);
     getBuilds();
   }, []);
+
+  const handleOnCreateBuild = (e) => {
+    navigate(`/createbuild/${characterName}`);
+  };
 
   console.log(builds);
   return (
@@ -84,11 +89,9 @@ const Character = () => {
       </div>
       <div className="container2">
         <h3>{character.description}</h3>
-        <Link character={character} to={`/createbuild/${characterName}`}>
-          <Button style={{ marginLeft: 10, marginBottom: 0 }} size="lg">
-            Create {`${character.name}`} Build
-          </Button>
-        </Link>
+        <button type="button" className="button-18" onClick={handleOnCreateBuild}>
+          Create {`${character.name}`} Build
+        </button>
         <h1>Recent Builds For {character.name}:</h1>
         <div className="break"></div>
         <div className="build-container">
