@@ -55,6 +55,7 @@
   padding: 0px 20px;
   margin-top: -10px;
   font-weight: bold;
+  margin-top: -90px;
 }
 
 .character-header {
@@ -163,6 +164,10 @@
   color: rgb(173, 178, 211);
 }
 
+h1 .recent-builds {
+  font-size: 100px;
+}
+
 a {
   display: inline-block;
 }
@@ -172,20 +177,21 @@ a {
   margin-left: 20px;
   border-radius: 10px;
   white-space: nowrap;
-  width: 200px;
-  background-color: #4422bd; /* Green */
+  width: 180px;
+  background-color: #2067ec;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 12px 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.3s;
+  font-size: 13px;
+  font-weight: 300px;
+  transition-duration: 0.2s;
 }
 
 .button-18:hover {
-  background-color: #321588;
+  background-color: rgb(28, 67, 173);
 }
 
 .break {

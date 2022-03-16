@@ -16,16 +16,8 @@ const App = () => {
           <Route path="/register" exact element={<SignUp />} />
           <Route path="/login" exact element={<LogIn />} />
           <Route path="profile/:id" exact element={<Profile />} />
-          <Route
-            path="/characters/:characterName"
-            exact
-            element={<Character />}
-          />
-          <Route
-            path="/createbuild/:characterName"
-            exact
-            element={<CreateBuild />}
-          />
+          <Route path="/characters/:characterName" exact element={<Character />} />
+          <Route path="/createbuild/:characterName" exact element={<CreateBuild />} />
         </Routes>
       </BrowserRouter>
     </div>

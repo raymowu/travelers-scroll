@@ -154,7 +154,7 @@ const CreateBuild = () => {
   };
 
   return (
-    <>
+    <div className="create-build-page">
       <Layout />
       <div className="container">
         <div
@@ -187,13 +187,13 @@ const CreateBuild = () => {
               <a href="#">Description</a>
             </li>
             <li>
-              <a href="#">Weapon</a>
+              <a href="#weapon-section">Weapon</a>
             </li>
             <li>
-              <a href="#">Artifacts</a>
+              <a href="#artifacts-section">Artifacts</a>
             </li>
             <li>
-              <a href="#">Teams</a>
+              <a href="#teams-section">Teams</a>
             </li>
             <li>
               <a href="#">Showcase</a>
@@ -207,8 +207,9 @@ const CreateBuild = () => {
 
         <div className="title">
           <label>
-            Build Title:
+            <h2>Build Title:</h2>
             <input
+              className="build-title"
               type="text"
               value={title}
               placeholder="Enter Build Title"
@@ -217,6 +218,7 @@ const CreateBuild = () => {
           </label>
         </div>
 
+        <a id="weapon-section"></a>
         <div className="divider"></div>
         <div className="break"></div>
         <div className="break"></div>
@@ -271,6 +273,7 @@ const CreateBuild = () => {
             </label> */}
         </div>
 
+        <a id="artifacts-section"></a>
         <div className="divider"></div>
         <div className="break"></div>
         <div className="break"></div>
@@ -330,6 +333,7 @@ const CreateBuild = () => {
             </label> */}
         </div>
 
+        <a id="teams-section"></a>
         <div className="divider"></div>
         <div className="break"></div>
         <div className="break"></div>
@@ -390,17 +394,23 @@ const CreateBuild = () => {
               />
             </label> */}
         </div>
+
+        <div className="divider"></div>
         <div className="break"></div>
+        <div className="break"></div>
+
         <button type="button" onClick={handleOnBuildSubmit}>
           Create Build
         </button>
+
         <button type="button" onClick={resetHandler}>
-          Reset Fields
+          Restart
         </button>
-        <p>Creating on - {new Date().toLocaleDateString()}</p>
+        <div className="break"></div>
+        <p className="creating-on">Creating on - {new Date().toLocaleDateString()}</p>
       </div>
       {/* </form> */}
-    </>
+    </div>
   );
 };
 

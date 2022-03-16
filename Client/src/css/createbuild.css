@@ -17,8 +17,9 @@
   margin-top: -80px;
 }
 
-label {
-  margin: 50px;
+.title h2 {
+  display: inline;
+  margin-right: 10px;
 }
 
 .title,
@@ -28,7 +29,7 @@ label {
   padding: 10px;
 }
 
-.title input {
+.title input .search-bar {
   width: 25%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -48,6 +49,13 @@ label {
   text-align: center;
 }
 
+.build-title {
+  width: 39%;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+}
+
 .break {
   flex-basis: 100%;
   margin: 20px;
@@ -58,4 +66,35 @@ label {
   border-image-slice: 1;
   border-width: 2px;
   border-image-source: linear-gradient(to right, #231942, #36268d, #231942);
+}
+
+button {
+  transform: translate(0px, -85px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  margin-left: 20px;
+  border-radius: 10px;
+  white-space: nowrap;
+  width: 145px;
+  background-color: #2067ec;
+  border: none;
+  color: white;
+  padding: 12px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 300px;
+  transition-duration: 0.2s;
+}
+
+.creating-on {
+  transform: translate(0px, -120px);
+}
+a {
+  display: inline-block;
+}
+
+button:hover {
+  background-color: rgb(28, 67, 173);
 }

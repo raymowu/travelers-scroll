@@ -11,6 +11,38 @@ body {
   margin-bottom: 50px;
   flex: 0 0 100%;
 }
+
+.team-menu::-webkit-scrollbar {
+  width: 10px;
+}
+
+.team-menu::-webkit-scrollbar-track {
+  background: #3b3e86;
+}
+
+.team-menu::-webkit-scrollbar-thumb {
+  background: rgb(167, 179, 255);
+}
+
+.team-menu::-webkit-scrollbar-thumb:hover {
+  background: rgb(156, 138, 255);
+}
+.team-user::-webkit-scrollbar {
+  width: 10px;
+}
+
+.team-user::-webkit-scrollbar-track {
+  background: #3b3e86;
+}
+
+.team-user::-webkit-scrollbar-thumb {
+  background: rgb(167, 179, 255);
+}
+
+.team-user::-webkit-scrollbar-thumb:hover {
+  background: rgb(156, 138, 255);
+}
+
 .team-user {
   border: 0px solid;
   border-radius: 10px;
@@ -21,8 +53,8 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: -117px;
-  margin-bottom: 155px;
+  margin-top: -118px;
+  margin-bottom: 75px;
   gap: 0px 25px;
 }
 
@@ -35,11 +67,43 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: -120px;
+  margin-top: -118px;
+  margin-bottom: 45px;
   overflow: auto;
   gap: 4px;
 }
 
+@media only screen and (max-width: 1701px) {
+  .team-user {
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: #2b1766;
+    width: 710px;
+    height: 412px;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: -118px;
+    margin-bottom: 155px;
+    gap: 0px 25px;
+  }
+
+  .team-menu {
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: #2b1766;
+    width: 710px;
+    height: 412px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: -118px;
+    margin-bottom: 45px;
+    overflow: auto;
+    gap: 4px;
+  }
+}
 .team img:hover {
   box-shadow: inset 0 -8em 8em rgba(109, 109, 109, 0.1), 0 0 0 0px,
     0.8em 0.8em 1em rgba(0, 0, 0, 0.3);

@@ -89,10 +89,11 @@ const Character = () => {
       </div>
       <div className="container2">
         <h3>{character.description}</h3>
+        <div className="break"></div>
         <button type="button" className="button-18" onClick={handleOnCreateBuild}>
           Create {`${character.name}`} Build
         </button>
-        <h1>Recent Builds For {character.name}:</h1>
+        <h1 className="recent-builds">Recent Builds For {character.name}:</h1>
         <div className="break"></div>
         <div className="build-container">
           {builds.length > 0 &&

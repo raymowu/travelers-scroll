@@ -11,6 +11,38 @@ body {
   margin-bottom: 50px;
   flex: 0 0 100%;
 }
+
+.artifact-menu::-webkit-scrollbar {
+  width: 10px;
+}
+
+.artifact-menu::-webkit-scrollbar-track {
+  background: #3b3e86;
+}
+
+.artifact-menu::-webkit-scrollbar-thumb {
+  background: rgb(167, 179, 255);
+}
+
+.artifact-menu::-webkit-scrollbar-thumb:hover {
+  background: rgb(156, 138, 255);
+}
+.artifact-user::-webkit-scrollbar {
+  width: 10px;
+}
+
+.artifact-user::-webkit-scrollbar-track {
+  background: #3b3e86;
+}
+
+.artifact-user::-webkit-scrollbar-thumb {
+  background: rgb(167, 179, 255);
+}
+
+.artifact-user::-webkit-scrollbar-thumb:hover {
+  background: rgb(156, 138, 255);
+}
+
 .artifact-user {
   border: 0px solid;
   border-radius: 10px;
