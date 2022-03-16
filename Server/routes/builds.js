@@ -38,13 +38,28 @@ router.post("/", Authenticate, async (req, res) => {
 
 router.get("/:character", (req, res) =>{
 
-    Builds.find({character: req.params.character}, (err, builds) => {
+    Builds.find({character: req.params.character}, async (err, builds) => {
         if(err){
             return res.send({status: "err", err: err});
         }
         else{
             if(builds){
                 return res.send({status: "ok", builds: builds});
+            }
+        }
+    })
+});
+
+router.get("/build/:id", (req, res) =>{
+
+    Builds.findById(req.params.id, async (err, build) => {
+        if(err){
+            return res.send({status: "err", err: err});
+        }
+        else{
+            if(build){
+                await build.populate("Comment");
+                return res.send({status: "ok", build: build});
             }
         }
     })
