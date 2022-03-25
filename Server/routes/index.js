@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 })
 
 router.post("/register", async (req, res) => {
-	const { username, password } = req.body;
+	const { username, password, email } = req.body;
 	User.findOne({ username}, async (err, user) => {
 		if (err) throw err;
 		if (user) res.send({status: "err", message: "User Already Exists"});
@@ -25,7 +25,8 @@ router.post("/register", async (req, res) => {
 			const hashed = await bcrypt.hash(password, 10);
 			const newUser = new User({
 				username,
-				password: hashed
+				password: hashed,
+				email
 			});
 			await newUser.save()
 			req.session.user = req.session.user = {id: newUser._id, username: newUser.username};
