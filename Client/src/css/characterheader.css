@@ -1,0 +1,399 @@
+.container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  color: rgb(173, 178, 211);
+  border: 0px solid;
+  border-radius: 10px;
+  background-image: url(https://i.pinimg.com/736x/49/83/30/498330d4a509e09b2ebc828a6df6b86c.jpg);
+  background-position-y: 51%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  gap: 25px;
+  margin: 100px;
+  box-shadow: inset 0 0 3em rgba(0, 0, 0, 0.1), 0 0 0 0px,
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.character-header {
+  padding: 40px 20px;
+  background-size: cover;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 0px;
+  text-shadow: 1px 1px #000000;
+}
+
+.character-header h1 {
+  font-size: 25px;
+  margin-left: 10%;
+  white-space: nowrap;
+}
+
+.character-header h2 {
+  font-size: 18px;
+  white-space: nowrap;
+  margin-left: 10%;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.character-header span.Geo {
+  color: #ffce00;
+}
+
+.character-header span.Pyro {
+  color: #d12027;
+}
+
+.character-header span.Hydro {
+  color: #0c88ee;
+}
+
+.character-header span.Anemo {
+  color: #3daf91;
+}
+
+.character-header span.Cryo {
+  color: #30d5e4;
+}
+
+.character-header span.Dendro {
+  color: #74dd1e;
+}
+
+.character-header span.Electro {
+  color: #bf00ff;
+}
+
+.container img {
+  max-width: 100%;
+  height: 106px;
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: #534981;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px,
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.character-header ul {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.character-header li {
+  margin-bottom: -30px;
+}
+
+.character-navbar ul {
+  box-shadow: 2px 0 0 0 #080320 inset;
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  margin: -25px 0;
+  padding: 6px;
+  overflow: hidden;
+  background-color: #13092c;
+}
+
+.character-navbar li {
+  float: left;
+}
+
+.character-navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.character-navbar li a:hover {
+  color: rgb(173, 178, 211);
+}
+
+.albedo {
+  background-position-y: 20%;
+  background-position-x: 50%;
+}
+
+.aloy {
+  background-size: 60%;
+  background-position-y: 20%;
+  background-position-x: 55%;
+}
+
+.amber {
+  background-size: 60%;
+  background-position-y: 30%;
+  background-position-x: 55%;
+}
+
+.arataki-itto {
+  background-size: 80%;
+  background-position-y: 20%;
+  background-position-x: 80%;
+}
+
+.ayaka {
+  background-size: 100%;
+  background-position-y: 18%;
+  background-position-x: 50%;
+}
+
+.barbara {
+  background-size: 65%;
+  background-position-y: 13%;
+  background-position-x: 50%;
+}
+
+.beidou {
+  background-size: 80%;
+  background-position-y: 17%;
+  background-position-x: 70%;
+}
+
+.bennett {
+  background-size: 70%;
+  background-position-y: 30%;
+  background-position-x: 50%;
+}
+
+.chongyun {
+  background-size: 65%;
+  background-position-y: 20%;
+  background-position-x: 50%;
+}
+
+.diluc {
+  background-size: 80%;
+  background-position-y: 15%;
+  background-position-x: 50%;
+}
+
+.diona {
+  background-size: 50%;
+  background-position-y: 20%;
+  background-position-x: 60%;
+}
+.eula {
+  background-size: 70%;
+  background-position-y: 15%;
+  background-position-x: 50%;
+}
+
+.fischl {
+  background-size: 60%;
+  background-position-y: 25%;
+  background-position-x: 60%;
+}
+
+.ganyu {
+  background-size: 60%;
+  background-position-y: 13%;
+  background-position-x: 50%;
+}
+
+.hu-tao {
+  background-size: 90%;
+  background-position-y: 20%;
+  background-position-x: 50%;
+}
+
+.jean {
+  background-size: 70%;
+  background-position-y: 17%;
+  background-position-x: 50%;
+}
+
+.kaeya {
+  background-size: 70%;
+  background-position-y: 3%;
+  background-position-x: 50%;
+}
+
+.kazuha {
+  background-position-x: 60%;
+}
+
+.keqing {
+  background-size: 70%;
+  background-position-y: 20%;
+  background-position-x: 50%;
+}
+
+.klee {
+  background-size: 50%;
+  background-position-y: 40%;
+  background-position-x: 50%;
+}
+
+.kokomi {
+  background-size: 80%;
+  background-position-y: 15%;
+  background-position-x: 50%;
+}
+
+.lisa {
+  background-size: 60%;
+  background-position-y: 7%;
+  background-position-x: 50%;
+}
+
+.mona {
+  background-size: 70%;
+  background-position-y: 20%;
+  background-position-x: 50%;
+}
+
+.ningguang {
+  background-size: 70%;
+  background-position-y: 15%;
+  background-position-x: 50%;
+}
+
+.noelle {
+  background-size: 50%;
+  background-position-y: 6%;
+  background-position-x: 50%;
+}
+
+.noelle {
+  background-size: 50%;
+  background-position-y: 6%;
+  background-position-x: 50%;
+}
+
+.qiqi {
+  background-size: 70%;
+  background-position-y: 33%;
+  background-position-x: 50%;
+}
+
+.raiden {
+  background-size: 70%;
+  background-position-y: 18%;
+  background-position-x: 50%;
+}
+
+.razor {
+  background-size: 70%;
+  background-position-y: 30%;
+  background-position-x: 50%;
+}
+
+.rosaria {
+  background-size: 70%;
+  background-position-y: 12%;
+  background-position-x: 50%;
+}
+
+.sara {
+  background-size: 70%;
+  background-position-y: 8%;
+  background-position-x: 50%;
+}
+
+.sayu {
+  background-size: 60%;
+  background-position-y: 23%;
+  background-position-x: 50%;
+}
+
+.shenhe {
+  background-size: 60%;
+  background-position-y: 16%;
+  background-position-x: 50%;
+}
+
+.sucrose {
+  background-size: 60%;
+  background-position-y: 15%;
+  background-position-x: 50%;
+}
+
+.tartaglia {
+  background-size: 90%;
+  background-position-y: 25%;
+  background-position-x: 50%;
+}
+
+.thoma {
+  background-size: 70%;
+  background-position-y: 20%;
+  background-position-x: 50%;
+}
+
+.thoma {
+  background-size: 70%;
+  background-position-y: 20%;
+  background-position-x: 50%;
+}
+
+.venti {
+  background-size: 70%;
+  background-position-y: 22%;
+  background-position-x: 55%;
+}
+
+.xiangling {
+  background-size: 60%;
+  background-position-y: 0%;
+  background-position-x: 55%;
+}
+
+.xiao {
+  background-size: 70%;
+  background-position-y: 35%;
+  background-position-x: 50%;
+}
+
+.xingqiu {
+  background-size: 55%;
+  background-position-y: 7%;
+  background-position-x: 50%;
+}
+
+.xinyan {
+  background-size: 90%;
+  background-position-y: 20%;
+  background-position-x: 50%;
+}
+
+.yanfei {
+  background-size: 70%;
+  background-position-y: 8%;
+  background-position-x: 70%;
+}
+
+.yoimiya {
+  background-size: 70%;
+  background-position-y: 23%;
+  background-position-x: 50%;
+}
+
+.yun-jin {
+  background-size: 60%;
+  background-position-y: 20%;
+  background-position-x: 50%;
+}
+
+.zhongli {
+  background-size: 60%;
+  background-position-y: 17%;
+  background-position-x: 50%;
+}

@@ -1,9 +1,3 @@
-.build-container {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
 .build {
   display: flex;
   justify-content: flex-start;
@@ -16,6 +10,11 @@
   background-color: #2a1d52;
 }
 
+.buildcard-info {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
 .build img {
   width: 86px;
   height: 86px;
@@ -24,17 +23,33 @@
   background-color: #534981;
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px,
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-  margin: -35px 20px;
+  margin: 30px 15px;
 }
 
 .build h2 {
-  margin-left: 20px;
-  flex: 0 0 100%;
+  margin: 30px 20px;
+  font-size: 17px;
 }
 
+.build h4 {
+  margin-left: 20px;
+}
+.buildcard-username {
+  font-size: 13px;
+  margin-top: -25px;
+}
+
+.buildcard-likes {
+  font-size: 13px;
+  margin-top: -10px;
+}
+.build h4 {
+  font-weight: normal;
+}
 .build:hover {
-  color: white;
-  transition: all 0.5s ease-in-out;
+  color: rgb(218, 213, 247);
+  background-color: #2d1f55;
+  transition: all 0.25s ease-in-out;
 }
 
 .break {

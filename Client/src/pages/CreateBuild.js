@@ -6,6 +6,7 @@ import WeaponCard from "../components/WeaponCard";
 import "../css/createbuild.css";
 import ArtifactCard from "../components/ArtifactCard";
 import TeammateCard from "../components/TeammateCard";
+import CharacterHeader from "../components/CharacterHeader";
 import Axios from "axios";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 const WEAPON_API = "https://api.genshin.dev/weapons/";
@@ -156,52 +157,9 @@ const CreateBuild = () => {
   return (
     <div className="create-build-page">
       <Layout />
-      <div className="container">
-        <div
-          className={`character-header ${characterName}`}
-          style={{
-            backgroundImage: `url(https://api.genshin.dev/characters/${characterName}/gacha-splash)`,
-          }}
-        >
-          <img src={CHARACTER_API + characterName + "/icon"} alt={characterName} />
-          <ul>
-            <li>
-              <h2>Genshin Impact</h2>
-            </li>
-            <li>
-              <h1>{character.name}</h1>
-            </li>
-            <li>
-              <h2>
-                {" "}
-                <span className={`${character.vision}`}>
-                  {character.vision}
-                </span> &#x2022; {character.weapon}
-              </h2>
-            </li>
-          </ul>
-        </div>
-        <div className="character-navbar">
-          <ul>
-            <li>
-              <a href="#">Description</a>
-            </li>
-            <li>
-              <a href="#weapon-section">Weapon</a>
-            </li>
-            <li>
-              <a href="#artifacts-section">Artifacts</a>
-            </li>
-            <li>
-              <a href="#teams-section">Teams</a>
-            </li>
-            <li>
-              <a href="#">Showcase</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      {/* <form onSubmit={submitHandler}> */}
+
+      <CharacterHeader character={character} characterName={characterName} />
+
       <div className="build-container">
         <h1 className="create-title">Creating a new build for {character.name}</h1>
 

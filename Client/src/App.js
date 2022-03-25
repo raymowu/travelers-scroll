@@ -6,6 +6,7 @@ import LogIn from ".//pages/login";
 import Profile from "./pages/profile";
 import Character from "./pages/Character";
 import CreateBuild from "./pages/CreateBuild";
+import Build from "./pages/Build";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="profile/:id" exact element={<Profile />} />
           <Route path="/characters/:characterName" exact element={<Character />} />
           <Route path="/createbuild/:characterName" exact element={<CreateBuild />} />
+          <Route path="/build/:buildid" exact element={<Build />} />
         </Routes>
       </BrowserRouter>
     </div>
