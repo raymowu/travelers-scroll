@@ -1,38 +1,44 @@
-import { useState, useParams, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import CharacterHeader from "../components/CharacterHeader";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
+
 const Build = () => {
-  //   //characterName is un capitalized, character.name is capitalized
-  //   const [character, setCharacter] = useState([]);
-  //   const [build, setBuild] = useState([]);
-  //   //fetches character w unique character api
-  //   const getCharacter = (characterName) => {
-  //     fetch(CHARACTER_API + characterName)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setCharacter(data);
-  //       });
-  //   };
+  const [build, setBuild] = useState([]);
+  const [characterName, setCharacterName] = useState([]);
+  const [character, setCharacter] = useState([]);
 
-  //   const getBuild = () => {
-  //     fetch(`http://localhost:5000/builds/build/${buildid}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setBuild(data.builds);
-  //       });
-  //   };
+  const getBuild = (buildid) => {
+    fetch(`http://localhost:5000/builds/build/${buildid}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBuild(data);
+        setCharacterName(data.build.character);
+        getCharacter(data.build.character);
+      });
+  };
 
-  //   useEffect(() => {
-  //     getBuild();
-  //   }, []);
+  const getCharacter = (characterName) => {
+    fetch(CHARACTER_API + characterName)
+      .then((res) => res.json())
+      .then((data) => {
+        setCharacter(data);
+      });
+  };
 
-  //   console.log(build);
-  //   let { characterName } = build.character;
-  //   let { buildid } = useParams();
+  let { buildid } = useParams();
+
+  useEffect(() => {
+    getBuild(buildid);
+  }, []);
+
+  console.log(build);
+  console.log(characterName);
+  console.log(character);
   return (
     <>
       <div>build</div>
-      {/* <CharacterHeader characterName={characterName} character={character} /> */}
+      <CharacterHeader characterName={characterName} character={character} />
     </>
   );
 };
