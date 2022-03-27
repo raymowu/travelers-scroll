@@ -4,8 +4,6 @@ const CHARACTER_IMG_API = "https://api.genshin.dev/characters/";
 const WEAPON_IMG_API = "https://api.genshin.dev/weapons/";
 const ARTIFACT_IMG_API = "https://api.genshin.dev/artifacts/";
 const BuildCard = ({ build }) => {
-  console.log(build);
-
   return (
     <a href={`/build/${build._id}`}>
       <div className="build">

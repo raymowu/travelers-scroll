@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import BuildCard from "../components/BuildCard";
 import CharacterHeader from "../components/CharacterHeader";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
+
 const Character = () => {
   const navigate = useNavigate();
   //characterName is un capitalized, character.name is capitalized
@@ -23,6 +24,7 @@ const Character = () => {
     fetch(`http://localhost:5000/builds/${characterName}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data.builds);
         setBuilds(data.builds);
       });
   };
@@ -51,6 +53,7 @@ const Character = () => {
         <div className="build-container">
           {builds.length > 0 &&
             builds.map((build) => {
+              console.log(build);
               return <BuildCard key={build._id} build={build} />;
             })}
         </div>

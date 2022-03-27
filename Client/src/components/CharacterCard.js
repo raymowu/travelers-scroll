@@ -8,10 +8,7 @@ const CharacterCard = ({ characterName }) => {
     <>
       <div className="character">
         <a href={`/characters/${characterName}`}>
-          <img
-            src={CHARACTER_API + characterName + "/icon"}
-            alt={characterName}
-          />
+          <img src={CHARACTER_API + characterName + "/icon"} alt={characterName} />
         </a>
         <h3>{initializeName(characterName)}</h3>
       </div>
