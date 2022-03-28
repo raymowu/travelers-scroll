@@ -69,6 +69,7 @@ body {
   flex-wrap: wrap;
   margin-top: -50px;
   margin-bottom: 45px;
+  margin-right: -20px;
   overflow: auto;
   gap: 25px;
 }
@@ -120,6 +121,7 @@ body {
 .artifact-user h2 {
   font-size: 20px;
 }
+
 .artifact h3 {
   text-align: center;
   inline-size: 100px;

@@ -45,11 +45,11 @@ const Character = () => {
       <div className="container2">
         <h3>{character.description}</h3>
         <div className="break"></div>
+        <h1 className="recent-builds">Recent {character.name} Builds:</h1>
+        <div className="break"></div>
         <button type="button" className="button-18" onClick={handleOnCreateBuild}>
           Create {`${character.name}`} Build
         </button>
-        <h1 className="recent-builds">Recent {character.name} Builds:</h1>
-        <div className="break"></div>
         <div className="build-container">
           {builds.length > 0 &&
             builds.map((build) => {

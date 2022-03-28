@@ -176,7 +176,7 @@ const CreateBuild = () => {
           </label>
         </div>
 
-        <a id="weapon-section"></a>
+        <a id="weapon"></a>
         <div className="divider"></div>
         <div className="break"></div>
         <div className="break"></div>
@@ -231,7 +231,7 @@ const CreateBuild = () => {
             </label> */}
         </div>
 
-        <a id="artifacts-section"></a>
+        <a id="artifacts"></a>
         <div className="divider"></div>
         <div className="break"></div>
         <div className="break"></div>
@@ -291,7 +291,7 @@ const CreateBuild = () => {
             </label> */}
         </div>
 
-        <a id="teams-section"></a>
+        <a id="teams"></a>
         <div className="divider"></div>
         <div className="break"></div>
         <div className="break"></div>

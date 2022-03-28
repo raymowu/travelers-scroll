@@ -52,7 +52,7 @@ function LogIn() {
           className="input"
           onChange={handleChange}
         />
-        <button type="submit" className="button">
+        <button type="submit" className="button-form">
           Submit
         </button>
         <p>
