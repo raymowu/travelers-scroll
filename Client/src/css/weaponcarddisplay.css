@@ -1,0 +1,31 @@
+.weapon-display {
+  transform: translateY(40px);
+}
+
+.weapon-display img:hover {
+  box-shadow: inset 0 -8em 8em rgba(109, 109, 109, 0.1), 0 0 0 0px,
+    0.8em 0.8em 1em rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.weapon-display:hover {
+  color: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.weapon-display img {
+  display: block;
+  width: 106px;
+  height: 106px;
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: #534981;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px,
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  margin-top: -28px;
+}
+.weapon-display h3 {
+  text-align: center;
+  inline-size: 100px;
+  margin-bottom: 20px;
+}

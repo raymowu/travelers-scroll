@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/artifactcard.css";
+import "../css/artifactcarddisplay.css";
 import deinitializeName from "./DeinitializeName";
 const ARTIFACT_API = "https://api.genshin.dev/artifacts/";
 
@@ -7,7 +7,7 @@ const ArtifactCardDisplay = ({ artifact }) => {
   console.log(ARTIFACT_API + deinitializeName(artifact.name) + "/circlet-of-logos");
   return (
     <>
-      <div className="artifact">
+      <div className="artifact-display">
         <img
           src={ARTIFACT_API + deinitializeName(artifact.name) + "/circlet-of-logos"}
           alt={artifact.name}
