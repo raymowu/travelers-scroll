@@ -15,7 +15,10 @@ This Genshin Impact Character Build App is an app that allows users to access an
 ## Screenshots
 
 ![Imgur Image](https://i.imgur.com/4HHFeFI.png)
+
 ![Imgur Image](https://i.imgur.com/VigmdN3.png)
+
+![Imgur Image](https://i.imgur.com/bfdvNuG.png)
 
 
 ## Technologies
