@@ -92,6 +92,8 @@ const Build = () => {
         <h4 className="buildpage-username">by {build.Author.username}</h4>
         <div className="break"></div>
         <h4 className="buildpage-likes">{build.likes} likes</h4>
+
+        <div className="divider"></div>
         <div className="break"></div>
 
         <h2>Weapons: </h2>
