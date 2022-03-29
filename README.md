@@ -15,6 +15,8 @@ This Genshin Impact Character Build App is an app that allows users to access an
 ## Screenshots
 
 ![Imgur Image](https://i.imgur.com/4HHFeFI.png)
+![Imgur Image](https://imgur.com/VigmdN3)
+
 
 ## Technologies
 JavaScript, React.js, Node.js, Express, MongoDB
