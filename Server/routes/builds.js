@@ -62,40 +62,30 @@ router.get("/build/:id", (req, res) => {
   });
 });
 
-router.post("/:id/liked", Authenticate, (req, res) => {
-  Builds.findById(req.params.id, async (err, build) => {
-    if (err) {
-      return res.send({ status: "err", err: err });
-    } else {
-      if (build) {
-        const user = await User.findOne({ username });
+router.post("/build/:id/liked", Authenticate, async (req, res) => {
+  const { liked } = req.body;
+  const build = await Builds.findById(req.params.id);
+  const user = await User.findById(req.session.user.id);
+  if(build){
+    if(liked){
         user.likedBuilds.push(build._id);
-        build.likes += 1;
-        return res.send({ status: "ok" });
-      }
+        user.save();
+        await Builds.findByIdAndUpdate(build._id, {likes: build.likes + 1});
+        return res.send({ status: "ok"});
     }
-  });
-});
-
-router.post("/:id/disliked", Authenticate, (req, res) => {
-  Builds.findById(req.params.id, async (err, build) => {
-    if (err) {
-      return res.send({ status: "err", err: err });
-    } else {
-      if (build) {
-        const user = await User.findOne({ username });
+    else{
         user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
-        build.likes -= 1;
+        user.save();
+        await Builds.findByIdAndUpdate(build._id, {likes: build.likes - 1});
         return res.send({ status: "ok" });
-      }
     }
-  });
-});
+  }
+})
 
 // comment stuff
-router.post("/:id/newComment", Authenticate, (req, res) => {
+router.post("/build/:id/newComment", Authenticate, (req, res) => {
   const { text } = req.body;
-  Comment.create(
+  Comments.create(
     {
       text,
       Author: req.session.user,
@@ -107,12 +97,22 @@ router.post("/:id/newComment", Authenticate, (req, res) => {
         if (comment) {
           const build = await Builds.findById(req.params.id);
           if (build) {
-            build.comment.push(comment._id);
+            build.Comment.push(comment._id);
+            build.save();
+            return res.send({status: "ok"});
           }
         }
+        else{
+            if(comment){
+                const build = await Builds.findById(req.params.id);
+                if(build){
+                    build.comment.push(comment._id);
+                    return res.send({status: "ok"});
+                }
+            }
+        }
       }
-    }
-  );
-});
+    });
+})
 
 module.exports = router;
