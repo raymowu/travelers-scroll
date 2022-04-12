@@ -49,14 +49,24 @@ router.get("/:character", (req, res) => {
   });
 });
 
-router.get("/build/:id", (req, res) => {
+router.get("/build/:id", async (req, res) => {
   Builds.findById(req.params.id, async (err, build) => {
     if (err) {
       return res.send({ status: "err", err: err });
     } else {
       if (build) {
         await build.populate("Comment");
-        return res.send({ status: "ok", build: build });
+        let liked = false;
+        if(req.session.user){
+          let user = await User.findById(req.session.user.id);
+          // let arr = user.likedBuilds;
+          // console.log("arr: ")
+          // console.log(arr);
+          if(user.likedBuilds.includes(build._id)){
+            liked = true;
+          }
+        }
+        return res.send({ status: "ok", build: build, currentLikedStatus: liked });
       }
     }
   });
@@ -74,10 +84,20 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
         return res.send({ status: "ok"});
     }
     else{
-        user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
-        user.save();
-        await Builds.findByIdAndUpdate(build._id, {likes: build.likes - 1});
-        return res.send({ status: "ok" });
+        if(user.likedBuilds.includes(build._id)){
+          user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
+          user.save();
+          let likes = build.likes - 1;
+          if(likes < 0){
+            likes = 0;
+          }
+          await Builds.findByIdAndUpdate(build._id, {likes: likes});
+          return res.send({ status: "ok" });
+        }
+        else{
+          return res.send({status: "err", message: "Can't dislike a build you havent liked"});
+        }
+        
     }
   }
 })
