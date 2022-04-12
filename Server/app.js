@@ -48,7 +48,7 @@ const Authenticate = (req, res, next) => {
 const indexRoutes = require("./routes/index.js");
 const buildRoutes = require("./routes/builds");
 
-app.use(indexRoutes);
+app.use(indexRoutes); 
 app.use("/builds", buildRoutes);
 
 app.listen(5000, () => {

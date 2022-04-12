@@ -63,7 +63,7 @@ router.get("/build/:id", (req, res) => {
 });
 
 router.post("/build/:id/liked", Authenticate, async (req, res) => {
-  const { liked } = req.body;
+  const { liked } = req.body; 
   const build = await Builds.findById(req.params.id);
   const user = await User.findById(req.session.user.id);
   if(build){
@@ -103,13 +103,7 @@ router.post("/build/:id/newComment", Authenticate, (req, res) => {
           }
         }
         else{
-            if(comment){
-                const build = await Builds.findById(req.params.id);
-                if(build){
-                    build.comment.push(comment._id);
-                    return res.send({status: "ok"});
-                }
-            }
+            res.send({status: "err", err: "idek"});
         }
       }
     });
