@@ -63,7 +63,7 @@ router.get("/build/:id", (req, res) => {
 });
 
 router.post("/build/:id/liked", Authenticate, async (req, res) => {
-  const { liked } = req.body; 
+  const { liked } = req.body; // the action of liking the build.
   const build = await Builds.findById(req.params.id);
   const user = await User.findById(req.session.user.id);
   if(build){
