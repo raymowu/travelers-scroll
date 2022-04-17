@@ -57,12 +57,12 @@ router.get("/build/:id", async (req, res) => {
       if (build) {
         await build.populate("Comment");
         let liked = false;
-        if(req.session.user){
+        if (req.session.user) {
           let user = await User.findById(req.session.user.id);
           // let arr = user.likedBuilds;
           // console.log("arr: ")
           // console.log(arr);
-          if(user.likedBuilds.includes(build._id)){
+          if (user.likedBuilds.includes(build._id)) {
             liked = true;
           }
         }
@@ -76,31 +76,26 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
   const { liked } = req.body; // the action of liking the build.
   const build = await Builds.findById(req.params.id);
   const user = await User.findById(req.session.user.id);
-  if(build){
-    if(liked){
-        user.likedBuilds.push(build._id);
+  if (build) {
+    if (liked) {
+      user.likedBuilds.push(build._id);
+      user.save();
+      await Builds.findByIdAndUpdate(build._id, { likes: build.likes + 1 });
+      return res.send({ status: "ok" });
+    } else {
+      if (user.likedBuilds.includes(build._id)) {
+        user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
         user.save();
-        await Builds.findByIdAndUpdate(build._id, {likes: build.likes + 1});
-        return res.send({ status: "ok"});
-    }
-    else{
-        if(user.likedBuilds.includes(build._id)){
-          user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
-          user.save();
-          let likes = build.likes - 1;
-          if(likes < 0){
-            likes = 0;
-          }
-          await Builds.findByIdAndUpdate(build._id, {likes: likes});
-          return res.send({ status: "ok" });
+        let likes = build.likes - 1;
+        if (likes < 0) {
+          likes = 0;
         }
-        else{
-          return res.send({status: "err", message: "Can't dislike a build you havent liked"});
-        }
-        
+        await Builds.findByIdAndUpdate(build._id, { likes: likes });
+        return res.send({ status: "ok" });
+      }
     }
   }
-})
+});
 
 // comment stuff
 router.post("/build/:id/newComment", Authenticate, (req, res) => {
@@ -119,14 +114,14 @@ router.post("/build/:id/newComment", Authenticate, (req, res) => {
           if (build) {
             build.Comment.push(comment._id);
             build.save();
-            return res.send({status: "ok"});
+            return res.send({ status: "ok" });
           }
-        }
-        else{
-            res.send({status: "err", err: "idek"});
+        } else {
+          res.send({ status: "err", err: "idek" });
         }
       }
-    });
-})
+    }
+  );
+});
 
 module.exports = router;

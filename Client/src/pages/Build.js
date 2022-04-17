@@ -7,6 +7,10 @@ import WeaponCardDisplay from "../components/WeaponCardDisplay";
 import ArtifactCardDisplay from "../components/ArtifactCardDisplay";
 import TeammateCardDisplay from "../components/TeammateCardDisplay";
 import Comment from "../components/Comment";
+import Axios from "axios";
+
+import { FaRegThumbsUp, FaThumbsUp } from "react-icons/fa";
+
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
 const Build = () => {
@@ -52,6 +56,9 @@ const Build = () => {
   });
   const [characterName, setCharacterName] = useState("");
   const [character, setCharacter] = useState([]);
+  const [comment, setComment] = useState("");
+  const [liked, setLiked] = useState(null);
+  const [currentLikedStatus, setCurrentLikedStatus] = useState(null);
 
   const getBuild = (buildid) => {
     fetch(`http://localhost:5000/builds/build/${buildid}`)
@@ -60,6 +67,8 @@ const Build = () => {
         setBuild(data.build);
         setCharacterName(data.build.character);
         getCharacter(data.build.character);
+        setCurrentLikedStatus(data.currentLikedStatus);
+        console.log(`currliked status on page render: ${currentLikedStatus}`);
       });
   };
 
@@ -71,18 +80,67 @@ const Build = () => {
       });
   };
 
+  const getCurrentLikedStatus = () => {
+    fetch(`http://localhost:5000/builds/build/${buildid}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCurrentLikedStatus(data.currentLikedStatus);
+        console.log(data.currentLikedStatus);
+      });
+  };
+
   let { buildid } = useParams();
 
   useEffect(() => {
     getBuild(buildid);
-  }, []);
+    getCurrentLikedStatus();
+  }, [build]);
 
-  console.log(build);
-  console.log(build.weapons);
-  console.log(build.teams);
-  // console.log(build.weapons[0].name);
-  // console.log(build.weapons);
-  // console.log(build.Author);
+  const resetHandler = () => {
+    setComment("");
+  };
+
+  const handleOnCommentSubmit = (e) => {
+    if (!comment) {
+      e.preventDefault();
+      alert("Please enter a comment!");
+    } else {
+      Axios({
+        method: "POST",
+        data: {
+          text: comment,
+        },
+        withCredentials: true,
+        url: `http://localhost:5000/builds/build/${buildid}/newComment`,
+      }).then((res) => {
+        if (res.data.status === "err") {
+          alert("YOUR BAD");
+        }
+      });
+
+      resetHandler();
+    }
+  };
+
+  const handleOnLike = () => {
+    getCurrentLikedStatus();
+    setLiked(currentLikedStatus);
+    Axios({
+      method: "POST",
+      data: {
+        liked: !liked,
+      },
+      withCredentials: true,
+      url: `http://localhost:5000/builds/build/${buildid}/liked`,
+    }).then((res) => {
+      if (res.data.status === "err") {
+        alert(res.data.message);
+      }
+    });
+  };
+
+  console.log(`like action before program ${liked}`);
+  console.log(`currlike status before program ${currentLikedStatus}`);
   return (
     <Layout>
       <CharacterHeader characterName={characterName} character={character} />
@@ -91,7 +149,10 @@ const Build = () => {
         <div className="break"></div>
         <h4 className="buildpage-username">by {build.Author.username}</h4>
         <div className="break"></div>
-        <h4 className="buildpage-likes">{build.likes} likes</h4>
+        <h4 className="buildpage-likes">
+          <FaRegThumbsUp onClick={handleOnLike} />
+          {build.likes} likes
+        </h4>
 
         <div className="divider"></div>
         <div className="break"></div>
@@ -128,8 +189,22 @@ const Build = () => {
         <div className="break"></div>
 
         <div className="comment-container">
+          <div className="create-comment">
+            <label>
+              <h2 className="create-comment-username">Create Comment:</h2>
+              <input
+                className="create-comment-text"
+                type="text"
+                value={comment}
+                placeholder="Add a Comment"
+                onChange={(e) => setComment(e.target.value)}
+              />
+            </label>
+            <button type="button" onClick={handleOnCommentSubmit}>
+              Comment
+            </button>
+          </div>
           {build.Comment.map((comment) => {
-            console.log(comment);
             return <Comment comment={comment} />;
           })}
         </div>

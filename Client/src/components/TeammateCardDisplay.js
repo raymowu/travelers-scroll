@@ -3,7 +3,6 @@ import initializeName from "./InitializeName";
 const CHARACTER_IMG_API = "https://api.genshin.dev/characters/";
 
 const TeammateCardDisplay = ({ teammate }) => {
-  console.log(teammate);
   return (
     <>
       <div className="team">
