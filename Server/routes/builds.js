@@ -62,11 +62,11 @@ router.get("/build/:id", async (req, res) => {
           // let arr = user.likedBuilds;
           // console.log("arr: ")
           // console.log(arr);
-          if (user.likedBuilds.includes(build._id)) {
-            liked = true;
-          }
+          let userID;
+          userID = req.session.user.id;
+          return res.send({ status: "ok", build: build, userId: userID });
         }
-        return res.send({ status: "ok", build: build });
+        return res.send({ status: "ok", build: build, userId: "none" });
       }
     }
   });
