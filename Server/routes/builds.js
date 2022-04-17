@@ -66,7 +66,7 @@ router.get("/build/:id", async (req, res) => {
             liked = true;
           }
         }
-        return res.send({ status: "ok", build: build, currentLikedStatus: liked });
+        return res.send({ status: "ok", build: build});
       }
     }
   });
@@ -78,25 +78,25 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
   const user = await User.findById(req.session.user.id);
   if(build){
     if(liked){
-        user.likedBuilds.push(build._id);
-        user.save();
+        build.LikedUsers.push(user._id);
+        build.save();
         await Builds.findByIdAndUpdate(build._id, {likes: build.likes + 1});
         return res.send({ status: "ok"});
     }
     else{
-        if(user.likedBuilds.includes(build._id)){
-          user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
-          user.save();
+        // if(user.likedBuilds.includes(build._id)){
+          build.LikedUsers.splice(build.LikedUsers.indexOf(user._id), 1);
+          build.save();
           let likes = build.likes - 1;
           if(likes < 0){
             likes = 0;
           }
           await Builds.findByIdAndUpdate(build._id, {likes: likes});
           return res.send({ status: "ok" });
-        }
-        else{
-          return res.send({status: "err", message: "Can't dislike a build you havent liked"});
-        }
+        // }
+        // else{
+        //   return res.send({status: "err", message: "Can't dislike a build you havent liked"});
+        // }
         
     }
   }
