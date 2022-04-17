@@ -52,13 +52,13 @@ const Build = () => {
       },
     ],
     likes: 0,
+    LikedUsers: [],
     __v: 0,
   });
   const [characterName, setCharacterName] = useState("");
   const [character, setCharacter] = useState([]);
   const [comment, setComment] = useState("");
-  const [liked, setLiked] = useState(null);
-  const [currentLikedStatus, setCurrentLikedStatus] = useState(null);
+  const [user, setUser] = useState("");
 
   const getBuild = (buildid) => {
     fetch(`http://localhost:5000/builds/build/${buildid}`)
@@ -67,9 +67,22 @@ const Build = () => {
         setBuild(data.build);
         setCharacterName(data.build.character);
         getCharacter(data.build.character);
-        setCurrentLikedStatus(data.currentLikedStatus);
-        console.log(`currliked status on page render: ${currentLikedStatus}`);
+        console.log(data.userId);
       });
+  };
+
+  const getUser = () => {
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: `http://localhost:5000/builds/build/${buildid}`,
+    }).then((res) => {
+      if (res.data.status === "err") {
+        alert("err");
+      }
+      setUser(res.data.userId);
+      console.log(res.data.userId);
+    });
   };
 
   const getCharacter = (characterName) => {
@@ -80,21 +93,12 @@ const Build = () => {
       });
   };
 
-  const getCurrentLikedStatus = () => {
-    fetch(`http://localhost:5000/builds/build/${buildid}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setCurrentLikedStatus(data.currentLikedStatus);
-        console.log(data.currentLikedStatus);
-      });
-  };
-
   let { buildid } = useParams();
 
   useEffect(() => {
     getBuild(buildid);
-    getCurrentLikedStatus();
-  }, [build]);
+    getUser();
+  }, []);
 
   const resetHandler = () => {
     setComment("");
@@ -117,30 +121,42 @@ const Build = () => {
           alert("YOUR BAD");
         }
       });
-
       resetHandler();
     }
   };
 
   const handleOnLike = () => {
-    getCurrentLikedStatus();
-    setLiked(currentLikedStatus);
-    Axios({
-      method: "POST",
-      data: {
-        liked: !liked,
-      },
-      withCredentials: true,
-      url: `http://localhost:5000/builds/build/${buildid}/liked`,
-    }).then((res) => {
-      if (res.data.status === "err") {
-        alert(res.data.message);
-      }
-    });
+    if (build.LikedUsers.includes(user)) {
+      Axios({
+        method: "POST",
+        data: {
+          liked: false,
+        },
+        withCredentials: true,
+        url: `http://localhost:5000/builds/build/${buildid}/liked`,
+      }).then((res) => {
+        if (res.data.status === "err") {
+          alert(res.data.message);
+        }
+      });
+    } else {
+      Axios({
+        method: "POST",
+        data: {
+          liked: true,
+        },
+        withCredentials: true,
+        url: `http://localhost:5000/builds/build/${buildid}/liked`,
+      }).then((res) => {
+        if (res.data.status === "err") {
+          alert(res.data.message);
+        }
+      });
+    }
   };
 
-  console.log(`like action before program ${liked}`);
-  console.log(`currlike status before program ${currentLikedStatus}`);
+  console.log(user);
+  console.log(build.LikedUsers);
   return (
     <Layout>
       <CharacterHeader characterName={characterName} character={character} />
