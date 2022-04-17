@@ -18,7 +18,13 @@ const Builds = new mongoose.Schema({
         ref: "Comment"
       }
     ],
-    likes: {type: Number, default: 0}
+    likes: {type: Number, default: 0}, 
+    LikedUsers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      }
+    ]
 });
 
 module.exports = mongoose.model("Builds", Builds);
