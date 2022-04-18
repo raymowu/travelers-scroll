@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import BuildCard from "../components/BuildCard";
-import CharacterHeader from "../components/CharacterHeader";
+import CharacterInfoHeader from "../components/CharacterInfoHeader";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
 const Character = () => {
@@ -41,7 +41,7 @@ const Character = () => {
   };
   return (
     <Layout>
-      <CharacterHeader character={character} characterName={characterName} />
+      <CharacterInfoHeader character={character} characterName={characterName} />
       <div className="container2">
         <h3>{character.description}</h3>
         <div className="break"></div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import CharacterHeader from "../components/CharacterHeader";
+import CharacterBuildHeader from "../components/CharacterBuildHeader";
 import Layout from "../components/Layout";
 import "../css/buildpage.css";
 import WeaponCardDisplay from "../components/WeaponCardDisplay";
@@ -158,7 +158,11 @@ const Build = () => {
   console.log(build.LikedUsers);
   return (
     <Layout>
-      <CharacterHeader characterName={characterName} character={character} />
+      <CharacterBuildHeader
+        characterName={characterName}
+        character={character}
+        build={build}
+      />
       <div className="buildpage-container">
         <h1 className="buildpage-title">{build.title}</h1>
         <div className="break"></div>
