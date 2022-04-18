@@ -8,8 +8,7 @@ import ArtifactCardDisplay from "../components/ArtifactCardDisplay";
 import TeammateCardDisplay from "../components/TeammateCardDisplay";
 import Comment from "../components/Comment";
 import Axios from "axios";
-
-import { FaRegThumbsUp, FaThumbsUp } from "react-icons/fa";
+import LikeButton from "../components/LikeButton";
 
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
@@ -67,7 +66,6 @@ const Build = () => {
         setBuild(data.build);
         setCharacterName(data.build.character);
         getCharacter(data.build.character);
-        console.log(data.userId);
       });
   };
 
@@ -123,6 +121,7 @@ const Build = () => {
       });
       resetHandler();
     }
+    window.location.reload(false);
   };
 
   const handleOnLike = () => {
@@ -153,9 +152,9 @@ const Build = () => {
         }
       });
     }
+    window.location.reload(false);
   };
 
-  console.log(user);
   console.log(build.LikedUsers);
   return (
     <Layout>
@@ -166,7 +165,10 @@ const Build = () => {
         <h4 className="buildpage-username">by {build.Author.username}</h4>
         <div className="break"></div>
         <h4 className="buildpage-likes">
-          <FaRegThumbsUp onClick={handleOnLike} />
+          <LikeButton
+            liked={build.LikedUsers.includes(user)}
+            handleOnLike={handleOnLike}
+          />
           {build.likes} likes
         </h4>
 
