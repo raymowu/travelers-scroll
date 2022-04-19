@@ -24,6 +24,24 @@ html {
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
 
+.character-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.star-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.fill-star {
+  margin-left: -3px;
+  color: #fdcc0d;
+  border: black;
+}
 .character-header {
   padding: 40px 20px;
   background-size: cover;
@@ -103,6 +121,9 @@ html {
   margin-bottom: -30px;
 }
 
+.fill-star {
+  /* margin-left: auto; */
+}
 .character-navbar ul {
   box-shadow: 2px 0 0 0 #080320 inset;
   display: flex;

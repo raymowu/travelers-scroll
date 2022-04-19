@@ -1,4 +1,5 @@
 import "../css/characterheader.css";
+import { AiFillStar } from "react-icons/ai";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 const CharacterBuildHeader = ({ character, characterName, build }) => {
   return (
@@ -9,7 +10,14 @@ const CharacterBuildHeader = ({ character, characterName, build }) => {
           backgroundImage: `url(https://api.genshin.dev/characters/${characterName}/gacha-splash)`,
         }}
       >
-        <img src={CHARACTER_API + characterName + "/icon"} alt={characterName} />
+        <div className="character-icon-container">
+          <img src={CHARACTER_API + characterName + "/icon"} alt={characterName} />
+          <div className="star-container">
+            {Array.from(Array(character.rarity), (e, i) => {
+              return <AiFillStar size={20} className="fill-star" />;
+            })}
+          </div>
+        </div>
         <ul>
           <li>
             <h2>Genshin Impact</h2>
