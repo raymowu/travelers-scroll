@@ -224,7 +224,11 @@ const Build = () => {
                 onChange={(e) => setComment(e.target.value)}
               />
             </label>
-            <button type="button" onClick={handleOnCommentSubmit}>
+            <button
+              type="button"
+              className="comment-button"
+              onClick={handleOnCommentSubmit}
+            >
               Comment
             </button>
           </div>

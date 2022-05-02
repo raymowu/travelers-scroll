@@ -43,6 +43,9 @@
   margin: -50px 0px 0px 20px;
   font-size: 20px;
   font-weight: 300;
+  height: 40px;
+  width: 400px;
+  border-radius: 10px;
 }
 
 .buildpage-title {
@@ -161,4 +164,10 @@
   font-size: 15px;
   margin-right: 10px;
   margin-top: -10px;
+}
+
+.comment-button {
+  height: 40px;
+  width: 100px;
+  transform: translateY(10px);
 }
