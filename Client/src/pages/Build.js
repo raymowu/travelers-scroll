@@ -169,18 +169,20 @@ const Build = () => {
         <h4 className="buildpage-username">by {build.Author.username}</h4>
         <div className="break"></div>
         <h4 className="buildpage-likes">
+          <span className="buildpage-likes-text">{build.likes}</span>
           <LikeButton
             liked={build.LikedUsers.includes(user)}
             handleOnLike={handleOnLike}
           />
-          {build.likes} likes
         </h4>
 
         <div className="divider"></div>
         <div className="break"></div>
 
         <h2>Weapons: </h2>
+
         <div id="weapon" className="break"></div>
+
         <div className="weapon-container">
           {build.weapons.map((weapon) => {
             return <WeaponCardDisplay weapon={weapon} />;

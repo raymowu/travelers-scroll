@@ -195,7 +195,7 @@ const CreateBuild = () => {
           <h1 className="menu-tag">Select Weapons To Add To Build: </h1>
           <form onSubmit={handleOnSubmit}>
             <input
-              className="search-bar"
+              className="weapon-search-bar"
               type="search"
               value={weaponSearchTerm}
               placeholder="Search Weapon"
@@ -253,7 +253,7 @@ const CreateBuild = () => {
           <h1 className="menu-tag">Select Artifacts To Add To Build: </h1>
           <form onSubmit={handleOnSubmit}>
             <input
-              className="search-bar"
+              className="artifact-search-bar"
               type="search"
               value={artifactSearchTerm}
               placeholder="Search Artifact"
@@ -313,7 +313,7 @@ const CreateBuild = () => {
           </h1>
           <form onSubmit={handleOnSubmit}>
             <input
-              className="search-bar"
+              className="teammate-search-bar"
               type="search"
               value={teammateSearchTerm}
               placeholder="Search Character"

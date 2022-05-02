@@ -1,7 +1,7 @@
 .buildpage-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -46,7 +46,7 @@
 }
 
 .buildpage-title {
-  margin-top: 10px;
+  margin-top: -10px;
   margin-right: auto;
   color: white;
 }
@@ -74,8 +74,9 @@
   overflow: auto;
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 0px 45px;
+  gap: 0px 55px;
   margin: -10px 20px 20px 20px;
   padding: 20px;
   font-size: 10px;
@@ -90,36 +91,37 @@
   overflow: auto;
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 35px 55px;
+  gap: 0px 70px;
   margin: -10px 20px 20px 20px;
   padding: 20px;
   font-size: 10px;
 }
 
-.team-container {
-  border: 0px solid;
-  border-radius: 10px;
-  background-color: #2b1766;
-  width: 730px;
-  height: 150px;
-  overflow: auto;
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 0px 35px;
-  margin: -10px 20px 20px 20px;
-  padding: 10px;
-  font-size: 10px;
-}
-
 .weapon {
-  margin: 30px 0px -19px 10px;
+  margin: 60px 0px -40px 20px;
 }
 .weapon h3 {
   margin-top: 5px;
   text-align: center;
   inline-size: 100px;
+}
+.team-container {
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: #2b1766;
+  width: 710px;
+  height: 150px;
+  overflow: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0px 80px;
+  margin: -10px 20px 20px 20px;
+  padding: 20px 20px 20px 40px;
+  font-size: 10px;
 }
 .artifact {
   margin: 60px 0px -40px 20px;
@@ -142,6 +144,21 @@
   width: 100%;
   border: solid;
   border-image-slice: 1;
-  border-width: 2px;
-  border-image-source: linear-gradient(to right, #231942, #2a1e6e, #231942);
+  border-width: 1px;
+  color: #2a1e6e;
+}
+
+.like-button {
+  font-size: 24px;
+}
+
+.like-button:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.buildpage-likes-text {
+  font-size: 15px;
+  margin-right: 10px;
+  margin-top: -10px;
 }

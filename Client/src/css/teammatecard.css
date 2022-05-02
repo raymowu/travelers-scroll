@@ -44,33 +44,60 @@ body {
 }
 
 .team-user {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
   border: 0px solid;
   border-radius: 10px;
   background-color: #2b1766;
   width: 710px;
   height: 412px;
-  overflow: auto;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
   margin-top: -118px;
   margin-bottom: 75px;
-  gap: 0px 25px;
+  overflow: auto;
+  gap: 13px 25px;
 }
 
 .team-menu {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
   border: 0px solid;
   border-radius: 10px;
   background-color: #2b1766;
   width: 710px;
   height: 412px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
   margin-top: -118px;
-  margin-bottom: 45px;
+  margin-bottom: 75px;
   overflow: auto;
-  gap: 4px;
+  gap: 13px 25px;
+}
+
+.team-search-bar {
+  margin-left: auto;
+  margin-top: 25px;
+  margin-bottom: 0px;
+  width: 100%;
+  padding: 10px 5px 10px 15px;
+  color: rgb(204, 204, 204);
+  border: 1px solid rgb(192, 182, 182);
+  background: transparent;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.team img {
+  display: block;
+  width: 106px;
+  height: 106px;
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: #534981;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px,
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  margin-top: -30px;
 }
 
 @media only screen and (max-width: 1701px) {
@@ -86,7 +113,7 @@ body {
     flex-wrap: wrap;
     margin-top: -118px;
     margin-bottom: 155px;
-    gap: 0px 25px;
+    gap: 15px 25px;
   }
 
   .team-menu {
@@ -101,7 +128,7 @@ body {
     margin-top: -118px;
     margin-bottom: 45px;
     overflow: auto;
-    gap: 4px;
+    gap: 13px 20px;
   }
 }
 .team img:hover {
@@ -115,18 +142,6 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
-.team img {
-  display: block;
-  width: 106px;
-  height: 106px;
-  border: 0px solid;
-  border-radius: 10px;
-  background-color: #534981;
-  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px,
-    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-  margin-top: -15px;
-}
-
 .menu-tag {
   position: absolute;
   transform: translate(0px, -50px);
@@ -138,4 +153,17 @@ body {
 .team h3 {
   text-align: center;
   inline-size: 100px;
+}
+
+.teammate-search-bar {
+  margin-left: auto;
+  margin-top: 25px;
+  margin-bottom: -40px;
+  width: 100%;
+  padding: 10px 5px 10px 15px;
+  color: rgb(204, 204, 204);
+  border: 1px solid rgb(192, 182, 182);
+  background: transparent;
+  border-radius: 5px;
+  font-size: 18px;
 }

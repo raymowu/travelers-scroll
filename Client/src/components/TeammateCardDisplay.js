@@ -1,11 +1,11 @@
-import "../css/teammatecard.css";
+import "../css/teammatecarddisplay.css";
 import initializeName from "./InitializeName";
 const CHARACTER_IMG_API = "https://api.genshin.dev/characters/";
 
 const TeammateCardDisplay = ({ teammate }) => {
   return (
     <>
-      <div className="team">
+      <div className="team-display">
         <img src={CHARACTER_IMG_API + teammate + "/icon"} alt={teammate} />
 
         <h3>{initializeName(teammate.toString())}</h3>
