@@ -71,7 +71,7 @@
 .weapon-container {
   border: 0px solid;
   border-radius: 10px;
-  background-color: #28175a;
+  background-color: #2a1d52;
   width: 710px;
   height: 150px;
   overflow: auto;
@@ -88,7 +88,7 @@
 .artifact-container {
   border: 0px solid;
   border-radius: 10px;
-  background-color: #2b1766;
+  background-color: #2a1d52;
   width: 710px;
   height: 150px;
   overflow: auto;
@@ -113,7 +113,7 @@
 .team-container {
   border: 0px solid;
   border-radius: 10px;
-  background-color: #2b1766;
+  background-color: #2a1d52;
   width: 710px;
   height: 150px;
   overflow: auto;

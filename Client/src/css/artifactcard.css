@@ -46,7 +46,7 @@ body {
 .artifact-user {
   border: 0px solid;
   border-radius: 10px;
-  background-color: #2b1766;
+  background-color: #2a1d52;
   width: 710px;
   height: 412px;
   overflow: auto;
@@ -61,7 +61,7 @@ body {
 .artifact-menu {
   border: 0px solid;
   border-radius: 10px;
-  background-color: #2b1766;
+  background-color: #2a1d52;
   width: 710px;
   height: 412px;
   display: flex;
