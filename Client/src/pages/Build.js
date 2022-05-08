@@ -271,9 +271,11 @@ const Build = () => {
               Comment
             </button>
           </div>
-          {build.Comment.map((comment) => {
-            return <Comment comment={comment} />;
-          })}
+          {build.Comment.slice(0)
+            .reverse()
+            .map((comment) => {
+              return <Comment comment={comment} />;
+            })}
         </div>
       </div>
     </Layout>
