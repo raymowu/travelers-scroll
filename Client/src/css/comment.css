@@ -1,3 +1,7 @@
+.create-comment-text::-webkit-scrollbar {
+  display: none;
+}
+
 .comment-container {
   margin-right: auto;
 }
