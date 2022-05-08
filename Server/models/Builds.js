@@ -24,7 +24,8 @@ const Builds = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
       }
-    ]
+    ],
+    Date: {type: String, default: new Date().toLocaleDateString()}
 });
 
 module.exports = mongoose.model("Builds", Builds);
