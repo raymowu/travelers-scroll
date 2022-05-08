@@ -55,3 +55,42 @@
 .break {
   flex-basis: 100%;
 }
+
+@media only screen and (max-width: 1010px) {
+  .build .buildcard-artifacts-icon {
+    width: 0px;
+    height: 0px;
+  }
+  .build {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    width: 400px;
+    height: 150px;
+    color: rgb(173, 178, 211);
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: #2a1d52;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .build .buildcard-artifacts-icon {
+    width: 0px;
+    height: 0px;
+  }
+  .build .buildcard-weapon-icon {
+    width: 0px;
+    height: 0px;
+  }
+  .build {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    width: 260px;
+    height: 150px;
+    color: rgb(173, 178, 211);
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: #2a1d52;
+  }
+}

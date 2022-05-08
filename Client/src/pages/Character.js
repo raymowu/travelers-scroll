@@ -53,7 +53,12 @@ const Character = () => {
         <div className="build-container">
           {builds.length > 0 &&
             builds.map((build) => {
-              return <BuildCard key={build._id} build={build} />;
+              return (
+                <>
+                  <BuildCard key={build._id} build={build} />
+                  <div className="break"></div>
+                </>
+              );
             })}
         </div>
       </div>

@@ -18,10 +18,12 @@ const BuildCard = ({ build }) => {
             alt={build.character}
           />
           <img
+            className="buildcard-weapon-icon"
             src={WEAPON_IMG_API + deinitializeName(build.weapons[0].name) + "/icon"}
             alt={build.weapons[0].name}
           />
           <img
+            className="buildcard-artifacts-icon"
             src={
               ARTIFACT_IMG_API +
               deinitializeName(build.artifacts[0].name) +
