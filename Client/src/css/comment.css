@@ -3,21 +3,17 @@
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
-
-  overflow: hidden;
-
   color: rgb(255, 255, 255);
   border: 0px solid;
   border-radius: 10px;
   margin-bottom: -25px;
 }
 .comment-username {
-  flex: 0 0 100%;
   font-size: 16px;
 }
 
 .comment-text {
-  margin: -45px 0px 0px 20px;
+  margin: -30px 0px 0px 20px;
   font-weight: 300;
   font-size: 14px;
 }
