@@ -155,7 +155,6 @@ const Build = () => {
     window.location.reload(false);
   };
 
-  console.log(build.LikedUsers);
   return (
     <Layout>
       <CharacterBuildHeader
@@ -177,11 +176,11 @@ const Build = () => {
         </h4>
 
         <div className="divider"></div>
-        <div className="break"></div>
+        <div id="weapon" className="break"></div>
 
         <h2>Weapons: </h2>
 
-        <div id="weapon" className="break"></div>
+        <div className="break"></div>
 
         <div className="weapon-container">
           {build.weapons.map((weapon) => {
@@ -189,20 +188,20 @@ const Build = () => {
           })}
         </div>
 
-        <div className="break"></div>
+        <div id="artifacts" className="break"></div>
 
         <h2>Artifacts: </h2>
         <div className="break"></div>
-        <div id="artifacts" className="artifact-container">
+        <div className="artifact-container">
           {build.artifacts.map((artifact) => {
             return <ArtifactCardDisplay artifact={artifact} />;
           })}
         </div>
 
-        <div className="break"></div>
+        <div id="teams" className="break"></div>
 
         <h2>Team: </h2>
-        <div id="teams" className="break"></div>
+        <div className="break"></div>
         <div className="team-container">
           {build.teams.map((teammate) => {
             return <TeammateCardDisplay teammate={teammate} />;
@@ -215,10 +214,8 @@ const Build = () => {
         <div className="comment-container">
           <div className="create-comment">
             <label>
-              <h2 className="create-comment-username">Create Comment:</h2>
-              <input
+              <textarea
                 className="create-comment-text"
-                type="text"
                 value={comment}
                 placeholder="Add a Comment"
                 onChange={(e) => setComment(e.target.value)}
