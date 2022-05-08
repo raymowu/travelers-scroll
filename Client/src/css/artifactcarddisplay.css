@@ -38,6 +38,7 @@
 }
 .artifact-display {
   transform: translateY(35px);
+  margin-bottom: 18px;
 }
 .artifact-display h3 {
   text-align: center;

@@ -9,6 +9,7 @@ import TeammateCardDisplay from "../components/TeammateCardDisplay";
 import Comment from "../components/Comment";
 import Axios from "axios";
 import LikeButton from "../components/LikeButton";
+import ReactTooltip from "react-tooltip";
 
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
@@ -184,7 +185,28 @@ const Build = () => {
 
         <div className="weapon-container">
           {build.weapons.map((weapon) => {
-            return <WeaponCardDisplay weapon={weapon} />;
+            return (
+              <div
+                data-html="true"
+                data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
+                <br /> <span style="font-size: 11px">${weapon.type}</span>
+                <br /> 
+                <br /> ${weapon.subStat}
+                <br /> ${weapon.baseAttack} Base Attack
+                <br /> &#8226;  ${weapon.passiveName}: ${weapon.passiveDesc}
+                <br /> 
+                <br />  <span style="color: #d1b132">${weapon.rarity} Star Weapon</span>
+                <br /> 
+                `}
+                data-effect="solid"
+                data-offset="{'top': -10}"
+                data-border="true"
+                data-border-color="#1e143a"
+              >
+                <ReactTooltip className="tooltip" />
+                <WeaponCardDisplay weapon={weapon} />
+              </div>
+            );
           })}
         </div>
 
@@ -194,7 +216,27 @@ const Build = () => {
         <div className="break"></div>
         <div className="artifact-container">
           {build.artifacts.map((artifact) => {
-            return <ArtifactCardDisplay artifact={artifact} />;
+            return (
+              <div
+                data-html="true"
+                data-tip={`<span style="color: #216CE4; font-size: 16px">${artifact.name}</span> 
+                <br /> 
+                <br /> 2-Piece Set: ${artifact["2-piece_bonus"]}
+                <br /> 4-Piece Set: ${artifact["4-piece_bonus"]}
+                <br /> &#8226;  ${artifact.passiveName}: ${artifact.passiveDesc}
+                <br /> 
+                <br />  <span style="color: #d1b132">Max ${artifact.max_rarity} Star Artifact</span>
+                <br /> 
+                `}
+                data-effect="solid"
+                data-offset="{'top': -10}"
+                data-border="true"
+                data-border-color="#1e143a"
+              >
+                <ReactTooltip className="tooltip" />
+                <ArtifactCardDisplay artifact={artifact} />
+              </div>
+            );
           })}
         </div>
 

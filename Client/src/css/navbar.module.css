@@ -1,54 +1,53 @@
 header {
-    height: 65px;
-    background-color: #13092c;
-    /* margin-top: -9px; */
-    /* margin-left: -10px; */
-    width: 100%;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  height: 65px;
+  background-color: #13092c;
+  /* margin-top: -9px; */
+  /* margin-left: -10px; */
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
-    margin-left: 2%;
-    justify-content: flex-start;
-
+  margin-left: 2%;
+  justify-content: flex-start;
 }
 
 .items {
-    text-align: left;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    align-content: center;
-    margin-right: 50px;
-    width: 300px;
+  text-align: left;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  margin-right: 50px;
+  width: 300px;
 }
 
-a{
-    text-decoration: none;
-    color: white;
+a {
+  text-decoration: none;
+  color: white;
 }
 
 .signup {
-    background-color: #534981;
-    padding: 10px 20px;
-    border-radius: 500px;
-    text-align: center;   
+  background-color: #534981;
+  padding: 10px 20px;
+  border-radius: 500px;
+  text-align: center;
 }
 
-.signup:hover{
-    background-color: white;
-    transition: 0.5s ease-in-out;
-    color: black;
+.signup:hover {
+  background-color: white;
+  transition: 0.5s ease-in-out;
+  color: black;
 }
 
-.link:hover{
-    border-bottom: white solid 2px;
+.link:hover {
+  border-bottom: white solid 2px;
 }
 
-.active{
-    border-bottom: white solid 2px;
+.active {
+  border-bottom: white solid 2px;
 }

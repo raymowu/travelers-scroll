@@ -3,7 +3,7 @@ import "../css/weaponcarddisplay.css";
 import deinitializeName from "./DeinitializeName";
 const WEAPON_API = "https://api.genshin.dev/weapons/";
 
-const WeaponCard = ({ weapon }) => {
+const WeaponCardDisplay = ({ weapon }) => {
   return (
     <>
       <div className="weapon-display">
@@ -18,4 +18,4 @@ const WeaponCard = ({ weapon }) => {
   );
 };
 
-export default WeaponCard;
+export default WeaponCardDisplay;

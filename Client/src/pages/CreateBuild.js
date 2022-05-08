@@ -8,6 +8,7 @@ import ArtifactCard from "../components/ArtifactCard";
 import TeammateCard from "../components/TeammateCard";
 import CharacterHeader from "../components/CharacterHeader";
 import Axios from "axios";
+import ReactTooltip from "react-tooltip";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 const WEAPON_API = "https://api.genshin.dev/weapons/";
 const ARTIFACT_API = "https://api.genshin.dev/artifacts/";
@@ -187,7 +188,26 @@ const CreateBuild = () => {
           <div className="break"></div>
           {buildWeapon.map((weapon) => {
             return (
-              <WeaponCard weapon={weapon} weaponHandleOnClick={weaponHandleOnClick} />
+              <div
+                data-html="true"
+                data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
+                <br /> <span style="font-size: 11px">${weapon.type}</span>
+                <br /> 
+                <br /> ${weapon.subStat}
+                <br /> ${weapon.baseAttack} Base Attack
+                <br /> &#8226;  ${weapon.passiveName}: ${weapon.passiveDesc}
+                <br /> 
+                <br />  <span style="color: #d1b132">${weapon.rarity} Star Weapon</span>
+                <br /> 
+                `}
+                data-effect="solid"
+                data-offset="{'top': 20, 'right': 10}"
+                data-border="true"
+                data-border-color="#1e143a"
+              >
+                <ReactTooltip className="tooltip" />
+                <WeaponCard weapon={weapon} weaponHandleOnClick={weaponHandleOnClick} />
+              </div>
             );
           })}
         </div>
@@ -219,7 +239,29 @@ const CreateBuild = () => {
               })
               .map((weapon) => {
                 return (
-                  <WeaponCard weapon={weapon} weaponHandleOnClick={weaponHandleOnClick} />
+                  <div
+                    data-html="true"
+                    data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
+                    <br /> <span style="font-size: 11px">${weapon.type}</span>
+                    <br /> 
+                    <br /> ${weapon.subStat}
+                    <br /> ${weapon.baseAttack} Base Attack
+                    <br /> &#8226;  ${weapon.passiveName}: ${weapon.passiveDesc}
+                    <br /> 
+                    <br />  <span style="color: #d1b132">${weapon.rarity} Star Weapon</span>
+                    <br /> 
+                    `}
+                    data-effect="solid"
+                    data-offset="{'top': 20, 'right': 10}"
+                    data-border="true"
+                    data-border-color="#1e143a"
+                  >
+                    <ReactTooltip className="tooltip" />
+                    <WeaponCard
+                      weapon={weapon}
+                      weaponHandleOnClick={weaponHandleOnClick}
+                    />
+                  </div>
                 );
               })}
         </div>
@@ -234,10 +276,28 @@ const CreateBuild = () => {
           <div className="break"></div>
           {buildArtifact.map((artifact) => {
             return (
-              <ArtifactCard
-                artifact={artifact}
-                artifactHandleOnClick={artifactHandleOnClick}
-              />
+              <div
+                data-html="true"
+                data-tip={`<span style="color: #216CE4; font-size: 16px">${artifact.name}</span> 
+                <br /> 
+                <br /> 2-Piece Set: ${artifact["2-piece_bonus"]}
+                <br /> 4-Piece Set: ${artifact["4-piece_bonus"]}
+                <br /> &#8226;  ${artifact.passiveName}: ${artifact.passiveDesc}
+                <br /> 
+                <br />  <span style="color: #d1b132">Max ${artifact.max_rarity} Star Artifact</span>
+                <br /> 
+                `}
+                data-effect="solid"
+                data-offset="{'top': 44, 'right': 10}"
+                data-border="true"
+                data-border-color="#1e143a"
+              >
+                <ReactTooltip className="tooltip" />
+                <ArtifactCard
+                  artifact={artifact}
+                  artifactHandleOnClick={artifactHandleOnClick}
+                />
+              </div>
             );
           })}
         </div>
@@ -268,10 +328,28 @@ const CreateBuild = () => {
               })
               .map((artifact) => {
                 return (
-                  <ArtifactCard
-                    artifact={artifact}
-                    artifactHandleOnClick={artifactHandleOnClick}
-                  />
+                  <div
+                    data-html="true"
+                    data-tip={`<span style="color: #216CE4; font-size: 16px">${artifact.name}</span> 
+                    <br /> 
+                    <br /> 2-Piece Set: ${artifact["2-piece_bonus"]}
+                    <br /> 4-Piece Set: ${artifact["4-piece_bonus"]}
+                    <br /> &#8226;  ${artifact.passiveName}: ${artifact.passiveDesc}
+                    <br /> 
+                    <br />  <span style="color: #d1b132">Max ${artifact.max_rarity} Star Artifact</span>
+                    <br /> 
+                    `}
+                    data-effect="solid"
+                    data-offset="{'top': 44, 'right': 10}"
+                    data-border="true"
+                    data-border-color="#1e143a"
+                  >
+                    <ReactTooltip className="tooltip" />
+                    <ArtifactCard
+                      artifact={artifact}
+                      artifactHandleOnClick={artifactHandleOnClick}
+                    />
+                  </div>
                 );
               })}
         </div>
