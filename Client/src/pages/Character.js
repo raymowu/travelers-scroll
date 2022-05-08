@@ -52,14 +52,17 @@ const Character = () => {
         </button>
         <div className="build-container">
           {builds.length > 0 &&
-            builds.map((build) => {
-              return (
-                <>
-                  <BuildCard key={build._id} build={build} />
-                  <div className="break"></div>
-                </>
-              );
-            })}
+            builds
+              .slice(0)
+              .reverse()
+              .map((build) => {
+                return (
+                  <>
+                    <BuildCard key={build._id} build={build} />
+                    <div className="break"></div>
+                  </>
+                );
+              })}
         </div>
       </div>
     </Layout>
