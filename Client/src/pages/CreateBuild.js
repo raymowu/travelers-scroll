@@ -107,6 +107,7 @@ const CreateBuild = () => {
 
       resetHandler();
       navigate(`/characters/${characterName}`);
+      window.location.reload(false);
     }
   };
 
@@ -182,7 +183,7 @@ const CreateBuild = () => {
         <div className="break"></div>
 
         <div className="weapon-user">
-          <h1 className="menu-tag">{character.name}'s Weapons: </h1>
+          <h1 className="menu-tag">{character.name}'s Weapons </h1>
           <div className="break"></div>
           {buildWeapon.map((weapon) => {
             return (
@@ -192,7 +193,7 @@ const CreateBuild = () => {
         </div>
 
         <div className="weapon-menu">
-          <h1 className="menu-tag">Select Weapons To Add To Build: </h1>
+          <h1 className="menu-tag">Select Weapons To Add To Build </h1>
           <form onSubmit={handleOnSubmit}>
             <input
               className="weapon-search-bar"
@@ -221,14 +222,6 @@ const CreateBuild = () => {
                   <WeaponCard weapon={weapon} weaponHandleOnClick={weaponHandleOnClick} />
                 );
               })}
-          {/* <label>
-              <input
-                type="text"
-                value={buildWeapon}
-                placeholder="Enter Weapon"
-                onChange={(e) => setBuildWeapon(e.target.value)}
-              />
-            </label> */}
         </div>
 
         <a id="artifacts"></a>
@@ -237,7 +230,7 @@ const CreateBuild = () => {
         <div className="break"></div>
 
         <div className="artifact-user">
-          <h1 className="menu-tag">{character.name}'s Artifacts: </h1>
+          <h1 className="menu-tag">{character.name}'s Artifacts </h1>
           <div className="break"></div>
           {buildArtifact.map((artifact) => {
             return (
@@ -250,7 +243,7 @@ const CreateBuild = () => {
         </div>
 
         <div className="artifact-menu">
-          <h1 className="menu-tag">Select Artifacts To Add To Build: </h1>
+          <h1 className="menu-tag">Select Artifacts To Add To Build </h1>
           <form onSubmit={handleOnSubmit}>
             <input
               className="artifact-search-bar"
@@ -281,14 +274,6 @@ const CreateBuild = () => {
                   />
                 );
               })}
-          {/* <label>
-              <input
-                type="text"
-                value={buildWeapon}
-                placeholder="Enter Weapon"
-                onChange={(e) => setBuildWeapon(e.target.value)}
-              />
-            </label> */}
         </div>
 
         <a id="teams"></a>
@@ -298,7 +283,7 @@ const CreateBuild = () => {
         <div className="break"></div>
 
         <div className="team-user">
-          <h1 className="menu-tag">{character.name}'s Team: </h1>
+          <h1 className="menu-tag">{character.name}'s Team </h1>
           <div className="break"></div>
           {buildTeam.map((teammate) => {
             return (
@@ -308,9 +293,7 @@ const CreateBuild = () => {
         </div>
 
         <div className="team-menu">
-          <h1 className="menu-tag">
-            Select Characters To Add To Team for {character.name}:{" "}
-          </h1>
+          <h1 className="menu-tag">Select Characters To Add To Team</h1>
           <form onSubmit={handleOnSubmit}>
             <input
               className="teammate-search-bar"
@@ -343,14 +326,6 @@ const CreateBuild = () => {
                   />
                 );
               })}
-          {/* <label>
-              <input
-                type="text"
-                value={buildWeapon}
-                placeholder="Enter Weapon"
-                onChange={(e) => setBuildWeapon(e.target.value)}
-              />
-            </label> */}
         </div>
 
         <div className="divider"></div>

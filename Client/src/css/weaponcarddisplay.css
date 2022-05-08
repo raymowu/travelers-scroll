@@ -1,5 +1,22 @@
+.weapon-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.weapon-container::-webkit-scrollbar-track {
+  background: #3b3e86;
+}
+
+.weapon-container::-webkit-scrollbar-thumb {
+  background: rgb(167, 179, 255);
+}
+
+.weapon-container::-webkit-scrollbar-thumb:hover {
+  background: rgb(156, 138, 255);
+}
+
 .weapon-display {
   transform: translateY(40px);
+  margin-bottom: 20px;
 }
 
 .weapon-display img:hover {
@@ -28,17 +45,4 @@
   text-align: center;
   inline-size: 100px;
   margin-bottom: 20px;
-}
-
-.weapon-search-bar {
-  margin-left: auto;
-  margin-top: 25px;
-  margin-bottom: -20px;
-  width: 100%;
-  padding: 10px 5px 10px 15px;
-  color: rgb(204, 204, 204);
-  border: 1px solid rgb(192, 182, 182);
-  background: transparent;
-  border-radius: 5px;
-  font-size: 18px;
 }

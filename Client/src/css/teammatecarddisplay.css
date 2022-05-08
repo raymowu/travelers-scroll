@@ -1,5 +1,22 @@
+.team-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.team-container::-webkit-scrollbar-track {
+  background: #3b3e86;
+}
+
+.team-container::-webkit-scrollbar-thumb {
+  background: rgb(167, 179, 255);
+}
+
+.team-container::-webkit-scrollbar-thumb:hover {
+  background: rgb(156, 138, 255);
+}
+
 .team-display {
   transform: translateY(40px);
+  margin-bottom: 32px;
 }
 
 .team-display img:hover {
@@ -27,18 +44,4 @@
 .team-display h3 {
   text-align: center;
   inline-size: 100px;
-  margin-bottom: 20px;
-}
-
-.team-search-bar {
-  margin-left: auto;
-  margin-top: 25px;
-  margin-bottom: 15px;
-  width: 100%;
-  padding: 10px 5px 10px 15px;
-  color: rgb(204, 204, 204);
-  border: 1px solid rgb(192, 182, 182);
-  background: transparent;
-  border-radius: 5px;
-  font-size: 18px;
 }
