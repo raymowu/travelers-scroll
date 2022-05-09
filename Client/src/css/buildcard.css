@@ -2,13 +2,14 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  width: 650px;
-  height: 150px;
-  color: rgb(173, 178, 211);
+  width: 700px;
+  height: 130px;
+  color: rgb(255, 255, 255);
   border: 0px solid;
   border-radius: 10px;
   background-color: #2a1d52;
   margin-bottom: -70px;
+  padding: 4px;
 }
 
 .buildcard-info {
@@ -25,17 +26,25 @@
   background-color: #534981;
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px,
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-  margin: 30px 15px;
+  margin: 20px 15px 20px 34px;
 }
 
 .build h2 {
-  margin: 30px 20px;
-  font-size: 17px;
+  margin: 30px 20px -2px 12px;
+  font-size: 22px;
 }
 
 .build h4 {
-  margin-left: 20px;
+  margin: 0px 20px 4px 12px;
+  font-weight: normal;
+  font-size: 12px;
+  color: rgb(218, 213, 247);
 }
+
+.buildcard-character-icon {
+  margin-left: 30px;
+}
+
 .buildcard-username {
   font-size: 13px;
   margin-top: -25px;
@@ -45,13 +54,17 @@
   font-size: 13px;
   margin-top: -10px;
 }
-.build h4 {
-  font-weight: normal;
-}
-.build:hover {
+
+.buildcard-date {
+  font-size: 6px;
   color: rgb(218, 213, 247);
+  margin-left: auto;
+  margin-top: -14px;
+}
+
+.build:hover {
   background-color: #2d1f55;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .break {
@@ -69,7 +82,7 @@
     flex-wrap: nowrap;
     width: 400px;
     height: 150px;
-    color: rgb(173, 178, 211);
+    color: rgb(255, 255, 255);
     border: 0px solid;
     border-radius: 10px;
     background-color: #2a1d52;
@@ -90,9 +103,12 @@
     flex-wrap: nowrap;
     width: 260px;
     height: 150px;
-    color: rgb(173, 178, 211);
+    color: rgb(255, 255, 255);
     border: 0px solid;
     border-radius: 10px;
     background-color: #2a1d52;
+  }
+  .buildcard-info {
+    margin-top: -25px;
   }
 }

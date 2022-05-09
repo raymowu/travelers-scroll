@@ -175,8 +175,6 @@ const Build = () => {
             handleOnLike={handleOnLike}
           />
         </h4>
-
-        <div className="divider"></div>
         <div id="weapon" className="break"></div>
 
         <h2>Weapons: </h2>
@@ -250,7 +248,6 @@ const Build = () => {
           })}
         </div>
         <div className="break"></div>
-        <div className="divider"></div>
         <div className="break"></div>
 
         <div className="comment-container">
