@@ -48,7 +48,7 @@ const CharacterBuildHeader = ({ character, characterName, build }) => {
             <a href="#artifacts">Artifacts</a>
           </li>
           <li>
-            <a href="#teams">Teams</a>
+            <a href="#teams">Team</a>
           </li>
           <li>
             <a href="#showcase">Showcase</a>

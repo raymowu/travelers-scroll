@@ -48,7 +48,7 @@ const CharacterInfoHeader = ({ character, characterName }) => {
             <a href="#artifacts">Passives</a>
           </li>
           <li>
-            <a href="#teams">Teams</a>
+            <a href="#constellations">Constellations</a>
           </li>
           <li>
             <a href="#showcase">Showcase</a>

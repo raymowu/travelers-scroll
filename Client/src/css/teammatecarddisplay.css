@@ -17,6 +17,7 @@
 .team-display {
   transform: translateY(40px);
   margin-bottom: 44px;
+  color: rgb(173, 178, 211);
 }
 
 .team-display img:hover {
