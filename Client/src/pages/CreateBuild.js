@@ -334,8 +334,7 @@ const CreateBuild = () => {
                     <br /> 
                     <br /> 2-Piece Set: ${artifact["2-piece_bonus"]}
                     <br /> 4-Piece Set: ${artifact["4-piece_bonus"]}
-                    <br /> &#8226;  ${artifact.passiveName}: ${artifact.passiveDesc}
-                    <br /> 
+                    <br />
                     <br />  <span style="color: #d1b132">Max ${artifact.max_rarity} Star Artifact</span>
                     <br /> 
                     `}
