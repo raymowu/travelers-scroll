@@ -179,7 +179,6 @@ const CreateBuild = () => {
         </div>
 
         <a id="weapon"></a>
-        <div className="divider"></div>
         <div className="break"></div>
         <div className="break"></div>
 
@@ -267,7 +266,7 @@ const CreateBuild = () => {
         </div>
 
         <a id="artifacts"></a>
-        <div className="divider"></div>
+
         <div className="break"></div>
         <div className="break"></div>
 
@@ -354,7 +353,7 @@ const CreateBuild = () => {
         </div>
 
         <a id="teams"></a>
-        <div className="divider"></div>
+
         <div className="break"></div>
         <div className="break"></div>
         <div className="break"></div>
@@ -405,7 +404,6 @@ const CreateBuild = () => {
               })}
         </div>
 
-        <div className="divider"></div>
         <div className="break"></div>
         <div className="break"></div>
 
