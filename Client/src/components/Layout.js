@@ -3,22 +3,25 @@ import Header from "./Navbar/Header";
 import Axios from "axios"
 import { useEffect, useState } from "react";
 
-const Layout = ({ children }) => {
-
-    const [user, setUser] = useState({})
-
+const Layout = ({ children, Auth=false }) => {
+    const [user, setUser] = useState({});
     useEffect(() =>{
         Axios.get('http://localhost:5000/current-user', {withCredentials: true}).then((response) => {
-          console.log(response.data)
-          // console.log(response.data.blogs)
           if (response.data.status === "ok"){
-              setUser(response.data.user)
+              setUser(response.data.user);
+          }
+          if (response.data.status === "err" && Auth){
+            alert(response.data.message);
+            window.location.href = "/login"
           }
         });
       }, []);
+
+      
     return (
         <>
-            <Header user={user} />
+            <Header user={user}/>
+            {/* <Navbar /> */}
             <div>{children}</div>
         </>
     );
