@@ -16,8 +16,6 @@ function LogIn() {
       withCredentials: true,
       url: "http://localhost:5000/login",
     }).then((res) => {
-      // const data = await response.json();
-
       if (res.data.status === "ok") {
         alert("Login was successful");
         window.location.href = "/";
