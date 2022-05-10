@@ -42,9 +42,10 @@ router.post("/login", async (req, res) => {
 		const valid = await bcrypt.compare(password, user.password);
 		if(valid){
 			req.session.user = {id: user._id, username: user.username};
-			res.send({status: "ok"});
+			return res.send({status: "ok"});
 		}
 	}
+	return res.send({status: "err", msg: "Username or Password was incorrect"});
 })
 
 router.get("/current-user", Authenticate, (req, res) => {

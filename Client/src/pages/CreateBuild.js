@@ -158,7 +158,7 @@ const CreateBuild = () => {
 
   return (
     <div className="create-build-page">
-      <Layout />
+      <Layout Auth={true} />
 
       <CharacterHeader character={character} characterName={characterName} />
 
