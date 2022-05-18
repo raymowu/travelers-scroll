@@ -1,5 +1,6 @@
 // import { useState } from "react"
 
+import { Axios } from "axios"
 import classes from "../../css/navbar.module.css"
 
 
@@ -15,6 +16,16 @@ function Header({user}){
     }
     else{
         console.log("there is a user logged in")
+    }
+    const Logout = () => {
+        Axios.get('http://localhost:5000/logout', {withCredentials: true}).then((res) => {
+            if(res.data.status === "ok"){
+                alert("Successfully logged out");
+            }
+            else{
+                alert("something went wrong");
+            }
+        });
     }
 
     return(
