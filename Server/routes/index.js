@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require("bcryptjs")
 const User = require("../models/user");
 
+const nodemailer = require("nodemailer");
+
 const Authenticate = (req, res, next) => {
 	if(!req.session.user){
 	  res.send({status: "err", message: "Login Required"});
@@ -12,9 +14,27 @@ const Authenticate = (req, res, next) => {
 	}
 }
 
+const transporter = nodemailer.createTransport({
+	service: 'Gmail',
+	auth: {
+	  user: "karthikapps70@gmail.com",
+	  pass: "AppPasswords",
+	},
+});
+
 router.get("/", (req, res) => {
     res.send({status: "ok"})
 })
+
+const SendEmail = (id, email) => {
+	const url = `http://localhost:3000/confirmation/${id}`;
+
+	transporter.sendMail({
+	to: email,
+	subject: 'Confirm Email',
+	html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+	});
+}
 
 router.post("/register", async (req, res) => {
 	const { username, password, email } = req.body;
@@ -30,6 +50,7 @@ router.post("/register", async (req, res) => {
 			});
 			await newUser.save()
 			req.session.user = req.session.user = {id: newUser._id, username: newUser.username};
+			SendEmail(newUser._id, newUser.email);
 			res.send({status: "ok"})
 		}
 	})
