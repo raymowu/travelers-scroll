@@ -20,9 +20,8 @@ const Authenticate = (req, res, next) => {
 // 	return ret;
 // }
 
-function returndate(json){
-	let { date } = JSON.parse(json);
-	let a = console.log(a);
+function returndate(date){
+	let a = date.indexOf("/");
 	return date.substr(a + 1, 2);
 }
 
@@ -49,9 +48,6 @@ const SendEmail = (id, email) => {
 	}, (error, result) =>{
 		if(error){
 			return console.log(error);
-		}
-		else{
-			return console.log(result)
 		}
 	});
 }
@@ -123,7 +119,13 @@ router.get("/confirmation/:id", async (req, res) => {
 router.get("/resendConfirmation/:id", async (req, res) => {
 	let user = await User.findById(req.params.id);
 	if(user){
-		ReSendEmail(user._id, user.email)
+		let date = parseInt(returndate(user.verification.date));
+		let currentDate = new Date().toLocaleDateString();
+		let cur = parseInt(returndate(currentDate));
+		if(date == cur || date + 1 == cur){
+			ReSendEmail(user._id, user.email);
+		}
+		
 	}
 	else{
 		return res.send({status: "err", msg: "couldnt find user"});
