@@ -14,6 +14,18 @@ const Authenticate = (req, res, next) => {
 	}
 }
 
+// function createJson(id){
+// 	let date = new Date().toLocaleDateString();
+// 	let ret = JSON.stringify({id: id, date: date})
+// 	return ret;
+// }
+
+function returndate(json){
+	let { date } = JSON.parse(json);
+	let a = console.log(a);
+	return date.substr(a + 1, 2);
+}
+
 const transporter = nodemailer.createTransport({
 	service: 'Gmail',
 	auth: {
@@ -27,12 +39,39 @@ router.get("/", (req, res) => {
 })
 
 const SendEmail = (id, email) => {
-	const url = `http://localhost:3000/confirmation/${id}`;
+	
+	const url = `http://localhost:5000/confirmation/${id}`;
 
 	transporter.sendMail({
 	to: email,
 	subject: 'Confirm Email',
 	html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+	}, (error, result) =>{
+		if(error){
+			return console.log(error);
+		}
+		else{
+			return console.log(result)
+		}
+	});
+}
+
+const ReSendEmail = async (id, email) => {
+
+	let user = await User.findById(id);
+	user.verification.date = new Date().toLocaleDateString();
+	await user.save();
+	
+	const url = `http://localhost:5000/confirmation/${id}`;
+
+	transporter.sendMail({
+	to: email,
+	subject: 'Confirm Email',
+	html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+	}, (error, result) =>{
+		if(error){
+			return console.log(error);
+		}
 	});
 }
 
@@ -67,7 +106,29 @@ router.post("/login", async (req, res) => {
 		}
 	}
 	return res.send({status: "err", msg: "Username or Password was incorrect"});
-})
+});
+
+router.get("/confirmation/:id", async (req, res) => {
+	let user = await User.findById(req.params.id);
+	if(user){
+		user.verification.verified = true;
+		await user.save();
+		return res.redirect("http://localhost:3000/login");
+	}
+	else{
+		return res.send("there was an error");
+	}
+});
+
+router.get("/resendConfirmation/:id", async (req, res) => {
+	let user = await User.findById(req.params.id);
+	if(user){
+		ReSendEmail(user._id, user.email)
+	}
+	else{
+		return res.send({status: "err", msg: "couldnt find user"});
+	}
+});
 
 router.get("/current-user", Authenticate, (req, res) => {
 	res.send({status: "ok", user: req.session.user});

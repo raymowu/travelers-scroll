@@ -9,7 +9,7 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 
 // MODELS
-var User = require("./models/user");
+const User = require("./models/user");
 
 // DATABASE
 mongoose.connect(
