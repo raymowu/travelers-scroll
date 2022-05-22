@@ -198,9 +198,8 @@ const Build = () => {
           })}
         </div>
 
-        <div id="artifacts" className="break"></div>
+        <div id="artifacts"></div>
 
-        <div className="break"></div>
         <div className="artifact-container">
           <span className="vert-bar">&#10072;</span> <h2>Artifacts</h2>{" "}
           <h2 className="artifact-gr">Best in-slot artifact sets for {character.name}</h2>
@@ -230,7 +229,7 @@ const Build = () => {
           })}
         </div>
 
-        <div id="teams" className="break"></div>
+        <div id="teams"></div>
 
         <div className="break"></div>
         <div className="team-container">
