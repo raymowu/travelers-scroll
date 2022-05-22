@@ -15,8 +15,8 @@
 }
 
 .weapon-display {
-  transform: translateY(40px);
-  margin-bottom: 40px;
+  margin-top: 10px;
+  margin-bottom: -10px;
 }
 
 .weapon-display img:hover {
@@ -39,10 +39,9 @@
   background-color: #534981;
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 0px,
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-  margin-top: -28px;
 }
 .weapon-display h3 {
   text-align: center;
   inline-size: 100px;
-  margin-bottom: 20px;
+  margin-top: 8px;
 }

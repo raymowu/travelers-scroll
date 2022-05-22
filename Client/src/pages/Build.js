@@ -164,24 +164,14 @@ const Build = () => {
         build={build}
       />
       <div className="buildpage-container">
-        <h1 className="buildpage-title">{build.title}</h1>
-        <div className="break"></div>
-        <h4 className="buildpage-username">by {build.Author.username}</h4>
-        <div className="break"></div>
-        <h4 className="buildpage-likes">
-          <span className="buildpage-likes-text">{build.likes}</span>
-          <LikeButton
-            liked={build.LikedUsers.includes(user)}
-            handleOnLike={handleOnLike}
-          />
-        </h4>
         <div id="weapon" className="break"></div>
-
-        <h2>Weapons: </h2>
 
         <div className="break"></div>
 
         <div className="weapon-container">
+          <span className="vert-bar">&#10072;</span> <h2>Weapons</h2>{" "}
+          <h2 className="weapon-gr">Best in-slot weapons for {character.name}</h2>
+          <div className="break-inner-menu"></div>
           {build.weapons.map((weapon) => {
             return (
               <div
@@ -210,9 +200,11 @@ const Build = () => {
 
         <div id="artifacts" className="break"></div>
 
-        <h2>Artifacts: </h2>
         <div className="break"></div>
         <div className="artifact-container">
+          <span className="vert-bar">&#10072;</span> <h2>Artifacts</h2>{" "}
+          <h2 className="artifact-gr">Best in-slot artifact sets for {character.name}</h2>
+          <div className="break-inner-menu"></div>
           {build.artifacts.map((artifact) => {
             return (
               <div
@@ -240,9 +232,11 @@ const Build = () => {
 
         <div id="teams" className="break"></div>
 
-        <h2>Team: </h2>
         <div className="break"></div>
         <div className="team-container">
+          <span className="vert-bar">&#10072;</span> <h2>Team</h2>{" "}
+          <h2 className="team-gr">Best teammates with {character.name}</h2>
+          <div className="break-inner-menu"></div>
           {build.teams.map((teammate) => {
             return <TeammateCardDisplay teammate={teammate} />;
           })}

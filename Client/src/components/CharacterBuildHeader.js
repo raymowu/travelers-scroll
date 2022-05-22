@@ -1,5 +1,6 @@
 import "../css/characterheader.css";
 import { AiFillStar } from "react-icons/ai";
+import LikeButton from "./LikeButton";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 const CharacterBuildHeader = ({ character, characterName, build }) => {
   return (
@@ -23,15 +24,16 @@ const CharacterBuildHeader = ({ character, characterName, build }) => {
             <h2>Genshin Impact</h2>
           </li>
           <li>
-            <h1>{character.name}</h1>
+            <h1>{build.title}</h1>
           </li>
           <li>
-            <h2>
+            <h2 className="author-build">
               {" "}
-              <span className={`${character.vision}`}>
-                {character.vision}
-              </span> &#x2022; {character.weapon}
+              by <span className="author-author">{build.Author.username}</span>
             </h2>
+          </li>
+          <li>
+            <h2 className="date-date">{build.Date}</h2>
           </li>
         </ul>
       </div>

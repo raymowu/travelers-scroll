@@ -53,7 +53,7 @@ body {
   flex-wrap: wrap;
   margin-top: -48px;
   margin-bottom: 80px;
-  gap: 0px 20px;
+  gap: 0px 10px;
 }
 
 .weapon-menu {
@@ -69,7 +69,7 @@ body {
   margin-bottom: 45px;
   margin-right: -20px;
   overflow: auto;
-  gap: -10px 15px;
+  gap: 0px 10px;
 }
 
 .weapon-search-bar {
@@ -87,6 +87,7 @@ body {
 
 .weapon {
   transform: translateY(-31px);
+  margin: 60px 0px -40px 0px;
 }
 
 .weapon img:hover {

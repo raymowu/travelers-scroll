@@ -97,13 +97,14 @@ body {
   margin-top: -35px;
 }
 .artifact {
-  transform: translateY(-65px);
+  transform: translateY(-20px);
+  margin-bottom: 16px;
 }
 
 .artifact-search-bar {
   margin-left: auto;
   margin-top: 25px;
-  margin-bottom: -20px;
+
   width: 100%;
   padding: 10px 5px 10px 15px;
   color: rgb(204, 204, 204);
