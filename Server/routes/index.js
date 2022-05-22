@@ -55,6 +55,7 @@ router.get("/current-user", Authenticate, (req, res) => {
 // logout rout
 router.get("/logout", (req, res) => {
 	req.session.destroy();
+	return res.send({status: "ok"});
 });
 
 router.get("/profile/:id", (req, res) => {
