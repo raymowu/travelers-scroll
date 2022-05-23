@@ -130,7 +130,9 @@
 }
 
 .like-button {
-  font-size: 24px;
+  font-size: 40px;
+  margin-left: auto;
+  transform: translateY(-150px);
 }
 
 .like-button:hover {
@@ -138,6 +140,11 @@
   cursor: pointer;
 }
 
+.like-count {
+  margin-bottom: 0px;
+  margin-left: -20px;
+  transform: translateY(-158px);
+}
 .buildpage-likes-text {
   font-size: 15px;
   margin-right: 10px;

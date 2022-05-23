@@ -163,11 +163,16 @@ const Build = () => {
         character={character}
         build={build}
       />
+
       <div className="buildpage-container">
+        <LikeButton
+          className="like-button"
+          liked={build.LikedUsers.includes(user)}
+          handleOnLike={handleOnLike}
+        />
+        <h2 className="like-count">{build.likes}</h2>
         <div id="weapon" className="break"></div>
-
         <div className="break"></div>
-
         <div className="weapon-container">
           <span className="vert-bar">&#10072;</span> <h2>Weapons</h2>{" "}
           <h2 className="weapon-gr">Best in-slot weapons for {character.name}</h2>
@@ -197,9 +202,7 @@ const Build = () => {
             );
           })}
         </div>
-
         <div id="artifacts"></div>
-
         <div className="artifact-container">
           <span className="vert-bar">&#10072;</span> <h2>Artifacts</h2>{" "}
           <h2 className="artifact-gr">Best in-slot artifact sets for {character.name}</h2>
@@ -228,9 +231,7 @@ const Build = () => {
             );
           })}
         </div>
-
         <div id="teams"></div>
-
         <div className="break"></div>
         <div className="team-container">
           <span className="vert-bar">&#10072;</span> <h2>Team</h2>{" "}
@@ -242,7 +243,6 @@ const Build = () => {
         </div>
         <div className="break"></div>
         <div className="break"></div>
-
         <div className="comment-container">
           <div className="create-comment">
             <label>
