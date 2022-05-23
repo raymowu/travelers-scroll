@@ -107,25 +107,29 @@ router.post("/login", async (req, res) => {
 router.get("/confirmation/:id", async (req, res) => {
 	let user = await User.findById(req.params.id);
 	if(user){
-		user.verification.verified = true;
-		await user.save();
-		return res.redirect("http://localhost:3000/login");
+		let date = parseInt(returndate(user.verification.date));
+		let currentDate = new Date().toLocaleDateString();
+		let cur = parseInt(returndate(currentDate));
+		if(date == cur || date + 1 == cur){
+			user.verification.verified = true;
+			await user.save();
+			return res.redirect("http://localhost:3000/login");
+		}
+		else{
+			return res.send("Confirmation link expired")
+		}
+		
 	}
 	else{
 		return res.send("there was an error");
 	}
 });
 
-router.get("/resendConfirmation/:id", async (req, res) => {
+router.post("/resendConfirmation/:id", async (req, res) => {
 	let user = await User.findById(req.params.id);
 	if(user){
-		let date = parseInt(returndate(user.verification.date));
-		let currentDate = new Date().toLocaleDateString();
-		let cur = parseInt(returndate(currentDate));
-		if(date == cur || date + 1 == cur){
-			ReSendEmail(user._id, user.email);
-		}
-		
+		ReSendEmail(user._id, user.email);
+		return res.send("email sent");
 	}
 	else{
 		return res.send({status: "err", msg: "couldnt find user"});
