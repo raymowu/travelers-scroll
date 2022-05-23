@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import "../css/profile.css";
 import ProfileHeader from "../components/ProfileHeader";
+import BuildCard from "../components/BuildCard";
 
 function Profile() {
   const { id } = useParams();
@@ -45,11 +46,26 @@ function Profile() {
     userData();
     GetUser();
   }, []);
+
+  console.log(user.likedBuilds);
+  console.log(user.username);
+  console.log(user.email);
   return (
     <Layout>
       <ProfileHeader user={user} />
       <div className="profile-container">
         <h1>profile page for {user.username}</h1>
+        {/* {user.likedBuilds
+          .slice(0)
+          .reverse()
+          .map((build) => {
+            return (
+              <>
+                <BuildCard key={build._id} build={build} />
+                <div className="break"></div>
+              </>
+            );
+          })} */}
         <div className="break"></div>
         {logged.username === user.username ? (
           <button onClick={Logout}>Log Out</button>

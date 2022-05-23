@@ -163,6 +163,32 @@ html {
 .character-navbar li a:hover {
   color: rgb(173, 178, 211);
 }
+.profile-navbar ul {
+  box-shadow: 2px 0 0 0 #080320 inset;
+  display: flex;
+  justify-content: flex-start;
+  list-style-type: none;
+  margin: -25px 0;
+  padding: 6px;
+  overflow: hidden;
+  background-color: #13092c;
+}
+
+.profile-navbar li {
+  float: left;
+}
+
+.profile-navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.profile-navbar li a:hover {
+  color: rgb(173, 178, 211);
+}
 
 .albedo {
   background-position-y: 20%;

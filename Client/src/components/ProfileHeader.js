@@ -6,7 +6,7 @@ const ProfileHeader = ({ user }) => {
   return (
     <div className="container">
       <div
-        className={`character-header ${user.name}`}
+        className={`character-header ${"hu-tao"}`}
         style={{
           backgroundImage: `url(https://api.genshin.dev/characters/hu-tao/gacha-splash)`,
         }}
@@ -16,19 +16,14 @@ const ProfileHeader = ({ user }) => {
         </div>
         <ul>
           <li>
-            <h2>Genshin Impact</h2>
+            <h2>Impactful Builds</h2>
           </li>
           <li>
             <h1>{user.username}</h1>
           </li>
+
           <li>
-            <h2 className="author-build">
-              {" "}
-              by <span className="author-author">{user.username}</span>
-            </h2>
-          </li>
-          <li>
-            <h2 className="profile-date">{user.username}</h2>
+            <h2 className="profile-buildcount">{user.likedBuilds}</h2>
           </li>
         </ul>
       </div>
