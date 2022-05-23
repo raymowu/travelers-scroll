@@ -79,13 +79,17 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
   if (build) {
     if (liked) {
       build.LikedUsers.push(user._id);
+      user.likedBuilds.push(build._id);
       build.save();
+      user.save();
       await Builds.findByIdAndUpdate(build._id, { likes: build.likes + 1 });
       return res.send({ status: "ok" });
     } else {
       // if(user.likedBuilds.includes(build._id)){
       build.LikedUsers.splice(build.LikedUsers.indexOf(user._id), 1);
+      user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
       build.save();
+      user.save();
       let likes = build.likes - 1;
       if (likes < 0) {
         likes = 0;

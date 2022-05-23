@@ -8,7 +8,11 @@ const user = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Builds"
     }
-  ]
+  ],
+  verification: {
+    verified: {type: Boolean, default: false},
+    date: {type: String, default: new Date().toLocaleDateString()}
+  }
 });
 
 module.exports = mongoose.model("User", user);
