@@ -15,3 +15,18 @@
   padding: 40px;
   gap: 25px;
 }
+
+.profile-navbar ul {
+  box-shadow: 2px 0 0 0 #080320 inset;
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  margin: -25px 0;
+  padding: 6px;
+  overflow: hidden;
+  background-color: #13092c;
+}
+
+.profile-navbar li {
+  float: left;
+}
