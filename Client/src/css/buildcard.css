@@ -87,6 +87,11 @@
     border-radius: 10px;
     background-color: #2a1d52;
   }
+  .build h2 {
+    margin: 30px 20px -2px 12px;
+    font-size: 22px;
+    line-height: 20px;
+  }
 }
 @media only screen and (max-width: 650px) {
   .build .buildcard-artifacts-icon {

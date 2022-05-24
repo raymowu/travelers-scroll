@@ -73,6 +73,7 @@ function Profile() {
                 <>
                   <BuildCard key={build._id} build={build} />
                   <div className="break"></div>
+                  <div className="break"></div>
                 </>
               );
             })}

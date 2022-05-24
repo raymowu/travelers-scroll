@@ -272,3 +272,17 @@
     font-size: 10px;
   }
 }
+
+@media only screen and (max-width: 850px) {
+  .weapon-container .weapon-gr {
+    display: none;
+  }
+
+  .artifact-container .artifact-gr {
+    display: none;
+  }
+
+  .team-container .team-gr {
+    display: none;
+  }
+}
