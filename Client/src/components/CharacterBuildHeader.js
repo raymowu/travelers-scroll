@@ -38,22 +38,16 @@ const CharacterBuildHeader = ({ character, characterName, build }) => {
         </ul>
       </div>
 
-      <div className="character-navbar">
+      <div className="build-navbar">
         <ul>
           <li>
-            <a href="#description">Description</a>
+            <a href="#description">Build Overview</a>
           </li>
           <li>
-            <a href="#weapon">Weapon</a>
+            <a href="#weapon">Description</a>
           </li>
           <li>
-            <a href="#artifacts">Artifacts</a>
-          </li>
-          <li>
-            <a href="#teams">Team</a>
-          </li>
-          <li>
-            <a href="#showcase">Showcase</a>
+            <a href="#artifacts">Comments</a>
           </li>
         </ul>
       </div>

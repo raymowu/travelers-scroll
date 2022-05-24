@@ -184,11 +184,37 @@ html {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 40px;
   text-decoration: none;
 }
 
 .profile-navbar li a:hover {
+  color: rgb(173, 178, 211);
+}
+.build-navbar ul {
+  box-shadow: 2px 0 0 0 #080320 inset;
+  display: flex;
+  justify-content: flex-start;
+  list-style-type: none;
+  margin: -25px 0px;
+  padding: 6px;
+  overflow: hidden;
+  background-color: #13092c;
+}
+
+.build-navbar li {
+  float: left;
+}
+
+.build-navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 40px;
+  text-decoration: none;
+}
+
+.build-navbar li a:hover {
   color: rgb(173, 178, 211);
 }
 
