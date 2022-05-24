@@ -97,7 +97,7 @@ function Profile() {
           {logged.username === user.username ? (
             <button onClick={Logout}>Log Out</button>
           ) : (
-            <h1>doesnt work</h1>
+            <></>
           )}
         </div>
       </div>
