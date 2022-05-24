@@ -40,7 +40,7 @@
   border: 0px solid;
   border-radius: 10px;
   background-color: #2a1d52;
-  width: 650px;
+  width: 40%;
   height: 170px;
   overflow: auto;
   display: flex;
@@ -68,7 +68,7 @@
   border: 0px solid;
   border-radius: 10px;
   background-color: #2a1d52;
-  width: 650px;
+  width: 40%;
   height: 170px;
   overflow: auto;
   display: flex;
@@ -96,7 +96,7 @@
   border: 0px solid;
   border-radius: 10px;
   background-color: #2a1d52;
-  width: 650px;
+  width: 40%;
   height: 170px;
   overflow: auto;
   display: flex;
@@ -142,8 +142,8 @@
 
 .like-count {
   margin-bottom: 0px;
-  margin-left: -20px;
-  transform: translateY(-158px);
+  margin-left: 0px;
+  transform: translate(-10px, -158px);
 }
 .buildpage-likes-text {
   font-size: 15px;
@@ -166,4 +166,109 @@
 .break-inner-menu {
   flex-basis: 100%;
   height: 0px;
+}
+
+@media only screen and (max-width: 1560px) {
+  .weapon-container {
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: #2a1d52;
+    width: 35%;
+    height: 170px;
+    overflow: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0px 36px;
+    margin: -10px 20px 40px 50px;
+    padding: 20px 20px 20px 40px;
+    font-size: 10px;
+  }
+
+  .artifact-container {
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: #2a1d52;
+    width: 35%;
+    height: 170px;
+    overflow: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0px 36px;
+    margin: -10px 20px 0px 50px;
+    padding: 20px 20px 20px 40px;
+    font-size: 10px;
+  }
+
+  .team-container {
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: #2a1d52;
+    width: 35%;
+    height: 170px;
+    overflow: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0px 36px;
+    margin: -10px 20px 0px 50px;
+    padding: 20px 20px 20px 40px;
+    font-size: 10px;
+  }
+}
+@media only screen and (max-width: 1130px) {
+  .weapon-container {
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: #2a1d52;
+    width: 70%;
+    height: 170px;
+    overflow: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0px 36px;
+    margin: -10px 20px 40px 50px;
+    padding: 20px 20px 20px 40px;
+    font-size: 10px;
+  }
+
+  .artifact-container {
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: #2a1d52;
+    width: 70%;
+    height: 170px;
+    overflow: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0px 36px;
+    margin: -10px 20px 0px 50px;
+    padding: 20px 20px 20px 40px;
+    font-size: 10px;
+  }
+
+  .team-container {
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: #2a1d52;
+    width: 70%;
+    height: 170px;
+    overflow: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0px 36px;
+    margin: -10px 20px 0px 50px;
+    padding: 20px 20px 20px 40px;
+    font-size: 10px;
+  }
 }
