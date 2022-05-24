@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs")
 const User = require("../models/user");
 
 const nodemailer = require("nodemailer");
+const Builds = require("../models/Builds");
 
 const Authenticate = (req, res, next) => {
 	if(!req.session.user){
@@ -146,21 +147,30 @@ router.get("/logout", (req, res) => {
 	return res.send({status: "ok"});
 });
 
-router.get("/profile/:id", (req, res) => {
+router.get("/profile/:id", async (req, res) => {
 	User.findOne({username: req.params.id}, async (err, user) => {
 		if(err){
-			res.send({status: "err"})
+			res.send({status: "err", message: "There was an issue with"})
 		}
-		if(req.session.user){
-			if(user._id == req.session.user.id){
-				return res.send({status: "ok", user: {username: user.username}, modifier: true});
-			}
-		}
+		// if(req.session.user){
+		// 	if(user._id == req.session.user.id){
+		// 		return res.send({status: "ok", user: {username: user.username}, modifier: true});
+		// 	}
+		// }
 		if(!user){
 			return res.send({status: "err", message: "Unable to find user"})
 		}
 		else{
-			return res.send({status: "ok", user: {username: user.username}, modifier: false});
+			user = await user.populate("likedBuilds");
+			let createdBuilds = await Builds.find({Author: {id: user._id, username: user.username}});
+			if(!createdBuilds){
+				return res.send({status: "err", message: "Something went wrong"})
+			}
+			else{
+				let retuser = {username: user.username, likedBuilds: user.likedBuilds, createdBuilds: createdBuilds};
+				return res.send({status: "ok", user: retuser});
+			}
+			
 		}
 	})
 })
