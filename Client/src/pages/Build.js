@@ -15,42 +15,14 @@ const CHARACTER_API = "https://api.genshin.dev/characters/";
 
 const Build = () => {
   const [build, setBuild] = useState({
-    Author: {
-      id: 0,
-      username: "",
-    },
+    Author: {},
     _id: 0,
     title: "",
     character: "",
-    weapons: [
-      {
-        name: "",
-        type: "",
-        rarity: 0,
-        baseAttack: 0,
-        subStat: "",
-        passiveName: "",
-        passiveDesc: "",
-        location: "",
-      },
-    ],
-    artifacts: [
-      {
-        name: "",
-        max_rarity: 0,
-        "2-piece_bonus": "",
-        "4-piece_bonus": "",
-      },
-    ],
-    teams: [{}],
-    Comment: [
-      {
-        Author: {
-          id: 0,
-          username: "",
-        },
-      },
-    ],
+    weapons: [],
+    artifacts: [],
+    teams: [],
+    Comment: [],
     likes: 0,
     LikedUsers: [],
     __v: 0,

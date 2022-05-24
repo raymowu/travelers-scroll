@@ -23,7 +23,10 @@ const ProfileHeader = ({ user }) => {
           </li>
 
           <li>
-            <h2 className="profile-buildcount">{user.likedBuilds}</h2>
+            <h2 className="profile-buildcount">{}</h2>
+          </li>
+          <li>
+            <h2 className="profile-date">{user.Date}</h2>
           </li>
         </ul>
       </div>
@@ -34,10 +37,10 @@ const ProfileHeader = ({ user }) => {
             <a href="#description">Overview</a>
           </li>
           <li>
-            <a href="#weapon">Stats</a>
+            <a href="#weapon">Liked Builds</a>
           </li>
           <li>
-            <a href="#artifacts">Builds</a>
+            <a href="#artifacts">Created Builds</a>
           </li>
         </ul>
       </div>

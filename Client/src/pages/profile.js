@@ -8,7 +8,13 @@ import BuildCard from "../components/BuildCard";
 
 function Profile() {
   const { id } = useParams();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    username: "",
+    likedBuilds: [],
+    createdBuilds: [],
+    Date: "",
+    __v: 0,
+  });
   const [logged, setLogged] = useState({});
 
   const userData = () => {
@@ -50,28 +56,50 @@ function Profile() {
   console.log(user.likedBuilds);
   console.log(user.username);
   console.log(user.email);
+  console.log(user);
   return (
     <Layout>
       <ProfileHeader user={user} />
       <div className="profile-container">
-        <h1>profile page for {user.username}</h1>
-        {/* {user.likedBuilds
-          .slice(0)
-          .reverse()
-          .map((build) => {
-            return (
-              <>
-                <BuildCard key={build._id} build={build} />
-                <div className="break"></div>
-              </>
-            );
-          })} */}
-        <div className="break"></div>
-        {logged.username === user.username ? (
-          <button onClick={Logout}>Log Out</button>
-        ) : (
-          <h1>doesnt work</h1>
-        )}
+        <div className="liked-builds-container">
+          <h1> {user.username}'s Liked Builds</h1>
+          <div className="break"></div>
+          <div className="break"></div>
+          {user.likedBuilds
+            .slice(0)
+            .reverse()
+            .map((build) => {
+              return (
+                <>
+                  <BuildCard key={build._id} build={build} />
+                  <div className="break"></div>
+                </>
+              );
+            })}
+        </div>
+
+        <div className="created-builds-container">
+          <h1> {user.username}'s Builds</h1>
+          <div className="break"></div>
+          {user.createdBuilds
+            .slice(0)
+            .reverse()
+            .map((build) => {
+              return (
+                <>
+                  <BuildCard key={build._id} build={build} />
+                  <div className="break"></div>
+                </>
+              );
+            })}
+          <div className="break"></div>
+          <div className="break"></div>
+          {logged.username === user.username ? (
+            <button onClick={Logout}>Log Out</button>
+          ) : (
+            <h1>doesnt work</h1>
+          )}
+        </div>
       </div>
     </Layout>
   );
