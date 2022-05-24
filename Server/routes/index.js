@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require("bcryptjs")
 const User = require("../models/user");
 
+const nodemailer = require("nodemailer");
+
 const Authenticate = (req, res, next) => {
 	if(!req.session.user){
 	  res.send({status: "err", message: "Login Required"});
@@ -12,9 +14,62 @@ const Authenticate = (req, res, next) => {
 	}
 }
 
+// function createJson(id){
+// 	let date = new Date().toLocaleDateString();
+// 	let ret = JSON.stringify({id: id, date: date})
+// 	return ret;
+// }
+
+function returndate(date){
+	let a = date.indexOf("/");
+	return date.substr(a + 1, 2);
+}
+
+const transporter = nodemailer.createTransport({
+	service: 'Gmail',
+	auth: {
+	  user: "karthikapps70@gmail.com",
+	  pass: "AppPasswords",
+	},
+});
+
 router.get("/", (req, res) => {
     res.send({status: "ok"})
 })
+
+const SendEmail = (id, email) => {
+	
+	const url = `http://localhost:5000/confirmation/${id}`;
+
+	transporter.sendMail({
+	to: email,
+	subject: 'Confirm Email',
+	html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+	}, (error, result) =>{
+		if(error){
+			return console.log(error);
+		}
+	});
+}
+
+const ReSendEmail = async (id, email) => {
+
+	let user = await User.findById(id);
+	user.verification.date = new Date().toLocaleDateString();
+	await user.save();
+	
+	const url = `http://localhost:5000/confirmation/${id}`;
+
+	transporter.sendMail({
+	to: email,
+	subject: 'Confirm Email',
+	html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+	}, (error, result) =>{
+		if(error){
+			return console.log(error);
+		}
+	});
+}
 
 router.post("/register", async (req, res) => {
 	const { username, password, email } = req.body;
@@ -30,6 +85,7 @@ router.post("/register", async (req, res) => {
 			});
 			await newUser.save()
 			req.session.user = req.session.user = {id: newUser._id, username: newUser.username};
+			SendEmail(newUser._id, newUser.email);
 			res.send({status: "ok"})
 		}
 	})
@@ -46,7 +102,39 @@ router.post("/login", async (req, res) => {
 		}
 	}
 	return res.send({status: "err", msg: "Username or Password was incorrect"});
-})
+});
+
+router.get("/confirmation/:id", async (req, res) => {
+	let user = await User.findById(req.params.id);
+	if(user){
+		let date = parseInt(returndate(user.verification.date));
+		let currentDate = new Date().toLocaleDateString();
+		let cur = parseInt(returndate(currentDate));
+		if(date == cur || date + 1 == cur){
+			user.verification.verified = true;
+			await user.save();
+			return res.redirect("http://localhost:3000/login");
+		}
+		else{
+			return res.send("Confirmation link expired")
+		}
+		
+	}
+	else{
+		return res.send("there was an error");
+	}
+});
+
+router.post("/resendConfirmation/:id", async (req, res) => {
+	let user = await User.findById(req.params.id);
+	if(user){
+		ReSendEmail(user._id, user.email);
+		return res.send("email sent");
+	}
+	else{
+		return res.send({status: "err", msg: "couldnt find user"});
+	}
+});
 
 router.get("/current-user", Authenticate, (req, res) => {
 	res.send({status: "ok", user: req.session.user});

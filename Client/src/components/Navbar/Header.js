@@ -42,7 +42,7 @@ function Header({user}){
                     :
                     <>
                     <li><a href="/login" className={classes.link}>log in</a></li>
-                    <li><a href="/signup" className={classes.signup}>sign up</a></li>
+                    <li><a href="/register" className={classes.signup}>sign up</a></li>
                     </>
                         
                     }
