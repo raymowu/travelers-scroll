@@ -11,7 +11,6 @@ const WeaponCardDisplay = ({ weapon }) => {
           src={WEAPON_API + deinitializeName(weapon.name) + "/icon"}
           alt={weapon.name}
         />
-
         <h3>{weapon.name}</h3>
       </div>
     </>
