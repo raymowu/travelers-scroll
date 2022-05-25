@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Builds = new mongoose.Schema({
   title: { type: String, required: true },
+  Description: {type: String, default: "None"},
   character: {type: String, required: true},
   Author: {
     id: {
