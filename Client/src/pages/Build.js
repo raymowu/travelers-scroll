@@ -24,7 +24,7 @@ const Build = () => {
     teams: [],
     Comment: [],
     likes: 0,
-    LikedUsers: [],
+    likedUsers: [],
     __v: 0,
   });
   const [characterName, setCharacterName] = useState("");
@@ -98,7 +98,7 @@ const Build = () => {
   };
 
   const handleOnLike = () => {
-    if (build.LikedUsers.includes(user)) {
+    if (build.likedUsers.includes(user)) {
       Axios({
         method: "POST",
         data: {
@@ -139,7 +139,7 @@ const Build = () => {
       <div className="buildpage-container">
         <LikeButton
           className="like-button"
-          liked={build.LikedUsers.includes(user)}
+          liked={build.likedUsers.includes(user)}
           handleOnLike={handleOnLike}
         />
         <h2 className="like-count">{build.likes}</h2>
@@ -233,7 +233,8 @@ const Build = () => {
               Comment
             </button>
           </div>
-          {build.Comment.slice(0)
+          {build.comments
+            .slice(0)
             .reverse()
             .map((comment) => {
               return <Comment comment={comment} />;

@@ -78,7 +78,7 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
   const user = await User.findById(req.session.user.id);
   if (build) {
     if (liked) {
-      build.LikedUsers.push(user._id);
+      build.likedUsers.push(user._id);
       user.likedBuilds.push(build._id);
       build.save();
       user.save();
@@ -86,7 +86,7 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
       return res.send({ status: "ok" });
     } else {
       // if(user.likedBuilds.includes(build._id)){
-      build.LikedUsers.splice(build.LikedUsers.indexOf(user._id), 1);
+      build.likedUsers.splice(build.likedUsers.indexOf(user._id), 1);
       user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
       build.save();
       user.save();
@@ -119,7 +119,7 @@ router.post("/build/:id/newComment", Authenticate, (req, res) => {
         if (comment) {
           const build = await Builds.findById(req.params.id);
           if (build) {
-            build.Comment.push(comment._id);
+            build.comments.push(comment._id);
             build.save();
             return res.send({ status: "ok" });
           }
