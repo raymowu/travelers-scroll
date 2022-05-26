@@ -88,6 +88,16 @@ const CreateBuild = () => {
     if (!title || !buildWeapon || !buildArtifact || !buildTeam) {
       e.preventDefault();
       alert("Please enter all fields!");
+    } else if (
+      title.length > 23 ||
+      buildArtifact.length > 4 ||
+      buildTeam.length > 4 ||
+      buildWeapon.length > 4
+    ) {
+      e.preventDefault();
+      alert(
+        "Please do not input a title more than 23 characters or more than 4 artifacts in a category"
+      );
     } else {
       Axios({
         method: "POST",
@@ -102,7 +112,7 @@ const CreateBuild = () => {
         url: "http://localhost:5000/builds",
       }).then((res) => {
         if (res.data.status === "err") {
-          alert("YOUR BAD");
+          alert("LOGIN REQUIRED");
         }
       });
 
