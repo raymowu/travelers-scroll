@@ -13,10 +13,14 @@ const Builds = new mongoose.Schema({
   weapons: [],
   weapons_replacement: [],
   artifact_flower: [],
-  artifact_feather: [],
   artifact_sands: [],
+  artifact_goblet: [],
   artifact_hat: [],
+  artifact_sands_stat: "",
+  artifact_goblet_stat: "",
+  artifact_hat_stat: "",
   teams: [],
+
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
