@@ -61,7 +61,7 @@ const CreateBuild = () => {
     fetch(CHARACTER_API)
       .then((res) => res.json())
       .then((data) => {
-        setTeamMenu(data);
+        setTeamMenu(data.filter((c) => c !== characterName));
       });
   };
 
@@ -70,6 +70,7 @@ const CreateBuild = () => {
     getWeapons();
     getArtifacts();
     getTeam();
+    setBuildTeam([characterName]);
   }, []);
 
   let { characterName } = useParams();
