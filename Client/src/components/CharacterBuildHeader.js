@@ -41,13 +41,13 @@ const CharacterBuildHeader = ({ character, characterName, build }) => {
       <div className="build-navbar">
         <ul>
           <li>
-            <a href="#description">Build Overview</a>
+            <a href="#overview">Build Overview</a>
           </li>
           <li>
-            <a href="#weapon">Description</a>
+            <a href="#description">Description</a>
           </li>
           <li>
-            <a href="#artifacts">Comments</a>
+            <a href="#comments">Comments</a>
           </li>
         </ul>
       </div>
