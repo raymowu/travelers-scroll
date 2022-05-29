@@ -9,6 +9,11 @@ const ArtifactCardDisplay = ({ artifact }) => {
       <div className="artifact-display">
         <img
           src={ARTIFACT_API + deinitializeName(artifact.name) + "/circlet-of-logos"}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src =
+              "https://api.genshin.dev/artifacts/adventurer/circlet-of-logos";
+          }}
           alt={artifact.name}
         />
 

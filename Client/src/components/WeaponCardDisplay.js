@@ -9,6 +9,10 @@ const WeaponCardDisplay = ({ weapon }) => {
       <div className="weapon-display">
         <img
           src={WEAPON_API + deinitializeName(weapon.name) + "/icon"}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = "https://api.genshin.dev/weapons/dull-blade/icon";
+          }}
           alt={weapon.name}
         />
         <h3>{weapon.name}</h3>
