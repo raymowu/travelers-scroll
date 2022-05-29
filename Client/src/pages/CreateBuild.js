@@ -210,7 +210,7 @@ const CreateBuild = () => {
                 <br /> 
                 `}
                 data-effect="solid"
-                data-offset="{'top': 20, 'right': 10}"
+                data-offset="{'top': 10}"
                 data-border="true"
                 data-border-color="#1e143a"
               >
@@ -261,7 +261,7 @@ const CreateBuild = () => {
                     <br /> 
                     `}
                     data-effect="solid"
-                    data-offset="{'top': 20, 'right': 10}"
+                    data-offset="{'top': 10}"
                     data-border="true"
                     data-border-color="#1e143a"
                   >
@@ -297,7 +297,7 @@ const CreateBuild = () => {
                 <br /> 
                 `}
                 data-effect="solid"
-                data-offset="{'top': 44, 'right': 10}"
+                data-offset="{'top': 60}"
                 data-border="true"
                 data-border-color="#1e143a"
               >
@@ -348,7 +348,7 @@ const CreateBuild = () => {
                     <br /> 
                     `}
                     data-effect="solid"
-                    data-offset="{'top': 44, 'right': 10}"
+                    data-offset="{'top': 60}"
                     data-border="true"
                     data-border-color="#1e143a"
                   >
