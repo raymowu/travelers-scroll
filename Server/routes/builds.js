@@ -19,10 +19,15 @@ router.post("/", Authenticate, async (req, res) => {
   Builds.create(
     {
       title,
+      description,
       character,
       Author: req.session.user,
       weapons,
       artifacts,
+      artifact_sands_stat,
+      artifact_goblet_stat,
+      artifact_hat_stat,
+      artifact_substats,
       teams,
     },
     (err, build) => {

@@ -88,16 +88,18 @@ const CreateBuild = () => {
     if (!title || !buildWeapon || !buildArtifact || !buildTeam) {
       e.preventDefault();
       alert("Please enter all fields!");
-    } else if (
-      title.length > 23 ||
-      buildArtifact.length > 4 ||
-      buildTeam.length > 4 ||
-      buildWeapon.length > 4
-    ) {
+    } else if (title.length > 23) {
       e.preventDefault();
-      alert(
-        "Please do not input a title more than 23 characters or more than 4 artifacts in a category"
-      );
+      alert("Please do not input a title more than 23 characters");
+    } else if (buildArtifact.length > 2) {
+      e.preventDefault();
+      alert("Please do not put more than 2 artifact sets");
+    } else if (buildWeapon.length > 4) {
+      e.preventDefault();
+      alert("Please do not put more than 4 weapons");
+    } else if (buildTeam.length > 4) {
+      e.preventDefault();
+      alert("Please do not put more than 4 teammates");
     } else {
       Axios({
         method: "POST",

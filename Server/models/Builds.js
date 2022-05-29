@@ -12,13 +12,11 @@ const Builds = new mongoose.Schema({
   },
   weapons: [],
   weapons_replacement: [],
-  artifact_flower: [],
-  artifact_sands: [],
-  artifact_goblet: [],
-  artifact_hat: [],
+  artifacts: [],
   artifact_sands_stat: "",
   artifact_goblet_stat: "",
   artifact_hat_stat: "",
+  artifact_substats: "",
   teams: [],
 
   comments: [
