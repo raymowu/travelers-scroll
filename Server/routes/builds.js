@@ -14,7 +14,19 @@ const Authenticate = (req, res, next) => {
 };
 
 router.post("/", Authenticate, async (req, res) => {
-  const { title, character, weapons, artifacts, teams } = req.body;
+  const {
+    title,
+    description,
+    character,
+    weapons,
+    weapons_replacement,
+    artifacts,
+    artifact_sands_stat,
+    artifact_goblet_stat,
+    artifact_hat_stat,
+    artifact_substats,
+    teams,
+  } = req.body;
 
   Builds.create(
     {
@@ -23,6 +35,7 @@ router.post("/", Authenticate, async (req, res) => {
       character,
       Author: req.session.user,
       weapons,
+      weapons_replacement,
       artifacts,
       artifact_sands_stat,
       artifact_goblet_stat,
@@ -60,7 +73,7 @@ router.get("/build/:id", async (req, res) => {
       return res.send({ status: "err", err: err });
     } else {
       if (build) {
-        await build.populate("Comment");
+        await build.populate("comments");
         let liked = false;
         if (req.session.user) {
           let user = await User.findById(req.session.user.id);
@@ -112,7 +125,7 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
 // comment stuff
 router.post("/build/:id/newComment", Authenticate, (req, res) => {
   const { text } = req.body;
-  Comments.create(
+  comments.create(
     {
       text,
       Author: req.session.user,

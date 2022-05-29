@@ -106,9 +106,15 @@ const CreateBuild = () => {
         method: "POST",
         data: {
           title: title,
+          description: "test",
           character: characterName,
           weapons: buildWeapon,
+          weapons_replacement: buildWeapon,
           artifacts: buildArtifact,
+          artifact_sands_stat: "",
+          artifact_goblet_stat: "",
+          artifact_hat_stat: "",
+          artifact_substats: "",
           teams: buildTeam,
         },
         withCredentials: true,
@@ -176,8 +182,6 @@ const CreateBuild = () => {
       <CharacterHeader character={character} characterName={characterName} />
 
       <div className="build-container">
-        <h1 className="create-title">Creating a new build for {character.name}</h1>
-
         <div className="title">
           <label>
             <h2>Build Title:</h2>

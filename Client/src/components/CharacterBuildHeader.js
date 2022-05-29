@@ -33,7 +33,7 @@ const CharacterBuildHeader = ({ character, characterName, build }) => {
             </h2>
           </li>
           <li>
-            <h2 className="date-date">{build.Date}</h2>
+            <h2 className="date-date">{build.date}</h2>
           </li>
         </ul>
       </div>

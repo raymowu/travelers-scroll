@@ -26,7 +26,7 @@ const ProfileHeader = ({ user }) => {
             <h2 className="profile-buildcount">{}</h2>
           </li>
           <li>
-            <h2 className="profile-date">{user.Date}</h2>
+            <h2 className="profile-date">{user.date}</h2>
           </li>
         </ul>
       </div>

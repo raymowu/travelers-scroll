@@ -12,7 +12,7 @@ function Profile() {
     username: "",
     likedBuilds: [],
     createdBuilds: [],
-    Date: "",
+    date: "",
     __v: 0,
   });
   const [logged, setLogged] = useState({});

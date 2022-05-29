@@ -20,10 +20,10 @@ const CharacterHeader = ({ character, characterName }) => {
         </div>
         <ul>
           <li>
-            <h2>Genshin Impact</h2>
+            <h2>{character.name}</h2>
           </li>
           <li>
-            <h1>{character.name}</h1>
+            <h1>Creating Build</h1>
           </li>
           <li>
             <h2>

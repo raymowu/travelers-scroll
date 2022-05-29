@@ -17,7 +17,7 @@ const BuildCard = ({ build }) => {
           <h2>{build.title} </h2>
           <h4 className="buildcard-username">
             by <span style={{ color: "#fdcc0d" }}>{build.Author.username} </span>
-            on {build.Date}
+            on {build.date}
           </h4>
 
           <h4 className="buildcard-likes">

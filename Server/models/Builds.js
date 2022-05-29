@@ -18,7 +18,6 @@ const Builds = new mongoose.Schema({
   artifact_hat_stat: "",
   artifact_substats: "",
   teams: [],
-
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -32,7 +31,7 @@ const Builds = new mongoose.Schema({
       ref: "User",
     },
   ],
-  Date: { type: String, default: new Date().toLocaleDateString() },
+  date: { type: String, default: new Date().toLocaleDateString() },
 });
 
 module.exports = mongoose.model("Builds", Builds);
