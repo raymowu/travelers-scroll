@@ -150,7 +150,8 @@ const Build = () => {
           handleOnLike={handleOnLike}
         />
         <h2 className="like-count">{build.likes}</h2>
-        <div id="weapon" className="break"></div>
+
+        <div id="weapon"></div>
         <div className="break"></div>
         <div className="weapon-container">
           <span className="vert-bar">&#10072;</span> <h2>Weapons</h2>{" "}
@@ -181,6 +182,7 @@ const Build = () => {
             );
           })}
         </div>
+
         <div id="artifacts"></div>
         <div className="artifact-container">
           <span className="vert-bar">&#10072;</span> <h2>Artifacts</h2>{" "}
@@ -210,8 +212,19 @@ const Build = () => {
             );
           })}
         </div>
+
+        <div id="stats"></div>
+        <div className="stats-container">
+          <span className="vert-bar">&#10072;</span> <h2>Stats</h2>{" "}
+          <h2 className="artifact-gr">Priority artifact stats and substats</h2>
+          <div className="break-inner-menu"></div>
+          {build.artifact_sands_stat}
+          {build.artifact_goblet_stat}
+          {build.artifact_circlet_stat}
+        </div>
+
         <div id="teams"></div>
-        <div className="break"></div>
+
         <div className="team-container">
           <span className="vert-bar">&#10072;</span> <h2>Team</h2>{" "}
           <h2 className="team-gr">Best teammates with {character.name}</h2>
