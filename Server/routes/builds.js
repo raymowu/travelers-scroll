@@ -23,7 +23,7 @@ router.post("/", Authenticate, async (req, res) => {
     artifacts,
     artifact_sands_stat,
     artifact_goblet_stat,
-    artifact_hat_stat,
+    artifact_circlet_stat,
     artifact_substats,
     teams,
   } = req.body;
@@ -39,7 +39,7 @@ router.post("/", Authenticate, async (req, res) => {
       artifacts,
       artifact_sands_stat,
       artifact_goblet_stat,
-      artifact_hat_stat,
+      artifact_circlet_stat,
       artifact_substats,
       teams,
     },

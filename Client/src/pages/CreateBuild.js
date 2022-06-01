@@ -9,6 +9,7 @@ import TeammateCard from "../components/TeammateCard";
 import CharacterHeader from "../components/CharacterHeader";
 import Axios from "axios";
 import ReactTooltip from "react-tooltip";
+
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 const WEAPON_API = "https://api.genshin.dev/weapons/";
 const ARTIFACT_API = "https://api.genshin.dev/artifacts/";
@@ -22,6 +23,13 @@ const CreateBuild = () => {
   const [buildWeapon, setBuildWeapon] = useState([]);
   const [artifactMenu, setArtifactMenu] = useState([]);
   const [buildArtifact, setBuildArtifact] = useState([]);
+  const [artifactSandsStat, setArtifactSandsStat] = useState("");
+  const [artifactGobletStat, setArtifactGobletStat] = useState("");
+  const [artifactCircletStat, setArtifactCircletStat] = useState("");
+  const [substats, setSubstats] = useState(["", "", ""]);
+  const [substats0, setSubstats0] = useState("");
+  const [substats1, setSubstats1] = useState("");
+  const [substats2, setSubstats2] = useState("");
   const [teamMenu, setTeamMenu] = useState([]);
   const [buildTeam, setBuildTeam] = useState([]);
 
@@ -83,6 +91,13 @@ const CreateBuild = () => {
     setBuildArtifact([]);
     setTeamMenu([...buildTeam, ...teamMenu]);
     setBuildTeam([]);
+    setArtifactSandsStat("");
+    setArtifactGobletStat("");
+    setArtifactCircletStat("");
+    setSubstats(["", "", ""]);
+    setSubstats0("");
+    setSubstats1("");
+    setSubstats2("");
   };
 
   const handleOnBuildSubmit = (e) => {
@@ -101,6 +116,16 @@ const CreateBuild = () => {
     } else if (buildTeam.length > 4) {
       e.preventDefault();
       alert("Please do not put more than 4 teammates");
+    } else if (
+      !artifactSandsStat ||
+      !artifactGobletStat ||
+      !artifactCircletStat ||
+      !substats0 ||
+      !substats1 ||
+      !substats2
+    ) {
+      e.preventDefault();
+      alert("Please enter all artifact stats!");
     } else {
       Axios({
         method: "POST",
@@ -111,10 +136,10 @@ const CreateBuild = () => {
           weapons: buildWeapon,
           weapons_replacement: buildWeapon,
           artifacts: buildArtifact,
-          artifact_sands_stat: "",
-          artifact_goblet_stat: "",
-          artifact_hat_stat: "",
-          artifact_substats: "",
+          artifact_sands_stat: artifactSandsStat,
+          artifact_goblet_stat: artifactGobletStat,
+          artifact_circlet_stat: artifactCircletStat,
+          artifact_substats: [substats0, substats1, substats2],
           teams: buildTeam,
         },
         withCredentials: true,
@@ -175,6 +200,18 @@ const CreateBuild = () => {
     e.preventDefault();
   };
 
+  const substatOptions = [
+    "HP",
+    "ATK",
+    "DEF",
+    "HP (%)",
+    "ATK (%)",
+    "DEF (%)",
+    "Elemental Mastery",
+    "Energy Recharge (%)",
+    "CRIT Rate (%)",
+    "CRIT DMG (%)",
+  ];
   return (
     <div className="create-build-page">
       <Layout Auth={true} />
@@ -196,7 +233,6 @@ const CreateBuild = () => {
         </div>
 
         <a id="weapon"></a>
-        <div className="break"></div>
         <div className="break"></div>
 
         <div className="weapon-user">
@@ -285,7 +321,6 @@ const CreateBuild = () => {
         <a id="artifacts"></a>
 
         <div className="break"></div>
-        <div className="break"></div>
 
         <div className="artifact-user">
           <h1 className="menu-tag">{character.name}'s Artifacts </h1>
@@ -369,12 +404,185 @@ const CreateBuild = () => {
               })}
         </div>
 
+        <div className="break-inner"></div>
+
+        <h1 className="artifact-stats-header"> Stat Priority </h1>
+        <div className="break-inner"></div>
+        <div className="artifact-stats">
+          <div className="sands-stats">
+            <img
+              alt="sands"
+              src="https://i.imgur.com/RXrhpWn.png"
+              width="80"
+              height="80"
+            ></img>
+            <div className="break-inner"></div>
+            <select
+              value={artifactSandsStat}
+              onChange={(e) => setArtifactSandsStat(e.target.value)}
+              name="sands-stats"
+              className="sands-stats-select"
+              id="sands-stats"
+            >
+              <option style={{ display: "none" }} selected>
+                Sands stat
+              </option>
+              <option value="HP (%)">HP (%)</option>
+              <option value="ATK (%)">ATK (%)</option>
+              <option value="DEF (%)">DEF (%)</option>
+              <option value="Elemental Mastery">Elemental Mastery</option>
+              <option value="Energy Recharge (%)">Energy Recharge (%)</option>
+            </select>
+          </div>
+
+          <div className="goblet-stats">
+            <img
+              alt="goblet"
+              src="https://i.imgur.com/3NkBRCI.png"
+              width="80"
+              height="80"
+            ></img>
+            <div className="break-inner"></div>
+            <select
+              value={artifactGobletStat}
+              onChange={(e) => setArtifactGobletStat(e.target.value)}
+              name="goblet-stats"
+              className="goblet-stats-select"
+              id="goblet-stats"
+            >
+              <option style={{ display: "none" }} selected>
+                Goblet stat
+              </option>
+              <option value="HP (%)">HP (%)</option>
+              <option value="ATK (%)">ATK (%)</option>
+              <option value="DEF (%)">DEF (%)</option>
+              <option value="Elemental Mastery">Elemental Mastery</option>
+              <option value="Pyro DMG Bonus (%)">Pyro DMG Bonus (%)</option>
+              <option value="Geo DMG Bonus (%)">Geo DMG Bonus (%)</option>
+              <option value="Dendro DMG Bonus (%)">Dendro DMG Bonus (%)</option>
+              <option value="Cryo DMG Bonus (%)">Cryo DMG Bonus (%)</option>
+              <option value="Electro DMG Bonus (%)">Electro DMG Bonus (%)</option>
+              <option value="Anemo DMG Bonus (%)">Anemo DMG Bonus (%)</option>
+              <option value="Hydro DMG Bonus (%)">Hydro DMG Bonus (%)</option>
+              <option value="Physical DMG Bonus (%)">Physical DMG Bonus (%)</option>
+            </select>
+          </div>
+
+          <div className="circlet-stats">
+            <img
+              alt="circlet"
+              src="https://i.imgur.com/FcVNC5B.png"
+              width="80"
+              height="80"
+            ></img>
+            <div className="break-inner"></div>
+            <select
+              value={artifactCircletStat}
+              onChange={(e) => setArtifactCircletStat(e.target.value)}
+              name="circlet-stats"
+              className="circlet-stats-select"
+              id="circlet-stats"
+            >
+              <option style={{ display: "none" }} selected>
+                Circlet stat
+              </option>
+              <option value="HP (%)">HP (%)</option>
+              <option value="ATK (%)">ATK (%)</option>
+              <option value="DEF (%)">DEF (%)</option>
+              <option value="Elemental Mastery">Elemental Mastery</option>
+              <option value="CRIT Rate (%)">CRIT Rate (%)</option>
+              <option value="CRIT DMG (%)">CRIT DMG (%)</option>
+              <option value="Healing Bonus (%)">Healing Bonus (%)</option>
+            </select>
+          </div>
+
+          <div className="substats">
+            <h1>Substats</h1>
+            <div className="break-inner"></div>
+            <select
+              value={substats[0]}
+              onChange={(e) => {
+                //logic to change array state by index
+                let items = [...substats];
+                let item = items[0];
+                item = e.target.value;
+                items[0] = item;
+                setSubstats0(item);
+                setSubstats(items);
+                console.log(substats);
+                console.log(substats0);
+                console.log(substats1);
+                console.log(substats2);
+              }}
+              name="substats"
+              className="substats-select"
+              id="substats"
+            >
+              <option style={{ display: "none" }} selected>
+                Select substat
+              </option>
+              {substatOptions.map((o) => {
+                return o != substats1 && o != substats2 && <option value={o}>{o}</option>;
+              })}
+            </select>
+            <div className="break-inner"></div>
+            <select
+              value={substats1}
+              onChange={(e) => {
+                //logic to change array state by index
+                let items = [...substats];
+                let item = items[1];
+                item = e.target.value;
+                items[1] = item;
+                setSubstats1(item);
+                setSubstats(items);
+              }}
+              name="substats"
+              className="substats-select"
+              id="substats"
+            >
+              <option style={{ display: "none" }} selected>
+                Select substat
+              </option>
+              {substatOptions.map((o) => {
+                return o != substats0 && o != substats2 && <option value={o}>{o}</option>;
+              })}
+            </select>
+            <div className="break-inner"></div>
+            <select
+              value={substats2}
+              onChange={(e) => {
+                //logic to change array state by index
+                let items = [...substats];
+                let item = items[2];
+                item = e.target.value;
+                items[2] = item;
+                setSubstats2(e.target.value);
+                setSubstats(items);
+              }}
+              name="substats"
+              className="substats-select"
+              id="substats"
+            >
+              <option style={{ display: "none" }} selected>
+                Select substat
+              </option>
+              {substatOptions.map((o) => {
+                return o != substats0 && o != substats1 && <option value={o}>{o}</option>;
+              })}
+            </select>
+            <div className="break"></div>
+            <div className="break"></div>
+            <div className="break"></div>
+            <div className="break"></div>
+          </div>
+        </div>
+
+        <div className="break"></div>
+        <div className="break"></div>
+        <div className="break"></div>
+
         <a id="teams"></a>
-
-        <div className="break"></div>
-        <div className="break"></div>
-        <div className="break"></div>
-
         <div className="team-user">
           <h1 className="menu-tag">{character.name}'s Team </h1>
           <div className="break"></div>

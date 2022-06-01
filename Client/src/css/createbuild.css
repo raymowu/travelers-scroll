@@ -1,3 +1,35 @@
+.artifact-stats::-webkit-scrollbar {
+  width: 10px;
+}
+
+.artifact-stats::-webkit-scrollbar-track {
+  background: #3b3e86;
+}
+
+.artifact-stats::-webkit-scrollbar-thumb {
+  background: rgb(167, 179, 255);
+}
+
+.artifact-stats::-webkit-scrollbar-thumb:hover {
+  background: rgb(156, 138, 255);
+}
+
+.artifact-stats::-webkit-scrollbar {
+  width: 10px;
+}
+
+.artifact-stats::-webkit-scrollbar-track {
+  background: #3b3e86;
+}
+
+.artifact-stats::-webkit-scrollbar-thumb {
+  background: rgb(167, 179, 255);
+}
+
+.artifact-stats::-webkit-scrollbar-thumb:hover {
+  background: rgb(156, 138, 255);
+}
+
 .build-container {
   display: flex;
   flex-wrap: wrap;
@@ -15,6 +47,48 @@
   padding: 20px;
   gap: 25px;
   margin-top: -80px;
+}
+
+.artifact-stats {
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: #2a1d52;
+  width: 1420px;
+  height: 412px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: -50px;
+  overflow: auto;
+  gap: 0px 150px;
+}
+
+.artifact-stats-header {
+  margin-top: -40px;
+}
+.artifact-stats img {
+  margin-top: 150px;
+  margin-left: 40px;
+}
+.artifact-stats h1 {
+  margin-top: 150px;
+  margin-left: 40px;
+}
+
+.sands-stats-select {
+  height: 32px;
+  width: 160px;
+}
+.goblet-stats-select {
+  height: 32px;
+  width: 160px;
+}
+.circlet-stats-select {
+  height: 32px;
+  width: 160px;
+}
+.substats-select {
+  height: 32px;
 }
 
 .title h2 {
