@@ -93,10 +93,14 @@ const CreateBuild = () => {
     setWeaponMenu([...buildWeapon, ...weaponMenu]);
     setReplacementWeaponMenu([...buildReplacementWeapon, ...replacementWeaponMenu]);
     setBuildWeapon([]);
+    setBuildReplacementWeapon([]);
     setArtifactMenu([...buildArtifact, ...artifactMenu]);
     setBuildArtifact([]);
-    setTeamMenu([...buildTeam, ...teamMenu]);
-    setBuildTeam([]);
+    if (buildTeam.length > 0) {
+      const copyBuildTeam = buildTeam.slice(1);
+      setTeamMenu([...copyBuildTeam, ...teamMenu]);
+    }
+    setBuildTeam([characterName]);
     setArtifactSandsStat("");
     setArtifactGobletStat("");
     setArtifactCircletStat("");
@@ -206,7 +210,8 @@ const CreateBuild = () => {
   };
 
   const teamHandleOnClick = (teammate) => {
-    if (buildTeam.includes(teammate)) {
+    if (teammate == characterName) {
+    } else if (buildTeam.includes(teammate)) {
       setTeamMenu([teammate, ...teamMenu]);
       setBuildTeam(buildTeam.filter((t) => t !== teammate));
     } else {
