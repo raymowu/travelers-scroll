@@ -2,7 +2,7 @@ import { useState } from "react";
 import Axios from "axios";
 import "../css/form.css";
 
-function LogIn() {
+function ForgotPassword() {
   const [form, setForm] = useState({ username: "", password: "" });
 
   async function login(event) {
@@ -38,29 +38,19 @@ function LogIn() {
         <h1>Login</h1>
         <input
           type="text"
-          placeholder="username"
+          placeholder="Email"
           name="username"
-          className="input"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
           className="input"
           onChange={handleChange}
         />
         <button type="submit" className="button-form">
           Submit
         </button>
-        <p>
-          Dont have an account? <a href="/register">Sign Up</a>
-        </p>
-        <p><a href="/forgotpassword">Forgot Password?</a></p>
+        <br />
         <a href="/">Back</a>
       </form>
     </div>
   );
 }
 
-export default LogIn;
+export default ForgotPassword;

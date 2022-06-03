@@ -125,7 +125,7 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
 // comment stuff
 router.post("/build/:id/newComment", Authenticate, (req, res) => {
   const { text } = req.body;
-  comments.create(
+  Comments.create(
     {
       text,
       Author: req.session.user,
