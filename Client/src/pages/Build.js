@@ -151,7 +151,7 @@ const Build = () => {
         />
         <h2 className="like-count">{build.likes}</h2>
 
-        <div id="weapon"></div>
+        <div id="weapon-display"></div>
         <div className="break"></div>
         <div className="weapon-container">
           <span className="vert-bar">&#10072;</span> <h2>Weapons</h2>{" "}
@@ -172,7 +172,7 @@ const Build = () => {
                 <br /> 
                 `}
                 data-effect="solid"
-                data-offset="{'top': -10}"
+                data-offset="{'top': -10, 'right': -12}"
                 data-border="true"
                 data-border-color="#1e143a"
               >
@@ -196,13 +196,12 @@ const Build = () => {
                 <br /> 
                 <br /> 2-Piece Set: ${artifact["2-piece_bonus"]}
                 <br /> 4-Piece Set: ${artifact["4-piece_bonus"]}
-                <br /> &#8226;  ${artifact.passiveName}: ${artifact.passiveDesc}
+            
                 <br /> 
                 <br />  <span style="color: #d1b132">Max ${artifact.max_rarity} Star Artifact</span>
                 <br /> 
                 `}
                 data-effect="solid"
-                data-offset="{'top': -10}"
                 data-border="true"
                 data-border-color="#1e143a"
               >
