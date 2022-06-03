@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import SignUp from "./pages/signup";
 import LogIn from ".//pages/login";
 import ForgotPassword from "./pages/ForgotPassword";
+import PasswordReset from "./pages/PasswordReset"
 import Profile from "./pages/profile";
 import Character from "./pages/Character";
 import CreateBuild from "./pages/CreateBuild";
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/register" exact element={<SignUp />} />
           <Route path="/login" exact element={<LogIn />} />
           <Route path="/forgotpassword" exact element={<ForgotPassword />} />
+          <Route path="/passwordreset/:id" exact element={<PasswordReset />} />
           <Route path="profile/:id" exact element={<Profile />} />
           <Route path="/characters/:characterName" exact element={<Character />} />
           <Route path="/createbuild/:characterName" exact element={<CreateBuild />} />
