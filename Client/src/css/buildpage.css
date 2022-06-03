@@ -78,7 +78,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 0px 36px;
-  margin: -10px 20px 0px 50px;
+  margin: -10px 20px 40px 50px;
   padding: 20px 20px 20px 40px;
   font-size: 10px;
 }
@@ -138,7 +138,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 0px 36px;
-  margin: -10px 20px 0px 50px;
+  margin: -10px 20px 40px 50px;
   padding: 20px 20px 20px 40px;
   font-size: 10px;
 }

@@ -153,9 +153,41 @@ const Build = () => {
 
         <div id="weapon-display"></div>
         <div className="break"></div>
+
         <div className="weapon-container">
           <span className="vert-bar">&#10072;</span> <h2>Weapons</h2>{" "}
           <span className="weapon-gr">Best in-slot weapons for {character.name}</span>
+          <div className="break-inner-menu"></div>
+          {build.weapons.map((weapon) => {
+            return (
+              <div
+                data-html="true"
+                data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
+                <br /> <span style="font-size: 11px">${weapon.type}</span>
+                <br /> 
+                <br /> ${weapon.subStat}
+                <br /> ${weapon.baseAttack} Base Attack
+                <br /> &#8226;  ${weapon.passiveName}: ${weapon.passiveDesc}
+                <br /> 
+                <br />  <span style="color: #d1b132">${weapon.rarity} Star Weapon</span>
+                <br /> 
+                `}
+                data-effect="solid"
+                data-offset="{'top': -10, 'right': -12}"
+                data-border="true"
+                data-border-color="#1e143a"
+              >
+                <ReactTooltip className="tooltip" />
+                <WeaponCardDisplay weapon={weapon} />
+              </div>
+            );
+          })}
+        </div>
+
+        <div id="weapon-display"></div>
+        <div className="weapon-container">
+          <span className="vert-bar">&#10072;</span> <h2>Replacement Weapons</h2>{" "}
+          <span className="weapon-gr">Best free-to-play options</span>
           <div className="break-inner-menu"></div>
           {build.weapons.map((weapon) => {
             return (
@@ -256,7 +288,6 @@ const Build = () => {
         </div>
 
         <div id="teams"></div>
-
         <div className="team-container">
           <span className="vert-bar">&#10072;</span> <h2>Team</h2>{" "}
           <h2 className="team-gr">Best teammates with {character.name}</h2>

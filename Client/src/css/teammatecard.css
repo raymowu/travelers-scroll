@@ -71,6 +71,8 @@ body {
   height: 412px;
   margin-top: -118px;
   margin-bottom: 75px;
+  margin-right: 10px;
+  margin-left: 10px;
   overflow: auto;
   gap: 20px 25px;
 }
