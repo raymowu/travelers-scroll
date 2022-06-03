@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import initializeName from "../components/InitializeName";
 import WeaponCard from "../components/WeaponCard";
+import ReplacementWeaponCard from "../components/ReplacementWeaponCard";
 import "../css/createbuild.css";
 import ArtifactCard from "../components/ArtifactCard";
 import TeammateCard from "../components/TeammateCard";
@@ -20,7 +21,9 @@ const CreateBuild = () => {
 
   //item menus
   const [weaponMenu, setWeaponMenu] = useState([]);
+  const [replacementWeaponMenu, setReplacementWeaponMenu] = useState([]);
   const [buildWeapon, setBuildWeapon] = useState([]);
+  const [buildReplacementWeapon, setBuildReplacementWeapon] = useState([]);
   const [artifactMenu, setArtifactMenu] = useState([]);
   const [buildArtifact, setBuildArtifact] = useState([]);
   const [artifactSandsStat, setArtifactSandsStat] = useState("");
@@ -35,6 +38,7 @@ const CreateBuild = () => {
 
   //search
   const [weaponSearchTerm, setWeaponSearchTerm] = useState("");
+  const [replacementWeaponSearchTerm, setReplacementWeaponSearchTerm] = useState("");
   const [artifactSearchTerm, setArtifactSearchTerm] = useState("");
   const [teammateSearchTerm, setTeammateSearchTerm] = useState("");
   const navigate = useNavigate();
@@ -54,6 +58,7 @@ const CreateBuild = () => {
       .then((res) => res.json())
       .then((data) => {
         setWeaponMenu(data);
+        setReplacementWeaponMenu(data);
       });
   };
   //fetches artifacts
@@ -86,6 +91,7 @@ const CreateBuild = () => {
   const resetHandler = () => {
     setTitle("");
     setWeaponMenu([...buildWeapon, ...weaponMenu]);
+    setReplacementWeaponMenu([...buildReplacementWeapon, ...replacementWeaponMenu]);
     setBuildWeapon([]);
     setArtifactMenu([...buildArtifact, ...artifactMenu]);
     setBuildArtifact([]);
@@ -110,7 +116,7 @@ const CreateBuild = () => {
     } else if (buildArtifact.length > 2) {
       e.preventDefault();
       alert("Please do not put more than 2 artifact sets");
-    } else if (buildWeapon.length > 4) {
+    } else if (buildWeapon.length > 4 || buildReplacementWeapon.length > 4) {
       e.preventDefault();
       alert("Please do not put more than 4 weapons");
     } else if (buildTeam.length > 4) {
@@ -134,7 +140,7 @@ const CreateBuild = () => {
           description: "test",
           character: characterName,
           weapons: buildWeapon,
-          weapons_replacement: buildWeapon,
+          weapons_replacement: buildReplacementWeapon,
           artifacts: buildArtifact,
           artifact_sands_stat: artifactSandsStat,
           artifact_goblet_stat: artifactGobletStat,
@@ -159,6 +165,9 @@ const CreateBuild = () => {
   const weaponHandleOnChange = (e) => {
     setWeaponSearchTerm(e.target.value);
   };
+  const replacementWeaponHandleOnChange = (e) => {
+    setReplacementWeaponSearchTerm(e.target.value);
+  };
   const artifactHandleOnChange = (e) => {
     setArtifactSearchTerm(e.target.value);
   };
@@ -173,6 +182,16 @@ const CreateBuild = () => {
     } else {
       setBuildWeapon([...buildWeapon, weapon]);
       setWeaponMenu(weaponMenu.filter((w) => w !== weapon));
+    }
+  };
+
+  const replacementWeaponHandleOnClick = (weapon) => {
+    if (buildReplacementWeapon.includes(weapon)) {
+      setReplacementWeaponMenu([weapon, ...replacementWeaponMenu]);
+      setBuildReplacementWeapon(buildReplacementWeapon.filter((w) => w !== weapon));
+    } else {
+      setBuildReplacementWeapon([...buildReplacementWeapon, weapon]);
+      setReplacementWeaponMenu(replacementWeaponMenu.filter((w) => w !== weapon));
     }
   };
 
@@ -312,6 +331,103 @@ const CreateBuild = () => {
                     <WeaponCard
                       weapon={weapon}
                       weaponHandleOnClick={weaponHandleOnClick}
+                    />
+                  </div>
+                );
+              })}
+        </div>
+
+        <a id="replacement-weapons"></a>
+
+        <div className="break"></div>
+
+        <div className="weapon-user">
+          <h1 className="menu-tag">{character.name}'s Replacement Weapons </h1>
+          <div className="break"></div>
+          {buildReplacementWeapon.map((weapon) => {
+            return (
+              <div
+                data-html="true"
+                data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
+                <br /> <span style="font-size: 11px">${weapon.type}</span>
+                <br /> 
+                <br /> ${weapon.subStat}
+                <br /> ${weapon.baseAttack} Base Attack
+                <br /> &#8226;  ${weapon.passiveName}: ${weapon.passiveDesc}
+                <br /> 
+                <br />  <span style="color: #d1b132">${weapon.rarity} Star Weapon</span>
+                <br /> 
+                `}
+                data-effect="solid"
+                data-offset="{'top': 10}"
+                data-border="true"
+                data-border-color="#1e143a"
+              >
+                <ReactTooltip className="tooltip" />
+                <ReplacementWeaponCard
+                  weapon={weapon}
+                  replacementWeaponHandleOnClick={replacementWeaponHandleOnClick}
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="weapon-menu">
+          <h1 className="menu-tag">Select Replacement Weapons To Add To Build </h1>
+          <form onSubmit={handleOnSubmit}>
+            <input
+              className="weapon-search-bar"
+              type="search"
+              value={replacementWeaponSearchTerm}
+              placeholder="Search Weapon"
+              onChange={replacementWeaponHandleOnChange}
+            />
+          </form>
+          <div className="break"></div>
+          {replacementWeaponMenu.length > 0 &&
+            replacementWeaponMenu
+              .filter((weapon) => {
+                if (
+                  replacementWeaponSearchTerm === "" &&
+                  weapon.type === character.weapon &&
+                  weapon.rarity < 5
+                ) {
+                  return weapon.name;
+                } else if (
+                  weapon.name
+                    .toLowerCase()
+                    .includes(replacementWeaponSearchTerm.toLowerCase()) &&
+                  weapon.type === character.weapon &&
+                  weapon.rarity < 5
+                ) {
+                  return weapon.name;
+                }
+                return false;
+              })
+              .map((weapon) => {
+                return (
+                  <div
+                    data-html="true"
+                    data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
+                    <br /> <span style="font-size: 11px">${weapon.type}</span>
+                    <br /> 
+                    <br /> ${weapon.subStat}
+                    <br /> ${weapon.baseAttack} Base Attack
+                    <br /> &#8226;  ${weapon.passiveName}: ${weapon.passiveDesc}
+                    <br /> 
+                    <br />  <span style="color: #d1b132">${weapon.rarity} Star Weapon</span>
+                    <br /> 
+                    `}
+                    data-effect="solid"
+                    data-offset="{'top': 10}"
+                    data-border="true"
+                    data-border-color="#1e143a"
+                  >
+                    <ReactTooltip className="tooltip" />
+                    <ReplacementWeaponCard
+                      weapon={weapon}
+                      replacementWeaponHandleOnClick={replacementWeaponHandleOnClick}
                     />
                   </div>
                 );
