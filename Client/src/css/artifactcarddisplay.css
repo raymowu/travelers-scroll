@@ -47,10 +47,3 @@
   margin-top: 8px;
   margin-bottom: 0px;
 }
-
-@media only screen and (max-width: 990px) {
-  .artifact-display {
-    margin-top: 34px;
-    margin-bottom: -6px;
-  }
-}

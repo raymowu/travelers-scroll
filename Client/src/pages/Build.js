@@ -155,7 +155,7 @@ const Build = () => {
         <div className="break"></div>
         <div className="weapon-container">
           <span className="vert-bar">&#10072;</span> <h2>Weapons</h2>{" "}
-          <h2 className="weapon-gr">Best in-slot weapons for {character.name}</h2>
+          <span className="weapon-gr">Best in-slot weapons for {character.name}</span>
           <div className="break-inner-menu"></div>
           {build.weapons.map((weapon) => {
             return (
@@ -218,9 +218,42 @@ const Build = () => {
           <span className="vert-bar">&#10072;</span> <h2>Stats</h2>{" "}
           <h2 className="artifact-gr">Priority artifact stats and substats</h2>
           <div className="break-inner-menu"></div>
-          {build.artifact_sands_stat}
-          {build.artifact_goblet_stat}
-          {build.artifact_circlet_stat}
+          <div className="main-stat">
+            <img
+              alt="sands"
+              src="https://i.imgur.com/RXrhpWn.png"
+              width="50"
+              height="50"
+            ></img>
+            <h3>{build.artifact_sands_stat}</h3>
+          </div>
+          <div className="main-stat">
+            <img
+              alt="goblet"
+              src="https://i.imgur.com/3NkBRCI.png"
+              width="50"
+              height="50"
+            ></img>
+            <h3>{build.artifact_goblet_stat}</h3>
+          </div>
+          <div className="main-stat">
+            <img
+              alt="circlet"
+              src="https://i.imgur.com/FcVNC5B.png"
+              width="50"
+              height="50"
+            ></img>
+            <h3>{build.artifact_circlet_stat}</h3>
+          </div>
+          <div className="substats">
+            <h3>Substats</h3>
+            <div className="break-inner"></div>
+            {build.artifact_substats[0]}
+            <div className="break-inner"></div>
+            {build.artifact_substats[1]}
+            <div className="break-inner"></div>
+            {build.artifact_substats[2]}
+          </div>
         </div>
 
         <div id="teams"></div>
