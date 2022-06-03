@@ -8,9 +8,7 @@ function ForgotPassword() {
   const { id } = useParams();
 
   async function ChangePassword(event) {
-      alert("button was clicked");
     if(form.password === form.cpassword){
-        alert("passwords match")
         event.preventDefault();
         Axios({
         method: "POST",

@@ -18,8 +18,8 @@ function ForgotPassword() {
       if (res.data.status === "ok") {
         alert("Link was sent to your email");
         window.location.href = "/";
-      } else {
-        alert("something went wrong, please wait while the devs create more error handling");
+      } else if(res.data.status === "err") {
+        alert(res.data.msg);
       }
     });
   }
