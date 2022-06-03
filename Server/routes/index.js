@@ -139,6 +139,54 @@ router.post("/resendConfirmation/:id", async (req, res) => {
   }
 });
 
+router.post("/forgotpassword", async (req, res) =>{
+  let user = await User.find({email: req.body.email});
+  user = user[0];
+  if(user && user.verification.verified){
+    const hashed = await bcrypt.hash("forgot-password", 10);
+    const url = `http://localhost:5000/forgotpassword/${user._id}`;
+
+    user.verification.date = new Date().toLocaleDateString();
+    await user.save();
+
+    transporter.sendMail(
+      {
+        to: user.email,
+        subject: "Reset password Email",
+        html: `Please click this email to reset your password: <a href="${url}">${url}</a>`,
+      },
+      (error, result) => {
+        if (error) {
+          return console.log(error);
+        }
+      }
+    );
+    return res.send({status: "ok"});
+  }
+
+});
+
+router.get("/forgotpassword/:id", async (req, res) => {
+  let user = await User.findById(req.params.id);
+  return res.redirect(`http://localhost:3000/passwordreset/${user._id}`);
+});
+
+router.post("/resetpassword/:id", async (req, res) =>{
+  let { password } = req.body;
+  let user = await User.findById(req.params.id);
+  if(user){
+    const hashed = await bcrypt.hash(password, 10);
+    user.password = hashed;
+    await user.save();
+    return res.send({status: "ok"});
+  }
+  else{
+    return res.send({status: "err", message: "invalid user"})
+  }
+
+
+});
+
 router.get("/current-user", Authenticate, (req, res) => {
   res.send({ status: "ok", user: req.session.user });
 });
