@@ -59,6 +59,7 @@ const Build = () => {
         alert("err");
       }
       setUser(res.data.userId);
+      console.log(res.data.userId);
     });
   };
 
@@ -131,7 +132,9 @@ const Build = () => {
         }
       });
     }
-    window.location.reload(false);
+    setTimeout(() => {
+      window.location.reload(false);
+    }, 100);
   };
 
   return (
@@ -143,13 +146,11 @@ const Build = () => {
       />
 
       <div className="buildpage-container">
-        {
-          <LikeButton
-            className="like-button"
-            liked={build.likedUsers.includes(user)}
-            handleOnLike={handleOnLike}
-          />
-        }
+        <LikeButton
+          className="like-button"
+          liked={build.likedUsers.includes(user)}
+          handleOnLike={handleOnLike}
+        />
         <h2 className="like-count">{build.likes}</h2>
 
         <div id="weapon-display"></div>

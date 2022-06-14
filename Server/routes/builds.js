@@ -95,7 +95,7 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
   const build = await Builds.findById(req.params.id);
   const user = await User.findById(req.session.user.id);
   if (build) {
-    if (liked) {
+    if (liked && !build.likedUsers.includes(user)) {
       build.likedUsers.push(user._id);
       user.likedBuilds.push(build._id);
       build.save();
