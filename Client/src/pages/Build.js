@@ -143,11 +143,13 @@ const Build = () => {
       />
 
       <div className="buildpage-container">
-        <LikeButton
-          className="like-button"
-          liked={build.likedUsers.includes(user)}
-          handleOnLike={handleOnLike}
-        />
+        {
+          <LikeButton
+            className="like-button"
+            liked={build.likedUsers.includes(user)}
+            handleOnLike={handleOnLike}
+          />
+        }
         <h2 className="like-count">{build.likes}</h2>
 
         <div id="weapon-display"></div>
