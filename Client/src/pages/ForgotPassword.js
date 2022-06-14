@@ -3,24 +3,23 @@ import Axios from "axios";
 import "../css/form.css";
 
 function ForgotPassword() {
-  const [form, setForm] = useState({ username: "", password: "" });
+  const [form, setForm] = useState({ email: "" });
 
-  async function login(event) {
+  async function forgotpassword(event) {
     event.preventDefault();
     Axios({
       method: "POST",
       data: {
-        username: form.username,
-        password: form.password,
+        email: form.email
       },
       withCredentials: true,
-      url: "http://localhost:5000/login",
+      url: "http://localhost:5000/forgotpassword",
     }).then((res) => {
       if (res.data.status === "ok") {
-        alert("Login was successful");
+        alert("Link was sent to your email");
         window.location.href = "/";
-      } else {
-        alert("please check your username and password");
+      } else if(res.data.status === "err") {
+        alert(res.data.msg);
       }
     });
   }
@@ -34,12 +33,12 @@ function ForgotPassword() {
 
   return (
     <div className="app">
-      <form onSubmit={login} className="form-container">
-        <h1>Login</h1>
+      <form onSubmit={forgotpassword} className="form-container">
+        <h1>Forgot Password</h1>
         <input
-          type="text"
+          type="email"
           placeholder="Email"
-          name="username"
+          name="email"
           className="input"
           onChange={handleChange}
         />

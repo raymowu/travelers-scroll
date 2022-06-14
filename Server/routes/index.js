@@ -65,7 +65,10 @@ const ReSendEmail = async (id, email) => {
     {
       to: email,
       subject: "Confirm Email",
-      html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+      html: `Please click this email to confirm your email: <a href="${url}">${url}</a> 
+        <br />
+        This link is only valid for 2 days
+      `,
     },
     (error, result) => {
       if (error) {
@@ -117,7 +120,7 @@ router.get("/confirmation/:id", async (req, res) => {
     let date = parseInt(returndate(user.verification.date));
     let currentDate = new Date().toLocaleDateString();
     let cur = parseInt(returndate(currentDate));
-    if (date == cur || date + 1 == cur) {
+    if (date == cur || date + 2 == cur) {
       user.verification.verified = true;
       await user.save();
       return res.redirect("http://localhost:3000/login");
@@ -137,6 +140,76 @@ router.post("/resendConfirmation/:id", async (req, res) => {
   } else {
     return res.send({ status: "err", msg: "couldnt find user" });
   }
+});
+
+router.post("/forgotpassword", async (req, res) =>{
+  let user = await User.find({email: req.body.email});
+  user = user[0]; // email is unique so there is only 1 user anyway
+  if(user && user.verification.verified){
+    const url = `http://localhost:5000/forgotpassword/${user._id}`;
+
+    user.verification.date = new Date().toLocaleDateString();
+    await user.save();
+
+    transporter.sendMail(
+      {
+        to: user.email,
+        subject: "Reset password Email",
+        html: `Please click this email to reset your password: <a href="${url}">${url}</a>
+        <br />
+        This link is only valid for 2 days.`,
+      },
+      (error, result) => {
+        if (error) {
+          return console.log(error);
+        }
+      }
+    );
+    return res.send({status: "ok"});
+  }
+  else{
+    if(!user.verification.verified){
+      return res.send({status: "err", msg: "Email is not verified. Please verify your email to continue"});
+    }
+    else{
+      return res.send({status: "err", msg: "Unable to find user with this email"});
+    }
+  }
+
+});
+
+router.get("/forgotpassword/:id", async (req, res) => {
+  let user = await User.findById(req.params.id);
+  if(user){
+    let date = parseInt(returndate(user.verification.date));
+    let currentDate = new Date().toLocaleDateString();
+    let cur = parseInt(returndate(currentDate));
+    if (date == cur || date + 1 == cur) {
+      user.verification.verified = true;
+      await user.save();
+      return res.redirect(`http://localhost:3000/passwordreset/${user._id}`);
+    } else {
+      return res.send("Confirmation link expired");
+    }
+  }
+  
+  
+});
+
+router.post("/resetpassword/:id", async (req, res) =>{
+  let { password } = req.body;
+  let user = await User.findById(req.params.id);
+  if(user){
+    const hashed = await bcrypt.hash(password, 10);
+    user.password = hashed;
+    await user.save();
+    return res.send({status: "ok"});
+  }
+  else{
+    return res.send({status: "err", message: "invalid user"})
+  }
+
+
 });
 
 router.get("/current-user", Authenticate, (req, res) => {
