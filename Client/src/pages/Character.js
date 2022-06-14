@@ -24,7 +24,6 @@ const Character = () => {
     fetch(`http://localhost:5000/builds/${characterName}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.builds);
         setBuilds(data.builds);
       });
   };

@@ -59,7 +59,6 @@ const Build = () => {
         alert("err");
       }
       setUser(res.data.userId);
-      console.log(res.data.userId);
     });
   };
 

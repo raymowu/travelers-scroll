@@ -32,7 +32,6 @@ function Home() {
     e.preventDefault();
   };
 
-  console.log(characters);
   return (
     <Layout>
       <div className="character-container">

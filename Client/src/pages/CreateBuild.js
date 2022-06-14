@@ -630,10 +630,6 @@ const CreateBuild = () => {
                 items[0] = item;
                 setSubstats0(item);
                 setSubstats(items);
-                console.log(substats);
-                console.log(substats0);
-                console.log(substats1);
-                console.log(substats2);
               }}
               name="substats"
               className="substats-select"
