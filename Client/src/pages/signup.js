@@ -19,12 +19,25 @@ function SignUp() {
   })
   const googleAuth = ({ profileObj }) => {
     const data =  {
-      googleId: profileObj.googleId,
-      email: profileObj.email,
-      first_name: profileObj.givenName,
-      last_name: profileObj.familyName,
+      gid: profileObj.googleId,
+      email: profileObj.email
     }
-    console.log(data)
+    // console.log(typeof data.gid);
+    Axios({
+      method: "POST",
+      data: data,
+      withCredentials: true,
+      url: "http://localhost:5000/gregister",
+    }).then((res) => {
+      if (res.data.status === "ok") {
+        alert("Account has been successfully created!");
+        window.location.href = "/";
+      }
+      else if(res.data.status === "err"){
+        alert(res.data.message);
+      }
+    });
+    
   };
   const failure = (error) => {
     console.log("err", error);

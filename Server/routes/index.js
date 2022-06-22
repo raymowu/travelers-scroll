@@ -78,6 +78,12 @@ const ReSendEmail = async (id, email) => {
   );
 };
 
+const MakeUsername = (email) => {
+    const index = email.indexOf("@");
+    const username = email.substr(0, index);
+    return username;
+}
+
 router.post("/register", async (req, res) => {
   const { username, password, email } = req.body;
   User.findOne({ username }, async (err, user) => {
@@ -97,6 +103,30 @@ router.post("/register", async (req, res) => {
       };
       SendEmail(newUser._id, newUser.email);
       res.send({ status: "ok" });
+    }
+  });
+});
+
+router.post("/gregister", async (req, res) => {
+  const { email, gid } = req.body;
+  User.findOne({email}, async (err, user) => {
+    if(err) throw err;
+    if(user) return res.send({status: "err", message: "User already exists"});
+    if(!user){
+      const username = MakeUsername(email);
+      const newUser = new User({
+        username,
+        password: gid,
+        email,
+      });
+      await newUser.save();
+      newUser.verification.verified = true;
+      await newUser.save();
+      req.session.user = req.session.user = {
+        id: newUser._id,
+        username: newUser.username,
+      };
+      return res.send({ status: "ok" });
     }
   });
 });
