@@ -108,15 +108,17 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/gregister", async (req, res) => {
-  const { email, gid } = req.body;
+  let { email, gid } = req.body;
   User.findOne({email}, async (err, user) => {
     if(err) throw err;
     if(user) return res.send({status: "err", message: "User already exists"});
     if(!user){
       const username = MakeUsername(email);
+      const hashed = await bcrypt.hash(gid, 10);
+      console.log(hashed)
       const newUser = new User({
         username,
-        password: gid,
+        password: hashed,
         email,
       });
       await newUser.save();
