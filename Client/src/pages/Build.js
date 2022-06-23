@@ -95,8 +95,9 @@ const Build = () => {
         withCredentials: true,
         url: `http://localhost:5000/builds/build/${buildid}/newComment`,
       }).then((res) => {
+        console.log(res.data)
         if (res.data.status === "err") {
-          alert("YOUR BAD");
+          alert(res.data.err);
         }
       });
       resetHandler();

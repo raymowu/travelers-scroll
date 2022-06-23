@@ -133,13 +133,14 @@ router.post("/build/:id/newComment", Authenticate, (req, res) => {
     },
     async (err, comment) => {
       if (err) {
+        console.log(err)
         return res.send({ status: "err", err: err });
       } else {
         if (comment) {
           const build = await Builds.findById(req.params.id);
           if (build) {
             build.comments.push(comment._id);
-            build.save();
+            await build.save();
             return res.send({ status: "ok" });
           }
         } else {
