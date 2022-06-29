@@ -7,6 +7,8 @@ import BuildCard from "../components/BuildCard";
 import CharacterInfoHeader from "../components/CharacterInfoHeader";
 import TalentCard from "../components/TalentCard";
 import CharacterDescCard from "../components/CharacterDescCard";
+import PassiveTalentCard from "../components/PassiveTalentCard";
+import ConstellationCard from "../components/Constellation";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
 const Character = () => {
@@ -47,10 +49,11 @@ const Character = () => {
       <div className="container2">
         <div className="break"></div>
         <div className="break"></div>
-        <h1>{character.name} Description</h1>
+        <h1 className="char-desc-head">{character.name} Description</h1>
         <div className="char-desc-c">
           <CharacterDescCard character={character} characterName={characterName} />
         </div>
+
         <h1>{character.name} Skill Talents</h1>
         <div className="talent-container">
           {character.skillTalents?.map((talent) => {
@@ -66,9 +69,54 @@ const Character = () => {
             );
           })}
         </div>
-        <div className="break"></div>
-        <div className="break"></div>
-        <div className="break"></div>
+
+        <h1 className="passive-talents-head">{character.name} Passive Talents</h1>
+        <div className="talent-container">
+          {character.passiveTalents?.map((ptalent) => {
+            return (
+              <>
+                <PassiveTalentCard
+                  key={ptalent.name}
+                  character={character}
+                  characterName={characterName}
+                  ptalent={ptalent}
+                />
+              </>
+            );
+          })}
+        </div>
+
+        <h1 className="passive-talents-head">{character.name} Constellations</h1>
+        <div className="talent-container">
+          {character.constellations?.slice(0, 3).map((constellation) => {
+            return (
+              <>
+                <ConstellationCard
+                  key={constellation.name}
+                  character={character}
+                  characterName={characterName}
+                  constellation={constellation}
+                />
+              </>
+            );
+          })}
+        </div>
+        <div className="constellation-break"></div>
+        <div className="constellation-container">
+          {character.constellations?.slice(3, 7).map((constellation) => {
+            return (
+              <>
+                <ConstellationCard
+                  key={constellation.name}
+                  character={character}
+                  characterName={characterName}
+                  constellation={constellation}
+                />
+              </>
+            );
+          })}
+        </div>
+
         <h1 className="recent-builds">Recent {character.name} Builds:</h1>
         <div className="break"></div>
         <button type="button" className="button-18" onClick={handleOnCreateBuild}>
