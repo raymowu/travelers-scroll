@@ -5,6 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import BuildCard from "../components/BuildCard";
 import CharacterInfoHeader from "../components/CharacterInfoHeader";
+import TalentCard from "../components/TalentCard";
+import CharacterDescCard from "../components/CharacterDescCard";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
 const Character = () => {
@@ -38,11 +40,34 @@ const Character = () => {
   const handleOnCreateBuild = (e) => {
     navigate(`/createbuild/${characterName}`);
   };
+
   return (
     <Layout>
       <CharacterInfoHeader character={character} characterName={characterName} />
       <div className="container2">
-        <h3>{character.description}</h3>
+        <div className="break"></div>
+        <div className="break"></div>
+        <h1>{character.name} Description</h1>
+        <div className="char-desc-c">
+          <CharacterDescCard character={character} characterName={characterName} />
+        </div>
+        <h1>{character.name} Skill Talents</h1>
+        <div className="talent-container">
+          {character.skillTalents?.map((talent) => {
+            return (
+              <>
+                <TalentCard
+                  key={talent.name}
+                  character={character}
+                  characterName={characterName}
+                  talent={talent}
+                />
+              </>
+            );
+          })}
+        </div>
+        <div className="break"></div>
+        <div className="break"></div>
         <div className="break"></div>
         <h1 className="recent-builds">Recent {character.name} Builds:</h1>
         <div className="break"></div>

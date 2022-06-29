@@ -1,3 +1,34 @@
+.talent-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  flex-direction: row;
+  color: rgb(173, 178, 211);
+  margin: -74px 100px;
+}
+.char-desc-c {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  flex-direction: column;
+  color: rgb(173, 178, 211);
+  border: 0px solid;
+  border-radius: 4px;
+  background-color: #2a1d52;
+  margin: 0px 120px 120px 120px;
+  padding: 10px 20px 10px 20px;
+}
+
 .container2 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -29,10 +60,8 @@
   padding: 0px 20px;
   font-weight: bold;
   margin-top: -90px;
-}
-
-h1 .recent-builds {
-  font-size: 100px;
+  margin-left: 100px;
+  margin-bottom: 4px;
 }
 
 a {
@@ -41,7 +70,7 @@ a {
 .button-18 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  margin-left: 20px;
+  margin-left: 120px;
   border-radius: 10px;
   white-space: nowrap;
   width: 180px;
@@ -58,7 +87,7 @@ a {
 }
 
 .button-18:hover {
-  background-color: rgb(28, 67, 173);
+  background-color: rgb(27, 113, 226);
 }
 
 .break {
@@ -69,5 +98,31 @@ a {
   .character-header {
     background-image: none !important;
     justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .talent-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 13px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(173, 178, 211);
+  }
+  .container2 h1 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .button-18 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .char-desc-c {
+    margin: 0px 80px 120px 80px;
   }
 }

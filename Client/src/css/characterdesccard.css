@@ -1,0 +1,8 @@
+.char-desc-cont p .attribute {
+  color: rgb(219, 211, 99);
+  font-weight: 500;
+}
+
+.char-desc-cont p {
+  color: lightgray;
+}
