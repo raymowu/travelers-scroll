@@ -29,9 +29,19 @@ const PassiveTalentCard = ({ ptalent, character, characterName }) => {
           <h4>{ptalent.unlock}</h4>
         </>
       )}
-      {ptalent.unlock === "Unlocked Automatically" && (
+      {ptalent.unlock === "Unlocked Automatically" &&
+        ptalent.name !== "Princess of Watatsumi" && (
+          <>
+            <img src={CHARACTER_API + characterName + "/talent-passive-2"}></img>
+            <div className="break"></div>
+            <h3>{ptalent.name}</h3>
+            <div className="break"></div>
+            <h4>{ptalent.unlock}</h4>
+          </>
+        )}
+      {ptalent.name === "Princess of Watatsumi" && (
         <>
-          <img src={CHARACTER_API + characterName + "/talent-passive-2"}></img>
+          <img src={CHARACTER_API + characterName + "/talent-passive-misc"}></img>
           <div className="break"></div>
           <h3>{ptalent.name}</h3>
           <div className="break"></div>
