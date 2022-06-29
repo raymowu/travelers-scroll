@@ -108,6 +108,7 @@ const CreateBuild = () => {
     setSubstats0("");
     setSubstats1("");
     setSubstats2("");
+    window.scrollTo(0, 0);
   };
 
   const handleOnBuildSubmit = (e) => {
