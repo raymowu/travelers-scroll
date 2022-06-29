@@ -47,14 +47,14 @@ const Character = () => {
     <Layout>
       <CharacterInfoHeader character={character} characterName={characterName} />
       <div className="container2">
-        <div className="break"></div>
+        <div className="break" id="description"></div>
         <div className="break"></div>
         <h1 className="char-desc-head">{character.name} Description</h1>
         <div className="char-desc-c">
           <CharacterDescCard character={character} characterName={characterName} />
         </div>
 
-        <h1>{character.name} Skill Talents</h1>
+        <h1 id="talents">{character.name} Skill Talents</h1>
         <div className="talent-container">
           {character.skillTalents?.map((talent) => {
             return (
@@ -69,8 +69,9 @@ const Character = () => {
             );
           })}
         </div>
-
-        <h1 className="passive-talents-head">{character.name} Passive Talents</h1>
+        <h1 className="passive-talents-head" id="passives">
+          {character.name} Passive Talents
+        </h1>
         <div className="talent-container">
           {character.passiveTalents?.map((ptalent) => {
             return (
@@ -86,7 +87,9 @@ const Character = () => {
           })}
         </div>
 
-        <h1 className="passive-talents-head">{character.name} Constellations</h1>
+        <h1 className="passive-talents-head" id="constellations">
+          {character.name} Constellations
+        </h1>
         <div className="talent-container">
           {character.constellations?.slice(0, 3).map((constellation) => {
             return (
@@ -117,7 +120,9 @@ const Character = () => {
           })}
         </div>
 
-        <h1 className="recent-builds">Recent {character.name} Builds:</h1>
+        <h1 className="recent-builds" id="showcase">
+          Recent {character.name} Builds:
+        </h1>
         <div className="break"></div>
         <button type="button" className="button-18" onClick={handleOnCreateBuild}>
           Create {`${character.name}`} Build

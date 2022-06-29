@@ -173,3 +173,7 @@ a {
 button:hover {
   background-color: rgb(28, 67, 173);
 }
+
+p {
+  font-size: 11px;
+}
