@@ -97,10 +97,11 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
   if (build) {
     if (liked && !build.likedUsers.includes(user)) {
       build.likedUsers.push(user._id);
+      build.likes++;
       user.likedBuilds.push(build._id);
-      build.save();
-      user.save();
-      await Builds.findByIdAndUpdate(build._id, { likes: build.likes + 1 });
+      await build.save();
+      await user.save();
+      // await Builds.findByIdAndUpdate(build._id, { likes: build.likes + 1 });
       return res.send({ status: "ok" });
     } else {
       // if(user.likedBuilds.includes(build._id)){
