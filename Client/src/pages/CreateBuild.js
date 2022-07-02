@@ -17,6 +17,7 @@ const ARTIFACT_API = "https://api.genshin.dev/artifacts/";
 
 const CreateBuild = () => {
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [character, setCharacter] = useState([]);
 
   //item menus
@@ -257,10 +258,9 @@ const CreateBuild = () => {
           </label>
         </div>
 
-        <a id="weapon"></a>
-        <div className="break"></div>
+        <div className="break" id="weapon"></div>
 
-        <div className="weapon-user">
+        <div className="weapon-user page-adjust">
           <h1 className="menu-tag">{character.name}'s Weapons </h1>
           <div className="break"></div>
           {buildWeapon.map((weapon) => {
@@ -343,9 +343,7 @@ const CreateBuild = () => {
               })}
         </div>
 
-        <a id="replacement-weapons"></a>
-
-        <div className="break"></div>
+        <div className="break" id="replacement-weapons"></div>
 
         <div className="weapon-user">
           <h1 className="menu-tag">{character.name}'s Replacement Weapons </h1>
@@ -440,9 +438,7 @@ const CreateBuild = () => {
               })}
         </div>
 
-        <a id="artifacts"></a>
-
-        <div className="break"></div>
+        <div className="break" id="break"></div>
 
         <div className="artifact-user">
           <h1 className="menu-tag">{character.name}'s Artifacts </h1>
@@ -547,7 +543,7 @@ const CreateBuild = () => {
               id="sands-stats"
             >
               <option style={{ display: "none" }} selected>
-                Sands stat
+                Select sands stat
               </option>
               <option value="HP (%)">HP (%)</option>
               <option value="ATK (%)">ATK (%)</option>
@@ -573,7 +569,7 @@ const CreateBuild = () => {
               id="goblet-stats"
             >
               <option style={{ display: "none" }} selected>
-                Goblet stat
+                Select goblet stat
               </option>
               <option value="HP (%)">HP (%)</option>
               <option value="ATK (%)">ATK (%)</option>
@@ -606,7 +602,7 @@ const CreateBuild = () => {
               id="circlet-stats"
             >
               <option style={{ display: "none" }} selected>
-                Circlet stat
+                Select circlet stat
               </option>
               <option value="HP (%)">HP (%)</option>
               <option value="ATK (%)">ATK (%)</option>
@@ -699,9 +695,9 @@ const CreateBuild = () => {
         <div className="break"></div>
         <div className="break"></div>
         <div className="break"></div>
+        <div className="break-inner"></div>
 
-        <a id="teams"></a>
-        <div className="team-user">
+        <div className="team-user" id="teams">
           <h1 className="menu-tag">{character.name}'s Team </h1>
           <div className="break"></div>
           {buildTeam.map((teammate) => {
@@ -746,6 +742,12 @@ const CreateBuild = () => {
                 );
               })}
         </div>
+
+        <div className="break"></div>
+
+        {/* <div className="description-field">
+          <textarea></textarea>
+        </div> */}
 
         <div className="break"></div>
         <div className="break"></div>

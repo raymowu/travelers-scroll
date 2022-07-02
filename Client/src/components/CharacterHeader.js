@@ -39,7 +39,7 @@ const CharacterHeader = ({ character, characterName }) => {
       <div className="character-navbar">
         <ul>
           <li>
-            <a href="#description">Description</a>
+            <a href="#overview">Overview</a>
           </li>
           <li>
             <a href="#weapon">Weapon</a>
@@ -49,9 +49,6 @@ const CharacterHeader = ({ character, characterName }) => {
           </li>
           <li>
             <a href="#teams">Team</a>
-          </li>
-          <li>
-            <a href="#showcase">Showcase</a>
           </li>
         </ul>
       </div>
