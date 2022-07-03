@@ -177,3 +177,35 @@ button:hover {
 .create-build-page p {
   font-size: 11px;
 }
+
+.description {
+  margin-top: -100px;
+  width: 710px;
+}
+
+.description textarea {
+  width: 100%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  outline: none;
+  min-height: 200px;
+  resize: vertical;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media only screen and (max-width: 1700px) {
+  .description {
+    margin-top: 0px;
+  }
+}
+@media only screen and (max-width: 972px) {
+  .description textarea {
+    width: 100%;
+  }
+}

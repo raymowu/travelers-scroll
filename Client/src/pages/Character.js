@@ -41,6 +41,10 @@ const Character = () => {
 
   const handleOnCreateBuild = (e) => {
     navigate(`/createbuild/${characterName}`);
+    //instant go to top of page
+    // window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    //scroll effect
+    window.scrollTo(0, 0);
   };
 
   return (

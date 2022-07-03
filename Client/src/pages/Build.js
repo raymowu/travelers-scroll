@@ -298,33 +298,43 @@ const Build = () => {
             return <TeammateCardDisplay teammate={teammate} />;
           })}
         </div>
-        <div className="break"></div>
-        <div className="break"></div>
-        <div className="comment-container">
-          <div className="create-comment">
-            <label>
-              <textarea
-                className="create-comment-text"
-                value={comment}
-                placeholder="Add a Comment"
-                onChange={(e) => setComment(e.target.value)}
-              />
-            </label>
-            <button
-              type="button"
-              className="comment-button"
-              onClick={handleOnCommentSubmit}
-            >
-              Comment
-            </button>
+
+        {build.description && (
+          <div className="buildpage-description-container">
+            <textarea
+              className="buildpage-description"
+              value={build.description}
+              readonly
+            ></textarea>
           </div>
-          {build.comments
-            .slice(0)
-            .reverse()
-            .map((comment) => {
-              return <Comment comment={comment} />;
-            })}
+        )}
+
+        <div className="break"></div>
+        <div className="break"></div>
+
+        <div className="create-comment">
+          <label>
+            <textarea
+              className="create-comment-text"
+              value={comment}
+              placeholder="Add a Comment"
+              onChange={(e) => setComment(e.target.value)}
+            />
+          </label>
+          <button
+            type="button"
+            className="comment-button"
+            onClick={handleOnCommentSubmit}
+          >
+            Comment
+          </button>
         </div>
+        {build.comments
+          .slice(0)
+          .reverse()
+          .map((comment) => {
+            return <Comment comment={comment} />;
+          })}
       </div>
     </Layout>
   );

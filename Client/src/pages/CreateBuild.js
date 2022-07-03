@@ -91,6 +91,7 @@ const CreateBuild = () => {
 
   const resetHandler = () => {
     setTitle("");
+    setDescription("");
     setWeaponMenu([...buildWeapon, ...weaponMenu]);
     setReplacementWeaponMenu([...buildReplacementWeapon, ...replacementWeaponMenu]);
     setBuildWeapon([]);
@@ -143,7 +144,7 @@ const CreateBuild = () => {
         method: "POST",
         data: {
           title: title,
-          description: "test",
+          description: description,
           character: characterName,
           weapons: buildWeapon,
           weapons_replacement: buildReplacementWeapon,
@@ -743,11 +744,17 @@ const CreateBuild = () => {
               })}
         </div>
 
-        <div className="break"></div>
-
-        {/* <div className="description-field">
-          <textarea></textarea>
-        </div> */}
+        <div className="break-inner"></div>
+        <div className="description">
+          <h1>Notes </h1>
+          <div className="break-inner"></div>
+          <textarea
+            value={description}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          ></textarea>
+        </div>
 
         <div className="break"></div>
         <div className="break"></div>
