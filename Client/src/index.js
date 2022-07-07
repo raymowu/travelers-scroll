@@ -4,10 +4,13 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Layout from "./components/Layout";
+import { BuildContextProvider } from "./context/BuildContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BuildContextProvider>
+      <App />
+    </BuildContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -4,7 +4,7 @@ import Home from "./pages/home";
 import SignUp from "./pages/signup";
 import LogIn from ".//pages/login";
 import ForgotPassword from "./pages/ForgotPassword";
-import PasswordReset from "./pages/PasswordReset"
+import PasswordReset from "./pages/PasswordReset";
 import Profile from "./pages/profile";
 import Character from "./pages/Character";
 import CreateBuild from "./pages/CreateBuild";

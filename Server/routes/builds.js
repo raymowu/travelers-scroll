@@ -95,26 +95,28 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
   const build = await Builds.findById(req.params.id);
   const user = await User.findById(req.session.user.id);
   if (build) {
+    await build.populate("comments");
     if (liked && !build.likedUsers.includes(user)) {
       build.likedUsers.push(user._id);
-      build.likes++;
       user.likedBuilds.push(build._id);
+      build.likes++;
       await build.save();
       await user.save();
       // await Builds.findByIdAndUpdate(build._id, { likes: build.likes + 1 });
-      return res.send({ status: "ok" });
+      return res.send({ status: "ok", build: build });
     } else {
       // if(user.likedBuilds.includes(build._id)){
       build.likedUsers.splice(build.likedUsers.indexOf(user._id), 1);
       user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
-      build.save();
-      user.save();
+      build.likes--;
+      await build.save();
+      await user.save();
       let likes = build.likes - 1;
       if (likes < 0) {
         likes = 0;
       }
       await Builds.findByIdAndUpdate(build._id, { likes: likes });
-      return res.send({ status: "ok" });
+      return res.send({ status: "ok", build: build });
       // }
       // else{
       //   return res.send({status: "err", message: "Can't dislike a build you havent liked"});
@@ -138,9 +140,10 @@ router.post("/build/:id/newComment", Authenticate, (req, res) => {
         if (comment) {
           const build = await Builds.findById(req.params.id);
           if (build) {
-            build.comments.push(comment._id);
+            build.comments.push(comment);
+            await build.populate("comments");
             build.save();
-            return res.send({ status: "ok" });
+            return res.send({ status: "ok", build: build });
           }
         } else {
           res.send({ status: "err", err: "idek" });

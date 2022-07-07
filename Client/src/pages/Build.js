@@ -10,30 +10,12 @@ import Comment from "../components/Comment";
 import Axios from "axios";
 import LikeButton from "../components/LikeButton";
 import ReactTooltip from "react-tooltip";
+import { useBuildContext } from "../hooks/useBuildContext";
 
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
 const Build = () => {
-  const [build, setBuild] = useState({
-    _id: 0,
-    title: "",
-    description: "",
-    character: "",
-    Author: {},
-    weapons: [],
-    weapons_replacement: [],
-    artifacts: [],
-    artifact_sands_stat: "",
-    artifact_goblet_stat: "",
-    artifact_circlet_stat: "",
-    artifact_substats: [],
-    teams: [],
-    comments: [],
-    likes: 0,
-    likedUsers: [],
-    date: "",
-    __v: 0,
-  });
+  const { build, dispatch } = useBuildContext();
   const [characterName, setCharacterName] = useState("");
   const [character, setCharacter] = useState([]);
   const [comment, setComment] = useState("");
@@ -43,7 +25,7 @@ const Build = () => {
     fetch(`http://localhost:5000/builds/build/${buildid}`)
       .then((res) => res.json())
       .then((data) => {
-        setBuild(data.build);
+        dispatch({ type: "SET_BUILD", payload: data.build });
         setCharacterName(data.build.character);
         getCharacter(data.build.character);
       });
@@ -98,10 +80,12 @@ const Build = () => {
         if (res.data.status === "err") {
           alert("YOUR BAD");
         }
+        //test comment stuff
+        console.log(res.data.build);
+        dispatch({ type: "SET_BUILD", payload: res.data.build });
       });
       resetHandler();
     }
-    window.location.reload(false);
   };
 
   const handleOnLike = () => {
@@ -117,6 +101,8 @@ const Build = () => {
         if (res.data.status === "err") {
           alert(res.data.message);
         }
+        console.log(res.data.build);
+        dispatch({ type: "SET_BUILD", payload: res.data.build });
       });
     } else {
       Axios({
@@ -130,11 +116,13 @@ const Build = () => {
         if (res.data.status === "err") {
           alert(res.data.message);
         }
+        console.log(res.data.build);
+        dispatch({ type: "SET_BUILD", payload: res.data.build });
       });
     }
-    setTimeout(() => {
-      window.location.reload(false);
-    }, 100);
+    // setTimeout(() => {
+    //   window.location.reload(false);
+    // }, 100);
   };
 
   return (
@@ -188,8 +176,7 @@ const Build = () => {
 
         <div id="weapon-display"></div>
         <div className="weapon-container">
-          <span className="vert-bar">&#10072;</span>{" "}
-          <h2>Replacement Weapons..........</h2>{" "}
+          <span className="vert-bar">&#10072;</span> <h2>Replacement Weapons</h2>{" "}
           <span className="weapon-gr">Best free-to-play options</span>
           <div className="break-inner-menu"></div>
           {build.weapons.map((weapon) => {
