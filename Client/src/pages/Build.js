@@ -80,8 +80,6 @@ const Build = () => {
         if (res.data.status === "err") {
           alert("YOUR BAD");
         }
-        //test comment stuff
-        console.log(res.data.build);
         dispatch({ type: "SET_BUILD", payload: res.data.build });
       });
       resetHandler();
@@ -101,7 +99,6 @@ const Build = () => {
         if (res.data.status === "err") {
           alert(res.data.message);
         }
-        console.log(res.data.build);
         dispatch({ type: "SET_BUILD", payload: res.data.build });
       });
     } else {
@@ -116,7 +113,6 @@ const Build = () => {
         if (res.data.status === "err") {
           alert(res.data.message);
         }
-        console.log(res.data.build);
         dispatch({ type: "SET_BUILD", payload: res.data.build });
       });
     }
