@@ -300,10 +300,11 @@ const Build = () => {
         </div>
 
         {build.description && (
-          <div className="buildpage-description-container">
+          <div className="buildpage-description-container" id="description">
             <textarea
               className="buildpage-description"
               value={build.description}
+              spellcheck="false"
               readonly
             ></textarea>
           </div>
@@ -312,7 +313,7 @@ const Build = () => {
         <div className="break"></div>
         <div className="break"></div>
 
-        <div className="create-comment">
+        <div className="create-comment" id="comments">
           <label>
             <textarea
               className="create-comment-text"
