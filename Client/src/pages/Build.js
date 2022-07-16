@@ -78,9 +78,14 @@ const Build = () => {
         url: `http://localhost:5000/builds/build/${buildid}/newComment`,
       }).then((res) => {
         if (res.data.status === "err") {
-          alert("YOUR BAD");
+          alert(res.data.message);
+          if(res.data.message === "Login Required"){
+            window.location.href = "/login";
+          }
         }
-        dispatch({ type: "SET_BUILD", payload: res.data.build });
+        else{
+          dispatch({ type: "SET_BUILD", payload: res.data.build });
+        }
       });
       resetHandler();
     }
@@ -98,8 +103,13 @@ const Build = () => {
       }).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
+          if(res.data.message === "Login Required"){
+            window.location.href = "/login";
+          }
         }
-        dispatch({ type: "SET_BUILD", payload: res.data.build });
+        else{
+          dispatch({ type: "SET_BUILD", payload: res.data.build });
+        }
       });
     } else {
       Axios({
@@ -112,8 +122,14 @@ const Build = () => {
       }).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
+          if(res.data.message === "Login Required"){
+            window.location.href = "/login";
+          }
         }
-        dispatch({ type: "SET_BUILD", payload: res.data.build });
+        else{
+          dispatch({ type: "SET_BUILD", payload: res.data.build });
+        }
+        
       });
     }
     // setTimeout(() => {
