@@ -237,7 +237,7 @@
   border-radius: 10px;
   background-color: #2a1d52;
   width: 40%;
-  height: 170px;
+  height: 190px;
   overflow-y: auto;
   overflow-x: hidden;
   display: inline-block;
@@ -445,7 +445,7 @@
     border-radius: 10px;
     background-color: #2a1d52;
     width: 35%;
-    height: 170px;
+    height: 190px;
     overflow-y: auto;
     overflow-x: hidden;
     display: inline;
@@ -608,6 +608,19 @@
   .like-button {
     display: none;
   }
+
+  .weapon-container {
+    overflow-x: hidden;
+  }
+  .artifacts-container {
+    overflow-x: hidden;
+  }
+  .stats-container {
+    overflow-x: hidden;
+  }
+  .team-container {
+    overflow-x: hidden;
+  }
   .weapon-container .weapon-gr {
     display: none;
   }
@@ -622,5 +635,9 @@
 
   .team-container .team-gr {
     display: none;
+  }
+  .buildpage-description-container .team-gr {
+    display: none;
+    overflow-x: hidden;
   }
 }
