@@ -125,7 +125,7 @@ const Character = () => {
         </div>
 
         <h1 className="recent-builds" id="showcase">
-          Recent {character.name} Builds:
+          Recent {character.name} Builds
         </h1>
         <div className="break"></div>
         <button type="button" className="button-18" onClick={handleOnCreateBuild}>

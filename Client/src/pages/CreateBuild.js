@@ -746,7 +746,7 @@ const CreateBuild = () => {
 
         <div className="break-inner"></div>
         <div className="description">
-          <h1>Notes </h1>
+          <h1>Description </h1>
           <div className="break-inner"></div>
           <textarea
             value={description}

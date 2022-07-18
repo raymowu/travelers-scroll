@@ -38,7 +38,7 @@ function LogIn() {
         <h1>Login</h1>
         <input
           type="text"
-          placeholder="username"
+          placeholder="Username"
           name="username"
           className="input"
           onChange={handleChange}
@@ -53,10 +53,12 @@ function LogIn() {
         <button type="submit" className="button-form">
           Submit
         </button>
-        <p>
+        <p className="sign-up-text">
           Dont have an account? <a href="/register">Sign Up</a>
         </p>
-        <p><a href="/forgotpassword">Forgot Password?</a></p>
+        <p>
+          <a href="/forgotpassword">Forgot Password?</a>
+        </p>
         <a href="/">Back</a>
       </form>
     </div>

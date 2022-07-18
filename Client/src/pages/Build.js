@@ -79,11 +79,10 @@ const Build = () => {
       }).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
-          if(res.data.message === "Login Required"){
+          if (res.data.message === "Login Required") {
             window.location.href = "/login";
           }
-        }
-        else{
+        } else {
           dispatch({ type: "SET_BUILD", payload: res.data.build });
         }
       });
@@ -103,11 +102,10 @@ const Build = () => {
       }).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
-          if(res.data.message === "Login Required"){
+          if (res.data.message === "Login Required") {
             window.location.href = "/login";
           }
-        }
-        else{
+        } else {
           dispatch({ type: "SET_BUILD", payload: res.data.build });
         }
       });
@@ -122,14 +120,12 @@ const Build = () => {
       }).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
-          if(res.data.message === "Login Required"){
+          if (res.data.message === "Login Required") {
             window.location.href = "/login";
           }
-        }
-        else{
+        } else {
           dispatch({ type: "SET_BUILD", payload: res.data.build });
         }
-        
       });
     }
     // setTimeout(() => {
@@ -301,12 +297,12 @@ const Build = () => {
 
         {build.description && (
           <div className="buildpage-description-container" id="description">
-            <textarea
-              className="buildpage-description"
-              value={build.description}
-              spellcheck="false"
-              readonly
-            ></textarea>
+            <span className="vert-bar">&#10072;</span> <h2>Description</h2>{" "}
+            <h2 className="team-gr">
+              Additional notes for <i>{build.title}</i>
+            </h2>{" "}
+            <div className="break-inner-menu"></div>
+            <p>{build.description}</p>
           </div>
         )}
 
