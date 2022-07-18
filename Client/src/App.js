@@ -9,6 +9,8 @@ import Profile from "./pages/profile";
 import Character from "./pages/Character";
 import CreateBuild from "./pages/CreateBuild";
 import Build from "./pages/Build";
+import Catch from "./pages/Catch";
+import CharacterCatch from "./pages/CharacterCatch";
 
 const App = () => {
   return (
@@ -24,6 +26,7 @@ const App = () => {
           <Route path="/characters/:characterName" exact element={<Character />} />
           <Route path="/createbuild/:characterName" exact element={<CreateBuild />} />
           <Route path="/build/:buildid" exact element={<Build />} />
+          <Route path="/*" exact element={<Catch />} />
         </Routes>
       </BrowserRouter>
     </div>

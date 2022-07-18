@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import CharacterBuildHeader from "../components/CharacterBuildHeader";
 import Layout from "../components/Layout";
 import "../css/buildpage.css";
@@ -38,7 +38,7 @@ const Build = () => {
       url: `http://localhost:5000/builds/build/${buildid}`,
     }).then((res) => {
       if (res.data.status === "err") {
-        alert("err");
+        window.location.replace("/404");
       }
       setUser(res.data.userId);
       console.log(res.data.userId);

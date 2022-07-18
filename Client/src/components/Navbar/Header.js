@@ -44,12 +44,12 @@ function Header({ user }) {
             <>
               <li>
                 <a href="/login" className={classes.link}>
-                  log in
+                  Log In
                 </a>
               </li>
               <li>
                 <a href="/register" className={classes.signup}>
-                  sign up
+                  Sign Up
                 </a>
               </li>
             </>
