@@ -62,45 +62,43 @@ function Profile() {
       <ProfileHeader user={user} />
       <div className="profile-container">
         <div className="liked-builds-container">
-          <h1> {user.username}'s Liked Builds</h1>
+          {user.likedBuilds.length > 0 && <h1> {user.username}'s Liked Builds</h1>}
           <div className="break"></div>
-          <div className="break"></div>
-          {user.likedBuilds
-            .slice(0)
-            .reverse()
-            .map((build) => {
-              return (
-                <>
-                  <BuildCard key={build._id} build={build} />
-                  <div className="break"></div>
-                  <div className="break"></div>
-                </>
-              );
-            })}
+          {user.likedBuilds &&
+            user.likedBuilds
+              .slice(0)
+              .reverse()
+              .map((build) => {
+                return (
+                  <>
+                    <BuildCard key={build._id} build={build} />
+                    <div className="break"></div>
+                  </>
+                );
+              })}
         </div>
 
         <div className="created-builds-container">
-          <h1> {user.username}'s Builds</h1>
+          {user.createdBuilds.length > 0 && <h1> {user.username}'s Builds</h1>}
           <div className="break"></div>
-          {user.createdBuilds
-            .slice(0)
-            .reverse()
-            .map((build) => {
-              return (
-                <>
-                  <BuildCard key={build._id} build={build} />
-                  <div className="break"></div>
-                </>
-              );
-            })}
-          <div className="break"></div>
-          <div className="break"></div>
-          {logged.username === user.username ? (
-            <button onClick={Logout}>Log Out</button>
-          ) : (
-            <></>
-          )}
+          {user.createdBuilds &&
+            user.createdBuilds
+              .slice(0)
+              .reverse()
+              .map((build) => {
+                return (
+                  <>
+                    <BuildCard key={build._id} build={build} />
+                    <div className="break"></div>
+                  </>
+                );
+              })}
         </div>
+        {logged.username === user.username ? (
+          <button onClick={Logout}>Log Out</button>
+        ) : (
+          <></>
+        )}
       </div>
     </Layout>
   );
