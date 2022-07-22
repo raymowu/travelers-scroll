@@ -187,7 +187,7 @@ const Build = () => {
           <span className="vert-bar">&#10072;</span> <h2>Replacement Weapons</h2>{" "}
           <span className="weapon-gr">Best free-to-play options</span>
           <div className="break-inner-menu"></div>
-          {build.weapons.map((weapon) => {
+          {build.weapons_replacement.map((weapon) => {
             return (
               <div
                 data-html="true"

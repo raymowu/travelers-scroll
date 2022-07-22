@@ -111,11 +111,8 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
       build.likes--;
       await build.save();
       await user.save();
-      let likes = build.likes - 1;
-      if (likes < 0) {
-        likes = 0;
-      }
-      await Builds.findByIdAndUpdate(build._id, { likes: likes });
+
+      // await Builds.findByIdAndUpdate(build._id, { likes: likes });
       return res.send({ status: "ok", build: build });
       // }
       // else{

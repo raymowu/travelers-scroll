@@ -63,7 +63,8 @@ function Profile() {
       <div className="profile-container">
         <div className="liked-builds-container">
           {user.likedBuilds.length > 0 && <h1> {user.username}'s Liked Builds</h1>}
-          <div className="break"></div>
+          <div className="profile-break"></div>
+
           {user.likedBuilds &&
             user.likedBuilds
               .slice(0)
@@ -72,7 +73,7 @@ function Profile() {
                 return (
                   <>
                     <BuildCard key={build._id} build={build} />
-                    <div className="break"></div>
+                    <div className="profile-break"></div>
                   </>
                 );
               })}
@@ -80,7 +81,7 @@ function Profile() {
 
         <div className="created-builds-container">
           {user.createdBuilds.length > 0 && <h1> {user.username}'s Builds</h1>}
-          <div className="break"></div>
+          <div className="profile-break"></div>
           {user.createdBuilds &&
             user.createdBuilds
               .slice(0)
@@ -89,11 +90,12 @@ function Profile() {
                 return (
                   <>
                     <BuildCard key={build._id} build={build} />
-                    <div className="break"></div>
+                    <div className="profile-break"></div>
                   </>
                 );
               })}
         </div>
+        <div className="break"></div>
         {logged.username === user.username ? (
           <button onClick={Logout}>Log Out</button>
         ) : (
