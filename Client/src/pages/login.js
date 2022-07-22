@@ -105,7 +105,6 @@ function LogIn() {
         </GoogleLogin>
         </div>
         <br />
-        <p>
 
         <p className="sign-up-text">
 
