@@ -16,7 +16,7 @@ const ProfileHeader = ({ user }) => {
         </div>
         <ul>
           <li>
-            <h2>Impactful Builds</h2>
+            <h2>Traveler's Scroll</h2>
           </li>
           <li>
             <h1>{user.username}</h1>

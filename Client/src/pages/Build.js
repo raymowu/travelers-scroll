@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import CharacterBuildHeader from "../components/CharacterBuildHeader";
 import Layout from "../components/Layout";
 import "../css/buildpage.css";
@@ -10,30 +10,12 @@ import Comment from "../components/Comment";
 import Axios from "axios";
 import LikeButton from "../components/LikeButton";
 import ReactTooltip from "react-tooltip";
+import { useBuildContext } from "../hooks/useBuildContext";
 
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
 const Build = () => {
-  const [build, setBuild] = useState({
-    _id: 0,
-    title: "",
-    description: "",
-    character: "",
-    Author: {},
-    weapons: [],
-    weapons_replacement: [],
-    artifacts: [],
-    artifact_sands_stat: "",
-    artifact_goblet_stat: "",
-    artifact_circlet_stat: "",
-    artifact_substats: [],
-    teams: [],
-    comments: [],
-    likes: 0,
-    likedUsers: [],
-    date: "",
-    __v: 0,
-  });
+  const { build, dispatch } = useBuildContext();
   const [characterName, setCharacterName] = useState("");
   const [character, setCharacter] = useState([]);
   const [comment, setComment] = useState("");
@@ -43,7 +25,7 @@ const Build = () => {
     fetch(`http://localhost:5000/builds/build/${buildid}`)
       .then((res) => res.json())
       .then((data) => {
-        setBuild(data.build);
+        dispatch({ type: "SET_BUILD", payload: data.build });
         setCharacterName(data.build.character);
         getCharacter(data.build.character);
       });
@@ -56,7 +38,7 @@ const Build = () => {
       url: `http://localhost:5000/builds/build/${buildid}`,
     }).then((res) => {
       if (res.data.status === "err") {
-        alert("err");
+        window.location.replace("/404");
       }
       setUser(res.data.userId);
       console.log(res.data.userId);
@@ -97,12 +79,17 @@ const Build = () => {
       }).then((res) => {
         console.log(res.data)
         if (res.data.status === "err") {
-          alert(res.data.err);
+
+          alert(res.data.message);
+          if (res.data.message === "Login Required") {
+            window.location.href = "/login";
+          }
+        } else {
+          dispatch({ type: "SET_BUILD", payload: res.data.build });
         }
       });
       resetHandler();
     }
-    window.location.reload(false);
   };
 
   const handleOnLike = () => {
@@ -117,6 +104,11 @@ const Build = () => {
       }).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
+          if (res.data.message === "Login Required") {
+            window.location.href = "/login";
+          }
+        } else {
+          dispatch({ type: "SET_BUILD", payload: res.data.build });
         }
       });
     } else {
@@ -130,12 +122,17 @@ const Build = () => {
       }).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
+          if (res.data.message === "Login Required") {
+            window.location.href = "/login";
+          }
+        } else {
+          dispatch({ type: "SET_BUILD", payload: res.data.build });
         }
       });
     }
-    setTimeout(() => {
-      window.location.reload(false);
-    }, 100);
+    // setTimeout(() => {
+    //   window.location.reload(false);
+    // }, 100);
   };
 
   return (
@@ -192,7 +189,7 @@ const Build = () => {
           <span className="vert-bar">&#10072;</span> <h2>Replacement Weapons</h2>{" "}
           <span className="weapon-gr">Best free-to-play options</span>
           <div className="break-inner-menu"></div>
-          {build.weapons.map((weapon) => {
+          {build.weapons_replacement.map((weapon) => {
             return (
               <div
                 data-html="true"
@@ -299,33 +296,44 @@ const Build = () => {
             return <TeammateCardDisplay teammate={teammate} />;
           })}
         </div>
-        <div className="break"></div>
-        <div className="break"></div>
-        <div className="comment-container">
-          <div className="create-comment">
-            <label>
-              <textarea
-                className="create-comment-text"
-                value={comment}
-                placeholder="Add a Comment"
-                onChange={(e) => setComment(e.target.value)}
-              />
-            </label>
-            <button
-              type="button"
-              className="comment-button"
-              onClick={handleOnCommentSubmit}
-            >
-              Comment
-            </button>
+
+        {build.description && (
+          <div className="buildpage-description-container" id="description">
+            <span className="vert-bar">&#10072;</span> <h2>Description</h2>{" "}
+            <h2 className="team-gr">
+              Additional notes for <i>{build.title}</i>
+            </h2>{" "}
+            <div className="break-inner-menu"></div>
+            <p>{build.description}</p>
           </div>
-          {build.comments
-            .slice(0)
-            .reverse()
-            .map((comment) => {
-              return <Comment comment={comment} />;
-            })}
+        )}
+
+        <div className="break"></div>
+        <div className="break"></div>
+
+        <div className="create-comment" id="comments">
+          <label>
+            <textarea
+              className="create-comment-text"
+              value={comment}
+              placeholder="Add a Comment"
+              onChange={(e) => setComment(e.target.value)}
+            />
+          </label>
+          <button
+            type="button"
+            className="comment-button"
+            onClick={handleOnCommentSubmit}
+          >
+            Comment
+          </button>
         </div>
+        {build.comments
+          .slice(0)
+          .reverse()
+          .map((comment) => {
+            return <Comment comment={comment} />;
+          })}
       </div>
     </Layout>
   );

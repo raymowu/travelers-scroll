@@ -5,6 +5,8 @@ import Layout from "../components/Layout";
 import "../css/profile.css";
 import ProfileHeader from "../components/ProfileHeader";
 import BuildCard from "../components/BuildCard";
+import { FaTrash } from "react-icons/fa";
+import UserBuildCard from "../components/UserBuildCard";
 
 function Profile() {
   const { id } = useParams();
@@ -53,6 +55,11 @@ function Profile() {
     GetUser();
   }, []);
 
+  const handleOnDelete = (e) => {
+    e.preventDefault();
+    console.log("Delete functionality");
+  };
+
   console.log(user.likedBuilds);
   console.log(user.username);
   console.log(user.email);
@@ -62,45 +69,49 @@ function Profile() {
       <ProfileHeader user={user} />
       <div className="profile-container">
         <div className="liked-builds-container">
-          <h1> {user.username}'s Liked Builds</h1>
-          <div className="break"></div>
-          <div className="break"></div>
-          {user.likedBuilds
-            .slice(0)
-            .reverse()
-            .map((build) => {
-              return (
-                <>
-                  <BuildCard key={build._id} build={build} />
-                  <div className="break"></div>
-                  <div className="break"></div>
-                </>
-              );
-            })}
+          {user.likedBuilds.length > 0 && <h1> {user.username}'s Liked Builds</h1>}
+          <div className="profile-break"></div>
+
+          {user.likedBuilds &&
+            user.likedBuilds
+              .slice(0)
+              .reverse()
+              .map((build) => {
+                return (
+                  <>
+                    <BuildCard key={build._id} build={build} />
+                    <div className="profile-break"></div>
+                  </>
+                );
+              })}
         </div>
 
         <div className="created-builds-container">
-          <h1> {user.username}'s Builds</h1>
-          <div className="break"></div>
-          {user.createdBuilds
-            .slice(0)
-            .reverse()
-            .map((build) => {
-              return (
-                <>
-                  <BuildCard key={build._id} build={build} />
-                  <div className="break"></div>
-                </>
-              );
-            })}
-          <div className="break"></div>
-          <div className="break"></div>
-          {logged.username === user.username ? (
-            <button onClick={Logout}>Log Out</button>
-          ) : (
-            <></>
-          )}
+          {user.createdBuilds.length > 0 && <h1> {user.username}'s Builds</h1>}
+          <div className="profile-break"></div>
+          {user.createdBuilds &&
+            user.createdBuilds
+              .slice(0)
+              .reverse()
+              .map((build) => {
+                return (
+                  <>
+                    <UserBuildCard
+                      key={build._id}
+                      build={build}
+                      handleOnDelete={handleOnDelete}
+                    />
+                    <div className="profile-break"></div>
+                  </>
+                );
+              })}
         </div>
+        <div className="break"></div>
+        {logged.username === user.username ? (
+          <button onClick={Logout}>Log Out</button>
+        ) : (
+          <></>
+        )}
       </div>
     </Layout>
   );

@@ -13,6 +13,7 @@
   background-color: #231942;
   margin: -100px 100px;
   padding: 40px;
+
   gap: 25px;
 }
 
@@ -20,25 +21,16 @@
   border: 0px solid;
   border-radius: 10px;
   width: 650px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 0px 0px;
-  margin: -10px 20px 40px 50px;
+  margin: 0px 40px 0px -40px;
   padding: 20px 20px 20px 40px;
+
   font-size: 10px;
 }
 .created-builds-container {
   border: 0px solid;
   border-radius: 10px;
   width: 650px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 25px 0px;
-  margin: -10px 20px 40px 50px;
+  margin: 0px 40px 0px -40px;
   padding: 20px 20px 20px 40px;
   font-size: 10px;
 }
@@ -53,4 +45,11 @@
 
 .profile-build-card {
   color: black;
+}
+
+.profile-break {
+  height: 50px;
+}
+
+.delete-button {
 }

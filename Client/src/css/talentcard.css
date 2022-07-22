@@ -1,0 +1,40 @@
+.talent-card {
+  width: 500px;
+  text-align: center;
+  background-color: #2a1d52;
+  margin: 60px 20px 250px 20px;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.talent-card img {
+  width: 70px;
+  height: 70px;
+}
+
+.talent-card h3 {
+  font-size: 17px;
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(219, 211, 99);
+}
+.talent-card h4 {
+  font-weight: 400;
+  font-style: normal;
+  margin-top: -14px;
+  margin-bottom: 40px;
+  color: lightgray;
+}
+
+.talent-description-text {
+  text-align: start;
+}
+
+@media only screen and (max-width: 990px) {
+  .talent-card {
+    width: 100%;
+    margin-bottom: 0px;
+    margin-left: -20px;
+    margin-right: auto;
+  }
+}

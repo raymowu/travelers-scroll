@@ -42,10 +42,10 @@ const CharacterInfoHeader = ({ character, characterName }) => {
             <a href="#description">Description</a>
           </li>
           <li>
-            <a href="#weapon">Talents</a>
+            <a href="#talents">Talents</a>
           </li>
           <li>
-            <a href="#artifacts">Passives</a>
+            <a href="#passives">Passives</a>
           </li>
           <li>
             <a href="#constellations">Constellations</a>

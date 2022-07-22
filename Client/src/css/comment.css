@@ -27,7 +27,7 @@
   font-size: 20px;
   font-weight: 300;
   height: 30px;
-  width: 600px;
+  width: 460px;
   resize: none;
   color: white;
   background-color: transparent;
@@ -38,22 +38,26 @@
 }
 
 .comment {
-  display: flex;
+  width: 100%;
+  display: inline;
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
   color: rgb(255, 255, 255);
   border: 0px solid;
   border-radius: 10px;
-  margin-bottom: -25px;
   transform: translateY(10px);
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
 }
 .comment-username {
   font-size: 16px;
 }
 
 .comment-text {
-  margin: -30px 0px 0px 20px;
+  margin-top: -10px;
+  margin-left: 20px;
   font-weight: 300;
   font-size: 14px;
 }
@@ -67,17 +71,6 @@
 }
 
 @media only screen and (max-width: 850px) {
-  .comment {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    width: 280px;
-    color: rgb(255, 255, 255);
-    border: 0px solid;
-    border-radius: 10px;
-    margin-bottom: -25px;
-  }
   .comment-container {
     margin-right: auto;
   }
