@@ -67,14 +67,14 @@
   color: white;
 }
 
-p {
+/* p {
   margin-top: -80px;
-}
+} */
 
 .googlebtn {
   width: 200px;
   margin-left: -.5px;
   margin-top: 110px;
-  /* margin-bottom: -100px; */
+  margin-bottom: -250px;
   /* margin-bottom: 30px;  */
 }
