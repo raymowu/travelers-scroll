@@ -78,6 +78,12 @@ const ReSendEmail = async (id, email) => {
   );
 };
 
+const MakeUsername = (email) => {
+    const index = email.indexOf("@");
+    const username = email.substr(0, index);
+    return username;
+}
+
 router.post("/register", async (req, res) => {
   const { username, password, email } = req.body;
   User.findOne({ username }, async (err, user) => {
@@ -101,6 +107,32 @@ router.post("/register", async (req, res) => {
   });
 });
 
+router.post("/gregister", async (req, res) => {
+  let { email, gid } = req.body;
+  User.findOne({email}, async (err, user) => {
+    if(err) throw err;
+    if(user) return res.send({status: "err", message: "User already exists"});
+    if(!user){
+      const username = MakeUsername(email);
+      const hashed = await bcrypt.hash(gid, 10);
+      console.log(hashed)
+      const newUser = new User({
+        username,
+        password: hashed,
+        email,
+      });
+      await newUser.save();
+      newUser.verification.verified = true;
+      await newUser.save();
+      req.session.user = req.session.user = {
+        id: newUser._id,
+        username: newUser.username,
+      };
+      return res.send({ status: "ok" });
+    }
+  });
+});
+
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
@@ -112,6 +144,19 @@ router.post("/login", async (req, res) => {
     }
   }
   return res.send({ status: "err", msg: "Username or Password was incorrect" });
+});
+
+router.post("/glogin", async (req, res) => {
+  let {email, gid} = req.body;
+  const user = await User.findOne({email});
+  if(user){
+    const valid = await bcrypt.compare(gid, user.password);
+    if (valid) {
+      req.session.user = { id: user._id, username: user.username };
+      return res.send({ status: "ok" });
+    }
+  }
+  return res.send({ status: "err", msg: "There was an error" });
 });
 
 router.get("/confirmation/:id", async (req, res) => {
