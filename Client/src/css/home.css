@@ -19,7 +19,7 @@ body {
   background-color: #231942;
   display: flex;
   justify-content: center;
-  margin: 40px 100px 100px 100px;
+  margin: 100px;
   flex-wrap: wrap;
   /* justify-content: space-around; */
   padding: 20px;
@@ -64,6 +64,7 @@ body {
 
 .character-container h3 {
   text-align: center;
+  margin-top: 10px;
 }
 
 .break {

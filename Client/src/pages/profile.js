@@ -57,7 +57,7 @@ function Profile() {
 
   const handleOnDelete = (e) => {
     e.preventDefault();
-    console.log("Delete functionality");
+    //DELETE FUNCTIONALITY HERE
   };
 
   console.log(user.likedBuilds);
