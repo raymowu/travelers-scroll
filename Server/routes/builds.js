@@ -153,4 +153,13 @@ router.post("/build/:id/newComment", Authenticate, (req, res) => {
   );
 });
 
+router.post("/build/:id/delete", async (req, res) => {
+  let build = await Builds.findById(req.params.id);
+  if(build){
+    await Comments.deleteMany({_id: {$in: build.comments}})
+  }
+  await Builds.findByIdAndDelete(req.params.id);
+  return res.send("Build deleted");
+});
+
 module.exports = router;
