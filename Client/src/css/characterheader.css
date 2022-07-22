@@ -300,6 +300,11 @@ html {
   background-position-x: 50%;
 }
 
+.gorou {
+  background-size: 60%;
+  background-position-y: 20%;
+  background-position-x: 50%;
+}
 .hu-tao {
   background-size: 90%;
   background-position-y: 20%;
