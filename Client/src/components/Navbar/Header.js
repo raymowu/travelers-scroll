@@ -2,6 +2,7 @@
 
 import { Axios } from "axios";
 import classes from "../../css/navbar.module.css";
+import "../../css/navbar.css";
 
 function Header({ user }) {
   const links = [
@@ -27,11 +28,13 @@ function Header({ user }) {
 
   return (
     <header>
-      <div className={classes.logo}>
-        <h2>
-          <a href="/">The Traveler's Scroll</a>
-        </h2>
-      </div>
+      <a href="/">
+        <img
+          className="travelerscroll-logo"
+          height="70px"
+          src="https://i.imgur.com/IWLHwmq.png"
+        ></img>
+      </a>
       <div>
         <ul className={`${classes.items}`}>
           {user.id ? (

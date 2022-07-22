@@ -4,7 +4,7 @@ header {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 80px;
-  background-color: #13092c;
+  background-color: rgb(18, 9, 42);
   /* margin-top: -9px; */
   /* margin-left: -10px; */
   width: 100%;
