@@ -146,6 +146,19 @@ router.post("/login", async (req, res) => {
   return res.send({ status: "err", msg: "Username or Password was incorrect" });
 });
 
+router.post("/glogin", async (req, res) => {
+  let {email, gid} = req.body;
+  const user = await User.findOne({email});
+  if(user){
+    const valid = await bcrypt.compare(gid, user.password);
+    if (valid) {
+      req.session.user = { id: user._id, username: user.username };
+      return res.send({ status: "ok" });
+    }
+  }
+  return res.send({ status: "err", msg: "There was an error" });
+});
+
 router.get("/confirmation/:id", async (req, res) => {
   let user = await User.findById(req.params.id);
   if (user) {
