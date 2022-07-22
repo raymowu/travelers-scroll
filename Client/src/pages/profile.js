@@ -5,6 +5,8 @@ import Layout from "../components/Layout";
 import "../css/profile.css";
 import ProfileHeader from "../components/ProfileHeader";
 import BuildCard from "../components/BuildCard";
+import { FaTrash } from "react-icons/fa";
+import UserBuildCard from "../components/UserBuildCard";
 
 function Profile() {
   const { id } = useParams();
@@ -53,6 +55,11 @@ function Profile() {
     GetUser();
   }, []);
 
+  const handleOnDelete = (e) => {
+    e.preventDefault();
+    console.log("Delete functionality");
+  };
+
   console.log(user.likedBuilds);
   console.log(user.username);
   console.log(user.email);
@@ -89,7 +96,11 @@ function Profile() {
               .map((build) => {
                 return (
                   <>
-                    <BuildCard key={build._id} build={build} />
+                    <UserBuildCard
+                      key={build._id}
+                      build={build}
+                      handleOnDelete={handleOnDelete}
+                    />
                     <div className="profile-break"></div>
                   </>
                 );

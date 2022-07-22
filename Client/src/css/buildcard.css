@@ -71,6 +71,15 @@
   flex-basis: 100%;
 }
 
+.delete-button {
+  font-size: 20px;
+  transform: translateY(-70px);
+}
+
+.delete-button:hover {
+  color: rgb(218, 213, 247);
+}
+
 @media only screen and (max-width: 1010px) {
   .build .buildcard-artifacts-icon {
     width: 0px;
