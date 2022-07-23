@@ -20,8 +20,6 @@ function Profile() {
 
   const userData = () => {
     Axios.get(`http://localhost:5000/profile/${id}`).then((response) => {
-      console.log(response.data);
-      // console.log(response.data.blogs)
       if (response.data.status === "ok") {
         setUser(response.data.user);
       } else {
@@ -60,10 +58,7 @@ function Profile() {
     //DELETE FUNCTIONALITY HERE
   };
 
-  console.log(user.likedBuilds);
-  console.log(user.username);
-  console.log(user.email);
-  console.log(user);
+
   return (
     <Layout Auth={false}>
       <ProfileHeader user={user} />

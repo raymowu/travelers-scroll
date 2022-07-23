@@ -9,7 +9,6 @@ const Layout = ({ children }) => {
 
     useEffect(() =>{
         Axios.get('http://localhost:5000/current-user', {withCredentials: true}).then((response) => {
-          console.log(response.data)
           // console.log(response.data.blogs)
           if (response.data.status === "ok"){
               setUser(response.data.user)

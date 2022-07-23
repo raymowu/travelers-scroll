@@ -77,9 +77,7 @@ router.get("/build/:id", async (req, res) => {
         let liked = false;
         if (req.session.user) {
           let user = await User.findById(req.session.user.id);
-          // let arr = user.likedBuilds;
-          // console.log("arr: ")
-          // console.log(arr);
+
           let userID;
           userID = req.session.user.id;
           return res.send({ status: "ok", build: build, userId: userID });

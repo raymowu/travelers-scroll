@@ -23,7 +23,6 @@ function LogIn() {
       gid: profileObj.googleId,
       email: profileObj.email,
     };
-    // console.log(typeof data.gid);
     Axios({
       method: "POST",
       data: data,
