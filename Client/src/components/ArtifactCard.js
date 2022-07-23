@@ -1,7 +1,6 @@
 import React from "react";
 import "../css/artifactcard.css";
 import deinitializeName from "./DeinitializeName";
-import initializeName from "./InitializeName";
 const ARTIFACT_API = "https://api.genshin.dev/artifacts/";
 
 const ArtifactCard = ({ artifact, artifactHandleOnClick }) => {

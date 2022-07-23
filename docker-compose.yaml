@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  server:
+    build: ./Server
+    container_name: server_c
+    ports:
+      - "1765:1765"
+    volumes:
+      - ./Server:/app
+      - ./app/node_modules
+  client:
+    build: ./Client
+    container_name: client_c
+    ports:
+      - "1764:1764"
+    stdin_open: true
+    tty: true

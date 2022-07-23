@@ -9,6 +9,7 @@ const PassiveTalentCard = ({ ptalent, character, characterName }) => {
         <>
           <img
             src={CHARACTER_API + characterName + "/talent-passive-0"}
+            alt="talent-passive-0"
             onError={(e) => {
               e.target.onerror = null;
               e.target.src = CHARACTER_API + characterName + "/talent-passive-1";
@@ -22,7 +23,10 @@ const PassiveTalentCard = ({ ptalent, character, characterName }) => {
       )}
       {ptalent.unlock === "Unlocked at Ascension 4" && (
         <>
-          <img src={CHARACTER_API + characterName + "/talent-passive-1"}></img>
+          <img
+            src={CHARACTER_API + characterName + "/talent-passive-1"}
+            alt="talent-passive-1"
+          ></img>
           <div className="break"></div>
           <h3>{ptalent.name}</h3>
           <div className="break"></div>
@@ -32,7 +36,10 @@ const PassiveTalentCard = ({ ptalent, character, characterName }) => {
       {ptalent.unlock === "Unlocked Automatically" &&
         ptalent.name !== "Princess of Watatsumi" && (
           <>
-            <img src={CHARACTER_API + characterName + "/talent-passive-2"}></img>
+            <img
+              src={CHARACTER_API + characterName + "/talent-passive-2"}
+              alt="talent-passive-2"
+            ></img>
             <div className="break"></div>
             <h3>{ptalent.name}</h3>
             <div className="break"></div>
@@ -41,7 +48,10 @@ const PassiveTalentCard = ({ ptalent, character, characterName }) => {
         )}
       {ptalent.name === "Princess of Watatsumi" && (
         <>
-          <img src={CHARACTER_API + characterName + "/talent-passive-misc"}></img>
+          <img
+            src={CHARACTER_API + characterName + "/talent-passive-misc"}
+            alt="talent-passive-3"
+          ></img>
           <div className="break"></div>
           <h3>{ptalent.name}</h3>
           <div className="break"></div>

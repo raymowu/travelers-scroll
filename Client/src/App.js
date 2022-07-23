@@ -10,7 +10,6 @@ import Character from "./pages/Character";
 import CreateBuild from "./pages/CreateBuild";
 import Build from "./pages/Build";
 import Catch from "./pages/Catch";
-import CharacterCatch from "./pages/CharacterCatch";
 
 const App = () => {
   return (

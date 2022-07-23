@@ -1,6 +1,5 @@
 import "../css/characterheader.css";
 import { AiFillStar } from "react-icons/ai";
-import LikeButton from "./LikeButton";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 const CharacterBuildHeader = ({ character, characterName, build }) => {
   return (

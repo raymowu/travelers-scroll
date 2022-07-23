@@ -5,7 +5,6 @@ import Layout from "../components/Layout";
 import "../css/profile.css";
 import ProfileHeader from "../components/ProfileHeader";
 import BuildCard from "../components/BuildCard";
-import { FaTrash } from "react-icons/fa";
 import UserBuildCard from "../components/UserBuildCard";
 
 function Profile() {
@@ -53,6 +52,7 @@ function Profile() {
   useEffect(() => {
     userData();
     GetUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleOnDelete = (e) => {
@@ -65,7 +65,7 @@ function Profile() {
   console.log(user.email);
   console.log(user);
   return (
-    <Layout>
+    <Layout Auth={false}>
       <ProfileHeader user={user} />
       <div className="profile-container">
         <div className="liked-builds-container">

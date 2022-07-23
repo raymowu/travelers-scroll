@@ -1,31 +1,7 @@
-// import { useState } from "react"
-
-import { Axios } from "axios";
 import classes from "../../css/navbar.module.css";
 import "../../css/navbar.css";
 
 function Header({ user }) {
-  const links = [
-    { id: 0, name: "Builds", link: "#", className: `${classes.link}` },
-    { id: 1, name: "Log In", link: "/login", className: `${classes.link}` },
-    { id: 2, name: "Sign Up", link: "/register", className: `${classes.signup}` },
-  ];
-
-  if (!user) {
-    console.log("no user logged in");
-  } else {
-    console.log("there is a user logged in");
-  }
-  const Logout = () => {
-    Axios.get("http://localhost:5000/logout", { withCredentials: true }).then((res) => {
-      if (res.data.status === "ok") {
-        alert("Successfully logged out");
-      } else {
-        alert("something went wrong");
-      }
-    });
-  };
-
   return (
     <header>
       <a href="/">
@@ -33,6 +9,7 @@ function Header({ user }) {
           className="travelerscroll-logo"
           height="70px"
           src="https://i.imgur.com/IWLHwmq.png"
+          alt="travelerscroll logo"
         ></img>
       </a>
       <div>

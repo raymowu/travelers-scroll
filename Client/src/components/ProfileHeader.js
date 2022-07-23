@@ -1,6 +1,4 @@
 import "../css/characterheader.css";
-import { AiFillStar } from "react-icons/ai";
-import LikeButton from "./LikeButton";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 const ProfileHeader = ({ user }) => {
   return (
@@ -12,7 +10,7 @@ const ProfileHeader = ({ user }) => {
         }}
       >
         <div className="character-icon-container">
-          <img src={CHARACTER_API + "hu-tao" + "/icon"} />
+          <img src={CHARACTER_API + "hu-tao/icon"} alt="profile-pic" />
         </div>
         <ul>
           <li>

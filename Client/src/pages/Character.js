@@ -9,7 +9,6 @@ import TalentCard from "../components/TalentCard";
 import CharacterDescCard from "../components/CharacterDescCard";
 import PassiveTalentCard from "../components/PassiveTalentCard";
 import ConstellationCard from "../components/Constellation";
-import CharacterCatch from "./CharacterCatch";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
 const Character = () => {
@@ -42,6 +41,7 @@ const Character = () => {
   useEffect(() => {
     getCharacter(characterName);
     getBuilds();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleOnCreateBuild = (e) => {
@@ -54,7 +54,7 @@ const Character = () => {
 
   return (
     <>
-      <Layout>
+      <Layout Auth={false}>
         <CharacterInfoHeader character={character} characterName={characterName} />
         <div className="container2">
           <div className="break" id="description"></div>

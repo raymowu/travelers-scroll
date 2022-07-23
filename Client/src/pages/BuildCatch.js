@@ -4,7 +4,7 @@ import "../css/catch.css";
 
 const BuildCatch = () => {
   return (
-    <Layout>
+    <Layout Auth={false}>
       <div className="catch-container">
         <img src="https://i.imgur.com/clrhe3O.png" alt="klee"></img>
         <div className="break"></div>

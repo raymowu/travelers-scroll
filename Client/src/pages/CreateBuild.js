@@ -85,6 +85,7 @@ const CreateBuild = () => {
     getArtifacts();
     getTeam();
     setBuildTeam([characterName]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   let { characterName } = useParams();
@@ -213,7 +214,7 @@ const CreateBuild = () => {
   };
 
   const teamHandleOnClick = (teammate) => {
-    if (teammate == characterName) {
+    if (teammate === characterName) {
     } else if (buildTeam.includes(teammate)) {
       setTeamMenu([teammate, ...teamMenu]);
       setBuildTeam(buildTeam.filter((t) => t !== teammate));
@@ -637,7 +638,9 @@ const CreateBuild = () => {
                 Select substat
               </option>
               {substatOptions.map((o) => {
-                return o != substats1 && o != substats2 && <option value={o}>{o}</option>;
+                return (
+                  o !== substats1 && o !== substats2 && <option value={o}>{o}</option>
+                );
               })}
             </select>
             <div className="break-inner"></div>
@@ -660,7 +663,9 @@ const CreateBuild = () => {
                 Select substat
               </option>
               {substatOptions.map((o) => {
-                return o != substats0 && o != substats2 && <option value={o}>{o}</option>;
+                return (
+                  o !== substats0 && o !== substats2 && <option value={o}>{o}</option>
+                );
               })}
             </select>
             <div className="break-inner"></div>
@@ -683,7 +688,9 @@ const CreateBuild = () => {
                 Select substat
               </option>
               {substatOptions.map((o) => {
-                return o != substats0 && o != substats1 && <option value={o}>{o}</option>;
+                return (
+                  o !== substats0 && o !== substats1 && <option value={o}>{o}</option>
+                );
               })}
             </select>
             <div className="break"></div>

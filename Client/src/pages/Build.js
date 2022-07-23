@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CharacterBuildHeader from "../components/CharacterBuildHeader";
 import Layout from "../components/Layout";
 import "../css/buildpage.css";
@@ -41,7 +41,6 @@ const Build = () => {
         window.location.replace("/404");
       }
       setUser(res.data.userId);
-      console.log(res.data.userId);
     });
   };
 
@@ -54,11 +53,6 @@ const Build = () => {
   };
 
   let { buildid } = useParams();
-
-  useEffect(() => {
-    getBuild(buildid);
-    getUser();
-  }, []);
 
   const resetHandler = () => {
     setComment("");
@@ -77,9 +71,7 @@ const Build = () => {
         withCredentials: true,
         url: `http://localhost:5000/builds/build/${buildid}/newComment`,
       }).then((res) => {
-        console.log(res.data)
         if (res.data.status === "err") {
-
           alert(res.data.message);
           if (res.data.message === "Login Required") {
             window.location.href = "/login";
@@ -135,8 +127,14 @@ const Build = () => {
     // }, 100);
   };
 
+  useEffect(() => {
+    getBuild(buildid);
+    getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <Layout>
+    <Layout Auth={false}>
       <CharacterBuildHeader
         characterName={characterName}
         character={character}

@@ -1,5 +1,4 @@
 import "../css/characterdesccard.css";
-import Character from "../pages/Character";
 
 const CharacterDescCard = ({ character, characterName }) => {
   return (

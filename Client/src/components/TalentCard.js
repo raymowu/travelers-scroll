@@ -9,6 +9,7 @@ const TalentCard = ({ talent, character, characterName }) => {
         <>
           <img
             src={CHARACTER_API + characterName + "/talent-na"}
+            alt="talent-na"
             onError={(e) => {
               e.target.onerror = null;
               e.target.src = CHARACTER_API + characterName + "/talent_na";
@@ -22,7 +23,10 @@ const TalentCard = ({ talent, character, characterName }) => {
       )}
       {talent.unlock.toLowerCase() === "elemental skill" && (
         <>
-          <img src={CHARACTER_API + characterName + "/talent-skill"}></img>
+          <img
+            src={CHARACTER_API + characterName + "/talent-skill"}
+            alt="talent-skill"
+          ></img>
           <div className="break"></div>
           <h3>{talent.name}</h3>
           <div className="break"></div>
@@ -31,7 +35,10 @@ const TalentCard = ({ talent, character, characterName }) => {
       )}
       {talent.unlock.toLowerCase() === "elemental burst" && (
         <>
-          <img src={CHARACTER_API + characterName + "/talent-burst"}></img>
+          <img
+            src={CHARACTER_API + characterName + "/talent-burst"}
+            alt="talent-burst"
+          ></img>
           <div className="break"></div>
           <h3>{talent.name}</h3>
           <div className="break"></div>
@@ -40,7 +47,10 @@ const TalentCard = ({ talent, character, characterName }) => {
       )}
       {talent.unlock === "Right Click" && (
         <>
-          <img src={CHARACTER_API + characterName + "/talent-passive-misc"}></img>
+          <img
+            src={CHARACTER_API + characterName + "/talent-passive-misc"}
+            alt="talent-passive-misc"
+          ></img>
           <div className="break"></div>
           <h3>{talent.name}</h3>
           <div className="break"></div>

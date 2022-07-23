@@ -6,7 +6,10 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
     <div className="talent-card">
       {constellation.unlock === "Constellation Lv. 1" && (
         <>
-          <img src={CHARACTER_API + characterName + "/constellation-1"}></img>
+          <img
+            src={CHARACTER_API + characterName + "/constellation-1"}
+            alt={"constellation-1"}
+          ></img>
           <div className="break"></div>
           <h3>{constellation.name}</h3>
           <div className="break"></div>
@@ -17,6 +20,7 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
         <>
           <img
             src={CHARACTER_API + characterName + "/constellation-2"}
+            alt={"constellation-2"}
             onError={(e) => {
               e.target.onerror = null;
               e.target.src = CHARACTER_API + characterName + "/cosntellation-2";
@@ -30,7 +34,10 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
       )}
       {constellation.unlock === "Constellation Lv. 3" && (
         <>
-          <img src={CHARACTER_API + characterName + "/constellation-3"}></img>
+          <img
+            src={CHARACTER_API + characterName + "/constellation-3"}
+            alt={"constellation-3"}
+          ></img>
           <div className="break"></div>
           <h3>{constellation.name}</h3>
           <div className="break"></div>
@@ -39,7 +46,10 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
       )}
       {constellation.unlock === "Constellation Lv. 4" && (
         <>
-          <img src={CHARACTER_API + characterName + "/constellation-4"}></img>
+          <img
+            src={CHARACTER_API + characterName + "/constellation-4"}
+            alt={"constellation-4"}
+          ></img>
           <div className="break"></div>
           <h3>{constellation.name}</h3>
           <div className="break"></div>
@@ -48,7 +58,10 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
       )}
       {constellation.unlock === "Constellation Lv. 5" && (
         <>
-          <img src={CHARACTER_API + characterName + "/constellation-5"}></img>
+          <img
+            src={CHARACTER_API + characterName + "/constellation-5"}
+            alt={"constellation-5"}
+          ></img>
           <div className="break"></div>
           <h3>{constellation.name}</h3>
           <div className="break"></div>
@@ -57,7 +70,10 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
       )}
       {constellation.unlock === "Constellation Lv. 6" && (
         <>
-          <img src={CHARACTER_API + characterName + "/constellation-6"}></img>
+          <img
+            src={CHARACTER_API + characterName + "/constellation-6"}
+            alt={"constellation-6"}
+          ></img>
           <div className="break"></div>
           <h3>{constellation.name}</h3>
           <div className="break"></div>

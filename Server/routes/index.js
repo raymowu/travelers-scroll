@@ -79,10 +79,10 @@ const ReSendEmail = async (id, email) => {
 };
 
 const MakeUsername = (email) => {
-    const index = email.indexOf("@");
-    const username = email.substr(0, index);
-    return username;
-}
+  const index = email.indexOf("@");
+  const username = email.substr(0, index);
+  return username;
+};
 
 router.post("/register", async (req, res) => {
   const { username, password, email } = req.body;
@@ -109,13 +109,13 @@ router.post("/register", async (req, res) => {
 
 router.post("/gregister", async (req, res) => {
   let { email, gid } = req.body;
-  User.findOne({email}, async (err, user) => {
-    if(err) throw err;
-    if(user) return res.send({status: "err", message: "User already exists"});
-    if(!user){
+  User.findOne({ email }, async (err, user) => {
+    if (err) throw err;
+    if (user) return res.send({ status: "err", message: "User already exists" });
+    if (!user) {
       const username = MakeUsername(email);
       const hashed = await bcrypt.hash(gid, 10);
-      console.log(hashed)
+      console.log(hashed);
       const newUser = new User({
         username,
         password: hashed,
@@ -147,9 +147,9 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/glogin", async (req, res) => {
-  let {email, gid} = req.body;
-  const user = await User.findOne({email});
-  if(user){
+  let { email, gid } = req.body;
+  const user = await User.findOne({ email });
+  if (user) {
     const valid = await bcrypt.compare(gid, user.password);
     if (valid) {
       req.session.user = { id: user._id, username: user.username };
@@ -187,10 +187,10 @@ router.post("/resendConfirmation/:id", async (req, res) => {
   }
 });
 
-router.post("/forgotpassword", async (req, res) =>{
-  let user = await User.find({email: req.body.email});
+router.post("/forgotpassword", async (req, res) => {
+  let user = await User.find({ email: req.body.email });
   user = user[0]; // email is unique so there is only 1 user anyway
-  if(user && user.verification.verified){
+  if (user && user.verification.verified) {
     const url = `http://localhost:5000/forgotpassword/${user._id}`;
 
     user.verification.date = new Date().toLocaleDateString();
@@ -210,22 +210,22 @@ router.post("/forgotpassword", async (req, res) =>{
         }
       }
     );
-    return res.send({status: "ok"});
-  }
-  else{
-    if(!user.verification.verified){
-      return res.send({status: "err", msg: "Email is not verified. Please verify your email to continue"});
+    return res.send({ status: "ok" });
+  } else {
+    if (!user.verification.verified) {
+      return res.send({
+        status: "err",
+        msg: "Email is not verified. Please verify your email to continue",
+      });
+    } else {
+      return res.send({ status: "err", msg: "Unable to find user with this email" });
     }
-    else{
-      return res.send({status: "err", msg: "Unable to find user with this email"});
-    }
   }
-
 });
 
 router.get("/forgotpassword/:id", async (req, res) => {
   let user = await User.findById(req.params.id);
-  if(user){
+  if (user) {
     let date = parseInt(returndate(user.verification.date));
     let currentDate = new Date().toLocaleDateString();
     let cur = parseInt(returndate(currentDate));
@@ -237,24 +237,19 @@ router.get("/forgotpassword/:id", async (req, res) => {
       return res.send("Confirmation link expired");
     }
   }
-  
-  
 });
 
-router.post("/resetpassword/:id", async (req, res) =>{
+router.post("/resetpassword/:id", async (req, res) => {
   let { password } = req.body;
   let user = await User.findById(req.params.id);
-  if(user){
+  if (user) {
     const hashed = await bcrypt.hash(password, 10);
     user.password = hashed;
     await user.save();
-    return res.send({status: "ok"});
+    return res.send({ status: "ok" });
+  } else {
+    return res.send({ status: "err", message: "invalid user" });
   }
-  else{
-    return res.send({status: "err", message: "invalid user"})
-  }
-
-
 });
 
 router.get("/current-user", Authenticate, (req, res) => {

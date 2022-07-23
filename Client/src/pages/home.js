@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css/home.css";
 import CharacterCard from "../components/CharacterCard";
-import Axios from "axios";
 import Layout from "../components/Layout";
 import initializeName from "../components/InitializeName";
 
@@ -33,7 +32,7 @@ function Home() {
   };
 
   return (
-    <Layout>
+    <Layout Auth={false}>
       <div className="character-container">
         <form onSubmit={handleOnSubmit}>
           <input
@@ -60,7 +59,7 @@ function Home() {
               return false;
             })
             .map((characterName) => {
-              return <CharacterCard characterName={characterName} />;
+              return <CharacterCard key={characterName} characterName={characterName} />;
             })}
       </div>
     </Layout>
