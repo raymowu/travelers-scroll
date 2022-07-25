@@ -60,8 +60,8 @@ const PassiveTalentCard = ({ ptalent, character, characterName }) => {
 
       <div className="talent-description-text">
         {/* <p>{talent.description}</p> */}
-        {ptalent.description.split("\n").map((line) => {
-          return <p>{line}</p>;
+        {ptalent.description.split("\n").map((line, i) => {
+          return <p key={i}>{line}</p>;
         })}
       </div>
     </div>

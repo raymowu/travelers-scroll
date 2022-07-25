@@ -53,6 +53,7 @@ body {
 .character-container .search-bar {
   margin-left: auto;
   margin-top: 20px;
+  margin-bottom: -30px;
   width: 100%;
   padding: 10px 5px 10px 15px;
   color: rgb(204, 204, 204);

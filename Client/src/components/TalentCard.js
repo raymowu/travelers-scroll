@@ -2,7 +2,6 @@ import "../css/talentcard.css";
 
 const TalentCard = ({ talent, character, characterName }) => {
   const CHARACTER_API = "https://api.genshin.dev/characters/";
-  console.log(talent.unlock.toLowerCase());
   return (
     <div className="talent-card">
       {talent.unlock.toLowerCase() === "normal attack" && (
@@ -60,8 +59,8 @@ const TalentCard = ({ talent, character, characterName }) => {
 
       <div className="talent-description-text">
         {/* <p>{talent.description}</p> */}
-        {talent.description.split("\n").map((line) => {
-          return <p>{line}</p>;
+        {talent.description.split("\n").map((line, i) => {
+          return <p key={i}>{line}</p>;
         })}
       </div>
     </div>

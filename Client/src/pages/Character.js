@@ -21,7 +21,6 @@ const Character = () => {
     fetch(CHARACTER_API + characterName)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.error);
         if (data.error) {
           window.location.replace("/404");
         }
@@ -68,14 +67,12 @@ const Character = () => {
           <div className="talent-container">
             {character.skillTalents?.map((talent) => {
               return (
-                <>
-                  <TalentCard
-                    key={talent.name}
-                    character={character}
-                    characterName={characterName}
-                    talent={talent}
-                  />
-                </>
+                <TalentCard
+                  character={character}
+                  characterName={characterName}
+                  talent={talent}
+                  key={talent.name}
+                />
               );
             })}
           </div>
@@ -85,14 +82,12 @@ const Character = () => {
           <div className="talent-container">
             {character.passiveTalents?.map((ptalent) => {
               return (
-                <>
-                  <PassiveTalentCard
-                    key={ptalent.name}
-                    character={character}
-                    characterName={characterName}
-                    ptalent={ptalent}
-                  />
-                </>
+                <PassiveTalentCard
+                  key={ptalent.name}
+                  character={character}
+                  characterName={characterName}
+                  ptalent={ptalent}
+                />
               );
             })}
           </div>
@@ -103,14 +98,12 @@ const Character = () => {
           <div className="talent-container">
             {character.constellations?.slice(0, 3).map((constellation) => {
               return (
-                <>
-                  <ConstellationCard
-                    key={constellation.name}
-                    character={character}
-                    characterName={characterName}
-                    constellation={constellation}
-                  />
-                </>
+                <ConstellationCard
+                  key={constellation.name}
+                  character={character}
+                  characterName={characterName}
+                  constellation={constellation}
+                />
               );
             })}
           </div>
@@ -118,14 +111,12 @@ const Character = () => {
           <div className="constellation-container">
             {character.constellations?.slice(3, 7).map((constellation) => {
               return (
-                <>
-                  <ConstellationCard
-                    key={constellation.name}
-                    character={character}
-                    characterName={characterName}
-                    constellation={constellation}
-                  />
-                </>
+                <ConstellationCard
+                  key={constellation.name}
+                  character={character}
+                  characterName={characterName}
+                  constellation={constellation}
+                />
               );
             })}
           </div>
@@ -144,10 +135,10 @@ const Character = () => {
                 .reverse()
                 .map((build) => {
                   return (
-                    <>
-                      <BuildCard key={build._id} build={build} />
+                    <div key={build._id}>
+                      <BuildCard build={build} />
                       <div className="break"></div>
-                    </>
+                    </div>
                   );
                 })}
           </div>

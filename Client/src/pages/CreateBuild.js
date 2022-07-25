@@ -265,9 +265,10 @@ const CreateBuild = () => {
         <div className="weapon-user page-adjust">
           <h1 className="menu-tag">{character.name}'s Weapons </h1>
           <div className="break"></div>
-          {buildWeapon.map((weapon) => {
+          {buildWeapon.map((weapon, i) => {
             return (
               <div
+                key={"buildWeapon" + i}
                 data-html="true"
                 data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
                 <br /> <span style="font-size: 11px">${weapon.type}</span>
@@ -316,9 +317,10 @@ const CreateBuild = () => {
                 }
                 return false;
               })
-              .map((weapon) => {
+              .map((weapon, i) => {
                 return (
                   <div
+                    key={"weaponMenu" + i}
                     data-html="true"
                     data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
                     <br /> <span style="font-size: 11px">${weapon.type}</span>
@@ -350,9 +352,10 @@ const CreateBuild = () => {
         <div className="weapon-user">
           <h1 className="menu-tag">{character.name}'s Replacement Weapons </h1>
           <div className="break"></div>
-          {buildReplacementWeapon.map((weapon) => {
+          {buildReplacementWeapon.map((weapon, i) => {
             return (
               <div
+                key={"replacementWeapon" + i}
                 data-html="true"
                 data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
                 <br /> <span style="font-size: 11px">${weapon.type}</span>
@@ -411,9 +414,10 @@ const CreateBuild = () => {
                 }
                 return false;
               })
-              .map((weapon) => {
+              .map((weapon, i) => {
                 return (
                   <div
+                    key={"replacementWeaponMenu" + i}
                     data-html="true"
                     data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
                     <br /> <span style="font-size: 11px">${weapon.type}</span>
@@ -445,9 +449,10 @@ const CreateBuild = () => {
         <div className="artifact-user">
           <h1 className="menu-tag">{character.name}'s Artifacts </h1>
           <div className="break"></div>
-          {buildArtifact.map((artifact) => {
+          {buildArtifact.map((artifact, i) => {
             return (
               <div
+                key={"buildArtifact" + i}
                 data-html="true"
                 data-tip={`<span style="color: #216CE4; font-size: 16px">${artifact.name}</span> 
                 <br /> 
@@ -497,9 +502,10 @@ const CreateBuild = () => {
                 }
                 return false;
               })
-              .map((artifact) => {
+              .map((artifact, i) => {
                 return (
                   <div
+                    key={"artifactMenu" + i}
                     data-html="true"
                     data-tip={`<span style="color: #216CE4; font-size: 16px">${artifact.name}</span> 
                     <br /> 
@@ -544,9 +550,7 @@ const CreateBuild = () => {
               className="sands-stats-select"
               id="sands-stats"
             >
-              <option style={{ display: "none" }} selected>
-                Select sands stat
-              </option>
+              <option style={{ display: "none" }}>Select sands stat</option>
               <option value="HP (%)">HP (%)</option>
               <option value="ATK (%)">ATK (%)</option>
               <option value="DEF (%)">DEF (%)</option>
@@ -570,9 +574,7 @@ const CreateBuild = () => {
               className="goblet-stats-select"
               id="goblet-stats"
             >
-              <option style={{ display: "none" }} selected>
-                Select goblet stat
-              </option>
+              <option style={{ display: "none" }}>Select goblet stat</option>
               <option value="HP (%)">HP (%)</option>
               <option value="ATK (%)">ATK (%)</option>
               <option value="DEF (%)">DEF (%)</option>
@@ -603,9 +605,7 @@ const CreateBuild = () => {
               className="circlet-stats-select"
               id="circlet-stats"
             >
-              <option style={{ display: "none" }} selected>
-                Select circlet stat
-              </option>
+              <option style={{ display: "none" }}>Select circlet stat</option>
               <option value="HP (%)">HP (%)</option>
               <option value="ATK (%)">ATK (%)</option>
               <option value="DEF (%)">DEF (%)</option>
@@ -634,12 +634,15 @@ const CreateBuild = () => {
               className="substats-select"
               id="substats"
             >
-              <option style={{ display: "none" }} selected>
-                Select substat
-              </option>
+              <option style={{ display: "none" }}>Select substat</option>
               {substatOptions.map((o) => {
                 return (
-                  o !== substats1 && o !== substats2 && <option value={o}>{o}</option>
+                  o !== substats1 &&
+                  o !== substats2 && (
+                    <option key={o} value={o}>
+                      {o}
+                    </option>
+                  )
                 );
               })}
             </select>
@@ -659,12 +662,15 @@ const CreateBuild = () => {
               className="substats-select"
               id="substats"
             >
-              <option style={{ display: "none" }} selected>
-                Select substat
-              </option>
+              <option style={{ display: "none" }}>Select substat</option>
               {substatOptions.map((o) => {
                 return (
-                  o !== substats0 && o !== substats2 && <option value={o}>{o}</option>
+                  o !== substats0 &&
+                  o !== substats2 && (
+                    <option key={o} value={o}>
+                      {o}
+                    </option>
+                  )
                 );
               })}
             </select>
@@ -684,12 +690,15 @@ const CreateBuild = () => {
               className="substats-select"
               id="substats"
             >
-              <option style={{ display: "none" }} selected>
-                Select substat
-              </option>
+              <option style={{ display: "none" }}>Select substat</option>
               {substatOptions.map((o) => {
                 return (
-                  o !== substats0 && o !== substats1 && <option value={o}>{o}</option>
+                  o !== substats0 &&
+                  o !== substats1 && (
+                    <option key={o} value={o}>
+                      {o}
+                    </option>
+                  )
                 );
               })}
             </select>
@@ -708,9 +717,13 @@ const CreateBuild = () => {
         <div className="team-user" id="teams">
           <h1 className="menu-tag">{character.name}'s Team </h1>
           <div className="break"></div>
-          {buildTeam.map((teammate) => {
+          {buildTeam.map((teammate, i) => {
             return (
-              <TeammateCard teammate={teammate} teamHandleOnClick={teamHandleOnClick} />
+              <TeammateCard
+                key={i}
+                teammate={teammate}
+                teamHandleOnClick={teamHandleOnClick}
+              />
             );
           })}
         </div>
@@ -741,9 +754,10 @@ const CreateBuild = () => {
                 }
                 return false;
               })
-              .map((teammate) => {
+              .map((teammate, i) => {
                 return (
                   <TeammateCard
+                    key={i}
                     teammate={teammate}
                     teamHandleOnClick={teamHandleOnClick}
                   />

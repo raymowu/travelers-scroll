@@ -14,7 +14,7 @@ const CharacterHeader = ({ character, characterName }) => {
           <img src={CHARACTER_API + characterName + "/icon"} alt={characterName} />
           <div className="star-container">
             {Array.from(Array(character.rarity), (e, i) => {
-              return <AiFillStar size={20} className="fill-star" />;
+              return <AiFillStar key={i} size={20} className="fill-star" />;
             })}
           </div>
         </div>
