@@ -32,13 +32,10 @@ const ProfileHeader = ({ user }) => {
       <div className="profile-navbar">
         <ul>
           <li>
-            <a href="#description">Overview</a>
+            <a href="#liked-builds">Liked Builds</a>
           </li>
           <li>
-            <a href="#weapon">Liked Builds</a>
-          </li>
-          <li>
-            <a href="#artifacts">Created Builds</a>
+            <a href="#created-builds">Created Builds</a>
           </li>
         </ul>
       </div>

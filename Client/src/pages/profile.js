@@ -58,12 +58,11 @@ function Profile() {
     //DELETE FUNCTIONALITY HERE
   };
 
-
   return (
     <Layout Auth={false}>
       <ProfileHeader user={user} />
       <div className="profile-container">
-        <div className="liked-builds-container">
+        <div className="liked-builds-container" id="liked-builds">
           {user.likedBuilds.length > 0 && <h1> {user.username}'s Liked Builds</h1>}
           <div className="profile-break"></div>
 
@@ -73,15 +72,15 @@ function Profile() {
               .reverse()
               .map((build) => {
                 return (
-                  <>
-                    <BuildCard key={build._id} build={build} />
+                  <div key={build._id}>
+                    <BuildCard build={build} />
                     <div className="profile-break"></div>
-                  </>
+                  </div>
                 );
               })}
         </div>
 
-        <div className="created-builds-container">
+        <div className="created-builds-container" id="created-builds">
           {user.createdBuilds.length > 0 && <h1> {user.username}'s Builds</h1>}
           <div className="profile-break"></div>
           {user.createdBuilds &&
@@ -90,14 +89,10 @@ function Profile() {
               .reverse()
               .map((build) => {
                 return (
-                  <>
-                    <UserBuildCard
-                      key={build._id}
-                      build={build}
-                      handleOnDelete={handleOnDelete}
-                    />
+                  <div key={build._id}>
+                    <UserBuildCard build={build} handleOnDelete={handleOnDelete} />
                     <div className="profile-break"></div>
-                  </>
+                  </div>
                 );
               })}
         </div>

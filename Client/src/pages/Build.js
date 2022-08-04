@@ -141,7 +141,7 @@ const Build = () => {
         build={build}
       />
 
-      <div className="buildpage-container">
+      <div className="buildpage-container" id="overview">
         <LikeButton
           className="like-button"
           liked={build.likedUsers.includes(user)}
@@ -156,10 +156,10 @@ const Build = () => {
           <span className="vert-bar">&#10072;</span> <h2>Weapons</h2>{" "}
           <span className="weapon-gr">Best in-slot weapons for {character.name}</span>
           <div className="break-inner-menu"></div>
-          {build.weapons.map((weapon) => {
+          {build.weapons.map((weapon, i) => {
             return (
               <div
-                key={weapon}
+                key={i}
                 data-html="true"
                 data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
                 <br /> <span style="font-size: 11px">${weapon.type}</span>
@@ -188,10 +188,10 @@ const Build = () => {
           <span className="vert-bar">&#10072;</span> <h2>Replacement Weapons</h2>{" "}
           <span className="weapon-gr">Best free-to-play options</span>
           <div className="break-inner-menu"></div>
-          {build.weapons_replacement.map((weapon) => {
+          {build.weapons_replacement.map((weapon, i) => {
             return (
               <div
-                key={weapon}
+                key={i}
                 data-html="true"
                 data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
                 <br /> <span style="font-size: 11px">${weapon.type}</span>
@@ -220,10 +220,10 @@ const Build = () => {
           <span className="vert-bar">&#10072;</span> <h2>Artifacts</h2>{" "}
           <h2 className="artifact-gr">Best in-slot artifact sets for {character.name}</h2>
           <div className="break-inner-menu"></div>
-          {build.artifacts.map((artifact) => {
+          {build.artifacts.map((artifact, i) => {
             return (
               <div
-                key={artifact}
+                key={i}
                 data-html="true"
                 data-tip={`<span style="color: #216CE4; font-size: 16px">${artifact.name}</span> 
                 <br /> 
@@ -293,8 +293,8 @@ const Build = () => {
           <span className="vert-bar">&#10072;</span> <h2>Team</h2>{" "}
           <h2 className="team-gr">Best teammates with {character.name}</h2>
           <div className="break-inner-menu"></div>
-          {build.teams.map((teammate) => {
-            return <TeammateCardDisplay key={teammate} teammate={teammate} />;
+          {build.teams.map((teammate, i) => {
+            return <TeammateCardDisplay key={i} teammate={teammate} />;
           })}
         </div>
 
@@ -332,8 +332,8 @@ const Build = () => {
         {build.comments
           .slice(0)
           .reverse()
-          .map((comment) => {
-            return <Comment comment={comment} />;
+          .map((comment, i) => {
+            return <Comment key={i} comment={comment} />;
           })}
       </div>
     </Layout>
