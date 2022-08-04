@@ -159,6 +159,7 @@ const Build = () => {
           {build.weapons.map((weapon) => {
             return (
               <div
+                key={weapon}
                 data-html="true"
                 data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
                 <br /> <span style="font-size: 11px">${weapon.type}</span>
@@ -190,6 +191,7 @@ const Build = () => {
           {build.weapons_replacement.map((weapon) => {
             return (
               <div
+                key={weapon}
                 data-html="true"
                 data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
                 <br /> <span style="font-size: 11px">${weapon.type}</span>
@@ -221,6 +223,7 @@ const Build = () => {
           {build.artifacts.map((artifact) => {
             return (
               <div
+                key={artifact}
                 data-html="true"
                 data-tip={`<span style="color: #216CE4; font-size: 16px">${artifact.name}</span> 
                 <br /> 
@@ -291,7 +294,7 @@ const Build = () => {
           <h2 className="team-gr">Best teammates with {character.name}</h2>
           <div className="break-inner-menu"></div>
           {build.teams.map((teammate) => {
-            return <TeammateCardDisplay teammate={teammate} />;
+            return <TeammateCardDisplay key={teammate} teammate={teammate} />;
           })}
         </div>
 
