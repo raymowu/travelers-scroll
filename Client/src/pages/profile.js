@@ -53,6 +53,8 @@ function Profile() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+<<<<<<< HEAD
+=======
   const handleOnDelete = (e) => {
     e.preventDefault();
     // console.log(e);
@@ -72,6 +74,7 @@ function Profile() {
     // });
   };
 
+>>>>>>> 68de9be3ff3cbc663c99b7319289339d685896ca
   return (
     <Layout Auth={false}>
       <ProfileHeader user={user} />
@@ -104,7 +107,11 @@ function Profile() {
               .map((build) => {
                 return (
                   <div key={build._id}>
+<<<<<<< HEAD
+                    <UserBuildCard build={build} />
+=======
                     <UserBuildCard build={build} handleOnDelete={handleOnDelete} />
+>>>>>>> 68de9be3ff3cbc663c99b7319289339d685896ca
                     <div className="profile-break"></div>
                   </div>
                 );
