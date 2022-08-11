@@ -68,6 +68,7 @@ function Profile() {
               .map((build) => {
                 return (
                   <div key={build._id}>
+                    <div className="profile-gap"></div>
                     <BuildCard build={build} />
                     <div className="profile-break"></div>
                   </div>
@@ -85,6 +86,7 @@ function Profile() {
               .map((build) => {
                 return (
                   <div key={build._id}>
+                    <div className="profile-gap"></div>
                     <UserBuildCard build={build} />
                     <div className="profile-break"></div>
                   </div>
