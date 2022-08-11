@@ -1,4 +1,5 @@
 import "../css/buildcard.css";
+import Axios from "axios"
 import deinitializeName from "./DeinitializeName";
 import { FaThumbsUp, FaTrash } from "react-icons/fa";
 const CHARACTER_IMG_API = "https://api.genshin.dev/characters/";
@@ -7,7 +8,18 @@ const ARTIFACT_IMG_API = "https://api.genshin.dev/artifacts/";
 const UserBuildCard = ({ build }) => {
   const handleOnDelete = (e) => {
     e.preventDefault();
-    console.log(build);
+    Axios({
+      method: "POST",
+      withCredentials: true,
+      url: `http://localhost:5000/builds/build/${build._id}/delete`,
+    }).then((res) => {
+      if (res.data.status === "ok") {
+        alert("Build was deleted");
+        window.location.href = `/profile/${res.data.user}`;
+      } else if (res.data.status === "err") {
+        alert(res.data.message);
+      }
+    });
   };
   return (
     <a href={`/build/${build._id}`}>
