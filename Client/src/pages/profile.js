@@ -55,8 +55,21 @@ function Profile() {
 
   const handleOnDelete = (e) => {
     e.preventDefault();
-    console.log(e);
+    // console.log(e);
     //DELETE FUNCTIONALITY HERE
+    // Axios({
+    //   method: "POST",
+    //   data: id,
+    //   withCredentials: true,
+    //   url: `http://localhost:5000/builds/build/${}/delete`,
+    // }).then((res) => {
+    //   if (res.data.status === "ok") {
+    //     alert("Build was deleted");
+    //     window.location.href = "/";
+    //   } else if (res.data.status === "err") {
+    //     alert(res.data.message);
+    //   }
+    // });
   };
 
   return (
@@ -91,7 +104,7 @@ function Profile() {
               .map((build) => {
                 return (
                   <div key={build._id}>
-                    <UserBuildCard build={build} handleOnDelete={console.log(build)} />
+                    <UserBuildCard build={build} handleOnDelete={handleOnDelete} />
                     <div className="profile-break"></div>
                   </div>
                 );
