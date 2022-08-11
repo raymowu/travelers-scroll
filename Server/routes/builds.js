@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Builds = require("../models/Builds");
 const Comments = require("../models/Comment");
+const user = require("../models/user");
 const User = require("../models/user");
 
 const Authenticate = (req, res, next) => {
@@ -155,6 +156,14 @@ router.post("/build/:id/delete", Authenticate, async (req, res) => {
   let build = await Builds.findById(req.params.id);
   if(build){
     await Comments.deleteMany({_id: {$in: build.comments}})
+    for(i of build.likedUsers){
+      user = await User.findById(i)
+      if(user){
+        user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
+        await user.save()
+      }
+      
+    }
   }
   await Builds.findByIdAndDelete(req.params.id);
   return res.send({status: "ok", user: req.session.user.username});
