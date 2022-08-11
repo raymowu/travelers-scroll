@@ -55,6 +55,7 @@ function Profile() {
 
   const handleOnDelete = (e) => {
     e.preventDefault();
+    console.log(e);
     //DELETE FUNCTIONALITY HERE
   };
 
