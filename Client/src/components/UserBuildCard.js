@@ -4,7 +4,11 @@ import { FaThumbsUp, FaTrash } from "react-icons/fa";
 const CHARACTER_IMG_API = "https://api.genshin.dev/characters/";
 const WEAPON_IMG_API = "https://api.genshin.dev/weapons/";
 const ARTIFACT_IMG_API = "https://api.genshin.dev/artifacts/";
-const UserBuildCard = ({ build, handleOnDelete }) => {
+const UserBuildCard = ({ build }) => {
+  const handleOnDelete = (e) => {
+    e.preventDefault();
+    console.log(build);
+  };
   return (
     <a href={`/build/${build._id}`}>
       <div className="build">

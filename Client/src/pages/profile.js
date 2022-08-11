@@ -91,7 +91,7 @@ function Profile() {
               .map((build) => {
                 return (
                   <div key={build._id}>
-                    <UserBuildCard build={build} handleOnDelete={handleOnDelete} />
+                    <UserBuildCard build={build} handleOnDelete={console.log(build)} />
                     <div className="profile-break"></div>
                   </div>
                 );
