@@ -157,7 +157,7 @@ router.post("/build/:id/delete", Authenticate, async (req, res) => {
   if(build){
     await Comments.deleteMany({_id: {$in: build.comments}})
     for(i of build.likedUsers){
-      user = await User.findById(i)
+      let user = await User.findById(i)
       if(user){
         user.likedBuilds.splice(user.likedBuilds.indexOf(build._id), 1);
         await user.save()
