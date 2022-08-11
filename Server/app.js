@@ -51,7 +51,11 @@ const buildRoutes = require("./routes/builds");
 app.use(indexRoutes);
 app.use("/builds", buildRoutes);
 
-app.listen(5000, () => {
+app.get("/", (req, res) => {
+  res.send("Hello world");
+});
+
+app.listen(process.env.PORT, () => {
   {
     console.log("Server is running on port: 5000");
   }
