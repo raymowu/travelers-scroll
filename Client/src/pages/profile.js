@@ -53,28 +53,6 @@ function Profile() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-<<<<<<< HEAD
-=======
-  const handleOnDelete = (e) => {
-    e.preventDefault();
-    // console.log(e);
-    //DELETE FUNCTIONALITY HERE
-    // Axios({
-    //   method: "POST",
-    //   data: id,
-    //   withCredentials: true,
-    //   url: `http://localhost:5000/builds/build/${}/delete`,
-    // }).then((res) => {
-    //   if (res.data.status === "ok") {
-    //     alert("Build was deleted");
-    //     window.location.href = "/";
-    //   } else if (res.data.status === "err") {
-    //     alert(res.data.message);
-    //   }
-    // });
-  };
-
->>>>>>> 68de9be3ff3cbc663c99b7319289339d685896ca
   return (
     <Layout Auth={false}>
       <ProfileHeader user={user} />
@@ -107,11 +85,7 @@ function Profile() {
               .map((build) => {
                 return (
                   <div key={build._id}>
-<<<<<<< HEAD
                     <UserBuildCard build={build} />
-=======
-                    <UserBuildCard build={build} handleOnDelete={handleOnDelete} />
->>>>>>> 68de9be3ff3cbc663c99b7319289339d685896ca
                     <div className="profile-break"></div>
                   </div>
                 );
