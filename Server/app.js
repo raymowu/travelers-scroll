@@ -7,6 +7,8 @@ const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
+var MongoDBStore = require('connect-mongodb-session')(session);
+
 
 // MODELS
 const User = require("./models/user");
@@ -15,6 +17,17 @@ const User = require("./models/user");
 mongoose.connect(
   "mongodb+srv://rksp:rkspdbpass@cluster0.gkkn6.mongodb.net/GenshinApp?retryWrites=true&w=majority"
 );
+
+// Session Store 
+const store = new MongoDBStore({
+  uri: 'mongodb+srv://rksp:rkspdbpass@cluster0.gkkn6.mongodb.net/GenshinApp?retryWrites=true&w=majority',
+  collection: 'Sessions'
+});
+// Catch errors
+store.on('error', function(error) {
+  console.log(error);
+});
+
 
 app.use(
   cors({
@@ -27,8 +40,9 @@ app.use(express.json());
 app.use(
   session({
     secret: "secrettexthere",
-    resave: false,
-    saveUninitialized: true,
+    store: store,
+    resave: true,
+    saveUninitialized: true    
   })
 );
 //   app.use(cookieParser("secretcode"));
