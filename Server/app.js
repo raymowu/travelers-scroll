@@ -21,7 +21,8 @@ mongoose.connect(
 // Session Store 
 const store = new MongoDBStore({
   uri: 'mongodb+srv://rksp:rkspdbpass@cluster0.gkkn6.mongodb.net/GenshinApp?retryWrites=true&w=majority',
-  collection: 'Sessions'
+  collection: 'Sessions',
+  clear_interval: 3600
 });
 // Catch errors
 store.on('error', function(error) {
@@ -40,8 +41,9 @@ app.use(express.json());
 app.use(
   session({
     secret: "secrettexthere",
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
     store: store,
-    resave: true,
+    resave: false,
     saveUninitialized: true    
   })
 );
@@ -68,6 +70,8 @@ app.use("/builds", buildRoutes);
 app.get("/", (req, res) => {
   res.send("Hello world");
 });
+
+// process.env.PORT
 
 app.listen(process.env.PORT, () => {
   {
