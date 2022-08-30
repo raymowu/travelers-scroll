@@ -19,25 +19,29 @@ function Profile() {
   const [logged, setLogged] = useState({});
 
   const userData = () => {
-    Axios.get(`http://localhost:5000/profile/${id}`).then((response) => {
-      if (response.data.status === "ok") {
-        setUser(response.data.user);
-      } else {
-        alert(response.data.message);
-      }
-    });
-  };
-  const GetUser = () => {
-    Axios.get("http://localhost:5000/current-user", { withCredentials: true }).then(
+    Axios.get(`http://https://travelers-scroll.herokuapp.com/profile/${id}`).then(
       (response) => {
         if (response.data.status === "ok") {
-          setLogged(response.data.user);
+          setUser(response.data.user);
+        } else {
+          alert(response.data.message);
         }
       }
     );
   };
+  const GetUser = () => {
+    Axios.get("http://https://travelers-scroll.herokuapp.com/current-user", {
+      withCredentials: true,
+    }).then((response) => {
+      if (response.data.status === "ok") {
+        setLogged(response.data.user);
+      }
+    });
+  };
   const Logout = () => {
-    Axios.get("http://localhost:5000/logout", { withCredentials: true }).then((res) => {
+    Axios.get("http://https://travelers-scroll.herokuapp.com/logout", {
+      withCredentials: true,
+    }).then((res) => {
       if (res.data.status === "ok") {
         alert("Successfully logged out");
         window.location.href = "/";

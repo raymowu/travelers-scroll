@@ -8,28 +8,26 @@ function ForgotPassword() {
   const { id } = useParams();
 
   async function ChangePassword(event) {
-    if(form.password === form.cpassword){
-        event.preventDefault();
-        Axios({
+    if (form.password === form.cpassword) {
+      event.preventDefault();
+      Axios({
         method: "POST",
         data: {
-            password: form.password,
+          password: form.password,
         },
         withCredentials: true,
-        url: `http://localhost:5000/resetpassword/${id}`,
-        }).then((res) => {
+        url: `http://https://travelers-scroll.herokuapp.com/resetpassword/${id}`,
+      }).then((res) => {
         if (res.data.status === "ok") {
-            alert("password was reset");
-            window.location.href = "/login";
+          alert("password was reset");
+          window.location.href = "/login";
         } else {
-            alert("there was an error");
+          alert("there was an error");
         }
-        });  
+      });
+    } else {
+      alert("Passwords dont mathc");
     }
-    else{
-        alert("Passwords dont mathc");
-    }
-    
   }
 
   const handleChange = (e) => {

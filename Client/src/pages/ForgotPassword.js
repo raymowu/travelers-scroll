@@ -10,15 +10,15 @@ function ForgotPassword() {
     Axios({
       method: "POST",
       data: {
-        email: form.email
+        email: form.email,
       },
       withCredentials: true,
-      url: "http://localhost:5000/forgotpassword",
+      url: "http://https://travelers-scroll.herokuapp.com/forgotpassword",
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Link was sent to your email");
         window.location.href = "/";
-      } else if(res.data.status === "err") {
+      } else if (res.data.status === "err") {
         alert(res.data.msg);
       }
     });

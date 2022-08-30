@@ -27,7 +27,7 @@ function LogIn() {
       method: "POST",
       data: data,
       withCredentials: true,
-      url: "http://localhost:5000/glogin",
+      url: "http://https://travelers-scroll.herokuapp.com/glogin",
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");
@@ -51,7 +51,7 @@ function LogIn() {
         password: form.password,
       },
       withCredentials: true,
-      url: "http://localhost:5000/login",
+      url: "http://https://travelers-scroll.herokuapp.com/login",
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");
