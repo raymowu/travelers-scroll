@@ -11,7 +11,7 @@ const UserBuildCard = ({ build }) => {
     Axios({
       method: "POST",
       withCredentials: true,
-      url: `http://https://travelers-scroll.herokuapp.com/builds/build/${build._id}/delete`,
+      url: `https://travelers-scroll.herokuapp.com/builds/build/${build._id}/delete`,
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Build was deleted");

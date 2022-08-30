@@ -19,18 +19,16 @@ function Profile() {
   const [logged, setLogged] = useState({});
 
   const userData = () => {
-    Axios.get(`http://https://travelers-scroll.herokuapp.com/profile/${id}`).then(
-      (response) => {
-        if (response.data.status === "ok") {
-          setUser(response.data.user);
-        } else {
-          alert(response.data.message);
-        }
+    Axios.get(`https://travelers-scroll.herokuapp.com/profile/${id}`).then((response) => {
+      if (response.data.status === "ok") {
+        setUser(response.data.user);
+      } else {
+        alert(response.data.message);
       }
-    );
+    });
   };
   const GetUser = () => {
-    Axios.get("http://https://travelers-scroll.herokuapp.com/current-user", {
+    Axios.get("https://travelers-scroll.herokuapp.com/current-user", {
       withCredentials: true,
     }).then((response) => {
       if (response.data.status === "ok") {
@@ -39,7 +37,7 @@ function Profile() {
     });
   };
   const Logout = () => {
-    Axios.get("http://https://travelers-scroll.herokuapp.com/logout", {
+    Axios.get("https://travelers-scroll.herokuapp.com/logout", {
       withCredentials: true,
     }).then((res) => {
       if (res.data.status === "ok") {

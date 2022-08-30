@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const Layout = ({ children, Auth = false }) => {
   const [user, setUser] = useState({});
   useEffect(() => {
-    Axios.get("http://https://travelers-scroll.herokuapp.com/current-user", {
+    Axios.get("https://travelers-scroll.herokuapp.com/current-user", {
       withCredentials: true,
     }).then((response) => {
       if (response.data.status === "ok") {

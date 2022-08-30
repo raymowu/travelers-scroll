@@ -38,7 +38,7 @@ router.get("/", (req, res) => {
 });
 
 const SendEmail = (id, email) => {
-  const url = `http://https://travelers-scroll.herokuapp.com/confirmation/${id}`;
+  const url = `https://travelers-scroll.herokuapp.com/confirmation/${id}`;
 
   transporter.sendMail(
     {
