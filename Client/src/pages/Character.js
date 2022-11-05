@@ -28,7 +28,7 @@ const Character = () => {
       });
   };
   const getBuilds = () => {
-    fetch(`https://travelers-scroll.herokuapp.com/builds/${characterName}`)
+    fetch(`https://travelerscroll.herokuapp.com/builds/${characterName}`)
       .then((res) => res.json())
       .then((data) => {
         setBuilds(data.builds);
