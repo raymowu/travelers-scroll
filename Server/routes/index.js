@@ -60,7 +60,7 @@ router.get("/", (req, res) => {
 });
 
 const SendEmail = (id, email) => {
-  const url = `http://localhost:5000/confirmation/${id}`;
+  const url = `https://travelers-scroll.herokuapp.com/confirmation/${id}`;
 
   transporter.sendMail(
     {
@@ -81,7 +81,7 @@ const ReSendEmail = async (id, email) => {
   user.verification.date = new Date().toLocaleDateString();
   await user.save();
 
-  const url = `http://localhost:5000/confirmation/${id}`;
+  const url = `https://travelers-scroll.herokuapp.com/confirmation/${id}`;
 
   transporter.sendMail(
     {
@@ -213,7 +213,7 @@ router.post("/forgotpassword", async (req, res) => {
   let user = await User.find({ email: req.body.email });
   user = user[0]; // email is unique so there is only 1 user anyway
   if (user && user.verification.verified) {
-    const url = `http://localhost:5000/forgotpassword/${user._id}`;
+    const url = `https://travelers-scroll.herokuapp.com/forgotpassword/${user._id}`;
 
     user.verification.date = new Date().toLocaleDateString();
     await user.save();

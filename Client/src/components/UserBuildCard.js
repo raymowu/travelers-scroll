@@ -1,5 +1,5 @@
 import "../css/buildcard.css";
-import Axios from "axios"
+import Axios from "axios";
 import deinitializeName from "./DeinitializeName";
 import { FaThumbsUp, FaTrash } from "react-icons/fa";
 const CHARACTER_IMG_API = "https://api.genshin.dev/characters/";
@@ -11,7 +11,7 @@ const UserBuildCard = ({ build }) => {
     Axios({
       method: "POST",
       withCredentials: true,
-      url: `http://localhost:5000/builds/build/${build._id}/delete`,
+      url: `https://travelers-scroll.herokuapp.com/builds/build/${build._id}/delete`,
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Build was deleted");

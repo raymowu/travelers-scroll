@@ -6,17 +6,17 @@ import { useEffect, useState } from "react";
 const Layout = ({ children, Auth = false }) => {
   const [user, setUser] = useState({});
   useEffect(() => {
-    Axios.get("http://localhost:5000/current-user", { withCredentials: true }).then(
-      (response) => {
-        if (response.data.status === "ok") {
-          setUser(response.data.user);
-        }
-        if (response.data.status === "err" && Auth) {
-          alert(response.data.message);
-          window.location.href = "/login";
-        }
+    Axios.get("https://travelers-scroll.herokuapp.com/current-user", {
+      withCredentials: true,
+    }).then((response) => {
+      if (response.data.status === "ok") {
+        setUser(response.data.user);
       }
-    );
+      if (response.data.status === "err" && Auth) {
+        alert(response.data.message);
+        window.location.href = "/login";
+      }
+    });
   }, [Auth]);
 
   return (
