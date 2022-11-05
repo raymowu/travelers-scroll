@@ -35,20 +35,17 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(
   session({
     secret: "secrettexthere",
-    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+    cookie: { maxAge: 1000 * 60 * 60 * 48 },
     store: store,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false
   })
 );
-//   app.use(cookieParser("secretcode"));
-//   app.use(passport.initialize());
-//   app.use(passport.session());
-//   require("./passportConfig")(passport);
 
 const Authenticate = (req, res, next) => {
   if (!req.session.user) {
