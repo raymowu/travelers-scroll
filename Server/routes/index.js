@@ -7,6 +7,7 @@ const nodemailer = require("nodemailer");
 const Builds = require("../models/Builds");
 const User = require("../models/user");
 const Sessions = require("../models/Sessions");
+const { rawListeners } = require("../models/Sessions");
 
 
 const getuser = async (req) => {
@@ -28,8 +29,8 @@ const getuser = async (req) => {
 }
 
 const Authenticate = async (req, res, next) => {
-  const user = await getuser(req);
-  if (!user) {
+  // const user = await getuser(req);
+  if (!req.session.user) {
     res.send({ status: "err", message: "Login Required" });
   } else {
     next();
@@ -275,8 +276,8 @@ router.post("/resetpassword/:id", async (req, res) => {
 });
 
 router.get("/current-user", Authenticate, async (req, res) => {
-  const user = await getuser(req);
-  if(user){
+  // const user = await getuser(req);
+  if(req.session.user){
     return res.send({ status: "ok", user: user });
   }
   return res.send({ status: "ok", user: null });
