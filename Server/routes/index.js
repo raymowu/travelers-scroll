@@ -1,13 +1,35 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const User = require("../models/user");
+const mongoose = require("mongoose");
 
 const nodemailer = require("nodemailer");
 const Builds = require("../models/Builds");
+const User = require("../models/user");
+const Sessions = require("../models/Sessions");
 
-const Authenticate = (req, res, next) => {
-  if (!req.session.user) {
+
+const getuser = async (req) => {
+//   let cookie = req.headers.cookie;
+//   const values = cookie.split(';').reduce((res, item) => {
+//     const data = item.trim().split('=');
+//     return { ...res, [data[0]]: data[1] };
+// }, {});
+  let sid = req.cookies["connect.sid"].split(":")[1].split(".")[0];
+  let user = await Sessions.findOne({_id: sid});
+  // console.log(user)
+  // sid = sid.split(".")[0].split("%")[1];
+  if(user){
+    return user.user;
+  }
+  else{
+    return false;
+  }
+}
+
+const Authenticate = async (req, res, next) => {
+  const user = await getuser(req);
+  if (!user) {
     res.send({ status: "err", message: "Login Required" });
   } else {
     next();
@@ -252,8 +274,13 @@ router.post("/resetpassword/:id", async (req, res) => {
   }
 });
 
-router.get("/current-user", Authenticate, (req, res) => {
-  res.send({ status: "ok", user: req.session.user });
+router.get("/current-user", Authenticate, async (req, res) => {
+  const user = await getuser(req);
+  if(user){
+    return res.send({ status: "ok", user: user });
+  }
+  return res.send({ status: "ok", user: null });
+  
 });
 
 // logout rout
