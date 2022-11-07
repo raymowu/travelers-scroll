@@ -5,9 +5,30 @@ const Builds = require("../models/Builds");
 const Comments = require("../models/Comment");
 const user = require("../models/user");
 const User = require("../models/user");
+const Sessions = require("../models/Sessions");
 
-const Authenticate = (req, res, next) => {
-  if (!req.session.user) {
+const getuser = async (req) => {
+  let cookie = req.headers.cookie;
+  const values = cookie.split(';').reduce((res, item) => {
+    const data = item.trim().split('=');
+    return { ...res, [data[0]]: data[1] };
+  }, {});
+  if(values.token && values.token !== null){
+    let token = values.token
+    let user = await Sessions.findOne({ [`session.token`]: token });
+    if(user.session.token){
+      return user.session.token;
+    }
+    else{
+      return false;
+    }
+  }
+  return false;
+}
+
+const Authenticate = async (req, res, next) => {
+  const user = await getuser(req);
+  if (!user) {
     res.send({ status: "err", message: "Login Required" });
   } else {
     next();

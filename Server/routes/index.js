@@ -12,26 +12,27 @@ const { rawListeners } = require("../models/Sessions");
 const jwtsecret = "secretmsghere";
 
 const getuser = async (req) => {
-//   let cookie = req.headers.cookie;
-//   const values = cookie.split(';').reduce((res, item) => {
-//     const data = item.trim().split('=');
-//     return { ...res, [data[0]]: data[1] };
-// }, {});
-  let sid = req.cookies["connect.sid"].split(":")[1].split(".")[0];
-  let user = await Sessions.findOne({_id: sid});
-  // console.log(user)
-  // sid = sid.split(".")[0].split("%")[1];
-  if(user){
-    return user.user;
+  let cookie = req.headers.cookie;
+  const values = cookie.split(';').reduce((res, item) => {
+    const data = item.trim().split('=');
+    return { ...res, [data[0]]: data[1] };
+  }, {});
+  if(values.token && values.token !== null){
+    let token = values.token
+    let user = await Sessions.findOne({ [`session.token`]: token });
+    if(user.session.token){
+      return user.session.token;
+    }
+    else{
+      return false;
+    }
   }
-  else{
-    return false;
-  }
+  return false;
 }
 
 const Authenticate = async (req, res, next) => {
-  // const user = await getuser(req);
-  if (!req.session.user) {
+  const user = await getuser(req);
+  if (!user) {
     res.send({ status: "err", message: "Login Required" });
   } else {
     next();
@@ -163,8 +164,9 @@ router.post("/login", async (req, res) => {
   if (user) {
     const valid = await bcrypt.compare(password, user.password);
     if (valid) {
-      const info = { id: user._id, username: user.username };
+      const info = { id: user._id, username: user.username };      
       const token = jwt.sign(info, jwtsecret);
+      req.session.token = token;
       return res.send({ status: "ok", token: token });
     }
   }
@@ -277,14 +279,9 @@ router.post("/resetpassword/:id", async (req, res) => {
   }
 });
 
-router.get("/current-user", async (req, res) => {
-  // res.send(req.headers.cookie.split(" "));
-  const cookie = req.headers.cookie
-  const values = cookie.split(';').reduce((res, item) => {
-    const data = item.trim().split('=');
-    return { ...res, [data[0]]: data[1] };
-  }, {});
-  res.send(values.token);
+router.get("/current-user", Authenticate, async (req, res) => {
+  const user = await getuser(req);
+  res.send(user);
 //   jwt.verify(req.headers.cookie, jwtsecret, (err, user) => {
 //     if(err){ 
 //       console.log(err)

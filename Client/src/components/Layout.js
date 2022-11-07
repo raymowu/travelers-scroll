@@ -37,13 +37,13 @@ const Layout = ({ children, Auth = false }) => {
   // const token = localStorage.getItem('token');
   // const user = decodeToken(token)
   // setUser()
-  useEffect(() => {
-    Axios.get("http://localhost:3000/current-user", {
-      withCredentials: true,
-    }).then((response) => {
-      console.log(response.data)
-    });
-  }, [Auth]);
+  // useEffect(() => {
+  //   Axios.get("http://localhost:3000/current-user", {
+  //     withCredentials: true,
+  //   }).then((response) => {
+  //     console.log(response.data)
+  //   });
+  // }, [Auth]);
 
   return (
     <>

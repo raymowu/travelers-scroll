@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
 import {decodeToken} from "react-jwt"
+import {useCookies} from "react-cookie"
 import Layout from "../components/Layout";
 import "../css/profile.css";
 import ProfileHeader from "../components/ProfileHeader";
@@ -18,6 +19,7 @@ function Profile() {
     __v: 0,
   });
   const [logged, setLogged] = useState({});
+  const [cookie, setCookie] = useCookies(['token']);
 
   const userData = () => {
     Axios.get(`http://localhost:3000/profile/${id}`).then((response) => {
@@ -52,6 +54,7 @@ function Profile() {
       if (res.data.status === "ok") {
         alert("Successfully logged out");
         localStorage.setItem("token", null);
+        setCookie("token", null);
         window.location.href = "/";
       } else {
         alert("something went wrong");
