@@ -2,20 +2,46 @@ import React from "react";
 import Header from "./Navbar/Header";
 import Axios from "axios";
 import { useEffect, useState } from "react";
+import { decodeToken } from "react-jwt"
+import {useCookies} from "react-cookie"
 
 const Layout = ({ children, Auth = false }) => {
+
   const [user, setUser] = useState({});
+  const [cookie, setCookie] = useCookies(['token']);
+  // setCookie("name", "token");
+  if(cookie.token !== null){
+    console.log(cookie.token)
+  }
+  // setCookie("token", "token");
+  // if (localStorage.getItem("token") === null){
+  //   localStorage.setItem("token", null)
+  // }
+  // else{
+  //   const token = decodeToken(localStorage.getItem("token"))
+  //   setUser(token.username)
+  // }
+  const exists = (localStorage.getItem('token') !== null);
+  if (!exists && Auth) {
+    alert("Must be logged in");
+    window.location.href = "/login";
+  }
+  
+  // if(exists){
+  //   const token = localStorage.getItem('token');
+  //   const value = decodeToken(token)
+  //   console.log(value)
+  //   setUser(value)
+  // }
+  // console.log(token)
+  // const token = localStorage.getItem('token');
+  // const user = decodeToken(token)
+  // setUser()
   useEffect(() => {
-    Axios.get("https://travelers-scroll.herokuapp.com/current-user", {
+    Axios.get("http://localhost:3000/current-user", {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.status === "ok") {
-        setUser(response.data.user);
-      }
-      if (response.data.status === "err" && Auth) {
-        alert(response.data.message);
-        window.location.href = "/login";
-      }
+      console.log(response.data)
     });
   }, [Auth]);
 

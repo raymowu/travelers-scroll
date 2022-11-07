@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
+import {decodeToken} from "react-jwt"
 import Layout from "../components/Layout";
 import "../css/profile.css";
 import ProfileHeader from "../components/ProfileHeader";
@@ -19,7 +20,7 @@ function Profile() {
   const [logged, setLogged] = useState({});
 
   const userData = () => {
-    Axios.get(`https://travelers-scroll.herokuapp.com/profile/${id}`).then((response) => {
+    Axios.get(`http://localhost:3000/profile/${id}`).then((response) => {
       if (response.data.status === "ok") {
         setUser(response.data.user);
       } else {
@@ -28,20 +29,29 @@ function Profile() {
     });
   };
   const GetUser = () => {
-    Axios.get("https://travelers-scroll.herokuapp.com/current-user", {
-      withCredentials: true,
-    }).then((response) => {
-      if (response.data.status === "ok") {
-        setLogged(response.data.user);
-      }
-    });
+    // Axios.get("http://localhost:3000/current-user", {
+    //   withCredentials: true,
+    // }).then((response) => {
+    //   if (response.data.status === "ok") {
+    //     setLogged(response.data.user);
+    //   }
+    // });
+    if(localStorage.getItem('token') !== null){
+      const decoded = decodeToken(localStorage.getItem('token'))
+      setLogged(decoded)
+    }
+    else{
+      
+    }
+
   };
   const Logout = () => {
-    Axios.get("https://travelers-scroll.herokuapp.com/logout", {
+    Axios.get("http://localhost:3000/logout", {
       withCredentials: true,
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Successfully logged out");
+        localStorage.setItem("token", null);
         window.location.href = "/";
       } else {
         alert("something went wrong");

@@ -3,9 +3,12 @@ import Axios from "axios";
 import "../css/form.css";
 import { gapi } from "gapi-script";
 import { GoogleLogin } from "react-google-login";
+import { useCookies } from "react-cookie"
 
 function LogIn() {
   const [form, setForm] = useState({ username: "", password: "" });
+  const [cookie, setCookie] = useCookies(['token']);
+
   const ClientId =
     "807573379511-9us9tvqh79lupajoa0mnv91r2c6g2lml.apps.googleusercontent.com";
 
@@ -27,7 +30,7 @@ function LogIn() {
       method: "POST",
       data: data,
       withCredentials: true,
-      url: "https://travelers-scroll.herokuapp.com/glogin",
+      url: "http://localhost:3000/glogin",
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");
@@ -51,10 +54,12 @@ function LogIn() {
         password: form.password,
       },
       withCredentials: true,
-      url: "https://travelers-scroll.herokuapp.com/login",
+      url: "http://localhost:3000/login",
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");
+        localStorage.setItem("token", res.data.token);
+        setCookie("token", res.data.token)
         window.location.href = "/";
       } else {
         alert("please check your username and password");

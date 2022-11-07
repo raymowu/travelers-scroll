@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    Axios.get("https://travelers-scroll.herokuapp.com/current-user", {
+    Axios.get("http://localhost:3000/current-user", {
       withCredentials: true,
     }).then((response) => {
       // console.log(response.data.blogs)
