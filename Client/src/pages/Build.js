@@ -70,7 +70,7 @@ const Build = () => {
         },
         withCredentials: true,
         url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/newComment`,
-      }).then((res) => {
+      }, {withCredentials:true}).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
           if (res.data.message === "Login Required") {
@@ -93,7 +93,7 @@ const Build = () => {
         },
         withCredentials: true,
         url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
-      }).then((res) => {
+      }, {withCredentials:true}).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
           if (res.data.message === "Login Required") {
@@ -111,7 +111,7 @@ const Build = () => {
         },
         withCredentials: true,
         url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
-      }).then((res) => {
+      }, {withCredentials:true}).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
           if (res.data.message === "Login Required") {
