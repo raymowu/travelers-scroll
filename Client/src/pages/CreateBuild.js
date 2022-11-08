@@ -160,7 +160,6 @@ const CreateBuild = () => {
         url: "https://travelerscroll.herokuapp.com/builds",
       }).then((res) => {
         if (res.data.status === "err") {
-          console.log(res.data);
           alert("LOGIN REQUIRED");
         }
       });

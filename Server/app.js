@@ -35,19 +35,19 @@ store.on("error", function (error) {
 
 // app.use(
 //   cors({
-//     origin: "http://localhost:3000", // <-- location of the react app were connecting to/
+//     origin: "http://localhost:3000", // <-- location of the react app were connecting to
 //     credentials: true,
 //   })
 // );
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://travelerscroll.netlify.app",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
 
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "https://travelerscroll.netlify.app"); // update to match the domain you will make the request from
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
