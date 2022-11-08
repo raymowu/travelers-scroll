@@ -28,7 +28,9 @@ const Character = () => {
       });
   };
   const getBuilds = () => {
+
     fetch(`http://localhost:3000/builds/${characterName}`)
+
       .then((res) => res.json())
       .then((data) => {
         setBuilds(data.builds);

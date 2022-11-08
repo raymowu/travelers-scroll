@@ -157,7 +157,9 @@ const CreateBuild = () => {
           teams: buildTeam,
         },
         withCredentials: true,
+
         url: "http://localhost:3000/builds",
+
       }).then((res) => {
         if (res.data.status === "err") {
           alert("LOGIN REQUIRED");

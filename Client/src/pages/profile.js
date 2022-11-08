@@ -21,7 +21,9 @@ function Profile() {
   const [logged, setLogged] = useState({});
 
   const userData = () => {
+
     Axios.get(`http://localhost:3000/profile/${id}`).then((response) => {
+
       if (response.data.status === "ok") {
         setUser(response.data.user);
       } else {
@@ -30,6 +32,7 @@ function Profile() {
     });
   };
   const GetUser = () => {
+
     // Axios.get("http://localhost:3000/current-user", {
     //   withCredentials: true,
     // }).then((response) => {
@@ -48,6 +51,7 @@ function Profile() {
   };
   const Logout = () => {
     Axios.get("http://localhost:3000/logout", {
+
       withCredentials: true,
     }).then((res) => {
       if (res.data.status === "ok") {

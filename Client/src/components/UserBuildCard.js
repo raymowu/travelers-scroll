@@ -11,7 +11,9 @@ const UserBuildCard = ({ build }) => {
     Axios({
       method: "POST",
       withCredentials: true,
+
       url: `http://localhost:3000/builds/build/${build._id}/delete`,
+
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Build was deleted");

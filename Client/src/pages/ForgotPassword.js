@@ -13,7 +13,9 @@ function ForgotPassword() {
         email: form.email,
       },
       withCredentials: true,
+
       url: "http://localhost:3000/forgotpassword",
+
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Link was sent to your email");

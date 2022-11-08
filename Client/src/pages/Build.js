@@ -22,7 +22,9 @@ const Build = () => {
   const [user, setUser] = useState("");
 
   const getBuild = (buildid) => {
+
     fetch(`http://localhost:3000/builds/build/${buildid}`)
+
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: "SET_BUILD", payload: data.build });
@@ -35,7 +37,9 @@ const Build = () => {
     Axios({
       method: "GET",
       withCredentials: true,
+
       url: `http://localhost:3000/builds/build/${buildid}`,
+
     }).then((res) => {
       if (res.data.status === "err") {
         window.location.replace("/404");
@@ -69,7 +73,9 @@ const Build = () => {
           text: comment,
         },
         withCredentials: true,
+
         url: `http://localhost:3000/builds/build/${buildid}/newComment`,
+
       }).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
@@ -92,7 +98,9 @@ const Build = () => {
           liked: false,
         },
         withCredentials: true,
+
         url: `http://localhost:3000/builds/build/${buildid}/liked`,
+
       }).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);
@@ -110,7 +118,9 @@ const Build = () => {
           liked: true,
         },
         withCredentials: true,
+
         url: `http://localhost:3000/builds/build/${buildid}/liked`,
+
       }).then((res) => {
         if (res.data.status === "err") {
           alert(res.data.message);

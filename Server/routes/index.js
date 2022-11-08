@@ -9,6 +9,7 @@ const User = require("../models/user");
 const Sessions = require("../models/Sessions");
 const { rawListeners } = require("../models/Sessions");
 
+
 const jwtsecret = "secretmsghere";
 
 const getuser = async (req) => {
@@ -29,6 +30,7 @@ const getuser = async (req) => {
   }
   return false;
 }
+
 
 const Authenticate = async (req, res, next) => {
   const user = await getuser(req);
@@ -195,7 +197,7 @@ router.get("/confirmation/:id", async (req, res) => {
     if (date == cur || date + 2 == cur) {
       user.verification.verified = true;
       await user.save();
-      return res.redirect("http://localhost:3000/login");
+      return res.redirect("https://travelerscroll.netlify.app/login");
     } else {
       return res.send("Confirmation link expired");
     }
@@ -259,7 +261,7 @@ router.get("/forgotpassword/:id", async (req, res) => {
     if (date == cur || date + 1 == cur) {
       user.verification.verified = true;
       await user.save();
-      return res.redirect(`http://localhost:3000/passwordreset/${user._id}`);
+      return res.redirect(`https://travelerscroll.netlify.app/passwordreset/${user._id}`);
     } else {
       return res.send("Confirmation link expired");
     }
@@ -280,6 +282,7 @@ router.post("/resetpassword/:id", async (req, res) => {
 });
 
 router.get("/current-user", Authenticate, async (req, res) => {
+
   const user = await getuser(req);
   res.send(user);
 //   jwt.verify(req.headers.cookie, jwtsecret, (err, user) => {
@@ -289,6 +292,7 @@ router.get("/current-user", Authenticate, async (req, res) => {
 //     }
 //     return res.send({user: user})
 //   });  
+
 });
 
 // logout rout

@@ -30,7 +30,9 @@ function LogIn() {
       method: "POST",
       data: data,
       withCredentials: true,
+
       url: "http://localhost:3000/glogin",
+
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");
@@ -54,7 +56,9 @@ function LogIn() {
         password: form.password,
       },
       withCredentials: true,
+
       url: "http://localhost:3000/login",
+
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");
