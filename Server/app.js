@@ -94,8 +94,8 @@ const Authenticate = (req, res, next) => {
 const indexRoutes = require("./routes/index.js");
 const buildRoutes = require("./routes/builds");
 
-app.use(indexRoutes);
-app.use("/builds", buildRoutes);
+app.use("/api", indexRoutes);
+app.use("/api/builds", buildRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello world");
