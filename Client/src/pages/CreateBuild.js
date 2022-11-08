@@ -157,14 +157,11 @@ const CreateBuild = () => {
           teams: buildTeam,
         },
         withCredentials: true,
-
-        url: "http://localhost:3000/builds",
-
+        url: "https://travelerscroll.herokuapp.com/builds",
       }).then((res) => {
         if (res.data.status === "err") {
           alert("LOGIN REQUIRED");
         }
-        console.log(res.data)
       });
 
       resetHandler();

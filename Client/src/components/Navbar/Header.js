@@ -1,10 +1,7 @@
 import classes from "../../css/navbar.module.css";
 import "../../css/navbar.css";
-import {decodeToken} from "react-jwt"
 
-function Header() {
-  const token = localStorage.getItem('token');
-  const user = decodeToken(token)
+function Header({ user }) {
   return (
     <header>
       <a href="/">
@@ -17,7 +14,7 @@ function Header() {
       </a>
       <div>
         <ul className={`${classes.items}`}>
-          {user ? (
+          {user.id ? (
             <>
               <li>
                 <a href={`/profile/${user.username}`}>{user.username}</a>
