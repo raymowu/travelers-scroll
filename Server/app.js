@@ -77,7 +77,7 @@ app.use(cookieParser());
 //       secure: process.env.NODE_ENV === "production", // must be true if sameSite='none'
 //     },
 //     store: store,
-//     resave: false,
+//     resave: true,
 //     saveUninitialized: false,
 //   })
 // );
