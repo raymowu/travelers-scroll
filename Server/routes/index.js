@@ -310,7 +310,7 @@ router.get("/profile/:id", async (req, res) => {
     // 	if(user._id == req.session.user.id){
     // 		return res.send({status: "ok", user: {username: user.username}, modifier: true});
     // 	}
-    // }
+    // } ill modify this for now
     if (!user) {
       return res.send({ status: "err", message: "Unable to find user" });
     } else {
