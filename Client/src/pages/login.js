@@ -59,7 +59,7 @@ function LogIn() {
       if (res.data.status === "ok") {
         alert("Login was successful");
         localStorage.setItem("token", res.data.token);
-        setCookie("token", res.data.token)
+        setCookie("token", res.data.token, {path: "/"})
         window.location.href = "/";
       } else {
         alert("please check your username and password");

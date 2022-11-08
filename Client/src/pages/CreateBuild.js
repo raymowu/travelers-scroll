@@ -162,6 +162,7 @@ const CreateBuild = () => {
         if (res.data.status === "err") {
           alert("LOGIN REQUIRED");
         }
+        console.log(res.data)
       });
 
       resetHandler();

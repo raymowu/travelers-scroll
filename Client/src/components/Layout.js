@@ -9,10 +9,10 @@ const Layout = ({ children, Auth = false }) => {
 
   const [user, setUser] = useState({});
   const [cookie, setCookie] = useCookies(['token']);
+  // if(localStorage.getItem("token") === null){
+  //   setCookie("token", null);
+  // }
   // setCookie("name", "token");
-  if(cookie.token !== null){
-    console.log(cookie.token)
-  }
   // setCookie("token", "token");
   // if (localStorage.getItem("token") === null){
   //   localStorage.setItem("token", null)

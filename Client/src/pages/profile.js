@@ -19,7 +19,6 @@ function Profile() {
     __v: 0,
   });
   const [logged, setLogged] = useState({});
-  const [cookie, setCookie] = useCookies(['token']);
 
   const userData = () => {
     Axios.get(`http://localhost:3000/profile/${id}`).then((response) => {
@@ -40,7 +39,7 @@ function Profile() {
     // });
     if(localStorage.getItem('token') !== null){
       const decoded = decodeToken(localStorage.getItem('token'))
-      setLogged(decoded)
+      if (decoded) setLogged(decoded);
     }
     else{
       
@@ -53,8 +52,9 @@ function Profile() {
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Successfully logged out");
-        localStorage.setItem("token", null);
-        setCookie("token", null);
+        localStorage.setItem("token", null, {path: "/"});
+        document.cookie = "token" + "=" + "null" + "; " + "; path=/";
+
         window.location.href = "/";
       } else {
         alert("something went wrong");
