@@ -141,25 +141,28 @@ const CreateBuild = () => {
       e.preventDefault();
       alert("Please enter all artifact stats!");
     } else {
-      Axios({
-        method: "POST",
-        data: {
-          title: title,
-          description: description,
-          character: characterName,
-          weapons: buildWeapon,
-          weapons_replacement: buildReplacementWeapon,
-          artifacts: buildArtifact,
-          artifact_sands_stat: artifactSandsStat,
-          artifact_goblet_stat: artifactGobletStat,
-          artifact_circlet_stat: artifactCircletStat,
-          artifact_substats: [substats0, substats1, substats2],
-          teams: buildTeam,
+      Axios(
+        {
+          method: "POST",
+          data: {
+            title: title,
+            description: description,
+            character: characterName,
+            weapons: buildWeapon,
+            weapons_replacement: buildReplacementWeapon,
+            artifacts: buildArtifact,
+            artifact_sands_stat: artifactSandsStat,
+            artifact_goblet_stat: artifactGobletStat,
+            artifact_circlet_stat: artifactCircletStat,
+            artifact_substats: [substats0, substats1, substats2],
+            teams: buildTeam,
+          },
+          url: "https://travelerscroll.herokuapp.com/builds",
         },
-        withCredentials: true,
-        url: "https://travelerscroll.herokuapp.com/builds",
-      }, {withCredentials:true}).then((res) => {
+        { withCredentials: true }
+      ).then((res) => {
         if (res.data.status === "err") {
+          console.log(res.data);
           alert("LOGIN REQUIRED");
         }
       });
