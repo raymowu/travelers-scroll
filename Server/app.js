@@ -30,7 +30,7 @@ store.on("error", function (error) {
 
 app.use(
   cors({
-    origin: "https://travelerscroll.netlify.app", // <-- location of the react app were connecting to
+    origin: "https://travelerscroll.netlify.app/", // <-- location of the react app were connecting to
     credentials: true,
   })
 );
@@ -70,6 +70,6 @@ app.get("/", (req, res) => {
 
 app.listen(process.env.PORT, () => {
   {
-    console.log("Server is running on port: 5000");
+    console.log("Server is running on");
   }
 });
