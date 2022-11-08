@@ -9,6 +9,7 @@ import TalentCard from "../components/TalentCard";
 import CharacterDescCard from "../components/CharacterDescCard";
 import PassiveTalentCard from "../components/PassiveTalentCard";
 import ConstellationCard from "../components/Constellation";
+import Axios from "axios";
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
 const Character = () => {
@@ -28,12 +29,19 @@ const Character = () => {
       });
   };
   const getBuilds = () => {
-    fetch(`http://localhost:3000/builds/${characterName}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBuilds(data.builds);
-      });
+    Axios.get(`https://travelerscroll.herokuapp.com/builds/${characterName}`, {
+      withCredentials: true,
+    }).then((res) => {
+      setBuilds(res.data.builds);
+    });
   };
+
+  // old code
+  // fetch(`https://travelerscroll.herokuapp.com/builds/${characterName}`)
+  // .then((res) => res.json())
+  // .then((data) => {
+  //   setBuilds(data.builds);
+  // });
 
   let { characterName } = useParams();
 

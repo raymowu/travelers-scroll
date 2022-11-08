@@ -14,7 +14,12 @@ const User = require("./models/user");
 
 // DATABASE
 mongoose.connect(
-  "mongodb+srv://rksp:rkspdbpass@cluster0.gkkn6.mongodb.net/GenshinApp?retryWrites=true&w=majority"
+  process.env.MONGODB_URI ||
+    "mongodb+srv://rksp:rkspdbpass@cluster0.gkkn6.mongodb.net/GenshinApp?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
 );
 
 // Session Store
@@ -28,12 +33,30 @@ store.on("error", function (error) {
   console.log(error);
 });
 
-app.use(
-  cors({
-    origin: "https://travelerscroll.netlify.app/", // <-- location of the react app were connecting to
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000", // <-- location of the react app were connecting to
+//     credentials: true,
+//   })
+// );
+
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -68,7 +91,7 @@ app.get("/", (req, res) => {
 
 // process.env.PORT
 
-app.listen(5000, () => {
+app.listen(process.env.PORT, () => {
   {
     console.log("Server is running on");
   }

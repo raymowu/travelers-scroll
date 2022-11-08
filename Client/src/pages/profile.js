@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
-import {decodeToken} from "react-jwt"
-import {useCookies} from "react-cookie"
+import { decodeToken } from "react-jwt";
+import { useCookies } from "react-cookie";
 import Layout from "../components/Layout";
 import "../css/profile.css";
 import ProfileHeader from "../components/ProfileHeader";
@@ -21,9 +21,7 @@ function Profile() {
   const [logged, setLogged] = useState({});
 
   const userData = () => {
-
-    Axios.get(`http://localhost:3000/profile/${id}`).then((response) => {
-
+    Axios.get(`https://travelerscroll.herokuapp.com/profile/${id}`).then((response) => {
       if (response.data.status === "ok") {
         setUser(response.data.user);
       } else {
@@ -32,31 +30,27 @@ function Profile() {
     });
   };
   const GetUser = () => {
-
-    // Axios.get("http://localhost:3000/current-user", {
+    // Axios.get("https://travelerscroll.herokuapp.com/current-user", {
     //   withCredentials: true,
     // }).then((response) => {
     //   if (response.data.status === "ok") {
     //     setLogged(response.data.user);
     //   }
     // });
-    if(localStorage.getItem('token') !== null){
-      const decoded = decodeToken(localStorage.getItem('token'))
+    if (localStorage.getItem("token") !== null) {
+      const decoded = decodeToken(localStorage.getItem("token"));
       if (decoded) setLogged(decoded);
+      console.log(decoded);
+    } else {
     }
-    else{
-      
-    }
-
   };
   const Logout = () => {
-    Axios.get("http://localhost:3000/logout", {
-
+    Axios.get("https://travelerscroll.herokuapp.com/logout", {
       withCredentials: true,
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Successfully logged out");
-        localStorage.setItem("token", null, {path: "/"});
+        localStorage.setItem("token", null);
         document.cookie = "token" + "=" + "null" + "; " + "; path=/";
 
         window.location.href = "/";

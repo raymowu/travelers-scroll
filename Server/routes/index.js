@@ -8,29 +8,27 @@ const Builds = require("../models/Builds");
 const User = require("../models/user");
 const Sessions = require("../models/Sessions");
 const { rawListeners } = require("../models/Sessions");
-
+const Session = require("../models/Sessions");
 
 const jwtsecret = "secretmsghere";
 
 const getuser = async (req) => {
   let cookie = req.headers.cookie;
-  const values = cookie.split(';').reduce((res, item) => {
-    const data = item.trim().split('=');
+  const values = cookie.split(";").reduce((res, item) => {
+    const data = item.trim().split("=");
     return { ...res, [data[0]]: data[1] };
   }, {});
-  if(values.token && values.token !== null){
-    let token = values.token
+  if (values.token && values.token !== null) {
+    let token = values.token;
     let user = await Sessions.findOne({ [`session.token`]: token });
-    if(user.session.token){
+    if (user.session.token) {
       return user.session.token;
-    }
-    else{
+    } else {
       return false;
     }
   }
   return false;
-}
-
+};
 
 const Authenticate = async (req, res, next) => {
   const user = await getuser(req);
@@ -65,7 +63,7 @@ router.get("/", (req, res) => {
 });
 
 const SendEmail = (id, email) => {
-  const url = `http://localhost:3000/confirmation/${id}`;
+  const url = `https://travelerscroll.herokuapp.com/confirmation/${id}`;
 
   transporter.sendMail(
     {
@@ -86,7 +84,7 @@ const ReSendEmail = async (id, email) => {
   user.verification.date = new Date().toLocaleDateString();
   await user.save();
 
-  const url = `http://localhost:3000/confirmation/${id}`;
+  const url = `https://travelerscroll.herokuapp.com/confirmation/${id}`;
 
   transporter.sendMail(
     {
@@ -166,7 +164,7 @@ router.post("/login", async (req, res) => {
   if (user) {
     const valid = await bcrypt.compare(password, user.password);
     if (valid) {
-      const info = { id: user._id, username: user.username };      
+      const info = { id: user._id, username: user.username };
       const token = jwt.sign(info, jwtsecret);
       req.session.token = token;
       return res.send({ status: "ok", token: token });
@@ -197,7 +195,7 @@ router.get("/confirmation/:id", async (req, res) => {
     if (date == cur || date + 2 == cur) {
       user.verification.verified = true;
       await user.save();
-      return res.redirect("https://travelerscroll.netlify.app/login");
+      return res.redirect("http:localhost:3000/login");
     } else {
       return res.send("Confirmation link expired");
     }
@@ -220,7 +218,7 @@ router.post("/forgotpassword", async (req, res) => {
   let user = await User.find({ email: req.body.email });
   user = user[0]; // email is unique so there is only 1 user anyway
   if (user && user.verification.verified) {
-    const url = `http://localhost:3000/forgotpassword/${user._id}`;
+    const url = `https://travelerscroll.herokuapp.com/forgotpassword/${user._id}`;
 
     user.verification.date = new Date().toLocaleDateString();
     await user.save();
@@ -261,7 +259,7 @@ router.get("/forgotpassword/:id", async (req, res) => {
     if (date == cur || date + 1 == cur) {
       user.verification.verified = true;
       await user.save();
-      return res.redirect(`https://travelerscroll.netlify.app/passwordreset/${user._id}`);
+      return res.redirect(`http://localhost:/passwordreset/${user._id}`);
     } else {
       return res.send("Confirmation link expired");
     }
@@ -282,22 +280,24 @@ router.post("/resetpassword/:id", async (req, res) => {
 });
 
 router.get("/current-user", Authenticate, async (req, res) => {
-
   const user = await getuser(req);
   res.send(user);
-//   jwt.verify(req.headers.cookie, jwtsecret, (err, user) => {
-//     if(err){ 
-//       console.log(err)
-//       return res.send({status: "err"});
-//     }
-//     return res.send({user: user})
-//   });  
-
+  //   jwt.verify(req.headers.cookie, jwtsecret, (err, user) => {
+  //     if(err){
+  //       console.log(err)
+  //       return res.send({status: "err"});
+  //     }
+  //     return res.send({user: user})
+  //   });
 });
 
 // logout rout
-router.get("/logout", (req, res) => {
+router.get("/logout", async (req, res) => {
   req.session.destroy();
+  let user = await Sessions.findOne({ [`session.token`]: token });
+  if (user) {
+    await Session.findByIdAndDelete(user._id);
+  }
   return res.send({ status: "ok" });
 });
 

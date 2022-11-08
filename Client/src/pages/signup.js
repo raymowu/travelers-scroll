@@ -27,7 +27,7 @@ function SignUp() {
       method: "POST",
       data: data,
       withCredentials: true,
-      url: "http://localhost:3000/gregister",
+      url: "https://travelerscroll.herokuapp.com/gregister",
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Account has been successfully created!");
@@ -52,7 +52,7 @@ function SignUp() {
         password: form.password,
       },
       withCredentials: true,
-      url: "http://localhost:3000/register",
+      url: "https://travelerscroll.herokuapp.com/register",
     }).then((res) => {
       // const data = await response.json();
 

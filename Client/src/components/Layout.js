@@ -2,13 +2,12 @@ import React from "react";
 import Header from "./Navbar/Header";
 import Axios from "axios";
 import { useEffect, useState } from "react";
-import { decodeToken } from "react-jwt"
-import {useCookies} from "react-cookie"
+import { decodeToken } from "react-jwt";
+import { useCookies } from "react-cookie";
 
 const Layout = ({ children, Auth = false }) => {
-
   const [user, setUser] = useState({});
-  const [cookie, setCookie] = useCookies(['token']);
+  const [cookie, setCookie] = useCookies(["token"]);
   // if(localStorage.getItem("token") === null){
   //   setCookie("token", null);
   // }
@@ -21,12 +20,12 @@ const Layout = ({ children, Auth = false }) => {
   //   const token = decodeToken(localStorage.getItem("token"))
   //   setUser(token.username)
   // }
-  const exists = (localStorage.getItem('token') !== null);
+  const exists = localStorage.getItem("token") !== null;
   if (!exists && Auth) {
     alert("Must be logged in");
     window.location.href = "/login";
   }
-  
+
   // if(exists){
   //   const token = localStorage.getItem('token');
   //   const value = decodeToken(token)
@@ -38,7 +37,7 @@ const Layout = ({ children, Auth = false }) => {
   // const user = decodeToken(token)
   // setUser()
   // useEffect(() => {
-  //   Axios.get("http://localhost:3000/current-user", {
+  //   Axios.get("https://travelerscroll.netlify.app//current-user", {
   //     withCredentials: true,
   //   }).then((response) => {
   //     console.log(response.data)
