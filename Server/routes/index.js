@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
 
 const nodemailer = require("nodemailer");
 const Builds = require("../models/Builds");
@@ -9,32 +9,26 @@ const User = require("../models/user");
 const Sessions = require("../models/Sessions");
 const { rawListeners } = require("../models/Sessions");
 
-
-const jwtsecret = "secretmsghere";
-
 const getuser = async (req) => {
-  let cookie = req.headers.cookie;
-  const values = cookie.split(';').reduce((res, item) => {
-    const data = item.trim().split('=');
-    return { ...res, [data[0]]: data[1] };
-  }, {});
-  if(values.token && values.token !== null){
-    let token = values.token
-    let user = await Sessions.findOne({ [`session.token`]: token });
-    if(user.session.token){
-      return user.session.token;
-    }
-    else{
-      return false;
-    }
+  //   let cookie = req.headers.cookie;
+  //   const values = cookie.split(';').reduce((res, item) => {
+  //     const data = item.trim().split('=');
+  //     return { ...res, [data[0]]: data[1] };
+  // }, {});
+  let sid = req.cookies["connect.sid"].split(":")[1].split(".")[0];
+  let user = await Sessions.findOne({ _id: sid });
+  // console.log(user)
+  // sid = sid.split(".")[0].split("%")[1];
+  if (user) {
+    return user.user;
+  } else {
+    return false;
   }
-  return false;
-}
-
+};
 
 const Authenticate = async (req, res, next) => {
-  const user = await getuser(req);
-  if (!user) {
+  // const user = await getuser(req);
+  if (!req.session.user) {
     res.send({ status: "err", message: "Login Required" });
   } else {
     next();
@@ -65,7 +59,7 @@ router.get("/", (req, res) => {
 });
 
 const SendEmail = (id, email) => {
-  const url = `http://localhost:3000/confirmation/${id}`;
+  const url = `https://travelers-scroll.herokuapp.com/confirmation/${id}`;
 
   transporter.sendMail(
     {
@@ -86,7 +80,7 @@ const ReSendEmail = async (id, email) => {
   user.verification.date = new Date().toLocaleDateString();
   await user.save();
 
-  const url = `http://localhost:3000/confirmation/${id}`;
+  const url = `https://travelers-scroll.herokuapp.com/confirmation/${id}`;
 
   transporter.sendMail(
     {
@@ -166,10 +160,8 @@ router.post("/login", async (req, res) => {
   if (user) {
     const valid = await bcrypt.compare(password, user.password);
     if (valid) {
-      const info = { id: user._id, username: user.username };      
-      const token = jwt.sign(info, jwtsecret);
-      req.session.token = token;
-      return res.send({ status: "ok", token: token });
+      req.session.user = { id: user._id, username: user.username };
+      return res.send({ status: "ok" });
     }
   }
   return res.send({ status: "err", msg: "Username or Password was incorrect" });
@@ -220,7 +212,7 @@ router.post("/forgotpassword", async (req, res) => {
   let user = await User.find({ email: req.body.email });
   user = user[0]; // email is unique so there is only 1 user anyway
   if (user && user.verification.verified) {
-    const url = `http://localhost:3000/forgotpassword/${user._id}`;
+    const url = `https://travelers-scroll.herokuapp.com/forgotpassword/${user._id}`;
 
     user.verification.date = new Date().toLocaleDateString();
     await user.save();
@@ -282,17 +274,11 @@ router.post("/resetpassword/:id", async (req, res) => {
 });
 
 router.get("/current-user", Authenticate, async (req, res) => {
-
-  const user = await getuser(req);
-  res.send(user);
-//   jwt.verify(req.headers.cookie, jwtsecret, (err, user) => {
-//     if(err){ 
-//       console.log(err)
-//       return res.send({status: "err"});
-//     }
-//     return res.send({user: user})
-//   });  
-
+  // const user = await getuser(req);
+  if (req.session.user) {
+    return res.send({ status: "ok", user: user });
+  }
+  return res.send({ status: "ok", user: null });
 });
 
 // logout rout
