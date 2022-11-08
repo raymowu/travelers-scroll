@@ -8,11 +8,14 @@ const ARTIFACT_IMG_API = "https://api.genshin.dev/artifacts/";
 const UserBuildCard = ({ build }) => {
   const handleOnDelete = (e) => {
     e.preventDefault();
-    Axios({
-      method: "POST",
-      withCredentials: true,
-      url: `https://travelerscroll.herokuapp.com/builds/build/${build._id}/delete`,
-    }, {withCredentials:true}).then((res) => {
+    Axios(
+      {
+        method: "POST",
+        withCredentials: true,
+        url: `https://travelerscroll.herokuapp.com/api/builds/build/${build._id}/delete`,
+      },
+      { withCredentials: true }
+    ).then((res) => {
       if (res.data.status === "ok") {
         alert("Build was deleted");
         window.location.href = `/profile/${res.data.user}`;

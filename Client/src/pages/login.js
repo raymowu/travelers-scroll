@@ -31,7 +31,7 @@ function LogIn() {
       data: data,
       withCredentials: true,
 
-      url: "https://travelerscroll.herokuapp.com/glogin",
+      url: "https://travelerscroll.herokuapp.com/api/glogin",
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");
@@ -56,7 +56,7 @@ function LogIn() {
       },
       withCredentials: true,
 
-      url: "https://travelerscroll.herokuapp.com/login",
+      url: "https://travelerscroll.herokuapp.com/api/login",
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");
