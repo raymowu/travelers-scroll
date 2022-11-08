@@ -13,7 +13,7 @@ function ForgotPassword() {
         email: form.email,
       },
       withCredentials: true,
-      url: "https://travelerscroll.herokuapp.com/forgotpassword",
+      url: "http://localhost:3000/forgotpassword",
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Link was sent to your email");

@@ -36,7 +36,6 @@ async function getUsername(token) {
       return null;
     }
     else{
-      console.log(user.id)
       const ret = await User.findById(user.id);
       if (ret){
         return {id: ret.id, username: ret.username}
