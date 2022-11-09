@@ -22,7 +22,7 @@ const Build = () => {
   const [user, setUser] = useState("");
 
   const getBuild = (buildid) => {
-    fetch(`https://travelerscroll.herokuapp.com/api/builds/build/${buildid}`)
+    fetch(`https://travelerscroll.herokuapp.com/builds/build/${buildid}`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: "SET_BUILD", payload: data.build });
@@ -70,7 +70,7 @@ const Build = () => {
             text: comment,
           },
           withCredentials: true,
-          url: `https://travelerscroll.herokuapp.com/api/builds/build/${buildid}/newComment`,
+          url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/newComment`,
         },
         { withCredentials: true }
       ).then((res) => {
@@ -117,7 +117,7 @@ const Build = () => {
             liked: true,
           },
           withCredentials: true,
-          url: `https://travelerscroll.herokuapp.com/api/builds/build/${buildid}/liked`,
+          url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
         },
         { withCredentials: true }
       ).then((res) => {

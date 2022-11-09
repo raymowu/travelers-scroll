@@ -10,14 +10,6 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 var MongoDBStore = require("connect-mongodb-session")(session);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("public"));
-}
-
-app.get("*", (request, response) => {
-  response.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
 // MODELS
 const User = require("./models/user");
 
@@ -102,6 +94,7 @@ const Authenticate = (req, res, next) => {
 // Routes
 const indexRoutes = require("./routes/index.js");
 const buildRoutes = require("./routes/builds");
+const { join } = require("path");
 
 app.use("/api", indexRoutes);
 app.use("/api/builds", buildRoutes);

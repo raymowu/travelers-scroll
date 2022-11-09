@@ -47,7 +47,7 @@ function Profile() {
     }
   };
   const Logout = () => {
-    Axios.get("https://travelerscroll.herokuapp.com/api/logout", {
+    Axios.get("https://travelerscroll.herokuapp.com/logout", {
       withCredentials: true,
     }).then((res) => {
       if (res.data.status === "ok") {

@@ -16,7 +16,7 @@ function ForgotPassword() {
           password: form.password,
         },
         withCredentials: true,
-        url: `https://travelerscroll.herokuapp.com/api/resetpassword/${id}`,
+        url: `https://travelerscroll.herokuapp.com/resetpassword/${id}`,
       }).then((res) => {
         if (res.data.status === "ok") {
           alert("password was reset");
