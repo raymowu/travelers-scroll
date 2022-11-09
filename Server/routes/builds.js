@@ -119,13 +119,9 @@ router.get("/build/:id", async (req, res) => {
     } else {
       if (build) {
         await build.populate("comments");
-        let liked = false;
-        if (req.session.user) {
-          let user = await User.findById(req.session.user.id);
-
-          let userID;
-          userID = req.session.user.id;
-          return res.send({ status: "ok", build: build, userId: userID });
+        const user = await getUsername(req.body.token);
+        if (user) {
+          return res.send({ status: "ok", build: build, userId: user.id });
         }
         return res.send({ status: "ok", build: build, userId: "none" });
       }
