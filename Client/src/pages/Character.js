@@ -29,7 +29,7 @@ const Character = () => {
       });
   };
   const getBuilds = () => {
-    Axios.get(`https://travelerscroll.herokuapp.com/builds/${characterName}`, {
+    Axios.get(`http://localhost:5000/builds/${characterName}`, {
       withCredentials: true,
     }).then((res) => {
       setBuilds(res.data.builds);

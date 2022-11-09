@@ -7,7 +7,7 @@ import { useCookies } from "react-cookie";
 
 function LogIn() {
   const [form, setForm] = useState({ username: "", password: "" });
-  const [cookie, setCookie] = useCookies(["token"]);
+  // const [cookie, setCookie] = useCookies(["token"]);
 
   const ClientId =
     "807573379511-9us9tvqh79lupajoa0mnv91r2c6g2lml.apps.googleusercontent.com";
@@ -56,12 +56,11 @@ function LogIn() {
       },
       withCredentials: true,
 
-      url: "https://travelerscroll.herokuapp.com/login",
+      url: "http://localhost:5000/login",
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");
-        localStorage.setItem("token", res.data.token);
-        setCookie("token", res.data.token);
+        sessionStorage.setItem("token", res.data.token);
         window.location.href = "/";
       } else {
         alert("please check your username and password");

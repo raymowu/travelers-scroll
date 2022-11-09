@@ -52,15 +52,11 @@ const Authenticate = async (token) => {
   if(!token){
     return res.send({status: "err", message: "Not logged in"})
   }
-  else{
-    return await getUsername(token)
-  }
 }
 
-router.post("/", Authenticate, async (req, res) => {
-  const token = await getuser(req);
-  const user = await getUsername(token);
+router.post("/", async (req, res) => {
   const {
+    token,
     title,
     description,
     character,
@@ -73,6 +69,8 @@ router.post("/", Authenticate, async (req, res) => {
     artifact_substats,
     teams,
   } = req.body;
+  await Authenticate(token)
+  const user = await getUsername(token);
 
   Builds.create(
     {

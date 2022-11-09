@@ -39,8 +39,8 @@ function Profile() {
     //     setLogged(response.data.user);
     //   }
     // });
-    if (localStorage.getItem("token") !== null) {
-      const decoded = decodeToken(localStorage.getItem("token"));
+    if (sessionStorage.getItem("token") !== null) {
+      const decoded = decodeToken(sessionStorage.getItem("token"));
       if (decoded) setLogged(decoded);
       console.log(decoded);
     } else {
@@ -52,8 +52,8 @@ function Profile() {
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Successfully logged out");
-        localStorage.setItem("token", null);
-        document.cookie = "token" + "=" + "null" + "; " + "; path=/";
+        sessionStorage.setItem("token", null);
+        // document.cookie = "token" + "=" + "null" + "; " + "; path=/";
 
         window.location.href = "/";
       } else {

@@ -7,20 +7,8 @@ import { useCookies } from "react-cookie";
 
 const Layout = ({ children, Auth = false }) => {
   const [user, setUser] = useState({});
-  const [cookie, setCookie] = useCookies(["token"]);
-  // if(localStorage.getItem("token") === null){
-  //   setCookie("token", null);
-  // }
-  // setCookie("name", "token");
-  // setCookie("token", "token");
-  // if (localStorage.getItem("token") === null){
-  //   localStorage.setItem("token", null)
-  // }
-  // else{
-  //   const token = decodeToken(localStorage.getItem("token"))
-  //   setUser(token.username)
-  // }
-  const exists = localStorage.getItem("token") !== null;
+  // const [cookie, setCookie] = useCookies(["token"]);
+  const exists = sessionStorage.getItem("token") !== null;
   if (!exists && Auth) {
     alert("Must be logged in");
     window.location.href = "/login";
