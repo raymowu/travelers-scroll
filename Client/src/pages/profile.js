@@ -21,7 +21,7 @@ function Profile() {
   const [logged, setLogged] = useState({});
 
   const userData = () => {
-    Axios.get(`https://travelerscroll.herokuapp.com/api/profile/${id}`).then(
+    Axios.get(`http://localhost:5000/profile/${id}`).then(
       (response) => {
         if (response.data.status === "ok") {
           setUser(response.data.user);
@@ -47,7 +47,7 @@ function Profile() {
     }
   };
   const Logout = () => {
-    Axios.get("https://travelerscroll.herokuapp.com/logout", {
+    Axios.get("http://localhost:5000/logout", {
       withCredentials: true,
     }).then((res) => {
       if (res.data.status === "ok") {
