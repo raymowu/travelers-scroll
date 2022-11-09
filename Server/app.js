@@ -105,7 +105,7 @@ app.get("/", (req, res) => {
 
 // process.env.PORT
 
-app.listen(process.env.PORT, () => {
+app.listen(5000, () => {
   {
     console.log("Server is running on");
   }

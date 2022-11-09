@@ -39,15 +39,23 @@ async function getUsername(token) {
   return ret;
 }
 
-const Authenticate = async (req, res, next) => {
-  const token = await getuser(req);
-  if (!token) {
-    res.send({ status: "err", message: "Login Required", headers: req.headers });
-  } else {
-    next();
+// const Authenticate = async (req, res, next) => {
+//   const token = await getuser(req);
+//   if (!token) {
+//     res.send({ status: "err", message: "Login Required", headers: req.headers });
+//   } else {
+//     next();
+//   }
+//   return res.send({ status: "err", headers: req.headers });
+// };
+const Authenticate = async (token) => {
+  if(!token){
+    return res.send({status: "err", message: "Not logged in"})
   }
-  return res.send({ status: "err", headers: req.headers });
-};
+  else{
+    return await getUsername(token)
+  }
+}
 
 router.post("/", Authenticate, async (req, res) => {
   const token = await getuser(req);
