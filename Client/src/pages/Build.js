@@ -35,7 +35,7 @@ const Build = () => {
     Axios({
       method: "GET",
       withCredentials: true,
-      url: `https://travelerscroll.herokuapp.com/api/builds/build/${buildid}`,
+      url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}`,
     }).then((res) => {
       if (res.data.status === "err") {
         window.location.replace("/404");
@@ -96,7 +96,7 @@ const Build = () => {
             liked: false,
           },
           withCredentials: true,
-          url: `https://travelerscroll.herokuapp.com/api/builds/build/${buildid}/liked`,
+          url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
         },
         { withCredentials: true }
       ).then((res) => {

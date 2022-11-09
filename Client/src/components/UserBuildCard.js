@@ -12,7 +12,7 @@ const UserBuildCard = ({ build }) => {
       {
         method: "POST",
         withCredentials: true,
-        url: `https://travelerscroll.herokuapp.com/api/builds/build/${build._id}/delete`,
+        url: `https://travelerscroll.herokuapp.com/builds/build/${build._id}/delete`,
       },
       { withCredentials: true }
     ).then((res) => {

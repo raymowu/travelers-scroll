@@ -21,15 +21,13 @@ function Profile() {
   const [logged, setLogged] = useState({});
 
   const userData = () => {
-    Axios.get(`http://localhost:5000/profile/${id}`).then(
-      (response) => {
-        if (response.data.status === "ok") {
-          setUser(response.data.user);
-        } else {
-          alert(response.data.message);
-        }
+    Axios.get(`http://localhost:5000/profile/${id}`).then((response) => {
+      if (response.data.status === "ok") {
+        setUser(response.data.user);
+      } else {
+        alert(response.data.message);
       }
-    );
+    });
   };
   const GetUser = () => {
     // Axios.get("https://travelerscroll.herokuapp.com/current-user", {
@@ -47,7 +45,7 @@ function Profile() {
     }
   };
   const Logout = () => {
-    Axios.get("http://localhost:5000/logout", {
+    Axios.get("https://travelerscroll.herokuapp.com/logout", {
       withCredentials: true,
     }).then((res) => {
       if (res.data.status === "ok") {
