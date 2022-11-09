@@ -22,7 +22,12 @@ const Build = () => {
   const [user, setUser] = useState("");
 
   const getBuild = (buildid) => {
-    fetch(`https://travelerscroll.herokuapp.com/builds/build/${buildid}`)
+    Axios({
+      method: "GET",
+      params: {
+        token: sessionStorage.getItem("token")
+      },
+      url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}`})
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: "SET_BUILD", payload: data.build });
