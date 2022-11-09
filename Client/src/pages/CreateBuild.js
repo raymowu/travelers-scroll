@@ -145,6 +145,7 @@ const CreateBuild = () => {
         {
           method: "POST",
           data: {
+            token: sessionStorage.getItem("token"),
             title: title,
             description: description,
             character: characterName,
@@ -157,13 +158,13 @@ const CreateBuild = () => {
             artifact_substats: [substats0, substats1, substats2],
             teams: buildTeam,
           },
-          url: "https://travelerscroll.herokuapp.com/api/builds",
+          url: "http://localhost:5000/builds",
         },
         { withCredentials: true }
       ).then((res) => {
         if (res.data.status === "err") {
           console.log(res.data);
-          alert("LOGIN REQUIRED");
+          alert(res.data.message);
         }
       });
 

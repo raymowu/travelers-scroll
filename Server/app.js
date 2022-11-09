@@ -34,21 +34,21 @@ store.on("error", function (error) {
   console.log(error);
 });
 
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000", // <-- location of the react app were connecting to
-//     credentials: true,
-//   })
-// );
-
-app.set("trust proxy", 1);
-
 app.use(
   cors({
+    origin: "http://localhost:3000", // <-- location of the react app were connecting to
     credentials: true,
-    origin: ["https://travelerscroll.herokuapp.com"],
   })
 );
+
+// app.set("trust proxy", 1);
+
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: ["https://travelerscroll.herokuapp.com"],
+//   })
+// );
 
 // const corsOptions = {
 //   origin: "https://travelerscroll.netlify.app",
@@ -96,8 +96,8 @@ const indexRoutes = require("./routes/index.js");
 const buildRoutes = require("./routes/builds");
 const { join } = require("path");
 
-app.use("/api", indexRoutes);
-app.use("/api/builds", buildRoutes);
+app.use(indexRoutes);
+app.use("/builds", buildRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello world");
@@ -105,7 +105,7 @@ app.get("/", (req, res) => {
 
 // process.env.PORT
 
-app.listen(process.env.PORT, () => {
+app.listen(5000, () => {
   {
     console.log("Server is running on");
   }

@@ -3,7 +3,7 @@ import "../../css/navbar.css";
 import {decodeToken} from "react-jwt"
 
 function Header() {
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
   const user = decodeToken(token)
   return (
     <header>

@@ -21,7 +21,7 @@ function Profile() {
   const [logged, setLogged] = useState({});
 
   const userData = () => {
-    Axios.get(`https://travelerscroll.herokuapp.com/api/profile/${id}`).then(
+    Axios.get(`http://localhost:5000/profile/${id}`).then(
       (response) => {
         if (response.data.status === "ok") {
           setUser(response.data.user);
@@ -39,21 +39,21 @@ function Profile() {
     //     setLogged(response.data.user);
     //   }
     // });
-    if (localStorage.getItem("token") !== null) {
-      const decoded = decodeToken(localStorage.getItem("token"));
+    if (sessionStorage.getItem("token") !== null) {
+      const decoded = decodeToken(sessionStorage.getItem("token"));
       if (decoded) setLogged(decoded);
       console.log(decoded);
     } else {
     }
   };
   const Logout = () => {
-    Axios.get("https://travelerscroll.herokuapp.com/logout", {
+    Axios.get("http://localhost:5000/logout", {
       withCredentials: true,
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Successfully logged out");
-        localStorage.setItem("token", null);
-        document.cookie = "token" + "=" + "null" + "; " + "; path=/";
+        sessionStorage.setItem("token", null);
+        // document.cookie = "token" + "=" + "null" + "; " + "; path=/";
 
         window.location.href = "/";
       } else {
