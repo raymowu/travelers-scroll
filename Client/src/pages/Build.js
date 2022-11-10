@@ -25,9 +25,10 @@ const Build = () => {
     Axios({
       method: "GET",
       params: {
-        token: sessionStorage.getItem("token")
+        token: sessionStorage.getItem("token"),
       },
-      url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}`})
+      url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}`,
+    })
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: "SET_BUILD", payload: data.build });
