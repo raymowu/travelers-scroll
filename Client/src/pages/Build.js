@@ -22,12 +22,7 @@ const Build = () => {
   const [user, setUser] = useState("");
 
   const getBuild = (buildid) => {
-    Axios({
-      method: "GET",
-      params: {
-        token: sessionStorage.getItem("token")
-      },
-      url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}`})
+    fetch(`http://localhost:5000/builds/build/${buildid}`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: "SET_BUILD", payload: data.build });
@@ -40,7 +35,7 @@ const Build = () => {
     Axios({
       method: "GET",
       withCredentials: true,
-      url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}`,
+      url: `http://localhost:5000/get-user/${sessionStorage.getItem("token")}`,
     }).then((res) => {
       if (res.data.status === "err") {
         window.location.replace("/404");
@@ -73,9 +68,10 @@ const Build = () => {
           method: "POST",
           data: {
             text: comment,
+            token: sessionStorage.getItem("token")
           },
           withCredentials: true,
-          url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/newComment`,
+          url: `http://localhost:5000/builds/build/${buildid}/newComment`,
         },
         { withCredentials: true }
       ).then((res) => {
@@ -99,6 +95,7 @@ const Build = () => {
           method: "POST",
           data: {
             liked: false,
+            token: sessionStorage.getItem("token")
           },
           withCredentials: true,
           url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
@@ -120,9 +117,10 @@ const Build = () => {
           method: "POST",
           data: {
             liked: true,
+            token: sessionStorage.getItem("token")
           },
           withCredentials: true,
-          url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
+          url: `http://localhost:5000/builds/build/${buildid}/liked`,
         },
         { withCredentials: true }
       ).then((res) => {

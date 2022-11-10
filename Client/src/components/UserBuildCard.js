@@ -11,8 +11,11 @@ const UserBuildCard = ({ build }) => {
     Axios(
       {
         method: "POST",
+        data: {
+          token: sessionStorage.getItem("token")
+        },
         withCredentials: true,
-        url: `https://travelerscroll.herokuapp.com/builds/build/${build._id}/delete`,
+        url: `http://localhost:5000/builds/build/${build._id}/delete`,
       },
       { withCredentials: true }
     ).then((res) => {
