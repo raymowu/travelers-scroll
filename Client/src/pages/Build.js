@@ -11,6 +11,7 @@ import Axios from "axios";
 import LikeButton from "../components/LikeButton";
 import ReactTooltip from "react-tooltip";
 import { useBuildContext } from "../hooks/useBuildContext";
+import { decodeToken } from "react-jwt"
 
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
@@ -19,7 +20,9 @@ const Build = () => {
   const [characterName, setCharacterName] = useState("");
   const [character, setCharacter] = useState([]);
   const [comment, setComment] = useState("");
-  const [user, setUser] = useState("");
+  // const [user, setUser] = useState("");
+  const token = sessionStorage.getItem('token');
+  let user = sessionStorage.getItem("token") !== null ? decodeToken(token) : "null"
 
   const getBuild = (buildid) => {
     fetch(`https://travelerscroll.herokuapp.com/builds/build/${buildid}`)
@@ -31,20 +34,20 @@ const Build = () => {
       });
   };
 
-  const getUser = () => {
-    Axios({
-      method: "GET",
-      withCredentials: true,
-      url: `https://travelerscroll.herokuapp.com/get-user/${sessionStorage.getItem(
-        "token"
-      )}`,
-    }).then((res) => {
-      if (res.data.status === "err") {
-        window.location.replace("/404");
-      }
-      setUser(res.data.userId);
-    });
-  };
+  // const getUser = () => {
+  //   Axios({
+  //     method: "GET",
+  //     withCredentials: true,
+  //     url: `https://travelerscroll.herokuapp.com/get-user/${sessionStorage.getItem(
+  //       "token"
+  //     )}`,
+  //   }).then((res) => {
+  //     if (res.data.status === "err") {
+  //       window.location.replace("/404");
+  //     }
+  //     setUser(res.data.userId);
+  //   });
+  // };
 
   const getCharacter = (characterName) => {
     fetch(CHARACTER_API + characterName)
@@ -61,10 +64,14 @@ const Build = () => {
   };
 
   const handleOnCommentSubmit = (e) => {
-    if (!comment) {
+    if (sessionStorage.getItem("token") === "null"){
+      alert("You must be logged in to comment")
+    }
+    else if (!comment) {
       e.preventDefault();
       alert("Please enter a comment!");
-    } else {
+    }
+    else {
       Axios(
         {
           method: "POST",
@@ -91,7 +98,10 @@ const Build = () => {
   };
 
   const handleOnLike = () => {
-    if (build.likedUsers.includes(user)) {
+    if(!user){
+      alert("You must be logged in to like a build")
+    }
+    else if (build.likedUsers.includes(user.id)) {
       Axios(
         {
           method: "POST",
@@ -143,7 +153,7 @@ const Build = () => {
 
   useEffect(() => {
     getBuild(buildid);
-    getUser();
+    // getUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

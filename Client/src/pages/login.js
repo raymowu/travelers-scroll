@@ -35,6 +35,7 @@ function LogIn() {
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");
+        sessionStorage.setItem("token", res.data.token);
         window.location.href = "/";
       } else if (res.data.status === "err") {
         alert(res.data.message);

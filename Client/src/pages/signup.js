@@ -30,6 +30,7 @@ function SignUp() {
       url: "https://travelerscroll.herokuapp.com/gregister",
     }).then((res) => {
       if (res.data.status === "ok") {
+        sessionStorage.setItem("token", res.data.token);
         alert("Account has been successfully created!");
         window.location.href = "/";
       } else if (res.data.status === "err") {
@@ -57,6 +58,7 @@ function SignUp() {
       // const data = await response.json();
 
       if (res.data.status === "ok") {
+        sessionStorage.setItem("token", res.data.token);
         alert("Account has been successfully created!");
         window.location.href = "/";
       }
