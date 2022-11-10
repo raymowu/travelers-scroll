@@ -158,7 +158,7 @@ const CreateBuild = () => {
             artifact_substats: [substats0, substats1, substats2],
             teams: buildTeam,
           },
-          url: "http://localhost:5000/builds",
+          url: "https://travelerscroll.herokuapp.com/builds",
         },
         { withCredentials: true }
       ).then((res) => {

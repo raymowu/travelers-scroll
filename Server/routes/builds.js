@@ -48,7 +48,7 @@ async function getUsername(token) {
 //   }
 //   return res.send({ status: "err", headers: req.headers });
 // };
-const Authenticate = async (token) => {
+const Authenticate = async (res, token) => {
   if(!token){
     return res.send({status: "err", message: "Not logged in"})
   }
@@ -69,7 +69,7 @@ router.post("/", async (req, res) => {
     artifact_substats,
     teams,
   } = req.body;
-  await Authenticate(token)
+  await Authenticate(res, token)
   const user = await getUsername(token);
 
   Builds.create(
@@ -119,20 +119,22 @@ router.get("/build/:id", async (req, res) => {
     } else {
       if (build) {
         await build.populate("comments");
-        const user = await getUsername(req.body.token);
-        if (user) {
-          return res.send({ status: "ok", build: build, userId: user.id });
-        }
+        // // const user = await getUsername(req.params.token);
+        // console.log(req.body)
+        // if (user) {
+        //   return res.send({ status: "ok", build: build, userId: user.id });
+        // }
         return res.send({ status: "ok", build: build, userId: "none" });
       }
     }
   });
 });
 
-router.post("/build/:id/liked", Authenticate, async (req, res) => {
-  const token = await getuser(req);
+router.post("/build/:id/liked", async (req, res) => {
+  const { liked, token } = req.body; // the action of liking the build.
+  await Authenticate(res, token)
   const userid = await getUsername(token);
-  const { liked } = req.body; // the action of liking the build.
+  
   const build = await Builds.findById(req.params.id);
   const user = await User.findById(userid.id);
   if (build) {
@@ -164,10 +166,12 @@ router.post("/build/:id/liked", Authenticate, async (req, res) => {
 });
 
 // comment stuff
-router.post("/build/:id/newComment", Authenticate, async (req, res) => {
-  const token = await getuser(req);
+router.post("/build/:id/newComment", async (req, res) => {
+  const { text, token } = req.body;
+  await Authenticate(res, token)
   const user = await getUsername(token);
-  const { text } = req.body;
+  if(!user) return res.send({status: "err", message: "not signed in"})
+  
   Comments.create(
     {
       text,
@@ -194,8 +198,9 @@ router.post("/build/:id/newComment", Authenticate, async (req, res) => {
   );
 });
 
-router.post("/build/:id/delete", Authenticate, async (req, res) => {
-  const token = await getuser(req);
+router.post("/build/:id/delete", async (req, res) => {
+  const { token } = req.body;
+  await Authenticate(res, token)
   const user = await getUsername(token);
   let build = await Builds.findById(req.params.id);
   if (build) {

@@ -41,7 +41,9 @@ const Build = () => {
     Axios({
       method: "GET",
       withCredentials: true,
-      url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}`,
+      url: `https://travelerscroll.herokuapp.com/get-user/${sessionStorage.getItem(
+        "token"
+      )}`,
     }).then((res) => {
       if (res.data.status === "err") {
         window.location.replace("/404");
@@ -74,6 +76,7 @@ const Build = () => {
           method: "POST",
           data: {
             text: comment,
+            token: sessionStorage.getItem("token"),
           },
           withCredentials: true,
           url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/newComment`,
@@ -100,6 +103,7 @@ const Build = () => {
           method: "POST",
           data: {
             liked: false,
+            token: sessionStorage.getItem("token"),
           },
           withCredentials: true,
           url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
@@ -121,6 +125,7 @@ const Build = () => {
           method: "POST",
           data: {
             liked: true,
+            token: sessionStorage.getItem("token"),
           },
           withCredentials: true,
           url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
