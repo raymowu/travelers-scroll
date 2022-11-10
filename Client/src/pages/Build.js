@@ -22,7 +22,7 @@ const Build = () => {
   const [user, setUser] = useState("");
 
   const getBuild = (buildid) => {
-    fetch(`http://localhost:5000/builds/build/${buildid}`)
+    fetch(`https://travelerscroll.herokuapp.com/builds/build/${buildid}`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: "SET_BUILD", payload: data.build });
@@ -35,7 +35,7 @@ const Build = () => {
     Axios({
       method: "GET",
       withCredentials: true,
-      url: `http://localhost:5000/get-user/${sessionStorage.getItem("token")}`,
+      url: `https://travelerscroll.herokuapp.com/get-user/${sessionStorage.getItem("token")}`,
     }).then((res) => {
       if (res.data.status === "err") {
         window.location.replace("/404");
@@ -71,7 +71,7 @@ const Build = () => {
             token: sessionStorage.getItem("token")
           },
           withCredentials: true,
-          url: `http://localhost:5000/builds/build/${buildid}/newComment`,
+          url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/newComment`,
         },
         { withCredentials: true }
       ).then((res) => {
@@ -120,7 +120,7 @@ const Build = () => {
             token: sessionStorage.getItem("token")
           },
           withCredentials: true,
-          url: `http://localhost:5000/builds/build/${buildid}/liked`,
+          url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
         },
         { withCredentials: true }
       ).then((res) => {

@@ -21,7 +21,7 @@ function Profile() {
   const [logged, setLogged] = useState({});
 
   const userData = () => {
-    Axios.get(`http://localhost:5000/profile/${id}`).then((response) => {
+    Axios.get(`https://travelerscroll.herokuapp.com/profile/${id}`).then((response) => {
       if (response.data.status === "ok") {
         setUser(response.data.user);
       } else {
