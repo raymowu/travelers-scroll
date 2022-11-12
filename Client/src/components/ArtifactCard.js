@@ -16,6 +16,18 @@ const ArtifactCard = ({ artifact, artifactHandleOnClick }) => {
           }}
           onClick={() => artifactHandleOnClick(artifact)}
           alt={artifact.name}
+          style={{
+            backgroundImage:
+              artifact.max_rarity === 1
+                ? "url('https://i.imgur.com/l36Qgzw.png')"
+                : artifact.max_rarity === 2
+                ? "url('https://i.imgur.com/8RBtke0.png')"
+                : artifact.max_rarity === 3
+                ? "url('https://i.imgur.com/QD9BEvl.png')"
+                : artifact.max_rarity === 4
+                ? "url('https://i.imgur.com/sg3xxcl.png')"
+                : "url('https://i.imgur.com/66bWnNJ.png')",
+          }}
         />
 
         <h3>{artifact.name}</h3>

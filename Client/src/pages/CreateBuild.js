@@ -247,6 +247,7 @@ const CreateBuild = () => {
     "CRIT Rate (%)",
     "CRIT DMG (%)",
   ];
+
   return (
     <div className="create-build-page">
       <Layout Auth={false} />
@@ -277,12 +278,16 @@ const CreateBuild = () => {
               <div key={"buildWeapon" + i}>
                 <div
                   data-for="userweapons"
-                  data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
+                  data-tip={`<span style="color: #216CE4; font-size: 16px">${
+                    weapon.name
+                  }</span> 
                 <br /> <span style="font-size: 11px">${weapon.type}</span>
                 <br /> 
-                <br /> ${weapon.subStat}
+                <br /> ${weapon.subStat !== "-" ? weapon.subStat : ""}
                 <br /> ${weapon.baseAttack} Base Attack
-                <br /> &#8226;  ${weapon.passiveName}: ${weapon.passiveDesc}
+                <br />   ${
+                  weapon.passiveName !== "-" ? "&#8226;" + weapon.passiveName + ": " : ""
+                } ${weapon.passiveDesc !== "-" ? weapon.passiveDesc : ""}
                 <br /> 
                 <br />  <span style="color: #d1b132">${weapon.rarity} Star Weapon</span>
                 <br /> 
@@ -320,21 +325,30 @@ const CreateBuild = () => {
                 }
                 return false;
               })
+              .sort((a, b) => (a.rarity > b.rarity ? -1 : 1))
               .map((weapon, i) => {
                 return (
                   <div key={"buildWeapon" + i}>
                     <div
                       data-for="weaponmenu"
-                      data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
-                      <br /> <span style="font-size: 11px">${weapon.type}</span>
-                      <br /> 
-                      <br /> ${weapon.subStat}
-                      <br /> ${weapon.baseAttack} Base Attack
-                      <br /> &#8226;  ${weapon.passiveName}: ${weapon.passiveDesc}
-                      <br /> 
-                      <br />  <span style="color: #d1b132">${weapon.rarity} Star Weapon</span>
-                      <br /> 
-                      `}
+                      data-tip={`<span style="color: #216CE4; font-size: 16px">${
+                        weapon.name
+                      }</span> 
+                    <br /> <span style="font-size: 11px">${weapon.type}</span>
+                    <br /> 
+                    <br /> ${weapon.subStat !== "-" ? weapon.subStat : ""}
+                    <br /> ${weapon.baseAttack} Base Attack
+                    <br />   ${
+                      weapon.passiveName !== "-"
+                        ? "&#8226;" + weapon.passiveName + ": "
+                        : ""
+                    } ${weapon.passiveDesc !== "-" ? weapon.passiveDesc : ""}
+                    <br /> 
+                    <br />  <span style="color: #d1b132">${
+                      weapon.rarity
+                    } Star Weapon</span>
+                    <br /> 
+                    `}
                       data-effect="solid"
                       data-offset="{'top': 70}"
                       data-border="true"
@@ -361,12 +375,16 @@ const CreateBuild = () => {
               <div key={"replacementWeapon" + i}>
                 <div
                   data-for="replacementweapons"
-                  data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
+                  data-tip={`<span style="color: #216CE4; font-size: 16px">${
+                    weapon.name
+                  }</span> 
                 <br /> <span style="font-size: 11px">${weapon.type}</span>
                 <br /> 
-                <br /> ${weapon.subStat}
+                <br /> ${weapon.subStat !== "-" ? weapon.subStat : ""}
                 <br /> ${weapon.baseAttack} Base Attack
-                <br /> &#8226;  ${weapon.passiveName}: ${weapon.passiveDesc}
+                <br />   ${
+                  weapon.passiveName !== "-" ? "&#8226;" + weapon.passiveName + ": " : ""
+                } ${weapon.passiveDesc !== "-" ? weapon.passiveDesc : ""}
                 <br /> 
                 <br />  <span style="color: #d1b132">${weapon.rarity} Star Weapon</span>
                 <br /> 
@@ -419,19 +437,28 @@ const CreateBuild = () => {
                 }
                 return false;
               })
+              .sort((a, b) => (a.rarity > b.rarity ? -1 : 1))
               .map((weapon, i) => {
                 return (
                   <div key={"replacementWeaponMenu" + i}>
                     <div
                       data-for="replacementweaponsmenu"
-                      data-tip={`<span style="color: #216CE4; font-size: 16px">${weapon.name}</span> 
+                      data-tip={`<span style="color: #216CE4; font-size: 16px">${
+                        weapon.name
+                      }</span> 
                     <br /> <span style="font-size: 11px">${weapon.type}</span>
                     <br /> 
-                    <br /> ${weapon.subStat}
+                    <br /> ${weapon.subStat !== "-" ? weapon.subStat : ""}
                     <br /> ${weapon.baseAttack} Base Attack
-                    <br /> &#8226;  ${weapon.passiveName}: ${weapon.passiveDesc}
+                    <br />   ${
+                      weapon.passiveName !== "-"
+                        ? "&#8226;" + weapon.passiveName + ": "
+                        : ""
+                    } ${weapon.passiveDesc !== "-" ? weapon.passiveDesc : ""}
                     <br /> 
-                    <br />  <span style="color: #d1b132">${weapon.rarity} Star Weapon</span>
+                    <br />  <span style="color: #d1b132">${
+                      weapon.rarity
+                    } Star Weapon</span>
                     <br /> 
                     `}
                       data-effect="solid"
@@ -513,6 +540,7 @@ const CreateBuild = () => {
                 }
                 return false;
               })
+              .sort((a, b) => (a.max_rarity > b.max_rarity ? -1 : 1))
               .map((artifact, i) => {
                 return (
                   <div key={"artifactMenu" + i}>
