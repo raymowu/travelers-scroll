@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
 import { decodeToken } from "react-jwt";
-import { useCookies } from "react-cookie";
 import Layout from "../components/Layout";
 import "../css/profile.css";
 import ProfileHeader from "../components/ProfileHeader";
