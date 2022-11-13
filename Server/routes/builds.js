@@ -7,6 +7,7 @@ const Comments = require("../models/Comment");
 const user = require("../models/user");
 const User = require("../models/user");
 const Sessions = require("../models/Sessions");
+const user = require("../models/user");
 
 const jwtsecret = "secretmsghere";
 
@@ -51,6 +52,18 @@ async function getUsername(token) {
 const Authenticate = async (res, token) => {
   if(!token){
     return res.send({status: "err", message: "Not logged in"})
+  }
+  else{
+      await jwt.verify(token, jwtsecret, async (err, user) => {
+        if (err) {
+          return res.send({status: "err", message: err})
+        } else {
+          const ret = await User.findById(user.id);
+          if (!ret) {
+            res.send({status: "err", message: "No user found"})
+          }
+        }
+    });
   }
 }
 
@@ -201,9 +214,11 @@ router.post("/build/:id/newComment", async (req, res) => {
 router.post("/build/:id/delete", async (req, res) => {
   const { token } = req.body;
   await Authenticate(res, token)
-  const user = await getUsername(token);
+  const userInfo = await getUsername(token);
   let build = await Builds.findById(req.params.id);
+  let user = await user.findById(userInfo.id)
   if (build) {
+    if(user._id !== build.Author.id) return res.send({status: "err", message: "Can not delete build you didnt create"})
     await Comments.deleteMany({ _id: { $in: build.comments } });
     for (i of build.likedUsers) {
       let user = await User.findById(i);

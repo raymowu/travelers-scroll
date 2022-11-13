@@ -2,10 +2,15 @@ import "../css/buildcard.css";
 import Axios from "axios";
 import deinitializeName from "./DeinitializeName";
 import { FaThumbsUp, FaTrash } from "react-icons/fa";
+import { decodeToken } from "react-jwt";
+import { useState } from "react";
 const CHARACTER_IMG_API = "https://api.genshin.dev/characters/";
 const WEAPON_IMG_API = "https://api.genshin.dev/weapons/";
 const ARTIFACT_IMG_API = "https://api.genshin.dev/artifacts/";
 const UserBuildCard = ({ build }) => {
+  const token = sessionStorage.getItem('token');
+  let username = token !== null ? decodeToken(token).username : "null"
+  const [user, setUser] = useState("");
   const handleOnDelete = (e) => {
     e.preventDefault();
     Axios(
@@ -22,6 +27,7 @@ const UserBuildCard = ({ build }) => {
       if (res.data.status === "ok") {
         alert("Build was deleted");
         window.location.href = `/profile/${res.data.user}`;
+        setUser(res.data.user)
       } else if (res.data.status === "err") {
         alert(res.data.message);
       }
@@ -62,7 +68,7 @@ const UserBuildCard = ({ build }) => {
             alt={build.weapons[0].name}
           />
         </div>
-        <FaTrash className="delete-button" onClick={handleOnDelete}></FaTrash>
+        { username === user ? <FaTrash className="delete-button" onClick={handleOnDelete}></FaTrash> : <></>}
       </div>
     </a>
   );

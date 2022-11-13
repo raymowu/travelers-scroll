@@ -34,6 +34,15 @@ store.on("error", function (error) {
   console.log(error);
 });
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://travelerscroll.netlify.app");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.use(
   cors({
     origin: "https://travelerscroll.netlify.app", // <-- location of the react app were connecting to
