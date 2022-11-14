@@ -19,6 +19,8 @@
 }
 
 .build img {
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 86px;
   height: 86px;
   border: 0px solid;

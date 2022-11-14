@@ -29,7 +29,7 @@ mongoose.connect(
 
 app.use(
   cors({
-    origin: "https://travelerscroll.netlify.app", // <-- location of the react app were connecting to
+    origin: "localhost:3000", // <-- location of the react app were connecting to
     credentials: true,
   })
 );

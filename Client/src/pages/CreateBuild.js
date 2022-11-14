@@ -249,7 +249,7 @@ const CreateBuild = () => {
   ];
 
   return (
-    <div className="create-build-page">
+    <div className="create-build-page" id="overview">
       <Layout Auth={false} />
 
       <CharacterHeader character={character} characterName={characterName} />
@@ -481,7 +481,7 @@ const CreateBuild = () => {
               })}
         </div>
 
-        <div className="break" id="break"></div>
+        <div className="break" id="artifacts"></div>
 
         <div className="artifact-user">
           <h1 className="menu-tag">{character.name}'s Artifacts </h1>
