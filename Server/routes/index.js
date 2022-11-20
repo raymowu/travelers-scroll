@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const Builds = require("../models/Builds");
 const User = require("../models/user");
-const Sessions = require("../models/Sessions");
 
 const jwtsecret = "secretmsghere";
 

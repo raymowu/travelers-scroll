@@ -98,54 +98,57 @@ const Build = () => {
   };
 
   const handleOnLike = () => {
-    if(!user){
+    if(!token && !user){
       alert("You must be logged in to like a build")
     }
-    else if (build.likedUsers.includes(user.id)) {
-      Axios(
-        {
-          method: "POST",
-          data: {
-            liked: false,
-            token: sessionStorage.getItem("token"),
+    else if (token) {
+      if(build.likedUsers.includes(user.id)){
+        Axios(
+          {
+            method: "POST",
+            data: {
+              liked: false,
+              token: sessionStorage.getItem("token"),
+            },
+            withCredentials: true,
+            url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
           },
-          withCredentials: true,
-          url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
-        },
-        { withCredentials: true }
-      ).then((res) => {
-        if (res.data.status === "err") {
-          alert(res.data.message);
-          if (res.data.message === "Login Required") {
-            window.location.href = "/login";
+          { withCredentials: true }
+        ).then((res) => {
+          if (res.data.status === "err") {
+            alert(res.data.message);
+            if (res.data.message === "Login Required") {
+              window.location.href = "/login";
+            }
+          } else {
+            dispatch({ type: "SET_BUILD", payload: res.data.build });
           }
-        } else {
-          dispatch({ type: "SET_BUILD", payload: res.data.build });
-        }
-      });
-    } else {
-      Axios(
-        {
-          method: "POST",
-          data: {
-            liked: true,
-            token: sessionStorage.getItem("token"),
+        });
+      }
+      else{
+        Axios(
+          {
+            method: "POST",
+            data: {
+              liked: true,
+              token: sessionStorage.getItem("token"),
+            },
+            withCredentials: true,
+            url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
           },
-          withCredentials: true,
-          url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
-        },
-        { withCredentials: true }
-      ).then((res) => {
-        if (res.data.status === "err") {
-          alert(res.data.message);
-          if (res.data.message === "Login Required") {
-            window.location.href = "/login";
+          { withCredentials: true }
+        ).then((res) => {
+          if (res.data.status === "err") {
+            alert(res.data.message);
+            if (res.data.message === "Login Required") {
+              window.location.href = "/login";
+            }
+          } else {
+            dispatch({ type: "SET_BUILD", payload: res.data.build });
           }
-        } else {
-          dispatch({ type: "SET_BUILD", payload: res.data.build });
-        }
-      });
-    }
+        });
+      }
+  }
     // setTimeout(() => {
     //   window.location.reload(false);
     // }, 100);

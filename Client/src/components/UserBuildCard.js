@@ -10,29 +10,35 @@ const ARTIFACT_IMG_API = "https://api.genshin.dev/artifacts/";
 
 const UserBuildCard = ({ build }) => {
   const token = sessionStorage.getItem("token");
-  let username = token !== null ? decodeToken(token).username : "null";
+  // let username = token !== null ? decodeToken(token).username : "null";
   const [user, setUser] = useState("");
   const handleOnDelete = (e) => {
     e.preventDefault();
-    Axios(
-      {
-        method: "POST",
-        data: {
-          token: sessionStorage.getItem("token"),
-        },
-        withCredentials: true,
-        url: `https://travelerscroll.herokuapp.com/builds/build/${build._id}/delete`,
-      },
-      { withCredentials: true }
-    ).then((res) => {
-      if (res.data.status === "ok") {
-        alert("Build was deleted");
-        window.location.href = `/profile/${res.data.user}`;
-        setUser(res.data.user);
-      } else if (res.data.status === "err") {
-        alert(res.data.message);
+    if (token !== null){
+      const { id } = decodeToken(token);
+      if(id === build.Author.id){
+        Axios(
+          {
+            method: "POST",
+            data: {
+              token: sessionStorage.getItem("token"),
+            },
+            withCredentials: true,
+            url: `https://travelerscroll.herokuapp.com/builds/build/${build._id}/delete`,
+          },
+          { withCredentials: true }
+        ).then((res) => {
+          if (res.data.status === "ok") {
+            alert("Build was deleted");
+            window.location.href = `/profile/${res.data.user}`;
+            setUser(res.data.user);
+          } else if (res.data.status === "err") {
+            alert(res.data.message);
+          }
+        });
       }
-    });
+    }
+    
   };
   const weapon = build.weapons[0];
   const artifact = build.artifacts[0];
@@ -91,7 +97,8 @@ const UserBuildCard = ({ build }) => {
             }}
           />
         </div>
-        {username === user ? (
+        
+        {token && decodeToken(token).id === build.Author.id ? (
           <FaTrash className="delete-button" onClick={handleOnDelete}></FaTrash>
         ) : (
           <></>
