@@ -22,7 +22,7 @@ const Build = () => {
   const [comment, setComment] = useState("");
   // const [user, setUser] = useState("");
   const token = sessionStorage.getItem('token');
-  let user = sessionStorage.getItem("token") !== null ? decodeToken(token) : "null"
+  let user = token !== null ? decodeToken(token).id : "" // this is the user id
 
   const getBuild = (buildid) => {
     fetch(`https://travelerscroll.herokuapp.com/builds/build/${buildid}`)
@@ -64,45 +64,49 @@ const Build = () => {
   };
 
   const handleOnCommentSubmit = (e) => {
-    if (sessionStorage.getItem("token") === "null"){
+    if (!token){
       alert("You must be logged in to comment")
     }
-    else if (!comment) {
-      e.preventDefault();
-      alert("Please enter a comment!");
-    }
-    else {
-      Axios(
-        {
-          method: "POST",
-          data: {
-            text: comment,
-            token: sessionStorage.getItem("token"),
+    else{
+      if (!comment) {
+        e.preventDefault();
+        alert("Please enter a comment!");
+      }
+      else if (token && comment) {
+        Axios(
+          {
+            method: "POST",
+            data: {
+              text: comment,
+              token: sessionStorage.getItem("token"),
+            },
+            withCredentials: true,
+            url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/newComment`,
           },
-          withCredentials: true,
-          url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/newComment`,
-        },
-        { withCredentials: true }
-      ).then((res) => {
-        if (res.data.status === "err") {
-          alert(res.data.message);
-          if (res.data.message === "Login Required") {
-            window.location.href = "/login";
+          { withCredentials: true }
+        ).then((res) => {
+          if (res.data.status === "err") {
+            alert(res.data.message);
+            if (res.data.message === "Login Required") {
+              window.location.href = "/login";
+            }
+          } else {
+            dispatch({ type: "SET_BUILD", payload: res.data.build });
           }
-        } else {
-          dispatch({ type: "SET_BUILD", payload: res.data.build });
-        }
-      });
-      resetHandler();
+        });
+        resetHandler();
+      }
     }
+    
   };
 
   const handleOnLike = () => {
-    if(!token && !user){
+    if(!token){
       alert("You must be logged in to like a build")
     }
     else if (token) {
-      if(build.likedUsers.includes(user.id)){
+      const { id } = decodeToken(token)
+      if(build.likedUsers.includes(id)){
         Axios(
           {
             method: "POST",
