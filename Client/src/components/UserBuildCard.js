@@ -21,7 +21,7 @@ const UserBuildCard = ({ build }) => {
           {
             method: "POST",
             data: {
-              token: sessionStorage.getItem("token"),
+              token: token,
             },
             withCredentials: true,
             url: `https://travelerscroll.herokuapp.com/builds/build/${build._id}/delete`,
