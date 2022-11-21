@@ -11,7 +11,8 @@ import Axios from "axios";
 import LikeButton from "../components/LikeButton";
 import ReactTooltip from "react-tooltip";
 import { useBuildContext } from "../hooks/useBuildContext";
-import { decodeToken } from "react-jwt"
+import { decodeToken } from "react-jwt";
+import _ from "lodash";
 
 const CHARACTER_API = "https://api.genshin.dev/characters/";
 
@@ -21,8 +22,8 @@ const Build = () => {
   const [character, setCharacter] = useState([]);
   const [comment, setComment] = useState("");
   // const [user, setUser] = useState("");
-  const token = sessionStorage.getItem('token');
-  let user = token !== null ? decodeToken(token).id : "" // this is the user id
+  const token = sessionStorage.getItem("token");
+  let user = token !== null ? decodeToken(token).id : ""; // this is the user id
 
   const getBuild = (buildid) => {
     fetch(`https://travelerscroll.herokuapp.com/builds/build/${buildid}`)
@@ -64,15 +65,13 @@ const Build = () => {
   };
 
   const handleOnCommentSubmit = (e) => {
-    if (!token){
-      alert("You must be logged in to comment")
-    }
-    else{
+    if (!token) {
+      alert("You must be logged in to comment");
+    } else {
       if (!comment) {
         e.preventDefault();
         alert("Please enter a comment!");
-      }
-      else if (token && comment) {
+      } else if (token && comment) {
         Axios(
           {
             method: "POST",
@@ -97,16 +96,14 @@ const Build = () => {
         resetHandler();
       }
     }
-    
   };
 
-  const handleOnLike = () => {
-    if(!token){
-      alert("You must be logged in to like a build")
-    }
-    else if (token) {
-      const { id } = decodeToken(token)
-      if(build.likedUsers.includes(id)){
+  const handleOnLike = async () => {
+    if (!token) {
+      alert("You must be logged in to like a build");
+    } else if (token) {
+      const { id } = decodeToken(token);
+      if (build.likedUsers.includes(id)) {
         Axios(
           {
             method: "POST",
@@ -128,8 +125,7 @@ const Build = () => {
             dispatch({ type: "SET_BUILD", payload: res.data.build });
           }
         });
-      }
-      else{
+      } else {
         Axios(
           {
             method: "POST",
@@ -152,10 +148,7 @@ const Build = () => {
           }
         });
       }
-  }
-    // setTimeout(() => {
-    //   window.location.reload(false);
-    // }, 100);
+    }
   };
 
   useEffect(() => {
@@ -163,6 +156,11 @@ const Build = () => {
     // getUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleOnLikeDebounced = _.debounce(handleOnLike, 350, {
+    leading: true,
+    trailing: false,
+  });
 
   return (
     <Layout Auth={false}>
@@ -176,7 +174,7 @@ const Build = () => {
         <LikeButton
           className="like-button"
           liked={build.likedUsers.includes(user)}
-          handleOnLike={handleOnLike}
+          handleOnLike={handleOnLikeDebounced}
         />
         <h2 className="like-count">{build.likes}</h2>
 

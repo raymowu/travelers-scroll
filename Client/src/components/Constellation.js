@@ -9,6 +9,10 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
           <img
             src={CHARACTER_API + characterName + "/constellation-1"}
             alt={"constellation-1"}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
           ></img>
           <div className="break"></div>
           <h3>{constellation.name}</h3>
@@ -23,7 +27,7 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
             alt={"constellation-2"}
             onError={(e) => {
               e.target.onerror = null;
-              e.target.src = CHARACTER_API + characterName + "/cosntellation-2";
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
             }}
           ></img>
           <div className="break"></div>
@@ -37,6 +41,10 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
           <img
             src={CHARACTER_API + characterName + "/constellation-3"}
             alt={"constellation-3"}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
           ></img>
           <div className="break"></div>
           <h3>{constellation.name}</h3>
@@ -49,6 +57,10 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
           <img
             src={CHARACTER_API + characterName + "/constellation-4"}
             alt={"constellation-4"}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
           ></img>
           <div className="break"></div>
           <h3>{constellation.name}</h3>
@@ -61,6 +73,10 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
           <img
             src={CHARACTER_API + characterName + "/constellation-5"}
             alt={"constellation-5"}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
           ></img>
           <div className="break"></div>
           <h3>{constellation.name}</h3>
@@ -73,6 +89,10 @@ const ConstellationCard = ({ constellation, character, characterName }) => {
           <img
             src={CHARACTER_API + characterName + "/constellation-6"}
             alt={"constellation-6"}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
           ></img>
           <div className="break"></div>
           <h3>{constellation.name}</h3>
