@@ -9,6 +9,10 @@ const CharacterInfoHeader = ({ character, characterName }) => {
         style={{
           backgroundImage: `url(https://api.genshin.dev/characters/${characterName}/gacha-splash)`,
         }}
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = "https://i.imgur.com/4Ee24al.png";
+        }}
       >
         <div className="character-icon-container">
           <img src={CHARACTER_API + characterName + "/icon"} alt={characterName} />

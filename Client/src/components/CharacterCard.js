@@ -12,8 +12,7 @@ const CharacterCard = ({ characterName }) => {
             src={CHARACTER_API + characterName + "/icon"}
             onError={(e) => {
               e.target.onerror = null;
-              e.target.src =
-                "https://preview.redd.it/9bcv6smhvx961.png?width=640&crop=smart&auto=webp&s=f5b7d40d216a89b1d8a4c77a41dff92a5431980b";
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
             }}
             alt={characterName}
           />

@@ -11,7 +11,7 @@ const TalentCard = ({ talent, character, characterName }) => {
             alt="talent-na"
             onError={(e) => {
               e.target.onerror = null;
-              e.target.src = CHARACTER_API + characterName + "/talent_na";
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
             }}
           ></img>
           <div className="break"></div>
@@ -25,6 +25,10 @@ const TalentCard = ({ talent, character, characterName }) => {
           <img
             src={CHARACTER_API + characterName + "/talent-skill"}
             alt="talent-skill"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
           ></img>
           <div className="break"></div>
           <h3>{talent.name}</h3>
@@ -37,6 +41,10 @@ const TalentCard = ({ talent, character, characterName }) => {
           <img
             src={CHARACTER_API + characterName + "/talent-burst"}
             alt="talent-burst"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
           ></img>
           <div className="break"></div>
           <h3>{talent.name}</h3>
@@ -49,6 +57,10 @@ const TalentCard = ({ talent, character, characterName }) => {
           <img
             src={CHARACTER_API + characterName + "/talent-passive-misc"}
             alt="talent-passive-misc"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
           ></img>
           <div className="break"></div>
           <h3>{talent.name}</h3>
