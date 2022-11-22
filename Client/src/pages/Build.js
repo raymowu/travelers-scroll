@@ -23,7 +23,7 @@ const Build = () => {
   const [comment, setComment] = useState("");
   // const [user, setUser] = useState("");
   const token = sessionStorage.getItem("token");
-  let user = token !== null ? decodeToken(token).id : ""; // this is the user id
+  let user = token ? decodeToken(token).id : ""; // this is the user id
 
   const getBuild = (buildid) => {
     fetch(`https://travelerscroll.herokuapp.com/builds/build/${buildid}`)

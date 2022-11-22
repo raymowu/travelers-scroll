@@ -11,7 +11,7 @@ const WeaponCard = ({ weapon, weaponHandleOnClick }) => {
           src={WEAPON_API + deinitializeName(weapon.name) + "/icon"}
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = "https://api.genshin.dev/weapons/dull-blade/icon";
+            e.target.src = "https://i.imgur.com/4Ee24al.png";
           }}
           onClick={() => weaponHandleOnClick(weapon)}
           alt={weapon.name}

@@ -30,6 +30,10 @@ const BuildCard = ({ build }) => {
           <img
             className="buildcard-weapon-icon"
             src={WEAPON_IMG_API + deinitializeName(weapon.name) + "/icon"}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
             alt={weapon.name}
             style={{
               backgroundImage:
@@ -47,6 +51,10 @@ const BuildCard = ({ build }) => {
           <img
             className="buildcard-artifacts-icon"
             src={ARTIFACT_IMG_API + deinitializeName(artifact.name) + "/circlet-of-logos"}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
             alt={artifact.name}
             style={{
               backgroundImage:
