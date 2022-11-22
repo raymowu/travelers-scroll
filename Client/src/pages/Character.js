@@ -134,7 +134,7 @@ const Character = () => {
           </h1>
           <div className="break"></div>
           <button type="button" className="button-18" onClick={handleOnCreateBuild}>
-            Create {`${character.name}`} Build
+            Create Build
           </button>
           <div className="build-container">
             {builds.length > 0 &&
