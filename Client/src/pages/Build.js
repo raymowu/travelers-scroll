@@ -157,7 +157,7 @@ const Build = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleOnLikeDebounced = _.debounce(handleOnLike, 350, {
+  const handleOnLikeDebounced = _.debounce(handleOnLike, 450, {
     leading: true,
     trailing: false,
   });
