@@ -14,9 +14,9 @@ const UserBuildCard = ({ build }) => {
   const [user, setUser] = useState("");
   const handleOnDelete = (e) => {
     e.preventDefault();
-    if (token !== null){
+    if (token !== null) {
       const { id } = decodeToken(token);
-      if(id === build.Author.id){
+      if (id === build.Author.id) {
         Axios(
           {
             method: "POST",
@@ -38,7 +38,6 @@ const UserBuildCard = ({ build }) => {
         });
       }
     }
-    
   };
   const weapon = build.weapons[0];
   const artifact = build.artifacts[0];
@@ -65,6 +64,10 @@ const UserBuildCard = ({ build }) => {
           <img
             className="buildcard-weapon-icon"
             src={WEAPON_IMG_API + deinitializeName(weapon.name) + "/icon"}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
             alt={weapon.name}
             style={{
               backgroundImage:
@@ -82,6 +85,10 @@ const UserBuildCard = ({ build }) => {
           <img
             className="buildcard-artifacts-icon"
             src={ARTIFACT_IMG_API + deinitializeName(artifact.name) + "/circlet-of-logos"}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://i.imgur.com/4Ee24al.png";
+            }}
             alt={artifact.name}
             style={{
               backgroundImage:
@@ -97,7 +104,7 @@ const UserBuildCard = ({ build }) => {
             }}
           />
         </div>
-        
+
         {token && decodeToken(token).id === build.Author.id ? (
           <FaTrash className="delete-button" onClick={handleOnDelete}></FaTrash>
         ) : (

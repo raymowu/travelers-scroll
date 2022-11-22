@@ -247,6 +247,12 @@ html {
   background-position-x: 50%;
 }
 
+.ayato {
+  background-size: 70%;
+  background-position-y: 10%;
+  background-position-x: 50%;
+}
+
 .barbara {
   background-size: 65%;
   background-position-y: 13%;
@@ -477,15 +483,26 @@ html {
   background-position-x: 70%;
 }
 
+.yelan {
+  background-size: 120%;
+  background-position-y: 16%;
+  background-position-x: 70%;
+}
+
 .yoimiya {
   background-size: 70%;
   background-position-y: 23%;
   background-position-x: 50%;
 }
 
+.yae-miko {
+  background-size: 70%;
+  background-position-y: 14%;
+  background-position-x: 50%;
+}
 .yun-jin {
-  background-size: 60%;
-  background-position-y: 20%;
+  background-size: 50%;
+  background-position-y: 14%;
   background-position-x: 50%;
 }
 
