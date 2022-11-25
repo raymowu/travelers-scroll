@@ -17,8 +17,7 @@ const CharacterDescCard = ({ character, characterName }) => {
         <span className="attribute">Constellation:</span> {character.constellation}
       </p>
       <p>
-        <span className="attribute">Birthday:</span>{" "}
-        {character.birthday ? character.birthday.substring(5) : ""}
+        <span className="attribute">Birthday:</span> {character.birthday}
       </p>
     </div>
   );
