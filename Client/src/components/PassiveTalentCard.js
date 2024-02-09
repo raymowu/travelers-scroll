@@ -1,7 +1,8 @@
 import "../css/talentcard.css";
+import { GENSHIN_API } from "../constants";
 
 const PassiveTalentCard = ({ ptalent, character, characterName }) => {
-  const CHARACTER_API = "https://api.genshin.dev/characters/";
+  const CHARACTER_API = `${GENSHIN_API}/characters/`;
   return (
     <div className="talent-card">
       {ptalent.unlock === "Unlocked at Ascension 1" && (

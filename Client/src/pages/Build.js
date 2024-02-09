@@ -12,9 +12,10 @@ import LikeButton from "../components/LikeButton";
 import ReactTooltip from "react-tooltip";
 import { useBuildContext } from "../hooks/useBuildContext";
 import { decodeToken } from "react-jwt";
+import { GENSHIN_API } from "../constants";
 import _ from "lodash";
 
-const CHARACTER_API = "https://api.genshin.dev/characters/";
+const CHARACTER_API = `${GENSHIN_API}/characters/`;
 
 const Build = () => {
   const { build, dispatch } = useBuildContext();

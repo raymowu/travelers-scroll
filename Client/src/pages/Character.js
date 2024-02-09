@@ -10,7 +10,9 @@ import CharacterDescCard from "../components/CharacterDescCard";
 import PassiveTalentCard from "../components/PassiveTalentCard";
 import ConstellationCard from "../components/Constellation";
 import Axios from "axios";
-const CHARACTER_API = "https://api.genshin.dev/characters/";
+import { GENSHIN_API } from "../constants";
+
+const CHARACTER_API = `${GENSHIN_API}/characters/`;
 
 const Character = () => {
   const navigate = useNavigate();

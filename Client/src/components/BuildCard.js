@@ -1,9 +1,11 @@
 import "../css/buildcard.css";
 import deinitializeName from "./DeinitializeName";
 import { FaThumbsUp } from "react-icons/fa";
-const CHARACTER_IMG_API = "https://api.genshin.dev/characters/";
-const WEAPON_IMG_API = "https://api.genshin.dev/weapons/";
-const ARTIFACT_IMG_API = "https://api.genshin.dev/artifacts/";
+import { GENSHIN_API } from "../constants";
+
+const CHARACTER_IMG_API = `${GENSHIN_API}/characters/`;
+const WEAPON_IMG_API = `${GENSHIN_API}/weapons/`;
+const ARTIFACT_IMG_API = `${GENSHIN_API}/artifacts/`;
 const BuildCard = ({ build }) => {
   const weapon = build.weapons[0];
   const artifact = build.artifacts[0];

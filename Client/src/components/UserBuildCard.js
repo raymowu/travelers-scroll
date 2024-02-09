@@ -4,9 +4,11 @@ import deinitializeName from "./DeinitializeName";
 import { FaThumbsUp, FaTrash } from "react-icons/fa";
 import { decodeToken } from "react-jwt";
 import { useState } from "react";
-const CHARACTER_IMG_API = "https://api.genshin.dev/characters/";
-const WEAPON_IMG_API = "https://api.genshin.dev/weapons/";
-const ARTIFACT_IMG_API = "https://api.genshin.dev/artifacts/";
+import { GENSHIN_API } from "../constants";
+
+const CHARACTER_IMG_API = `${GENSHIN_API}/characters/`;
+const WEAPON_IMG_API = `${GENSHIN_API}/weapons/`;
+const ARTIFACT_IMG_API = `${GENSHIN_API}/artifacts/`;
 
 const UserBuildCard = ({ build }) => {
   const token = sessionStorage.getItem("token");

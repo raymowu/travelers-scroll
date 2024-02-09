@@ -1,0 +1,1 @@
+export const GENSHIN_API = " https://genshin.jmp.blue"

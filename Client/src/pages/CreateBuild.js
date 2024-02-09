@@ -10,10 +10,11 @@ import TeammateCard from "../components/TeammateCard";
 import CharacterHeader from "../components/CharacterHeader";
 import Axios from "axios";
 import ReactTooltip from "react-tooltip";
+import { GENSHIN_API } from "../constants";
 
-const CHARACTER_API = "https://api.genshin.dev/characters/";
-const WEAPON_API = "https://api.genshin.dev/weapons/";
-const ARTIFACT_API = "https://api.genshin.dev/artifacts/";
+const CHARACTER_API = `${GENSHIN_API}/characters/`;
+const WEAPON_API = `${GENSHIN_API}/weapons/`;
+const ARTIFACT_API = `${GENSHIN_API}/artifacts/`;
 
 const CreateBuild = () => {
   const [title, setTitle] = useState("");

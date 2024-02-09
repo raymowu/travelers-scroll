@@ -1,13 +1,15 @@
 import "../css/characterheader.css";
 import { AiFillStar } from "react-icons/ai";
-const CHARACTER_API = "https://api.genshin.dev/characters/";
+import { GENSHIN_API } from "../constants";
+
+const CHARACTER_API = `${GENSHIN_API}/characters/`;
 const CharacterBuildHeader = ({ character, characterName, build }) => {
   return (
     <div className="container">
       <div
         className={`character-header ${characterName}`}
         style={{
-          backgroundImage: `url(https://api.genshin.dev/characters/${characterName}/gacha-splash)`,
+          backgroundImage: `url(${GENSHIN_API}/characters/${characterName}/gacha-splash)`,
         }}
       >
         <div className="character-icon-container">

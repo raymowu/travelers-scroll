@@ -1,7 +1,9 @@
 import React from "react";
 import "../css/teammatecard.css";
 import initializeName from "./InitializeName";
-const CHARACTER_IMG_API = "https://api.genshin.dev/characters/";
+import { GENSHIN_API } from "../constants";
+
+const CHARACTER_IMG_API = `${GENSHIN_API}/characters/`;
 
 const TeammateCard = ({ teammate, teamHandleOnClick }) => {
   return (

@@ -1,7 +1,9 @@
 import React from "react";
 import "../css/home.css";
 import initializeName from "./InitializeName";
-const CHARACTER_API = "https://api.genshin.dev/characters/";
+import { GENSHIN_API } from "../constants";
+
+const CHARACTER_API = `${GENSHIN_API}/characters/`;
 
 const CharacterCard = ({ characterName }) => {
   return (

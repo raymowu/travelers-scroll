@@ -1,7 +1,8 @@
 import React from "react";
 import "../css/artifactcarddisplay.css";
 import deinitializeName from "./DeinitializeName";
-const ARTIFACT_API = "https://api.genshin.dev/artifacts/";
+import { GENSHIN_API } from "../constants";
+const ARTIFACT_API = `${GENSHIN_API}/artifacts/`;
 
 const ArtifactCardDisplay = ({ artifact }) => {
   return (
@@ -12,7 +13,7 @@ const ArtifactCardDisplay = ({ artifact }) => {
           onError={(e) => {
             e.target.onerror = null;
             e.target.src =
-              "https://api.genshin.dev/artifacts/adventurer/circlet-of-logos";
+              `${GENSHIN_API}/artifacts/adventurer/circlet-of-logos`;
           }}
           alt={artifact.name}
           style={{

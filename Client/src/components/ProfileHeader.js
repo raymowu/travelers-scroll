@@ -1,12 +1,14 @@
 import "../css/characterheader.css";
-const CHARACTER_API = "https://api.genshin.dev/characters/";
+import { GENSHIN_API } from "../constants";
+
+const CHARACTER_API = `${GENSHIN_API}/characters/`;
 const ProfileHeader = ({ user }) => {
   return (
     <div className="container">
       <div
         className={`character-header ${"hu-tao"}`}
         style={{
-          backgroundImage: `url(https://api.genshin.dev/characters/hu-tao/gacha-splash)`,
+          backgroundImage: `url(${GENSHIN_API}/characters/hu-tao/gacha-splash)`,
         }}
       >
         <div className="character-icon-container">

@@ -1,6 +1,8 @@
 import React from "react";
 import "../css/weaponcard.css";
+import { GENSHIN_API } from "../constants";
 import deinitializeName from "./DeinitializeName";
+
 const WEAPON_API = "https://api.genshin.dev/weapons/";
 
 const ReplacementWeaponCard = ({ weapon, replacementWeaponHandleOnClick }) => {
