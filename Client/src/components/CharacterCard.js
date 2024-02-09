@@ -12,9 +12,13 @@ const CharacterCard = ({ characterName }) => {
         <a href={`/characters/${characterName}`}>
           <img
             src={CHARACTER_API + characterName + "/icon"}
+            // onError={(e) => {
+            //   e.target.onerror = null;
+            //   e.target.src = "https://i.imgur.com/4Ee24al.png";
+            // }}
             onError={(e) => {
               e.target.onerror = null;
-              e.target.src = "https://i.imgur.com/4Ee24al.png";
+              e.target.src = `${CHARACTER_API}${characterName}` + "/icon-big";
             }}
             alt={characterName}
           />

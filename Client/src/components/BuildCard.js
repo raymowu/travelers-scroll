@@ -15,6 +15,10 @@ const BuildCard = ({ build }) => {
         <img
           className="buildcard-character-icon"
           src={CHARACTER_IMG_API + build.character + "/icon"}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = `${CHARACTER_IMG_API}${build.character}` + "/icon-big";
+          }}
           alt={build.character}
         />
         <div className="buildcard-info">
