@@ -3,7 +3,7 @@ import "../css/weaponcard.css";
 import { GENSHIN_API } from "../constants";
 import deinitializeName from "./DeinitializeName";
 
-const WEAPON_API = "https://api.genshin.dev/weapons/";
+const WEAPON_API = `${GENSHIN_API}/weapons/`;
 
 const ReplacementWeaponCard = ({ weapon, replacementWeaponHandleOnClick }) => {
   return (
