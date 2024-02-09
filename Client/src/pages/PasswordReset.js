@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
 import "../css/form.css";
+import { SERVER_URL } from "../constants";
 
 function ForgotPassword() {
   const [form, setForm] = useState({ password: "", cpassword: "" });
@@ -16,7 +17,7 @@ function ForgotPassword() {
           password: form.password,
         },
         withCredentials: true,
-        url: `https://travelerscroll.herokuapp.com/resetpassword/${id}`,
+        url: `${SERVER_URL}/resetpassword/${id}`,
       }).then((res) => {
         if (res.data.status === "ok") {
           alert("password was reset");

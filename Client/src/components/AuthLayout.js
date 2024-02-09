@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Navbar/Header";
 import Axios from "axios";
+import { SERVER_URL } from "../constants";
 
 const Layout = ({ children }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    Axios.get("https://travelerscroll.herokuapp.com/current-user", {
+    Axios.get(`${SERVER_URL}`/current-user``, {
       withCredentials: true,
     }).then((response) => {
       // console.log(response.data.blogs)

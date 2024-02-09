@@ -3,6 +3,7 @@ import Axios from "axios";
 import "../css/form.css";
 import { gapi } from "gapi-script";
 import { GoogleLogin } from "react-google-login";
+import { SERVER_URL } from "../constants";
 
 function LogIn() {
   const [form, setForm] = useState({ username: "", password: "" });
@@ -30,7 +31,7 @@ function LogIn() {
       data: data,
       withCredentials: true,
 
-      url: "https://travelerscroll.herokuapp.com/glogin",
+      url: `${SERVER_URL}/glogin`,
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");
@@ -56,7 +57,7 @@ function LogIn() {
       },
       withCredentials: true,
 
-      url: "https://travelerscroll.herokuapp.com/login",
+      url: `${SERVER_URL}/login`,
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Login was successful");

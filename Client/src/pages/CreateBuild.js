@@ -10,7 +10,7 @@ import TeammateCard from "../components/TeammateCard";
 import CharacterHeader from "../components/CharacterHeader";
 import Axios from "axios";
 import ReactTooltip from "react-tooltip";
-import { GENSHIN_API } from "../constants";
+import { GENSHIN_API, SERVER_URL } from "../constants";
 
 const CHARACTER_API = `${GENSHIN_API}/characters/`;
 const WEAPON_API = `${GENSHIN_API}/weapons/`;
@@ -162,7 +162,7 @@ const CreateBuild = () => {
             artifact_substats: [substats0, substats1, substats2],
             teams: buildTeam,
           },
-          url: "https://travelerscroll.herokuapp.com/builds",
+          url: `${SERVER_URL}/builds`,
         },
         { withCredentials: true }
       ).then((res) => {

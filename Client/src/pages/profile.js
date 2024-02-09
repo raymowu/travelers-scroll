@@ -7,6 +7,7 @@ import "../css/profile.css";
 import ProfileHeader from "../components/ProfileHeader";
 import BuildCard from "../components/BuildCard";
 import UserBuildCard from "../components/UserBuildCard";
+import { SERVER_URL } from "../constants";
 
 function Profile() {
   const { id } = useParams();
@@ -20,7 +21,7 @@ function Profile() {
   const [logged, setLogged] = useState({});
 
   const userData = () => {
-    Axios.get(`https://travelerscroll.herokuapp.com/profile/${id}`).then((response) => {
+    Axios.get(`${SERVER_URL}/profile/${id}`).then((response) => {
       if (response.data.status === "ok") {
         setUser(response.data.user);
       } else {
@@ -29,7 +30,7 @@ function Profile() {
     });
   };
   const GetUser = () => {
-    // Axios.get("https://travelerscroll.herokuapp.com/current-user", {
+    // Axios.get(`${SERVER_URL}/current-user`, {
     //   withCredentials: true,
     // }).then((response) => {
     //   if (response.data.status === "ok") {
@@ -44,7 +45,7 @@ function Profile() {
     }
   };
   const Logout = () => {
-    Axios.get("https://travelerscroll.herokuapp.com/logout", {
+    Axios.get(`${SERVER_URL}/logout`, {
       withCredentials: true,
     }).then((res) => {
       if (res.data.status === "ok") {

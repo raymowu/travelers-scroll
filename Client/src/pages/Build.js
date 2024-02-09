@@ -12,7 +12,7 @@ import LikeButton from "../components/LikeButton";
 import ReactTooltip from "react-tooltip";
 import { useBuildContext } from "../hooks/useBuildContext";
 import { decodeToken } from "react-jwt";
-import { GENSHIN_API } from "../constants";
+import { GENSHIN_API, SERVER_URL } from "../constants";
 import _ from "lodash";
 
 const CHARACTER_API = `${GENSHIN_API}/characters/`;
@@ -27,7 +27,7 @@ const Build = () => {
   let user = token ? decodeToken(token).id : ""; // this is the user id
 
   const getBuild = (buildid) => {
-    fetch(`https://travelerscroll.herokuapp.com/builds/build/${buildid}`)
+    fetch(`${SERVER_URL}/builds/build/${buildid}`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: "SET_BUILD", payload: data.build });
@@ -40,7 +40,7 @@ const Build = () => {
   //   Axios({
   //     method: "GET",
   //     withCredentials: true,
-  //     url: `https://travelerscroll.herokuapp.com/get-user/${sessionStorage.getItem(
+  //     url: `${SERVER_URL}/get-user/${sessionStorage.getItem(
   //       "token"
   //     )}`,
   //   }).then((res) => {
@@ -81,7 +81,7 @@ const Build = () => {
               token: sessionStorage.getItem("token"),
             },
             withCredentials: true,
-            url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/newComment`,
+            url: `${SERVER_URL}/builds/build/${buildid}/newComment`,
           },
           { withCredentials: true }
         ).then((res) => {
@@ -113,7 +113,7 @@ const Build = () => {
               token: sessionStorage.getItem("token"),
             },
             withCredentials: true,
-            url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
+            url: `${SERVER_URL}/builds/build/${buildid}/liked`,
           },
           { withCredentials: true }
         ).then((res) => {
@@ -135,7 +135,7 @@ const Build = () => {
               token: sessionStorage.getItem("token"),
             },
             withCredentials: true,
-            url: `https://travelerscroll.herokuapp.com/builds/build/${buildid}/liked`,
+            url: `${SERVER_URL}/builds/build/${buildid}/liked`,
           },
           { withCredentials: true }
         ).then((res) => {

@@ -4,7 +4,7 @@ import deinitializeName from "./DeinitializeName";
 import { FaThumbsUp, FaTrash } from "react-icons/fa";
 import { decodeToken } from "react-jwt";
 import { useState } from "react";
-import { GENSHIN_API } from "../constants";
+import { GENSHIN_API, SERVER_URL } from "../constants";
 
 const CHARACTER_IMG_API = `${GENSHIN_API}/characters/`;
 const WEAPON_IMG_API = `${GENSHIN_API}/weapons/`;
@@ -26,7 +26,7 @@ const UserBuildCard = ({ build }) => {
               token: token,
             },
             withCredentials: true,
-            url: `https://travelerscroll.herokuapp.com/builds/build/${build._id}/delete`,
+            url: `${SERVER_URL}/builds/build/${build._id}/delete`,
           },
           { withCredentials: true }
         ).then((res) => {

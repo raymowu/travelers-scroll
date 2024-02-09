@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Axios from "axios";
 import "../css/form.css";
+import { SERVER_URL } from "../constants";
 
 function ForgotPassword() {
   const [form, setForm] = useState({ email: "" });
@@ -13,7 +14,7 @@ function ForgotPassword() {
         email: form.email,
       },
       withCredentials: true,
-      url: "https://travelerscroll.herokuapp.com/forgotpassword",
+      url: `${SERVER_URL}/forgotpassword`,
     }).then((res) => {
       if (res.data.status === "ok") {
         alert("Link was sent to your email");

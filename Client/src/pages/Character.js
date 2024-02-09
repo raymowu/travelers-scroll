@@ -10,7 +10,7 @@ import CharacterDescCard from "../components/CharacterDescCard";
 import PassiveTalentCard from "../components/PassiveTalentCard";
 import ConstellationCard from "../components/Constellation";
 import Axios from "axios";
-import { GENSHIN_API } from "../constants";
+import { GENSHIN_API, SERVER_URL } from "../constants";
 
 const CHARACTER_API = `${GENSHIN_API}/characters/`;
 
@@ -31,7 +31,7 @@ const Character = () => {
       });
   };
   const getBuilds = () => {
-    Axios.get(`https://travelerscroll.herokuapp.com/builds/${characterName}`, {
+    Axios.get(`${SERVER_URL}/builds/${characterName}`, {
       withCredentials: true,
     }).then((res) => {
       setBuilds(res.data.builds);
@@ -39,7 +39,7 @@ const Character = () => {
   };
 
   // old code
-  // fetch(`https://travelerscroll.herokuapp.com/builds/${characterName}`)
+  // fetch(`${SERVER_URL}/builds/${characterName}`)
   // .then((res) => res.json())
   // .then((data) => {
   //   setBuilds(data.builds);

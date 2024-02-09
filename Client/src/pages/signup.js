@@ -3,6 +3,7 @@ import "../css/form.css";
 import Axios from "axios";
 import { gapi } from "gapi-script";
 import { GoogleLogin } from "react-google-login";
+import { SERVER_URL } from "../constants";
 
 function SignUp() {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
@@ -27,7 +28,7 @@ function SignUp() {
       method: "POST",
       data: data,
       withCredentials: true,
-      url: "https://travelerscroll.herokuapp.com/gregister",
+      url: `${SERVER_URL}/gregister`,
     }).then((res) => {
       if (res.data.status === "ok") {
         sessionStorage.setItem("token", res.data.token);
@@ -53,7 +54,7 @@ function SignUp() {
         password: form.password,
       },
       withCredentials: true,
-      url: "https://travelerscroll.herokuapp.com/register",
+      url: `${SERVER_URL}/register`,
     }).then((res) => {
       // const data = await response.json();
 
