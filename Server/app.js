@@ -9,8 +9,7 @@ const User = require("./models/user");
 
 // DATABASE
 mongoose.connect(
-  process.env.MONGODB_URI ||
-    "mongodb+srv://rksp:rkspdbpass@cluster0.gkkn6.mongodb.net/GenshinApp?retryWrites=true&w=majority",
+  process.env.MONGODB_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
